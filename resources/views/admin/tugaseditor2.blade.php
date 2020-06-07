@@ -8,17 +8,28 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            Buat Materi
+                            Buat Tugas
                         </h2>
                     </div>
                     <div class="body">
-                        <form action="/admin/materi/store" method="post" enctype="multipart/form-data">
+                        <form action="/admin/tugas/update/{{ $tugas->id }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-lg">
                                         <div class="form-line">
-                                            <input type="text" name="judul" class="form-control" placeholder="Judul Materi" />
+                                            <input type="text" name="judul" class="form-control" placeholder="Judul Tugas" value="{{ $tugas->judul }}" />
+                                        </div>
+                                        @if($errors->has('judul'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('judul')}}
+                                        </div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group form-group-lg">
+                                        <h2 class="card-inside-title">Deadline</h2>
+                                        <div class="form-line">
+                                            <input type="date" name="deadline" class="form-control" value="{{ $tugas->deadline }}" />
                                         </div>
                                         @if($errors->has('judul'))
                                         <div class="text-danger">
@@ -29,7 +40,7 @@
                                     <div class="form-group form-group-lg">
                                         <h2 class="card-inside-title">Isi Materi</h2>
                                         <div class="form-line">
-                                            <textarea name="deskripsi" rows="4" class="form-control no-resize" placeholder="Deskripsi..."></textarea>
+                                            <textarea name="deskripsi" rows="4" class="form-control no-resize" placeholder="Deskripsi...">{{ $tugas->deskripsi }}</textarea>
                                         </div>
                                         @if($errors->has('deskripsi'))
                                         <div class="text-danger">
@@ -37,20 +48,9 @@
                                         </div>
                                         @endif
                                     </div>
-                                    <div class="form-group form-group-lg">
-                                        <h2 class="card-inside-title">Upload Pematerian</h2>
-                                        <div class="custom-file">
-                                            <input type="file" name="video">
-                                        </div>
-                                        @if($errors->has('video'))
-                                        <div class="text-danger">
-                                            {{ $errors->first('video')}}
-                                        </div>
-                                        @endif
-                                    </div>
                                 </div>
                                 <div class="form-group form-group-lg">
-                                    <input type="submit" class="btn btn-primary m-t-15 waves-effect ml-5" value="Upload">
+                                    <input type="submit" class="btn btn-primary m-t-15 waves-effect ml-5 btn-lg" value="Post">
                                 </div>
                             </div>
                         </form>

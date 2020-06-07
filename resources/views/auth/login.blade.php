@@ -9,7 +9,7 @@
 
             <form class="login100-form validate-form" method="post" action="/proc">
                 <span class="login100-form-title">
-                    Member Login
+                    Member Login <br><small>Kalo Mau Admin Edit Sendiri Role ID jadi 2</small>
                 </span>
                 {{ csrf_field() }}
                 @if ($message = Session::get('sukses'))

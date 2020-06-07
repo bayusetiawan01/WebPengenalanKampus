@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Mipa Bersatu | Admin</title>
+    <title>Mipa Bersatu | User</title>
     <!-- Favicon-->
     <link rel="icon" href="{{ asset('/images/icons/favicon.ico') }}" type="image/x-icon">
 
@@ -46,7 +46,7 @@
         <div class="container-fluid" style="display:block">
             <div class="navbar-header" style="padding: 0px; padding-bottom:0px; margin-bottom:0px">
                 <a href="javascript:void(0);" class="bars" style="top:0 !important"></a>
-                <a class="navbar-brand" style="float:left" href="/admin">Mipa Bersatu | Admin</a>
+                <a class="navbar-brand" style="float:left" href="/user">Mipa Bersatu | User</a>
             </div>
         </div>
     </nav>
@@ -80,21 +80,21 @@
             <div class="menu">
                 <ul class="list">
                     <li>
-                        <a href="/admin">
+                        <a href="/user">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/materi">
+                        <a href="/user/materi">
                             <i class="material-icons">view_carousel</i>
-                            <span>Materi Dibuat</span>
+                            <span>Daftar Materi</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/tugas">
+                        <a href="/user/tugas">
                             <i class="material-icons">assignment</i>
-                            <span>Tugas Dibuat</span>
+                            <span>Daftar Tugas</span>
                         </a>
                     </li>
                     <li>
