@@ -17,7 +17,7 @@ class CreateFileTugasTable extends Migration
             $table->id();
             $table->integer('tugas_id');
             $table->string('user_npm', 128);
-            $table->string('file', 128);
+            $table->string('file_tugas', 128);
             $table->timestamps();
         });
     }

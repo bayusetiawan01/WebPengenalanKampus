@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Materi;
 use App\Tugas;
+use App\Filetugas;
 use MarkupTest;
 use Session;
 
@@ -17,8 +19,16 @@ class AdminController extends Controller
         if ($request->session()->has('email')) {
             $user = User::where('email', $request->session()->get('email'))->first();
             if ($user->role_id == 2) {
-                $data['nama']  = $user->nama;
-                $data['email'] = $user->email;
+                $user_list        = User::where('role_id', 1)->get();
+                $materi_list      = Materi::all();
+                $tugas_list       = Tugas::all();
+                $tugas2_list      = Filetugas::all();
+                $data['nama']     = $user->nama;
+                $data['email']    = $user->email;
+                $data['c_user']   = count($user_list);
+                $data['c_materi'] = count($materi_list);
+                $data['c_tugas']  = count($tugas_list);
+                $data['c_tugas2'] = count($tugas2_list);
                 return view('/admin/dashboard', $data);
             } else {
                 return redirect('/user');
@@ -283,6 +293,12 @@ class AdminController extends Controller
                 $data['nama']   = $user->nama;
                 $data['email']  = $user->email;
                 $data['tugas'] = Tugas::find($id);
+                $data['tabel'] = DB::select("
+                    SELECT f.created_at, u.nama, u.npm, f.file_tugas FROM file_tugas AS f
+                    JOIN tugas AS t ON t.id = f.tugas_id
+                    JOIN user AS u ON u.npm = f.user_npm
+                    WHERE f.tugas_id = $id
+                ");
                 return view('/admin/hasiltugas', $data);
             } else {
                 return redirect('/user');

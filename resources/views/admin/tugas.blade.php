@@ -10,7 +10,7 @@
                         Tambah Tugas
                     </h2>
                 </div>
-                <div class="body" style="margin: auto; height:163px">
+                <div class="body" style="margin: auto; height:163px; text-align:center">
                     <br><br>
                     <a href="/admin/tugas/tambah" class="btn btn-danger btn-lg">+ ADD</a>
                 </div>

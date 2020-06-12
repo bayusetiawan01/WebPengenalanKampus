@@ -14,7 +14,6 @@
     <link href="{{ asset('/fonts/material-icon/material.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
     <link href="{{ asset('/vendor/bootstrap-admin/css/bootstrap.css') }}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
@@ -42,11 +41,50 @@
     <!-- #END# Overlay For Sidebars -->
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    <nav class="navbar" style="background-color:firebrick">
-        <div class="container-fluid" style="display:block">
-            <div class="navbar-header" style="padding: 0px; padding-bottom:0px; margin-bottom:0px">
-                <a href="javascript:void(0);" class="bars" style="top:0 !important"></a>
-                <a class="navbar-brand" style="float:left" href="/user">Mipa Bersatu | User</a>
+    <nav class="navbar" style="background-color: firebrick;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="index.html">MIPA BERSATU - USER</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Call Search -->
+                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <!-- #END# Call Search -->
+                    <!-- Notifications -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="material-icons">notifications</i>
+                            <span class="label-count">1</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">NOTIFICATIONS</li>
+                            <li class="body">
+                                <ul class="menu">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-purple">
+                                                <i class="material-icons">assignment</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>Tes Notifikasi Tugas</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> Yesterday
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="javascript:void(0);">View All Notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- #END# Notifications -->
+                </ul>
             </div>
         </div>
     </nav>

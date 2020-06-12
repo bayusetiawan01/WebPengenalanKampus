@@ -54,10 +54,11 @@ class UserController extends Controller
     public function tugas(Request $request)
     {
         if ($request->session()->has('email')) {
-            $user          = User::where('email', $request->session()->get('email'))->first();
-            $data['nama']  = $user->nama;
-            $data['email'] = $user->email;
-            $data['tugas'] = Tugas::all();
+            $user               = User::where('email', $request->session()->get('email'))->first();
+            $data['nama']       = $user->nama;
+            $data['email']      = $user->email;
+            $data['tugas']      = Tugas::all();
+            $data['tugas_user'] = Filetugas::where('user_npm', $user->npm)->get();
             return view('/user/tugas', $data);
         } else {
             return redirect('/');
@@ -92,7 +93,7 @@ class UserController extends Controller
             Filetugas::create([
                 'tugas_id'  => $id,
                 'user_npm'  => $user->npm,
-                'file'      => $nama_file
+                'file_tugas'      => $nama_file
             ]);
 
             return redirect('/user/tugas');
