@@ -1,7 +1,8 @@
 @extends('user\master')
 @section('isi')
 <section class="content" style="margin-top: 80px;">
-    <h3>Daftar Tugas</h3>
+    <br>
+    <span class="h3">Daftar Tugas</span><br><br>
     <div class="row clearfix">
         @foreach($tugas as $t)
         <?php $count = 0;
@@ -24,7 +25,7 @@
                     <?php if ($count == 0) { ?>
                         <a href="../user/tugas/lihat/{{$t->id}}" class="btn btn-success btn-block btn-lg">Lihat</a>
                     <?php } else { ?>
-                        <button class="wave btn btn-success btn-block btn-lg">Tugas sudah Disubmit</button>
+                        <a href="../user/tugas/hapus/{{$t->id}}" class="wave btn btn-danger btn-block btn-lg">Batal Submit</a>
                     <?php } ?>
                 </div>
             </div>

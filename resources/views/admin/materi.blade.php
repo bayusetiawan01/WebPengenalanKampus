@@ -1,21 +1,10 @@
 @extends('admin\master')
 @section('isi')
 <section class="content" style="margin-top: 80px;">
-    <h3>Daftar Materi</h3>
+    <br>
+    <span class="h3">Daftar Materi</span> <a href="/admin/materi/tambah" class="btn btn-success btn-lg" style="margin-left: 50px;">+ Tambah Materi</a>
+    <br><br>
     <div class="row clearfix">
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <div class="card">
-                <div class="header bg-red" style="height:80px">
-                    <h2>
-                        Tambah Materi
-                    </h2>
-                </div>
-                <div class="body" style="margin: auto; height:163px; text-align:center">
-                    <br><br>
-                    <a href="/admin/materi/tambah" class="btn btn-danger btn-lg">+ ADD</a>
-                </div>
-            </div>
-        </div>
         @foreach($materi as $m)
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="card">

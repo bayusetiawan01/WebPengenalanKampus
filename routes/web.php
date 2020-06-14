@@ -44,3 +44,4 @@ Route::get('/user/materi/lihat/{id}', 'UserController@lihatMateri');
 Route::get('/user/tugas', 'UserController@tugas');
 Route::get('/user/tugas/lihat/{id}', 'UserController@lihatTugas');
 Route::post('/user/tugas/store/{id}', 'UserController@tugasStore');
+Route::get('/user/tugas/hapus/{id}', 'UserController@deleteTugas');

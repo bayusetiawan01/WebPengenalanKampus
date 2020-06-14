@@ -1,21 +1,10 @@
 @extends('admin\master')
 @section('isi')
 <section class="content" style="margin-top: 80px;">
-    <h3>Daftar Tugas</h3>
+    <br>
+    <span class="h3">Daftar Tugas</span> <a href="/admin/tugas/tambah" class="btn btn-success btn-lg" style="margin-left: 50px;">+ Tambah Tugas</a>
+    <br><br>
     <div class="row clearfix">
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <div class="card">
-                <div class="header bg-red" style="height:80px">
-                    <h2>
-                        Tambah Tugas
-                    </h2>
-                </div>
-                <div class="body" style="margin: auto; height:163px; text-align:center">
-                    <br><br>
-                    <a href="/admin/tugas/tambah" class="btn btn-danger btn-lg">+ ADD</a>
-                </div>
-            </div>
-        </div>
         @foreach($tugas as $t)
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="card">

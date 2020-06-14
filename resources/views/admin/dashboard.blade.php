@@ -1,8 +1,9 @@
 @extends('admin\master')
 @section('isi')
 <section class="content" style="margin-top: 80px;">
-    <h3>Dashboard</h3>
-
+    <br>
+    <span class="h3">Dashboard</span>
+    <br><br>
     <!-- Widgets -->
     <div class=" row clearfix">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">

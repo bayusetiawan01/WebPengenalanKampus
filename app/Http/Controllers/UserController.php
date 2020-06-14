@@ -101,4 +101,19 @@ class UserController extends Controller
             return redirect('/');
         }
     }
+    public function deleteTugas($id, Request $request)
+    {
+        if ($request->session()->has('email')) {
+            $user          = User::where('email', $request->session()->get('email'))->first();
+            $data['nama']  = $user->nama;
+            $data['email'] = $user->email;
+
+            $materi = Filetugas::where('user_npm', $user->npm)->where('tugas_id', $id)->first();
+            $materi->delete();
+
+            return redirect('/user/tugas');
+        } else {
+            return redirect('/');
+        }
+    }
 }
