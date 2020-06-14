@@ -37,6 +37,17 @@
                                         </div>
                                         @endif
                                     </div>
+                                    <div class="form-group form-group-lg">
+                                        <h2 class="card-inside-title">Upload dari Youtube</h2>
+                                        <div class="form-line">
+                                            <input type="text" name="youtube" class="form-control" placeholder="Ex:youtube.com/embed/tgbNymZ7vqY Tulis tgbNymZ7vqY" value="{{$materi->youtube}}" />
+                                        </div>
+                                        @if($errors->has('youtube'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('youtube')}}
+                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class=" form-group form-group-lg">
                                     <input type="submit" class="btn btn-primary m-t-15 waves-effect ml-5 btn-lg" value="Save">

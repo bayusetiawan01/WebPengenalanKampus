@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Materi extends Model
 {
     protected $table = "materi";
-    protected $fillable = ['judul', 'video', 'deskripsi'];
+    protected $fillable = ['judul', 'video', 'deskripsi', 'youtube'];
 }

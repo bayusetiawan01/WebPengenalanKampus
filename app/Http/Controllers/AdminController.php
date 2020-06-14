@@ -9,6 +9,7 @@ use App\User;
 use App\Materi;
 use App\Tugas;
 use App\Filetugas;
+use App\Kuis;
 use MarkupTest;
 use Session;
 
@@ -95,7 +96,8 @@ class AdminController extends Controller
             Materi::create([
                 'judul'     => $request->judul,
                 'deskripsi' => $request->deskripsi,
-                'video'     => $nama_file
+                'video'     => $nama_file,
+                'youtube'   => $request->youtube
             ]);
 
             return redirect('/admin/materi');
@@ -134,6 +136,7 @@ class AdminController extends Controller
             $materi = Materi::find($id);
             $materi->judul = $request->judul;
             $materi->deskripsi = $request->deskripsi;
+            $materi->youtube = $request->youtube;
             $materi->save();
 
             return redirect('/admin/materi');
@@ -300,6 +303,25 @@ class AdminController extends Controller
                     WHERE f.tugas_id = $id
                 ");
                 return view('/admin/hasiltugas', $data);
+            } else {
+                return redirect('/user');
+            }
+        } else {
+            return redirect('/');
+        }
+    }
+    //////////////////////////////////////////
+    // Method Kuis --------------------------
+    //////////////////////////////////////////
+    public function kuis(Request $request)
+    {
+        if ($request->session()->has('email')) {
+            $user = User::where('email', $request->session()->get('email'))->first();
+            if ($user->role_id == 2) {
+                $data['nama']   = $user->nama;
+                $data['email']  = $user->email;
+                $data['kuis']   = Kuis::all();
+                return view('/admin/kuis', $data);
             } else {
                 return redirect('/user');
             }

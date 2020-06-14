@@ -36,6 +36,8 @@ Route::get('/admin/tugas/edit/{id}', 'AdminController@editTugas');
 Route::post('/admin/tugas/update/{id}', 'AdminController@tugasUpdate');
 Route::get('/admin/tugas/hapus/{id}', 'AdminController@deleteTugas');
 Route::get('/admin/tugas/lihat/{id}', 'AdminController@lihatTugas');
+//Rute Kuis
+Route::get('/admin/kuis', 'AdminController@kuis');
 
 //Rute User
 Route::get('/user', 'UserController@index');

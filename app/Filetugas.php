@@ -8,4 +8,8 @@ class Filetugas extends Model
 {
     protected $table = "file_tugas";
     protected $fillable = ['user_npm', 'tugas_id', 'file'];
+    public function tugas()
+    {
+        return $this->belongsTo('App\Tugas');
+    }
 }

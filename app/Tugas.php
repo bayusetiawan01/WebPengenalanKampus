@@ -8,4 +8,8 @@ class Tugas extends Model
 {
     protected $table = "tugas";
     protected $fillable = ['judul', 'deadline', 'deskripsi'];
+    public function file_tugas()
+    {
+        return $this->hasMany('App\Filetugas');
+    }
 }

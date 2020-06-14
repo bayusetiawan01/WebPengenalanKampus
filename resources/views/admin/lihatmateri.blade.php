@@ -17,6 +17,12 @@
                         Your browser does not support HTML5 video.
                     </video>
                     @endif
+                    @if($materi->youtube)
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$materi->youtube}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        </iframe>
+                    </div>
+                    @endif
                     <div class="body">
                         {{$materi->deskripsi}}
                     </div>
