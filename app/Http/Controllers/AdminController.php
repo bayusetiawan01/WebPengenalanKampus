@@ -329,4 +329,70 @@ class AdminController extends Controller
             return redirect('/');
         }
     }
+    //////////////////////////////////////////
+    // Method Manajemen User -----------------
+    //////////////////////////////////////////
+    public function users(Request $request)
+    {
+        if ($request->session()->has('email')) {
+            $user = User::where('email', $request->session()->get('email'))->first();
+            if ($user->role_id == 2) {
+                $data['nama']   = $user->nama;
+                $data['email']  = $user->email;
+                $data['user']   = User::all();
+                return view('/admin/daftaruser', $data);
+            } else {
+                return redirect('/user');
+            }
+        } else {
+            return redirect('/');
+        }
+    }
+    public function deleteUser($id, Request $request)
+    {
+        if ($request->session()->has('email')) {
+            $user          = User::where('email', $request->session()->get('email'))->first();
+            $data['nama']  = $user->nama;
+            $data['email'] = $user->email;
+
+            $phapus = User::find($id);
+            $phapus->delete();
+
+            return redirect('/admin/users');
+        } else {
+            return redirect('/');
+        }
+    }
+    public function setAdmin($id, Request $request)
+    {
+        if ($request->session()->has('email')) {
+            $user          = User::where('email', $request->session()->get('email'))->first();
+            $data['nama']  = $user->nama;
+            $data['email'] = $user->email;
+
+            $p = User::find($id);
+            $p->role_id = 2;
+            $p->save();
+
+            return redirect('/admin/users');
+        } else {
+            return redirect('/');
+        }
+    }
+    public function setUser($id, Request $request)
+    {
+        if ($request->session()->has('email')) {
+            $user          = User::where('email', $request->session()->get('email'))->first();
+            $data['nama']  = $user->nama;
+            $data['email'] = $user->email;
+
+            $p = User::find($id);
+            $p->role_id = 1;
+            $p->save();
+
+            return redirect('/admin/users');
+        } else {
+            return redirect('/');
+        }
+    }
 }

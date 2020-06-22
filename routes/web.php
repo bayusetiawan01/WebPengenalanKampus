@@ -20,6 +20,10 @@ Route::post('/register/proc', 'AuthController@register_proc');
 Route::post('/proc', 'AuthController@login_proc');
 //Rute Admin
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/users', 'AdminController@users');
+Route::get('/admin/users/hapus/{id}', 'AdminController@deleteUser');
+Route::get('/admin/users/setA/{id}', 'AdminController@setAdmin');
+Route::get('/admin/users/setU/{id}', 'AdminController@setUser');
 //Rute Materi
 Route::get('/admin/materi', 'AdminController@materi');
 Route::get('/admin/materi/tambah', 'AdminController@tambahMateri');

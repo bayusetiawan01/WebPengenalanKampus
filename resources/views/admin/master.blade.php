@@ -133,6 +133,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/admin/users">
+                            <i class="material-icons">account_circle</i>
+                            <span>Manajemen User</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/admin/materi">
                             <i class="material-icons">view_carousel</i>
                             <span>Materi Dibuat</span>
