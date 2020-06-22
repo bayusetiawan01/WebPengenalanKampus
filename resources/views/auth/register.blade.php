@@ -3,7 +3,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100" style="padding-top: 0px">
-            <div class="login100-pic js-tilt regis" data-tilt>
+            <div class="login100-pic js-tilt regis" data-tilt style="text-align: center;">
                 <img src="{{ asset('/images/desain/auth.png') }}" alt="IMG" height="300" style="margin-top: 100px;">
             </div>
 
