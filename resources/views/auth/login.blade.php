@@ -1,4 +1,4 @@
-@extends('auth\auth')
+@extends('layouts.auth')
 @section('isi')
 <div class="limiter">
     <div class="container-login100">

@@ -1,4 +1,4 @@
-@extends('user\master')
+@extends('layouts.user')
 @section('isi')
 <section class="content" style="margin-top: 80px;">
     <div class="container-fluid">

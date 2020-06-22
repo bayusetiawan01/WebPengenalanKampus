@@ -1,4 +1,4 @@
-@extends('admin\master')
+@extends('layouts.admin')
 @section('isi')
 <section class="content">
     <div class="container-fluid">
