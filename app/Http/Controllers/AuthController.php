@@ -5,25 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
-use Session;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('login')->except('logout');
+    }
     public function index(Request $request)
     {
-        if ($request->session()->has('email')) {
-            return redirect('/admin');
-        } else {
-            return view('/auth/login');
-        }
+        return view('/auth/login');
     }
     public function register(Request $request)
     {
-        if ($request->session()->has('email')) {
-            return redirect('/admin');
-        } else {
-            return view('/auth/register');
-        }
+        return view('/auth/register');
     }
     public function register_proc(Request $request)
     {
@@ -44,7 +39,7 @@ class AuthController extends Controller
             'is_active' => 1,
         ]);
 
-        Session::flash('sukses', 'Registrasi Akun Berhasil, Silakan Login!');
+        $request->session()->flash('sukses', 'Registrasi Akun Berhasil, Silakan Login!');
         return redirect('/');
     }
     public function login_proc(Request $request)
@@ -65,21 +60,21 @@ class AuthController extends Controller
                         return redirect('/user');
                     }
                 } else {
-                    Session::flash('gagal', 'Username atau Password Salah!');
+                    $request->session()->flash('gagal', 'Username atau Password Salah!');
                     return redirect('/');
                 }
             } else {
-                Session::flash('gagal', 'Akun Belum Diverifikasi');
+                $request->session()->flash('gagal', 'Akun Belum Diverifikasi');
                 return redirect('/');
             }
         } else {
-            Session::flash('gagal', 'Akun Belum Terdaftar');
+            $request->session()->flash('gagal', 'Akun Belum Terdaftar');
             return view('/auth/login');
         }
     }
     public function logout(Request $request)
     {
-        $request->session()->forget('email');
+        $request->session()->flush();
         return redirect('/');
     }
 }
