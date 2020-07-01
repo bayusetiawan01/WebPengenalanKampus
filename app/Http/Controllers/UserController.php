@@ -17,9 +17,10 @@ class UserController extends Controller
     }
     public function index(Request $request)
     {
-        $user          = User::where('email', $request->session()->get('email'))->first();
-        $data['nama']  = $user->nama;
-        $data['email'] = $user->email;
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['wawancara'] = Wawancara::where('npm', $user->npm)->first();
         return view('/user/home', $data);
     }
     //////////////////////////////////////////
@@ -98,9 +99,10 @@ class UserController extends Controller
     //////////////////////////////////////////
     public function wawancara(Request $request)
     {
-        $user          = User::where('email', $request->session()->get('email'))->first();
-        $data['nama']  = $user->nama;
-        $data['email'] = $user->email;
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['npm']       = $user->npm;
         return view('/user/wawancara', $data);
     }
     public function wawancaraStore(Request $request)
@@ -108,6 +110,7 @@ class UserController extends Controller
         $user          = User::where('email', $request->session()->get('email'))->first();
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
+        $data['npm']   = $user->npm;
 
         $this->validate($request, [
             'nama'           => 'required',
