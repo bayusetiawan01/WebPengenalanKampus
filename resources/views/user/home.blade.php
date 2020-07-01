@@ -70,9 +70,9 @@
                             <p>Lengkapi Informasi Diri Disini</p>
                             <p>
                                 @if(!$wawancara == NULL)
-                                <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Isi Form</a>
+                                <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Isi Form</a>
                                 @else
-                                <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Edit Form</a>
                                 @endif
                             </p>
                         </div>

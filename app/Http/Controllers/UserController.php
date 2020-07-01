@@ -8,6 +8,7 @@ use App\Materi;
 use App\Tugas;
 use App\Filetugas;
 use App\Wawancara;
+use App\Wawancara2;
 
 class UserController extends Controller
 {
@@ -235,6 +236,53 @@ class UserController extends Controller
             'prestasi5'        => $request->nama_organisasi5,
             'lembaga5'         => $request->jabatan5,
             'tahunp5'          => $request->tahun5,
+        ]);
+
+        return redirect('/user');
+    }
+    public function wawancara2(Request $request)
+    {
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['npm']       = $user->npm;
+        return view('/user/wawancara2', $data);
+    }
+    public function wawancara2Store(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+        $data['npm']   = $user->npm;
+
+        $this->validate($request, [
+            'npm'                  => 'required',
+            'kekurangan_kelebihan' => 'required',
+            'perbedaan_mahasiswa'  => 'required',
+            'bem_hima'             => 'required',
+            'fungsi_angkatan'      => 'required',
+            'kritis'               => 'required',
+            'solusional'           => 'required',
+            'sistematis'           => 'required',
+            'logis'                => 'required',
+            'berlandasan'          => 'required',
+            'arti_pemimpin'        => 'required',
+            'koordinator'          => 'required',
+        ]);
+
+        Wawancara2::create([
+            'npm'                  => $request->npm,
+            'kekurangan_kelebihan' => $request->kekurangan_kelebihan,
+            'perbedaan_mahasiswa'  => $request->perbedaan_mahasiswa,
+            'bem_hima'             => $request->bem_hima,
+            'fungsi_angkatan'      => $request->fungsi_angkatan,
+            'kritis'               => $request->kritis,
+            'solusional'           => $request->solusional,
+            'sistematis'           => $request->sistematis,
+            'logis'                => $request->logis,
+            'berlandasan'          => $request->berlandasan,
+            'arti_pemimpin'        => $request->arti_pemimpin,
+            'koordinator'          => $request->koordinator,
         ]);
 
         return redirect('/user');
