@@ -9,6 +9,7 @@ use App\Tugas;
 use App\Filetugas;
 use App\Wawancara;
 use App\Wawancara2;
+use App\Wawancara4;
 
 class UserController extends Controller
 {
@@ -18,10 +19,12 @@ class UserController extends Controller
     }
     public function index(Request $request)
     {
-        $user              = User::where('email', $request->session()->get('email'))->first();
-        $data['nama']      = $user->nama;
-        $data['email']     = $user->email;
-        $data['wawancara'] = Wawancara::where('npm', $user->npm)->first();
+        $user               = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']       = $user->nama;
+        $data['email']      = $user->email;
+        $data['wawancara']  = Wawancara::where('npm', $user->npm)->first();
+        $data['wawancara2'] = Wawancara2::where('npm', $user->npm)->first();
+        $data['wawancara4'] = Wawancara4::where('npm', $user->npm)->first();
         return view('/user/home', $data);
     }
     //////////////////////////////////////////
@@ -283,6 +286,104 @@ class UserController extends Controller
             'berlandasan'          => $request->berlandasan,
             'arti_pemimpin'        => $request->arti_pemimpin,
             'koordinator'          => $request->koordinator,
+        ]);
+
+        return redirect('/user');
+    }
+    public function wawancara3(Request $request, $agama)
+    {
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['npm']       = $user->npm;
+        if ($agama == 'islam')
+            return view('/user/wawancara3islam', $data);
+        elseif ($agama == 'protestan')
+            return view('/user/wawancara3protestan', $data);
+        elseif ($agama == 'katholik')
+            return view('/user/wawancara3katholik', $data);
+        elseif ($agama == 'hindu')
+            return view('/user/wawancara3hindu', $data);
+        elseif ($agama == 'budha')
+            return view('/user/wawancara3budha', $data);
+    }
+    public function wawancara4(Request $request)
+    {
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['npm']       = $user->npm;
+
+        return view('/user/wawancara4', $data);
+    }
+    public function wawancara4Store(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+        $data['npm']   = $user->npm;
+
+        $this->validate($request, [
+            'npm'                  => 'required',
+            'nama_darurat'         => 'required',
+            'alamat_darurat'       => 'required',
+            'hubungan_darurat'     => 'required',
+            'hp_darurat'           => 'required',
+            'nama_darurat2'        => 'required',
+            'alamat_darurat2'      => 'required',
+            'hubungan_darurat2'    => 'required',
+            'hp_darurat2'          => 'required',
+        ]);
+
+        Wawancara4::create([
+            'npm'                  => $request->npm,
+            'nama_darurat'         => $request->nama_darurat,
+            'alamat_darurat'       => $request->alamat_darurat,
+            'hubungan_darurat'     => $request->hubungan_darurat,
+            'hp_darurat'           => $request->hp_darurat,
+            'nama_darurat2'        => $request->nama_darurat2,
+            'alamat_darurat2'      => $request->alamat_darurat2,
+            'hubungan_darurat2'    => $request->hubungan_darurat2,
+            'hp_darurat2'          => $request->hp_darurat2,
+            'asma'                 => $request->asma,
+            'sakit_mata'           => $request->sakit_mata,
+            'dbd'                  => $request->dbd,
+            'tbc'                  => $request->tbc,
+            'patah_tulang'         => $request->patah_tulang,
+            'malaria'              => $request->malaria,
+            'pneumonia'            => $request->pneumonia,
+            'kanker'               => $request->kanker,
+            'liver'                => $request->liver,
+            'sinusitis'            => $request->sinusitis,
+            'hepatitis'            => $request->hepatitis,
+            'penyakit_jantung'     => $request->penyakit_jantung,
+            'cacar'                => $request->cacar,
+            'hipertensi'           => $request->hipertensi,
+            'kolera'               => $request->kolera,
+            'campak'               => $request->campak,
+            'hipotensi'            => $request->hipotensi,
+            'tifus'                => $request->tifus,
+            'hipotermia'           => $request->hipotermia,
+            'hipertermia'          => $request->hipertermia,
+            'anemia'               => $request->anemia,
+            'usus_buntu'           => $request->usus_buntu,
+            'migrain'              => $request->migrain,
+            'diabetes'             => $request->diabetes,
+            'epilepsi'             => $request->epilepsi,
+            'sakit_gigi'           => $request->sakit_gigi,
+            'maag'                 => $request->maag,
+            'hiv'                  => $request->hiv,
+            'penyakit_lain'        => $request->penyakit_lain,
+            'sedang_menderita'     => $request->sedang_menderita,
+            'enam_bulan'           => $request->enam_bulan,
+            'tiga_bulan'           => $request->tiga_bulan,
+            'penyakit_keluarga'    => $request->penyakit_keluarga,
+            'jenis_alergi'         => $request->jenis_alergi,
+            'keluhan_alergi'       => $request->keluhan_alergi,
+            'cara_menangani'       => $request->cara_menangani,
+            'rumah_sakit'          => $request->rumah_sakit,
+            'operasi'              => $request->operasi,
+            'pantangan_operasi'    => $request->pantangan_operasi,
         ]);
 
         return redirect('/user');

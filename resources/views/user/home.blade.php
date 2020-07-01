@@ -69,7 +69,7 @@
                         <div class="caption">
                             <p>Lengkapi Informasi Diri Disini</p>
                             <p>
-                                @if(!$wawancara == NULL)
+                                @if(!$wawancara2 == NULL)
                                 <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Isi Form</a>
                                 @else
                                 <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Edit Form</a>
@@ -83,6 +83,53 @@
                         <img src="http://placehold.it/500x300">
                         <div class="caption">
                             <p>Lengkapi Data Agama Disini</p>
+                            <p>
+                                @if(!$wawancara == NULL)
+                                <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Isi Form</a>
+                                @else
+                                <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-4">
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/500x300">
+                        <div class="caption">
+                            <p>Isi Riwayat Kesehatan Disini</p>
+                            <p>
+                                @if(!$wawancara4 == NULL)
+                                <a href="/user/wawancara4" class="btn btn-primary waves-effect" role="button">Isi Form</a>
+                                @else
+                                <a href="/user/wawancara4" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/500x300">
+                        <div class="caption">
+                            <p>Isi Pernyataan Tata Tertib Disini</p>
+                            <p>
+                                @if(!$wawancara2 == NULL)
+                                <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Isi Form</a>
+                                @else
+                                <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/500x300">
+                        <div class="caption">
+                            <p>Isi Pernyataan Surat Izin Disini</p>
                             <p>
                                 @if(!$wawancara == NULL)
                                 <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Isi Form</a>
