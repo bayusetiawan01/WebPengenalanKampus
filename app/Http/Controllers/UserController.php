@@ -9,6 +9,10 @@ use App\Tugas;
 use App\Filetugas;
 use App\Wawancara;
 use App\Wawancara2;
+use App\Wawancara3Buddha;
+use App\Wawancara3Hindu;
+use App\Wawancara3Katholik;
+use App\Wawancara3Protestan;
 use App\Wawancara4;
 
 class UserController extends Controller
@@ -16,15 +20,16 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('revalidate');
     }
     public function index(Request $request)
     {
         $user               = User::where('email', $request->session()->get('email'))->first();
         $data['nama']       = $user->nama;
         $data['email']      = $user->email;
-        $data['wawancara']  = Wawancara::where('npm', $user->npm)->first();
-        $data['wawancara2'] = Wawancara2::where('npm', $user->npm)->first();
-        $data['wawancara4'] = Wawancara4::where('npm', $user->npm)->first();
+        $data['wawancara']  = Wawancara::where('npm', $user->npm)->get();
+        $data['wawancara2'] = Wawancara2::where('npm', $user->npm)->get();
+        $data['wawancara4'] = Wawancara4::where('npm', $user->npm)->get();
         return view('/user/home', $data);
     }
     //////////////////////////////////////////
@@ -306,6 +311,138 @@ class UserController extends Controller
             return view('/user/wawancara3hindu', $data);
         elseif ($agama == 'budha')
             return view('/user/wawancara3budha', $data);
+    }
+    public function wawancara3StoreBuddha(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+        $data['npm']   = $user->npm;
+
+        $this->validate($request, [
+            'npm'                  => 'required',
+            'tentang_agama_budha'  => 'required',
+            'memilih_agama_budha'  => 'required',
+            'kelas_agama_budha'    => 'required',
+            'hari_besar_budha'     => 'required',
+            'pancasila_buddhist'   => 'required',
+        ]);
+
+        Wawancara3Buddha::create([
+            'npm'                  => $request->npm,
+            'tentang_agama_budha'  => $request->tentang_agama_budha,
+            'memilih_agama_budha'  => $request->memilih_agama_budha,
+            'kelas_agama_budha'    => $request->kelas_agama_budha,
+            'hari_besar_budha'     => $request->hari_besar_budha,
+            'pancasila_buddhist'   => $request->pancasila_buddhist,
+        ]);
+
+        return redirect('/user');
+    }
+    public function wawancara3StoreHindu(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+        $data['npm']   = $user->npm;
+
+        $this->validate($request, [
+            'npm'                   => 'required',
+            'pemahaman_agama_hindu' => 'required',
+            'dasar_agama_hindu'     => 'required',
+            'tujuan_yadnya'         => 'required',
+            'pernahkah_mengeluh'    => 'required',
+            'berminat_kmh'          => 'required',
+            'saran_program'         => 'required',
+        ]);
+
+        Wawancara3Hindu::create([
+            'npm'                   => $request->npm,
+            'pemahaman_agama_hindu' => $request->pemahaman_agama_hindu,
+            'dasar_agama_hindu'     => $request->dasar_agama_hindu,
+            'tujuan_yadnya'         => $request->tujuan_yadnya,
+            'pernahkah_mengeluh'    => $request->pernahkah_mengeluh,
+            'berminat_kmh'          => $request->berminat_kmh,
+            'saran_program'         => $request->saran_program,
+        ]);
+
+        return redirect('/user');
+    }
+    public function wawancara3StoreKatholik(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+        $data['npm']   = $user->npm;
+
+        $this->validate($request, [
+            'npm'                   => 'required',
+            'asal_gereja'           => 'required',
+            'masuk_fmipa'           => 'required',
+            'jelaskan_trinitas'     => 'required',
+            'siapa_yesus'           => 'required',
+            'seperti_apa_natal'     => 'required',
+            'pelayanan_gereja'      => 'required',
+            'membaca_alkitab'       => 'required',
+            'berminat_kmk'          => 'required',
+            'ayat_pegangan'         => 'required',
+        ]);
+
+        Wawancara3Katholik::create([
+            'npm'                   => $request->npm,
+            'asal_gereja'           => $request->asal_gereja,
+            'masuk_fmipa'           => $request->masuk_fmipa,
+            'jelaskan_trinitas'     => $request->jelaskan_trinitas,
+            'siapa_yesus'           => $request->siapa_yesus,
+            'seperti_apa_natal'     => $request->seperti_apa_natal,
+            'pelayanan_gereja'      => $request->pelayanan_gereja,
+            'membaca_alkitab'       => $request->membaca_alkitab,
+            'berminat_kmk'          => $request->berminat_kmk,
+            'ayat_pegangan'         => $request->ayat_pegangan,
+        ]);
+
+        return redirect('/user');
+    }
+    public function wawancara3StoreProtestan(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+        $data['npm']   = $user->npm;
+
+        $this->validate($request, [
+            'npm'                           => 'required',
+            'asal_gereja'                   => 'required',
+            'masuk_fmipa'                   => 'required',
+            'kesaksian_pertolongan'         => 'required',
+            'siapa_yesus'                   => 'required',
+            'arti_natal'                    => 'required',
+            'pelayanan_gereja'              => 'required',
+            'membaca_alkitab'               => 'required',
+            'berminat_pmk'                  => 'required',
+            'ayat_disukai'                  => 'required',
+            'persekutuan_fmipa'             => 'required',
+            'maukah_ikut_persekutuan_fmipa' => 'required',
+            'arti_pelayanan'                => 'required',
+        ]);
+
+        Wawancara3Protestan::create([
+            'npm'                           => $request->npm,
+            'asal_gereja'                   => $request->asal_gereja,
+            'masuk_fmipa'                   => $request->masuk_fmipa,
+            'kesaksian_pertolongan'         => $request->kesaksian_pertolongan,
+            'siapa_yesus'                   => $request->siapa_yesus,
+            'arti_natal'                    => $request->arti_natal,
+            'pelayanan_gereja'              => $request->pelayanan_gereja,
+            'membaca_alkitab'               => $request->membaca_alkitab,
+            'berminat_pmk'                  => $request->berminat_pmk,
+            'ayat_disukai'                  => $request->ayat_disukai,
+            'persekutuan_fmipa'             => $request->persekutuan_fmipa,
+            'maukah_ikut_persekutuan_fmipa' => $request->maukah_ikut_persekutuan_fmipa,
+            'arti_pelayanan'                => $request->arti_pelayanan,
+        ]);
+
+        return redirect('/user');
     }
     public function wawancara4(Request $request)
     {

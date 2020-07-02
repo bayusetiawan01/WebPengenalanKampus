@@ -55,11 +55,15 @@
                                 <label class="form-label">Jurusan</label>
                             </div>
                         </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="text" name="agama" class="form-control" value="{{ old('agama') }}">
-                                <label class="form-label">Agama</label>
-                            </div>
+                        <div class="form-group">
+                            <label for="agama">Pilih Agama</label>
+                            <select id="agama" name="agama">
+                                <option value="islam">Islam</option>
+                                <option value="protestan">Kristen Protestan</option>
+                                <option value="katholik">Kristen Katholik</option>
+                                <option value="hindu">Hindu</option>
+                                <option value="budha">Budha</option>
+                            </select>
                         </div>
                         <div class="row clearfix">
                             <div class="col-md-6">
@@ -107,7 +111,7 @@
                         </h2>
                     </div>
                     <div class="body">
-                        <div class="thumbnail" style="padding-top: 16px;">
+                        <div class="thumbnail" style="padding-top: 6px;">
                             <img src="http://placehold.it/300x400">
                             <div class="caption">
                                 <p>Foto 3x4 Berwarna</p>

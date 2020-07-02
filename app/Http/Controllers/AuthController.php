@@ -11,6 +11,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('login')->except('logout');
+        $this->middleware('revalidate');
     }
     public function index(Request $request)
     {

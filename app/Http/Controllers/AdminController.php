@@ -16,6 +16,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('admin');
+        $this->middleware('revalidate');
     }
     public function index(Request $request)
     {

@@ -54,7 +54,7 @@
                         <div class="caption">
                             <p>Lengkapi Data Diri Disini</p>
                             <p>
-                                @if(!$wawancara == NULL)
+                                @if($wawancara->isEmpty())
                                 <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Isi Form</a>
                                 @else
                                 <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Edit Form</a>
@@ -69,7 +69,7 @@
                         <div class="caption">
                             <p>Lengkapi Informasi Diri Disini</p>
                             <p>
-                                @if(!$wawancara2 == NULL)
+                                @if($wawancara2->isEmpty())
                                 <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Isi Form</a>
                                 @else
                                 <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Edit Form</a>
@@ -84,10 +84,10 @@
                         <div class="caption">
                             <p>Lengkapi Data Agama Disini</p>
                             <p>
-                                @if(!$wawancara == NULL)
-                                <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Isi Form</a>
+                                @if($wawancara->isEmpty())
+                                <a href="/user/wawancara3" class="btn btn-primary waves-effect" role="button">Isi Form</a>
                                 @else
-                                <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                <a href="/user/wawancara3" class="btn btn-primary waves-effect" role="button">Edit Form</a>
                                 @endif
                             </p>
                         </div>
@@ -101,7 +101,7 @@
                         <div class="caption">
                             <p>Isi Riwayat Kesehatan Disini</p>
                             <p>
-                                @if(!$wawancara4 == NULL)
+                                @if($wawancara4->isEmpty())
                                 <a href="/user/wawancara4" class="btn btn-primary waves-effect" role="button">Isi Form</a>
                                 @else
                                 <a href="/user/wawancara4" class="btn btn-primary waves-effect" role="button">Edit Form</a>
@@ -116,7 +116,7 @@
                         <div class="caption">
                             <p>Isi Pernyataan Tata Tertib Disini</p>
                             <p>
-                                @if(!$wawancara2 == NULL)
+                                @if($wawancara2->isEmpty())
                                 <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Isi Form</a>
                                 @else
                                 <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Edit Form</a>
@@ -131,7 +131,7 @@
                         <div class="caption">
                             <p>Isi Pernyataan Surat Izin Disini</p>
                             <p>
-                                @if(!$wawancara == NULL)
+                                @if($wawancara->isEmpty())
                                 <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Isi Form</a>
                                 @else
                                 <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Edit Form</a>
