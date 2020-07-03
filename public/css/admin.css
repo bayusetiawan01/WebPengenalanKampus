@@ -5018,7 +5018,7 @@ section.content {
       -o-transition: 0.25s ease-in;
       -webkit-transition: 0.25s ease-in;
       transition: 0.25s ease-in;
-      border-bottom: 2px solid #1f91f3; }
+      border-bottom: 2px solid firebrick; }
     .input-group .form-line + .input-group-addon {
       padding-right: 0;
       padding-left: 10px; }
@@ -5131,7 +5131,7 @@ section.content {
       -o-transition: 0.25s ease-in;
       -webkit-transition: 0.25s ease-in;
       transition: 0.25s ease-in;
-      border-bottom: 2px solid #1f91f3; }
+      border-bottom: 2px solid firebrick; }
     .form-group .form-line .form-label {
       font-weight: normal;
       color: #aaa;
@@ -8127,7 +8127,7 @@ fieldset[disabled] .form-control {
     font-size: 12px;
     border-bottom: 1px solid #ddd; }
     .dataTables_wrapper input[type="search"]:focus, .dataTables_wrapper input[type="search"]:active {
-      border-bottom: 2px solid #1f91f3; }
+      border-bottom: 2px solid firebrick; }
   .dataTables_wrapper .dt-buttons {
     float: left; }
     .dataTables_wrapper .dt-buttons a.dt-button {

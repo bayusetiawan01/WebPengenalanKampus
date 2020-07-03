@@ -44,108 +44,84 @@
     <!-- Wawancara -->
     <div class="card">
         <div class="header">
-            <h2>Form Data Diri</h2>
+            <h2>Formulir Wawancara</h2>
         </div>
         <div class="body">
             <div class="row clearfix">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/500x300">
+                        <div class="icon" style="margin: 10px;">
+                            <i class="material-icons" style="display:block; color: firebrick; font-size:130px; margin:auto; text-align:center;">description</i>
+                        </div>
                         <div class="caption">
-                            <p>Lengkapi Data Diri Disini</p>
+                            <h3>Formulir Data Diri</h3><br><br>
                             <p>
                                 @if($wawancara->isEmpty())
-                                <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Isi Form</a>
+                                <a href="/user/wawancara" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
                                 @else
-                                <a href="/user/wawancara/edit" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                <a href="/user/wawancara/edit" class="btn btn-success waves-effect" role="button">Ubah Jawaban</a>
                                 @endif
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/500x300">
+                        <div class="icon" style="margin: 10px;">
+                            <i class="material-icons" style="display:block; color: firebrick; font-size:130px; margin:auto; text-align:center;">description</i>
+                        </div>
                         <div class="caption">
-                            <p>Lengkapi Informasi Diri Disini</p>
+                            <h3>Formulir Informasi Diri</h3><br>
                             <p>
                                 @if($wawancara2->isEmpty())
-                                <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Isi Form</a>
+                                <a href="/user/wawancara2" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
                                 @else
-                                <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                <a href="/user/wawancara2/edit" class="btn btn-success waves-effect" role="button">Ubah Jawaban</a>
                                 @endif
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/500x300">
+                        <div class="icon" style="margin: 10px;">
+                            <i class="material-icons" style="display:block; color: firebrick; font-size:130px; margin:auto; text-align:center;">description</i>
+                        </div>
                         <div class="caption">
-                            <p>Lengkapi Data Agama Disini</p>
+                            <h3>Formulir Data Agama</h3><br><br>
                             <p>
                                 @if($wawancara->isEmpty())
-                                <button class="btn bg-black waves-effects" role="button">Isi Form Data Diri Terlebih Dahulu</button>
+                                <button class="btn bg-grey waves-effects" role="button">Form Belum Dapat Diisi</button>
                                 @else
 
                                 @if($wawancarad->agama == 'islam')
-                                <a href="/user/wawancara3/islam" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                <a href="/user/wawancara3/islam" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
                                 @elseif($wawancarad->agama == 'buddha')
-                                <a href="/user/wawancara3/budha" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                <a href="/user/wawancara3/budha" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
                                 @elseif($wawancarad->agama == 'hindu')
-                                <a href="/user/wawancara3/hindu" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                <a href="/user/wawancara3/hindu" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
                                 @elseif($wawancarad->agama == 'katholik')
-                                <a href="/user/wawancara3/katholik" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                <a href="/user/wawancara3/katholik" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
                                 @elseif($wawancarad->agama == 'protestan')
-                                <a href="/user/wawancara3/protestan" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                <a href="/user/wawancara3/protestan" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
                                 @endif
                                 @endif
                             </p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/500x300">
+                        <div class="icon" style="margin: 10px;">
+                            <i class="material-icons" style="display:block; color: firebrick; font-size:130px; margin:auto; text-align:center;">description</i>
+                        </div>
                         <div class="caption">
-                            <p>Isi Riwayat Kesehatan Disini</p>
+                            <h3>Formulir Riwayat Kesehatan</h3><br>
                             <p>
                                 @if($wawancara4->isEmpty())
-                                <a href="/user/wawancara4" class="btn btn-primary waves-effect" role="button">Isi Form</a>
+                                <a href="/user/wawancara4" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
                                 @else
-                                <a href="/user/wawancara4" class="btn btn-primary waves-effect" role="button">Edit Form</a>
-                                @endif
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/500x300">
-                        <div class="caption">
-                            <p>Isi Pernyataan Tata Tertib Disini</p>
-                            <p>
-                                @if($wawancara2->isEmpty())
-                                <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Isi Form</a>
-                                @else
-                                <a href="/user/wawancara2" class="btn btn-primary waves-effect" role="button">Edit Form</a>
-                                @endif
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/500x300">
-                        <div class="caption">
-                            <p>Isi Pernyataan Surat Izin Disini</p>
-                            <p>
-                                @if($wawancara->isEmpty())
-                                <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Isi Form</a>
-                                @else
-                                <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                <a href="/user/wawancara4" class="btn btn-success waves-effect" role="button">Ubah Jawaban</a>
                                 @endif
                             </p>
                         </div>

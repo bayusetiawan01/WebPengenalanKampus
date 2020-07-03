@@ -9,6 +9,7 @@ use App\Materi;
 use App\Tugas;
 use App\Filetugas;
 use App\Kuis;
+use App\Wawancara;
 
 class AdminController extends Controller
 {
@@ -273,5 +274,25 @@ class AdminController extends Controller
         $p->save();
 
         return redirect('/admin/users');
+    }
+    //////////////////////////////////////////
+    // Method Wawancara ----------------------
+    //////////////////////////////////////////
+    public function wawancara(Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']   = $user->nama;
+        $data['email']  = $user->email;
+        $data['kuis']   = Kuis::all();
+        return view('/admin/wawancara', $data);
+    }
+    public function hasilwawancara($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']   = $user->nama;
+        $data['email']  = $user->email;
+        $data['jur']    = $id;
+        $data['list']   = Wawancara::where('jurusan', $id)->get();
+        return view('/admin/wawancarauser', $data);
     }
 }

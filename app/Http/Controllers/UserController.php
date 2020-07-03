@@ -403,6 +403,15 @@ class UserController extends Controller
         $data['npm']       = $user->npm;
         return view('/user/wawancara2', $data);
     }
+    public function wawancara2Edit(Request $request)
+    {
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['npm']       = $user->npm;
+        $data['isi']       = Wawancara2::where('npm', $user->npm)->first();
+        return view('/user/wawancaraedit2', $data);
+    }
     public function wawancara2Store(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
@@ -441,6 +450,45 @@ class UserController extends Controller
         ]);
 
         return redirect('/user');
+    }
+    public function wawancara2Update(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+
+        $this->validate($request, [
+            'npm'                  => 'required',
+            'kekurangan_kelebihan' => 'required',
+            'perbedaan_mahasiswa'  => 'required',
+            'bem_hima'             => 'required',
+            'fungsi_angkatan'      => 'required',
+            'kritis'               => 'required',
+            'solusional'           => 'required',
+            'sistematis'           => 'required',
+            'logis'                => 'required',
+            'berlandasan'          => 'required',
+            'arti_pemimpin'        => 'required',
+            'koordinator'          => 'required',
+        ]);
+
+        $p                 = Wawancara2::where('npm', $user->npm)->first();
+        $wawancara         = Wawancara2::find($p->id);
+        $wawancara->npm                  = $request->npm;
+        $wawancara->kekurangan_kelebihan = $request->kekurangan_kelebihan;
+        $wawancara->perbedaan_mahasiswa  = $request->perbedaan_mahasiswa;
+        $wawancara->bem_hima             = $request->bem_hima;
+        $wawancara->fungsi_angkatan      = $request->fungsi_angkatan;
+        $wawancara->kritis               = $request->kritis;
+        $wawancara->solusional           = $request->solusional;
+        $wawancara->sistematis           = $request->sistematis;
+        $wawancara->logis                = $request->logis;
+        $wawancara->berlandasan          = $request->berlandasan;
+        $wawancara->arti_pemimpin        = $request->arti_pemimpin;
+        $wawancara->koordinator          = $request->koordinator;
+        $wawancara->save();
+
+        return redirect('/admin/materi');
     }
     public function wawancara3(Request $request, $agama)
     {

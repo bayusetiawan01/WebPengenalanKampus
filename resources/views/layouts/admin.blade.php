@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="theme-color" content="firebrick" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Mipa Bersatu | Admin</title>
     <!-- Favicon-->
@@ -136,6 +137,12 @@
                         <a href="/admin/users">
                             <i class="material-icons">account_circle</i>
                             <span>Manajemen User</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/wawancara">
+                            <i class="material-icons">description</i>
+                            <span>Lihat Hasil Wawancara</span>
                         </a>
                     </li>
                     <li>

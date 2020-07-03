@@ -42,6 +42,9 @@ Route::get('/admin/tugas/hapus/{id}', 'AdminController@deleteTugas');
 Route::get('/admin/tugas/lihat/{id}', 'AdminController@lihatTugas');
 //Rute Kuis
 Route::get('/admin/kuis', 'AdminController@kuis');
+//Rute AdminWawancara
+Route::get('/admin/wawancara', 'AdminController@wawancara');
+Route::get('/admin/wawancara/{id}', 'AdminController@hasilwawancara');
 
 //Rute User
 Route::get('/user', 'UserController@index');
@@ -54,11 +57,13 @@ Route::get('/user/tugas/hapus/{id}', 'UserController@deleteTugas');
 Route::get('/user/wawancara', 'UserController@wawancara');
 Route::get('/user/wawancara/edit', 'UserController@wawancaraEdit');
 Route::get('/user/wawancara2', 'UserController@wawancara2');
+Route::get('/user/wawancara2/edit', 'UserController@wawancara2Edit');
 Route::get('/user/wawancara3/{agama}', 'UserController@wawancara3');
 Route::get('/user/wawancara4', 'UserController@wawancara4');
 Route::post('/user/wawancara/store', 'UserController@wawancaraStore');
 Route::post('/user/wawancara/update', 'UserController@wawancaraUpdate');
 Route::post('/user/wawancara2/store', 'UserController@wawancara2Store');
+Route::post('/user/wawancara2/update', 'UserController@wawancara2Update');
 Route::post('/user/wawancara3store/buddha', 'UserController@wawancara3StoreBuddha');
 Route::post('/user/wawancara3store/hindu', 'UserController@wawancara3StoreHindu');
 Route::post('/user/wawancara3store/katholik', 'UserController@wawancara3StoreKatholik');

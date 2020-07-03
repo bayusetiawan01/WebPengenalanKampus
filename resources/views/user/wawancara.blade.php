@@ -56,6 +56,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="jurusan">Pilih Jurusan</label>
+                            <select id="jurusan" name="jurusan">
+                                <option value="Matematika" @if(old('jurusan')=='Matematika' ) selected @endif>Matematika</option>
+                                <option value="Biologi" @if(old('jurusan')=='Biologi' ) selected @endif>Biologi</option>
+                                <option value="Fisika" @if(old('jurusan')=='Fisika' ) selected @endif>Fisika</option>
+                                <option value="Kimia" @if(old('jurusan')=='Kimia' ) selected @endif>Kimia</option>
+                                <option value="Statistika" @if(old('jurusan')=='Statistika' ) selected @endif>Statistika</option>
+                                <option value="Geofisika" @if(old('jurusan')=='Geofisika' ) selected @endif>Geofisika</option>
+                                <option value="TeknikInformatika" @if(old('jurusan')=='TeknikInformatika' ) selected @endif>TeknikInformatika</option>
+                                <option value="TeknikElektro" @if(old('jurusan')=='TeknikElektro' ) selected @endif>TeknikElektro</option>
+                                <option value="Aktuaria" @if(old('jurusan')=='Aktuaria' ) selected @endif>Aktuaria</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="agama">Pilih Agama</label>
                             <select id="agama" name="agama">
                                 <option value="islam" @if(old('agama')=='islam' ) selected @endif>Islam</option>

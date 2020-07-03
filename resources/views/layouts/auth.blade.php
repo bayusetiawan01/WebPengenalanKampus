@@ -5,6 +5,7 @@
     <title>Mipa Bersatu</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="firebrick" />
     <link rel="icon" type="image/png" href="{{ asset('/images/icons/favicon.ico') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/fonts/font-awesome/css/font-awesome.min.css') }}">
