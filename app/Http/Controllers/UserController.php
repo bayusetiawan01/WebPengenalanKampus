@@ -13,6 +13,7 @@ use App\Wawancara3Buddha;
 use App\Wawancara3Hindu;
 use App\Wawancara3Katholik;
 use App\Wawancara3Protestan;
+use App\Wawancara3Islam;
 use App\Wawancara4;
 
 class UserController extends Controller
@@ -28,6 +29,7 @@ class UserController extends Controller
         $data['nama']       = $user->nama;
         $data['email']      = $user->email;
         $data['wawancara']  = Wawancara::where('npm', $user->npm)->get();
+        $data['wawancarad'] = Wawancara::where('npm', $user->npm)->first();
         $data['wawancara2'] = Wawancara2::where('npm', $user->npm)->get();
         $data['wawancara4'] = Wawancara4::where('npm', $user->npm)->get();
         return view('/user/home', $data);
@@ -113,6 +115,15 @@ class UserController extends Controller
         $data['email']     = $user->email;
         $data['npm']       = $user->npm;
         return view('/user/wawancara', $data);
+    }
+    public function wawancaraEdit(Request $request)
+    {
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['npm']       = $user->npm;
+        $data['isi']       = Wawancara::where('npm', $user->npm)->first();
+        return view('/user/wawancaraedit', $data);
     }
     public function wawancaraStore(Request $request)
     {
@@ -229,22 +240,158 @@ class UserController extends Controller
             'nama_organisasi5' => $request->nama_organisasi5,
             'jabatan5'         => $request->jabatan5,
             'tahun5'           => $request->tahun5,
-            'prestasi1'        => $request->nama_organisasi1,
-            'lembaga1'         => $request->jabatan1,
-            'tahunp1'          => $request->tahun1,
-            'prestasi2'        => $request->nama_organisasi2,
-            'lembaga2'         => $request->jabatan2,
-            'tahunp2'          => $request->tahun2,
-            'prestasi3'        => $request->nama_organisasi3,
-            'lembaga3'         => $request->jabatan3,
-            'tahunp3'          => $request->tahun3,
-            'prestasi4'        => $request->nama_organisasi4,
-            'lembaga4'         => $request->jabatan4,
-            'tahunp4'          => $request->tahun4,
-            'prestasi5'        => $request->nama_organisasi5,
-            'lembaga5'         => $request->jabatan5,
-            'tahunp5'          => $request->tahun5,
+            'prestasi1'        => $request->prestasi1,
+            'lembaga1'         => $request->lembaga1,
+            'tahunp1'          => $request->tahunp1,
+            'prestasi2'        => $request->prestasi2,
+            'lembaga2'         => $request->lembaga2,
+            'tahunp2'          => $request->tahunp2,
+            'prestasi3'        => $request->prestasi3,
+            'lembaga3'         => $request->lembaga3,
+            'tahunp3'          => $request->tahunp3,
+            'prestasi4'        => $request->prestasi4,
+            'lembaga4'         => $request->lembaga4,
+            'tahunp4'          => $request->tahunp4,
+            'prestasi5'        => $request->prestasi5,
+            'lembaga5'         => $request->lembaga5,
+            'tahunp5'          => $request->tahunp5,
         ]);
+
+        return redirect('/user');
+    }
+    public function wawancaraUpdate(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+
+        $this->validate($request, [
+            'nama'           => 'required',
+            'nama_panggilan' => 'required',
+            'jenis_kelamin'  => 'required',
+            'npm'            => 'required',
+            'jurusan'        => 'required',
+            'agama'          => 'required',
+            'tempat_lahir'   => 'required',
+            'tanggal_lahir'  => 'required',
+            'anak_ke'        => 'required',
+            'bersaudara'     => 'required',
+            'nama_ayah'      => 'required',
+            'pekerjaan_ayah' => 'required',
+            'telp_ayah'      => 'required',
+            'nama_ibu'       => 'required',
+            'pekerjaan_ibu'  => 'required',
+            'telp_ibu'       => 'required',
+            'hobi'           => 'required',
+            'nohp'           => 'required',
+            'golongan_darah' => 'required',
+            'tekanan_darah'  => 'required',
+            'berat_badan'    => 'required',
+            'tinggi_badan'   => 'required',
+            'email'          => 'required',
+            'alamat_rumah'   => 'required',
+            'telp_rumah'     => 'required',
+            'nama_tk'        => 'required',
+            'kota_tk'        => 'required',
+            'tahun_tk'       => 'required',
+            'nama_sd'        => 'required',
+            'kota_sd'        => 'required',
+            'tahun_sd'       => 'required',
+            'nama_smp'       => 'required',
+            'kota_smp'       => 'required',
+            'tahun_smp'      => 'required',
+            'nama_sma'       => 'required',
+            'kota_sma'       => 'required',
+            'tahun_sma'      => 'required',
+            'nama_pt'        => 'required',
+            'kota_pt'        => 'required',
+            'tahun_pt'       => 'required',
+        ]);
+
+        $p                 = Wawancara::where('npm', $user->npm)->first();
+        $nama_file         = $p->foto;
+        if ($request->hasFile('foto')) {
+            $file          = $request->file('foto');
+            $nama_file     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'images/profile';
+            $file->move($tujuan_upload, $nama_file);
+        }
+
+        $wawancara                   = Wawancara::find($p->id);
+        $wawancara->nama             = $request->nama;
+        $wawancara->foto             = $nama_file;
+        $wawancara->nama_panggilan   = $request->nama_panggilan;
+        $wawancara->jenis_kelamin    = $request->jenis_kelamin;
+        $wawancara->npm              = $request->npm;
+        $wawancara->jurusan          = $request->jurusan;
+        $wawancara->agama            = $request->agama;
+        $wawancara->tempat_lahir     = $request->tempat_lahir;
+        $wawancara->tanggal_lahir    = $request->tanggal_lahir;
+        $wawancara->anak_ke          = $request->anak_ke;
+        $wawancara->bersaudara       = $request->bersaudara;
+        $wawancara->nama_ayah        = $request->nama_ayah;
+        $wawancara->pekerjaan_ayah   = $request->pekerjaan_ayah;
+        $wawancara->telp_ayah        = $request->telp_ayah;
+        $wawancara->nama_ibu         = $request->nama_ibu;
+        $wawancara->pekerjaan_ibu    = $request->pekerjaan_ibu;
+        $wawancara->telp_ibu         = $request->telp_ibu;
+        $wawancara->hobi             = $request->hobi;
+        $wawancara->nohp             = $request->nohp;
+        $wawancara->golongan_darah   = $request->golongan_darah;
+        $wawancara->tekanan_darah    = $request->tekanan_darah;
+        $wawancara->berat_badan      = $request->berat_badan;
+        $wawancara->tinggi_badan     = $request->tinggi_badan;
+        $wawancara->email            = $request->email;
+        $wawancara->alamat_rumah     = $request->alamat_rumah;
+        $wawancara->telp_rumah       = $request->telp_rumah;
+        $wawancara->alamat_kost      = $request->alamat_kost;
+        $wawancara->telp_kost        = $request->telp_kost;
+        $wawancara->nama_tk          = $request->nama_tk;
+        $wawancara->kota_tk          = $request->kota_tk;
+        $wawancara->tahun_tk         = $request->tahun_tk;
+        $wawancara->nama_sd          = $request->nama_sd;
+        $wawancara->kota_sd          = $request->kota_sd;
+        $wawancara->tahun_sd         = $request->tahun_sd;
+        $wawancara->nama_smp         = $request->nama_smp;
+        $wawancara->kota_smp         = $request->kota_smp;
+        $wawancara->tahun_smp        = $request->tahun_smp;
+        $wawancara->nama_sma         = $request->nama_sma;
+        $wawancara->kota_sma         = $request->kota_sma;
+        $wawancara->tahun_sma        = $request->tahun_sma;
+        $wawancara->nama_pt          = $request->nama_pt;
+        $wawancara->kota_pt          = $request->kota_pt;
+        $wawancara->tahun_pt         = $request->tahun_pt;
+        $wawancara->nama_organisasi1 = $request->nama_organisasi1;
+        $wawancara->jabatan1         = $request->jabatan1;
+        $wawancara->tahun1           = $request->tahun1;
+        $wawancara->nama_organisasi2 = $request->nama_organisasi2;
+        $wawancara->jabatan2         = $request->jabatan2;
+        $wawancara->tahun2           = $request->tahun2;
+        $wawancara->nama_organisasi3 = $request->nama_organisasi3;
+        $wawancara->jabatan3         = $request->jabatan3;
+        $wawancara->tahun3           = $request->tahun3;
+        $wawancara->nama_organisasi4 = $request->nama_organisasi4;
+        $wawancara->jabatan4         = $request->jabatan4;
+        $wawancara->tahun4           = $request->tahun4;
+        $wawancara->nama_organisasi5 = $request->nama_organisasi5;
+        $wawancara->jabatan5         = $request->jabatan5;
+        $wawancara->tahun5           = $request->tahun5;
+        $wawancara->prestasi1        = $request->prestasi1;
+        $wawancara->lembaga1         = $request->lembaga1;
+        $wawancara->tahunp1          = $request->tahunp1;
+        $wawancara->prestasi2        = $request->prestasi2;
+        $wawancara->lembaga2         = $request->lembaga2;
+        $wawancara->tahunp2          = $request->tahunp2;
+        $wawancara->prestasi3        = $request->prestasi3;
+        $wawancara->lembaga3         = $request->lembaga3;
+        $wawancara->tahunp3          = $request->tahunp3;
+        $wawancara->prestasi4        = $request->prestasi4;
+        $wawancara->lembaga4         = $request->lembaga4;
+        $wawancara->tahunp4          = $request->tahunp4;
+        $wawancara->prestasi5        = $request->prestasi5;
+        $wawancara->lembaga5         = $request->lembaga5;
+        $wawancara->tahunp5          = $request->tahunp5;
+        $wawancara->save();
 
         return redirect('/user');
     }
@@ -404,6 +551,86 @@ class UserController extends Controller
         return redirect('/user');
     }
     public function wawancara3StoreProtestan(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+        $data['npm']   = $user->npm;
+
+        $this->validate($request, [
+            'npm'                           => 'required',
+            'kalimat_syahadat'              => 'required',
+            'shalat_wajib'                  => 'required',
+            'tilawah'                       => 'required',
+            'dhuha'                         => 'required',
+            'tahajud'                       => 'required',
+            'rawatib'                       => 'required',
+            'berjamaah'                     => 'required',
+            'matsurat'                      => 'required',
+            'shaum_sunnah'                  => 'required',
+            'pengajian'                     => 'required',
+            'durasi_pengajian'              => 'required',
+            'tempat_pengajian'              => 'required',
+            'mentoring'                     => 'required',
+            'durasi_mentoring'              => 'required',
+            'tempat_mentoring'              => 'required',
+            'liqa'                          => 'required',
+            'durasi_liqa'                   => 'required',
+            'tempat_liqa'                   => 'required',
+            'baca_quran'                    => 'required',
+            'durasi_baca_quran'             => 'required',
+            'tempat_baca_quran'             => 'required',
+            'hafalan_quran'                 => 'required',
+            'buku_islam'                    => 'required',
+            'tokoh_islam'                   => 'required',
+            'pendapat_jilbab'               => 'required',
+            'pendapat_ikhtilat'             => 'required',
+            'pendapat_pacaran'              => 'required',
+            'ramalan_bintang'               => 'required',
+            'pendapat_merokok'              => 'required',
+            'pemimpin_non_muslim'           => 'required',
+        ]);
+
+        Wawancara3Islam::create([
+            'npm'                           => $request->npm,
+            'kalimat_syahadat'              => $request->kalimat_syahadat,
+            'shalat_wajib'                  => $request->shalat_wajib,
+            'tilawah'                       => $request->tilawah,
+            'dhuha'                         => $request->dhuha,
+            'tahajud'                       => $request->tahajud,
+            'rawatib'                       => $request->rawatib,
+            'berjamaah'                     => $request->berjamaah,
+            'matsurat'                      => $request->matsurat,
+            'shaum_sunnah'                  => $request->shaum_sunnah,
+            'pengajian'                     => $request->pengajian,
+            'durasi_pengajian'              => $request->durasi_pengajian,
+            'tempat_pengajian'              => $request->tempat_pengajian,
+            'mentoring'                     => $request->mentoring,
+            'durasi_mentoring'              => $request->durasi_mentoring,
+            'tempat_mentoring'              => $request->tempat_mentoring,
+            'liqa'                          => $request->liqa,
+            'durasi_liqa'                   => $request->durasi_liqa,
+            'tempat_liqa'                   => $request->tempat_liqa,
+            'keputrian'                     => $request->keputrian,
+            'durasi_keputrian'              => $request->durasi_keputrian,
+            'tempat_keputrian'              => $request->tempat_keputrian,
+            'baca_quran'                    => $request->baca_quran,
+            'durasi_baca_quran'             => $request->durasi_baca_quran,
+            'tempat_baca_quran'             => $request->tempat_baca_quran,
+            'hafalan_quran'                 => $request->hafalan_quran,
+            'buku_islam'                    => $request->buku_islam,
+            'tokoh_islam'                   => $request->tokoh_islam,
+            'pendapat_jilbab'               => $request->pendapat_jilbab,
+            'pendapat_ikhtilat'             => $request->pendapat_ikhtilat,
+            'pendapat_pacaran'              => $request->pendapat_pacaran,
+            'ramalan_bintang'               => $request->ramalan_bintang,
+            'pendapat_merokok'              => $request->pendapat_merokok,
+            'pemimpin_non_muslim'           => $request->pemimpin_non_muslim,
+        ]);
+
+        return redirect('/user');
+    }
+    public function wawancara3StoreIslam(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
         $data['nama']  = $user->nama;

@@ -57,7 +57,7 @@
                                 @if($wawancara->isEmpty())
                                 <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Isi Form</a>
                                 @else
-                                <a href="/user/wawancara" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                <a href="/user/wawancara/edit" class="btn btn-primary waves-effect" role="button">Edit Form</a>
                                 @endif
                             </p>
                         </div>
@@ -85,9 +85,20 @@
                             <p>Lengkapi Data Agama Disini</p>
                             <p>
                                 @if($wawancara->isEmpty())
-                                <a href="/user/wawancara3" class="btn btn-primary waves-effect" role="button">Isi Form</a>
+                                <button class="btn bg-black waves-effects" role="button">Isi Form Data Diri Terlebih Dahulu</button>
                                 @else
-                                <a href="/user/wawancara3" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+
+                                @if($wawancarad->agama == 'islam')
+                                <a href="/user/wawancara3/islam" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                @elseif($wawancarad->agama == 'buddha')
+                                <a href="/user/wawancara3/budha" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                @elseif($wawancarad->agama == 'hindu')
+                                <a href="/user/wawancara3/hindu" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                @elseif($wawancarad->agama == 'katholik')
+                                <a href="/user/wawancara3/katholik" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                @elseif($wawancarad->agama == 'protestan')
+                                <a href="/user/wawancara3/protestan" class="btn btn-primary waves-effect" role="button">Edit Form</a>
+                                @endif
                                 @endif
                             </p>
                         </div>
