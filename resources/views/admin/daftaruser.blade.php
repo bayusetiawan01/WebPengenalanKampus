@@ -19,6 +19,8 @@
                                     <th>NPM</th>
                                     <th>Action</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 @foreach($user as $u)
                                 <tr>
                                     <td>{{$u->nama}}</td>
@@ -33,7 +35,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                            </thead>
+                            </tbody>
                         </table>
                     </div>
                 </div>

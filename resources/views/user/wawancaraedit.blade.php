@@ -581,7 +581,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="lembaga1" class="form-control" value="{{ $isi->lembaga1 }}">
-                                        <label class="form-label">Jabatan</label>
+                                        <label class="form-label">Lembaga</label>
                                     </div>
                                 </div>
                             </div>
@@ -607,7 +607,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="lembaga2" class="form-control" value="{{ $isi->lembaga2 }}">
-                                        <label class="form-label">Jabatan</label>
+                                        <label class="form-label">Lembaga</label>
                                     </div>
                                 </div>
                             </div>
@@ -633,7 +633,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="lembaga3" class="form-control" value="{{ $isi->lembaga3 }}">
-                                        <label class="form-label">Jabatan</label>
+                                        <label class="form-label">Lembaga</label>
                                     </div>
                                 </div>
                             </div>
@@ -659,7 +659,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="lembaga4" class="form-control" value="{{ $isi->lembaga4 }}">
-                                        <label class="form-label">Jabatan</label>
+                                        <label class="form-label">Lembaga</label>
                                     </div>
                                 </div>
                             </div>
@@ -685,7 +685,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="lembaga5" class="form-control" value="{{ $isi->lembaga5 }}">
-                                        <label class="form-label">Jabatan</label>
+                                        <label class="form-label">Lembaga</label>
                                     </div>
                                 </div>
                             </div>

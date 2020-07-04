@@ -10,6 +10,9 @@ use App\Tugas;
 use App\Filetugas;
 use App\Kuis;
 use App\Wawancara;
+use App\NilaiWawancara;
+use App\Wawancara2;
+use App\Wawancara4;
 
 class AdminController extends Controller
 {
@@ -294,5 +297,81 @@ class AdminController extends Controller
         $data['jur']    = $id;
         $data['list']   = Wawancara::where('jurusan', $id)->get();
         return view('/admin/wawancarauser', $data);
+    }
+    public function isiwawancara($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']   = $user->nama;
+        $data['email']  = $user->email;
+        $data['jur']    = $id;
+        $data['isi']    = Wawancara::where('npm', $id)->first();
+        $data['isi2']   = Wawancara2::where('npm', $id)->first();
+        $data['isi3']   = Wawancara4::where('npm', $id)->first();
+        $data['nilai']  = NilaiWawancara::where('npm', $id)->first();
+        return view('/admin/wawancarau', $data);
+    }
+    public function wawancaraStore(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+
+        $this->validate($request, [
+            'npm'               => 'required',
+            'organisasi'        => 'required',
+            'jawaban_wawancara' => 'required',
+            'sikap_wawancara'   => 'required',
+            'koordinator'       => 'required',
+            'sbmptn'            => 'required',
+            'prodi_mipa'        => 'required',
+            'lk_kkm'            => 'required',
+            'sikap_prodi'       => 'required',
+        ]);
+
+        NilaiWawancara::create([
+            'npm'               => $request->npm,
+            'organisasi'        => $request->organisasi,
+            'jawaban_wawancara' => $request->jawaban_wawancara,
+            'sikap_wawancara'   => $request->sikap_wawancara,
+            'koordinator'       => $request->koordinator,
+            'sbmptn'            => $request->sbmptn,
+            'prodi_mipa'        => $request->prodi_mipa,
+            'lk_kkm'            => $request->lk_kkm,
+            'sikap_prodi'       => $request->sikap_prodi,
+        ]);
+
+        return redirect('/admin/wawancarau/' . $request->npm);
+    }
+    public function wawancaraUpdate(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+
+        $this->validate($request, [
+            'npm'               => 'required',
+            'organisasi'        => 'required',
+            'jawaban_wawancara' => 'required',
+            'sikap_wawancara'   => 'required',
+            'koordinator'       => 'required',
+            'sbmptn'            => 'required',
+            'prodi_mipa'        => 'required',
+            'lk_kkm'            => 'required',
+            'sikap_prodi'       => 'required',
+        ]);
+        $p     = NilaiWawancara::where('npm', $request->npm)->first();
+        $nilai = NilaiWawancara::find($p->id);
+        $nilai->npm               = $request->npm;
+        $nilai->organisasi        = $request->organisasi;
+        $nilai->jawaban_wawancara = $request->jawaban_wawancara;
+        $nilai->sikap_wawancara   = $request->sikap_wawancara;
+        $nilai->koordinator       = $request->koordinator;
+        $nilai->sbmptn            = $request->sbmptn;
+        $nilai->prodi_mipa        = $request->prodi_mipa;
+        $nilai->lk_kkm            = $request->lk_kkm;
+        $nilai->sikap_prodi       = $request->sikap_prodi;
+        $nilai->save();
+
+        return redirect('/admin/wawancarau/' . $request->npm);
     }
 }

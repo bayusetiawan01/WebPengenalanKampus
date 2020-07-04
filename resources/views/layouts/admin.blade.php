@@ -44,11 +44,16 @@
         <div class="search-icon">
             <i class="material-icons">search</i>
         </div>
-        <input type="text" placeholder="START TYPING...">
+        <input type="text" id="search" placeholder="Cari Teks di Halaman ini...">
         <div class="close-search">
             <i class="material-icons">close</i>
         </div>
     </div>
+    <script>
+        function search(string) {
+            window.find(string);
+        }
+    </script>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar" style="background-color: firebrick;">

@@ -20,6 +20,8 @@
                                     <th>NPM</th>
                                     <th>Action</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <?php $i = 0; ?>
                                 @foreach($list as $l)
                                 <tr>
@@ -28,11 +30,11 @@
                                     <td>{{$l->nama}}</td>
                                     <td>{{$l->npm}}</td>
                                     <td>
-                                        <a href="../admin/wawancarau/{{$l->npm}}" type="button" class="btn btn-danger btn-sm">Lihat</a>
+                                        <a href="../wawancarau/{{$l->npm}}" type="button" class="btn btn-danger btn-sm">Lihat</a>
                                     </td>
                                 </tr>
                                 @endforeach
-                            </thead>
+                            </tbody>
                         </table>
                     </div>
                 </div>
