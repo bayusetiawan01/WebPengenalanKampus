@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            Form Wawancara Agama Kristen Katholik
+                            Form Wawancara Agama Kristen Katolik
                         </h2>
                     </div>
                     <div class="body">

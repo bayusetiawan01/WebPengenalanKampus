@@ -95,15 +95,35 @@
                                 @else
 
                                 @if($wawancarad->agama == 'islam')
+                                @if($wawancara3i->isEmpty())
                                 <a href="/user/wawancara3/islam" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
+                                @else
+                                <button class="btn bg-grey waves-effects" role="button">Form Sudah Diisi</button>
+                                @endif
                                 @elseif($wawancarad->agama == 'buddha')
+                                @if($wawancara3b->isEmpty())
                                 <a href="/user/wawancara3/budha" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
+                                @else
+                                <button class="btn bg-grey waves-effects" role="button">Form Sudah Diisi</button>
+                                @endif
                                 @elseif($wawancarad->agama == 'hindu')
+                                @if($wawancara3h->isEmpty())
                                 <a href="/user/wawancara3/hindu" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
+                                @else
+                                <button class="btn bg-grey waves-effects" role="button">Form Sudah Diisi</button>
+                                @endif
                                 @elseif($wawancarad->agama == 'katholik')
+                                @if($wawancara3k->isEmpty())
                                 <a href="/user/wawancara3/katholik" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
+                                @else
+                                <button class="btn bg-grey waves-effects" role="button">Form Sudah Diisi</button>
+                                @endif
                                 @elseif($wawancarad->agama == 'protestan')
+                                @if($wawancara3p->isEmpty())
                                 <a href="/user/wawancara3/protestan" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
+                                @else
+                                <button class="btn bg-grey waves-effects" role="button">Form Sudah Diisi</button>
+                                @endif
                                 @endif
                                 @endif
                             </p>
@@ -121,7 +141,7 @@
                                 @if($wawancara4->isEmpty())
                                 <a href="/user/wawancara4" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
                                 @else
-                                <a href="/user/wawancara4" class="btn btn-success waves-effect" role="button">Ubah Jawaban</a>
+                                <button class="btn bg-grey waves-effects" role="button">Form Sudah Diisi</button>
                                 @endif
                             </p>
                         </div>

@@ -74,7 +74,7 @@
                             <select id="agama" name="agama">
                                 <option value="islam" @if(old('agama')=='islam' ) selected @endif>Islam</option>
                                 <option value="protestan" @if(old('agama')=='protestan' ) selected @endif>Kristen Protestan</option>
-                                <option value="katholik" @if(old('agama')=='katholik' ) selected @endif>Kristen Katholik</option>
+                                <option value="katholik" @if(old('agama')=='katholik' ) selected @endif>Kristen Katolik</option>
                                 <option value="hindu" @if(old('agama')=='hindu' ) selected @endif>Hindu</option>
                                 <option value="buddha" @if(old('agama')=='buddha' ) selected @endif>Buddha</option>
                             </select>

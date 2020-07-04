@@ -620,6 +620,152 @@
                             </div>
                             <div id="collapseFour_4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour_4">
                                 <div class="panel-body">
+                                    @if($isi->agama = 'islam')
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pertanyaan</th>
+                                                    <th>Jawaban</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Kalimat Syahadat</td>
+                                                    <td>{{$isi4i->kalimat_syahadat}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shalat Wajib</td>
+                                                    <td>{{$isi4i->shalat_wajib}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tilawah Al-Qur’an</td>
+                                                    <td>{{$isi4i->tilawah}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shalat Dhuha</td>
+                                                    <td>{{$isi4i->dhuha}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shalat Tahajud</td>
+                                                    <td>{{$isi4i->tahajud}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shalat Rawatib</td>
+                                                    <td>{{$isi4i->rawatib}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shalat Berjamaah</td>
+                                                    <td>{{$isi4i->berjamaah}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Al Ma’tsurat</td>
+                                                    <td>{{$isi4i->matsurat}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shaum Sunnah</td>
+                                                    <td>{{$isi4i->shaum_sunnah}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pengajian</td>
+                                                    <td>{{$isi4i->pengajian}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Durasi</td>
+                                                    <td>{{$isi4i->durasi_pengajian}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tempat</td>
+                                                    <td>{{$isi4i->tempat_pengajian}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mentoring</td>
+                                                    <td>{{$isi4i->mentoring}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Durasi</td>
+                                                    <td>{{$isi4i->durasi_mentoring}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tempat</td>
+                                                    <td>{{$isi4i->tempat_mentoring}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Liqa</td>
+                                                    <td>{{$isi4i->liqa}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Durasi</td>
+                                                    <td>{{$isi4i->durasi_liqa}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tempat</td>
+                                                    <td>{{$isi4i->tempat_liqa}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Keputrian</td>
+                                                    <td>{{$isi4i->keputrian}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Durasi</td>
+                                                    <td>{{$isi4i->durasi_keputrian}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tempat</td>
+                                                    <td>{{$isi4i->tempat_keputrian}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Baca Tulis Quran</td>
+                                                    <td>{{$isi4i->baca_quran}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Durasi</td>
+                                                    <td>{{$isi4i->durasi_baca_quran}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tempat</td>
+                                                    <td>{{$isi4i->tempat_baca_quran}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jumlah Hafalan Quran</td>
+                                                    <td>{{$isi4i->hafalan_quran}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sebutkan buku/ majalah/ tabloid/ bulletin islami yang pernah/ sering Anda baca!</td>
+                                                    <td>{{$isi4i->buku_islam}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tuliskan tokoh Islam yang anda ketahui!</td>
+                                                    <td>{{$isi4i->tokoh_islam}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Berikan pendapat Anda tentang Jilbab! Untuk perempuan apakah anda menggunakan jilbab?</td>
+                                                    <td>{{$isi4i->pendapat_jilbab}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bagaimana pendapat Anda mengenai ikhtilat (bercampur baur antara laki-laki dan perempuan) dan khalwat (berdua-duaan antara laki-laki dan perempuan yang bukan mahram)?</td>
+                                                    <td>{{$isi4i->pendapat_ikhtilat}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bagaimana pendapat Anda mengenai pacaran?</td>
+                                                    <td>{{$isi4i->pendapat_pacaran}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apakah Anda menyukai bacaan tentang ramalan bintang?</td>
+                                                    <td>{{$isi4i->ramalan_bintang}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apakah Anda merokok? Berikan pendapatmu!</td>
+                                                    <td>{{$isi4i->pendapat_merokok}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bagaimana pendapat anda mengenai memilih pemimpin non muslim di suatu wilayah yang masyarakatnya mayoritas muslim?</td>
+                                                    <td>{{$isi4i->pemimpin_non_muslim}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @elseif($isi->agama = 'protestan')
                                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                         <thead>
                                             <tr>
@@ -629,51 +775,169 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Sebutkan kekurangan dan kelebihan anda!</td>
-                                                <td>{{$isi2->kekurangan_kelebihan}}</td>
+                                                <td>Asala Gereja</td>
+                                                <td>{{$isi4p->asal_gereja}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Apa yang kamu ketahui tentang perbedaan siswa dan mahasiswa?</td>
-                                                <td>{{$isi2->perbedaan_mahasiswa}}</td>
+                                                <td>Percaya atau tidak kalo masuk fmipa unpad itu jalan dari Tuhan? Ceritakan!</td>
+                                                <td>{{$isi4p->masuk_fmipa}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Apa yang kamu ketahui tentang BEM? Apa yang kamu ketahui tentang Himpunan Mahasiswa?</td>
-                                                <td>{{$isi2->bem_hima}}</td>
+                                                <td>Apa Kesaksian perbuatan / pertolongan yang pernah dialami oleh anda?</td>
+                                                <td>{{$isi4p->kesaksian_pertolongan}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Menurut kamu, apa peran dan fungsi angkatan FMIPA Unpad?</td>
-                                                <td>{{$isi2->fungsi_angkatan}}</td>
+                                                <td>Apa arti Natal menurut anda?</td>
+                                                <td>{{$isi4p->arti_natal}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Kritis</td>
-                                                <td>{{$isi2->kritis}}</td>
+                                                <td>Siapa Yesus menurut anda?</td>
+                                                <td>{{$isi4p->siapa_yesus}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Solusional</td>
-                                                <td>{{$isi2->solusional}}</td>
+                                                <td>Pernahkah anda melakukan pelayanan gereja?</td>
+                                                <td>{{$isi4p->pelayanan_gereja}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Logis</td>
-                                                <td>{{$isi2->logis}}</td>
+                                                <td>Seberapa sering anda membaca alkitab</td>
+                                                <td>{{$isi4p->membaca_alkitab}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Sistematis</td>
-                                                <td>{{$isi2->sistematis}}</td>
+                                                <td>Berminat PMK</td>
+                                                <td>{{$isi4p->berminat_pmk}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Berlandasan</td>
-                                                <td>{{$isi2->berlandasan}}</td>
+                                                <td>Ayat Disukai</td>
+                                                <td>{{$isi4p->ayat_disukai}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Apa arti pemimpin menurutmu? Siapa pemimpin idolamu (selain Rasulullah)?</td>
-                                                <td>{{$isi2->arti_pemimpin}}</td>
+                                                <td>Persekutuan FMIPA</td>
+                                                <td>{{$isi4p->persekutuan_fmipa}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Apa yang kamu ketahui tentang koordinator angkatan? Siapkah menjadi koordinator angkatan?</td>
-                                                <td>{{$isi2->koordinator}}</td>
+                                                <td>Maukah kamu mengikutinya?</td>
+                                                <td>{{$isi4p->maukah_ikut_persekutuan_fmipa}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apa arti pelayanan bagi anda?</td>
+                                                <td>{{$isi4p->arti_pelayanan}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                    @elseif($isi->agama = 'katholik')
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Pertanyaan</th>
+                                                <th>Jawaban</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Asala Gereja</td>
+                                                <td>{{$isi4k->asal_gereja}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Percaya atau tidak kalo masuk fmipa unpad itu jalan dari Tuhan? Ceritakan!</td>
+                                                <td>{{$isi4k->masuk_fmipa}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jelaskan mengenai trinitas?</td>
+                                                <td>{{$isi4k->jelaskan_trinitas}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apa arti Natal menurut anda?</td>
+                                                <td>{{$isi4k->arti_natal}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Siapa Yesus menurut anda?</td>
+                                                <td>{{$isi4k->siapa_yesus}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pernahkah anda melakukan pelayanan gereja?</td>
+                                                <td>{{$isi4k->pelayanan_gereja}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Seberapa sering anda membaca alkitab</td>
+                                                <td>{{$isi4k->membaca_alkitab}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Berminat KMK</td>
+                                                <td>{{$isi4k->berminat_kmk}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Adakah ayat pegangan?</td>
+                                                <td>{{$isi4k->ayat_pegangan}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    @elseif($isi->agama = 'hindu')
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Pertanyaan</th>
+                                                <th>Jawaban</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Menurut pemahaman anda, apa hal yg paling esensi dari agama Hindu?</td>
+                                                <td>{{$isi4k->pemahaman_agama_hindu}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apa dasar agama Hindu yg anda ketahui?</td>
+                                                <td>{{$isi4k->dasar_agama_hindu}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apa tujuan anda melakukan Yadnya selama ini?</td>
+                                                <td>{{$isi4k->tujuan_yadnya}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pernahkah ada perasaan mengeluh dengan hal itu?</td>
+                                                <td>{{$isi4k->pernahkah_mengeluh}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apakah anda berminat bergabung dengan KMH</td>
+                                                <td>{{$isi4k->berminat_kmh}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Menurut anda apa program yg bagus untuk organisasi Hindu kedepannya?</td>
+                                                <td>{{$isi4k->saran_program}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    @elseif($isi->agama = 'buddha')
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Pertanyaan</th>
+                                                <th>Jawaban</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Apa yang anda ketahui tentang Agama Buddha?</td>
+                                                <td>{{$isi4k->tentang_agama_budha}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mengapa anda memilih Agama Buddha?</td>
+                                                <td>{{$isi4k->memilih_agama_budha}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apakah anda pernah mengikuti kelas Agama Buddha sebelumnya?</td>
+                                                <td>{{$isi4k->kelas_agama_budha}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apa yang anda ketahui tentang 4 hari besar Agama Buddha?</td>
+                                                <td>{{$isi4k->hari_besar_budha}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sebutkan dan jelaskan mengenai pancasila Buddhist!</td>
+                                                <td>{{$isi4k->pancasila_buddhist}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    @endif
                                 </div>
                             </div>
                         </div>

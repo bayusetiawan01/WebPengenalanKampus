@@ -25,13 +25,19 @@ class UserController extends Controller
     }
     public function index(Request $request)
     {
-        $user               = User::where('email', $request->session()->get('email'))->first();
-        $data['nama']       = $user->nama;
-        $data['email']      = $user->email;
-        $data['wawancara']  = Wawancara::where('npm', $user->npm)->get();
-        $data['wawancarad'] = Wawancara::where('npm', $user->npm)->first();
-        $data['wawancara2'] = Wawancara2::where('npm', $user->npm)->get();
-        $data['wawancara4'] = Wawancara4::where('npm', $user->npm)->get();
+        $user                = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']        = $user->image;
+        $data['nama']        = $user->nama;
+        $data['email']       = $user->email;
+        $data['wawancara']   = Wawancara::where('npm', $user->npm)->get();
+        $data['wawancarad']  = Wawancara::where('npm', $user->npm)->first();
+        $data['wawancara2']  = Wawancara2::where('npm', $user->npm)->get();
+        $data['wawancara3i'] = Wawancara3Islam::where('npm', $user->npm)->get();
+        $data['wawancara3p'] = Wawancara3Protestan::where('npm', $user->npm)->get();
+        $data['wawancara3k'] = Wawancara3Katholik::where('npm', $user->npm)->get();
+        $data['wawancara3b'] = Wawancara3Buddha::where('npm', $user->npm)->get();
+        $data['wawancara3h'] = Wawancara3Hindu::where('npm', $user->npm)->get();
+        $data['wawancara4']  = Wawancara4::where('npm', $user->npm)->get();
         return view('/user/home', $data);
     }
     //////////////////////////////////////////
@@ -40,6 +46,7 @@ class UserController extends Controller
     public function materi(Request $request)
     {
         $user           = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['materi'] = Materi::all();
@@ -48,6 +55,7 @@ class UserController extends Controller
     public function lihatMateri($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['materi'] = Materi::find($id);
@@ -59,6 +67,7 @@ class UserController extends Controller
     public function tugas(Request $request)
     {
         $user               = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']       = $user->image;
         $data['nama']       = $user->nama;
         $data['email']      = $user->email;
         $data['tugas']      = Tugas::all();
@@ -68,6 +77,7 @@ class UserController extends Controller
     public function lihatTugas($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['id']     = $id;
@@ -77,6 +87,7 @@ class UserController extends Controller
     public function tugasStore($id, Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $this->validate($request, ['file' => 'required']);
@@ -97,6 +108,7 @@ class UserController extends Controller
     public function deleteTugas($id, Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -111,6 +123,7 @@ class UserController extends Controller
     public function wawancara(Request $request)
     {
         $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']      = $user->image;
         $data['nama']      = $user->nama;
         $data['email']     = $user->email;
         $data['npm']       = $user->npm;
@@ -119,6 +132,7 @@ class UserController extends Controller
     public function wawancaraEdit(Request $request)
     {
         $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']      = $user->image;
         $data['nama']      = $user->nama;
         $data['email']     = $user->email;
         $data['npm']       = $user->npm;
@@ -128,6 +142,7 @@ class UserController extends Controller
     public function wawancaraStore(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['npm']   = $user->npm;
@@ -180,6 +195,10 @@ class UserController extends Controller
         $nama_file     = time() . "_" . $file->getClientOriginalName();
         $tujuan_upload = 'images/profile';
         $file->move($tujuan_upload, $nama_file);
+
+        $u          = User::find($user->id);
+        $u->image   = $nama_file;
+        $u->save();
 
         Wawancara::create([
             'nama'             => $request->nama,
@@ -262,6 +281,7 @@ class UserController extends Controller
     public function wawancaraUpdate(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -316,6 +336,9 @@ class UserController extends Controller
             $tujuan_upload = 'images/profile';
             $file->move($tujuan_upload, $nama_file);
         }
+        $u          = User::find($user->id);
+        $u->image    = $nama_file;
+        $u->save();
 
         $wawancara                   = Wawancara::find($p->id);
         $wawancara->nama             = $request->nama;
@@ -398,6 +421,7 @@ class UserController extends Controller
     public function wawancara2(Request $request)
     {
         $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']      = $user->image;
         $data['nama']      = $user->nama;
         $data['email']     = $user->email;
         $data['npm']       = $user->npm;
@@ -406,6 +430,7 @@ class UserController extends Controller
     public function wawancara2Edit(Request $request)
     {
         $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']      = $user->image;
         $data['nama']      = $user->nama;
         $data['email']     = $user->email;
         $data['npm']       = $user->npm;
@@ -415,6 +440,7 @@ class UserController extends Controller
     public function wawancara2Store(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['npm']   = $user->npm;
@@ -454,6 +480,7 @@ class UserController extends Controller
     public function wawancara2Update(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -493,6 +520,7 @@ class UserController extends Controller
     public function wawancara3(Request $request, $agama)
     {
         $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']      = $user->image;
         $data['nama']      = $user->nama;
         $data['email']     = $user->email;
         $data['npm']       = $user->npm;
@@ -510,6 +538,7 @@ class UserController extends Controller
     public function wawancara3StoreBuddha(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['npm']   = $user->npm;
@@ -537,6 +566,7 @@ class UserController extends Controller
     public function wawancara3StoreHindu(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['npm']   = $user->npm;
@@ -566,6 +596,7 @@ class UserController extends Controller
     public function wawancara3StoreKatholik(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['npm']   = $user->npm;
@@ -601,6 +632,7 @@ class UserController extends Controller
     public function wawancara3StoreProtestan(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['npm']   = $user->npm;
@@ -681,6 +713,7 @@ class UserController extends Controller
     public function wawancara3StoreIslam(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['npm']   = $user->npm;
@@ -722,6 +755,7 @@ class UserController extends Controller
     public function wawancara4(Request $request)
     {
         $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']      = $user->image;
         $data['nama']      = $user->nama;
         $data['email']     = $user->email;
         $data['npm']       = $user->npm;
@@ -731,6 +765,7 @@ class UserController extends Controller
     public function wawancara4Store(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['npm']   = $user->npm;

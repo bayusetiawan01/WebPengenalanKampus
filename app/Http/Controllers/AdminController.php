@@ -12,6 +12,11 @@ use App\Kuis;
 use App\Wawancara;
 use App\NilaiWawancara;
 use App\Wawancara2;
+use App\Wawancara3Islam;
+use App\Wawancara3Buddha;
+use App\Wawancara3Hindu;
+use App\Wawancara3Katholik;
+use App\Wawancara3Protestan;
 use App\Wawancara4;
 
 class AdminController extends Controller
@@ -25,6 +30,7 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']     = $user->image;
         $user_list        = User::where('role_id', 1)->get();
         $materi_list      = Materi::all();
         $tugas_list       = Tugas::all();
@@ -43,6 +49,7 @@ class AdminController extends Controller
     public function materi(Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['materi'] = Materi::all();
@@ -51,6 +58,7 @@ class AdminController extends Controller
     public function tambahMateri(Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         return view('/admin/editor', $data);
@@ -58,6 +66,7 @@ class AdminController extends Controller
     public function materiStore(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -87,6 +96,7 @@ class AdminController extends Controller
     public function editMateri($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['materi'] = Materi::find($id);
@@ -95,6 +105,7 @@ class AdminController extends Controller
     public function materiUpdate($id, Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -114,6 +125,7 @@ class AdminController extends Controller
     public function deleteMateri($id, Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -125,6 +137,7 @@ class AdminController extends Controller
     public function lihatMateri($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['materi'] = Materi::find($id);
@@ -136,6 +149,7 @@ class AdminController extends Controller
     public function tugas(Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['tugas'] = Tugas::all();
@@ -144,6 +158,7 @@ class AdminController extends Controller
     public function tambahTugas(Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         return view('/admin/tugaseditor', $data);
@@ -151,6 +166,7 @@ class AdminController extends Controller
     public function tugasStore(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -171,6 +187,7 @@ class AdminController extends Controller
     public function editTugas($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['tugas'] = Tugas::find($id);
@@ -179,6 +196,7 @@ class AdminController extends Controller
     public function tugasUpdate($id, Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -199,6 +217,7 @@ class AdminController extends Controller
     public function deleteTugas($id, Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -210,6 +229,7 @@ class AdminController extends Controller
     public function lihatTugas($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['tugas'] = Tugas::find($id);
@@ -227,6 +247,7 @@ class AdminController extends Controller
     public function kuis(Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['kuis']   = Kuis::all();
@@ -238,6 +259,7 @@ class AdminController extends Controller
     public function users(Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['user']   = User::all();
@@ -246,6 +268,7 @@ class AdminController extends Controller
     public function deleteUser($id, Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -257,6 +280,7 @@ class AdminController extends Controller
     public function setAdmin($id, Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -269,6 +293,7 @@ class AdminController extends Controller
     public function setUser($id, Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -284,6 +309,7 @@ class AdminController extends Controller
     public function wawancara(Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['kuis']   = Kuis::all();
@@ -292,6 +318,7 @@ class AdminController extends Controller
     public function hasilwawancara($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['jur']    = $id;
@@ -301,18 +328,25 @@ class AdminController extends Controller
     public function isiwawancara($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['jur']    = $id;
         $data['isi']    = Wawancara::where('npm', $id)->first();
         $data['isi2']   = Wawancara2::where('npm', $id)->first();
         $data['isi3']   = Wawancara4::where('npm', $id)->first();
+        $data['isi4i']  = Wawancara3Islam::where('npm', $id)->first();
+        $data['isi4p']  = Wawancara3Protestan::where('npm', $id)->first();
+        $data['isi4k']  = Wawancara3Katholik::where('npm', $id)->first();
+        $data['isi4h']  = Wawancara3Hindu::where('npm', $id)->first();
+        $data['isi4b']  = Wawancara3Buddha::where('npm', $id)->first();
         $data['nilai']  = NilaiWawancara::where('npm', $id)->first();
         return view('/admin/wawancarau', $data);
     }
     public function wawancaraStore(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
@@ -345,6 +379,7 @@ class AdminController extends Controller
     public function wawancaraUpdate(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
 
