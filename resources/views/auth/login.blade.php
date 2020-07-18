@@ -24,7 +24,7 @@
                     <strong>{{ $message }}</strong>
                 </div>
                 @endif
-                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                <div class="wrap-input100">
                     <input class="input100" type="text" name="email" placeholder="Email">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">

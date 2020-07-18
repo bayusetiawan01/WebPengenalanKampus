@@ -1848,7 +1848,7 @@
         color: #777; }
 
 .bg-red {
-  background-color: #F44336 !important;
+  background-color: firebrick !important;
   color: #fff; }
   .bg-red .content .text,
   .bg-red .content .number {
@@ -2514,7 +2514,7 @@ section.content {
 .btn-danger:hover,
 .btn-danger:active,
 .btn-danger:focus {
-  background-color: #fb483a !important; }
+  background-color: firebrick !important; }
 
 .btn-info,
 .btn-info:hover,

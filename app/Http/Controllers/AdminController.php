@@ -262,8 +262,13 @@ class AdminController extends Controller
         $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
-        $data['user']   = User::all();
-        return view('/admin/daftaruser', $data);
+        if ($user->role_id == 4) {
+            $data['user']   = User::where('role_id', '!=', 5)->get();
+            return view('/admin/daftaruseru', $data);
+        } else {
+            $data['user']   = User::where('role_id', 1)->get();
+            return view('/admin/daftaruser', $data);
+        }
     }
     public function deleteUser($id, Request $request)
     {
@@ -312,7 +317,6 @@ class AdminController extends Controller
         $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
-        $data['kuis']   = Kuis::all();
         return view('/admin/wawancara', $data);
     }
     public function hasilwawancara($id, Request $request)

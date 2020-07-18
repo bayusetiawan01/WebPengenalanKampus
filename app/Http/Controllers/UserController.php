@@ -22,6 +22,7 @@ class UserController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('revalidate');
+        $this->middleware('user');
     }
     public function index(Request $request)
     {

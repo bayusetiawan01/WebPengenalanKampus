@@ -53,9 +53,12 @@ class AuthController extends Controller
             if ($user->is_active == 1) {
                 if (Hash::check($password, $user->password)) {
                     $user = User::where('email', $email)->first();
-                    if ($user->role_id == 2) {
+                    if ($user->role_id == 2 || $user->role_id == 4) {
                         $request->session()->put('email', $email);
                         return redirect('/admin');
+                    } else if ($user->role_id == 5) {
+                        $request->session()->put('email', $email);
+                        return redirect('/himpunan');
                     } else {
                         $request->session()->put('email', $email);
                         return redirect('/user');

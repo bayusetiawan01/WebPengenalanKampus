@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="theme-color" content="firebrick" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Mipa Bersatu</title>
+    <title>Mipa Bersatu | Himpunan</title>
     <!-- Favicon-->
     <link rel="icon" href="{{ asset('/images/icons/favicon.ico') }}" type="image/x-icon">
 
@@ -40,6 +40,20 @@
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" id="search" placeholder="Cari Teks di Halaman ini...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>
+    <script>
+        function search(string) {
+            window.find(string);
+        }
+    </script>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar" style="background-color: firebrick;">
@@ -117,21 +131,15 @@
             <div class="menu">
                 <ul class="list">
                     <li>
-                        <a href="/user">
+                        <a href="/himpunan">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/user/materi">
-                            <i class="material-icons">view_carousel</i>
-                            <span>Daftar Materi</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/user/tugas">
-                            <i class="material-icons">assignment</i>
-                            <span>Daftar Tugas</span>
+                        <a href="/himpunan/wawancara">
+                            <i class="material-icons">description</i>
+                            <span>Lihat Hasil Wawancara</span>
                         </a>
                     </li>
                     <li>
@@ -156,6 +164,9 @@
 
     <!-- Bootstrap Core Js -->
     <script src="{{ asset('/vendor/bootstrap-admin/js/bootstrap.js') }}"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="{{ asset('/vendor/bootstrap-select/js/bootstrap-select.js') }}"></script>
 
     <!-- Slimscroll Plugin Js -->
     <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
@@ -186,6 +197,7 @@
     <script src="{{ asset('/js/pages/index.js') }}"></script>
     <script src="{{ asset('/js/pages/forms/editors.js') }}"></script>
     <script src="{{ asset('/js/pages/forms/basic-form-elements.js') }}"></script>
+    <script src="{{ asset('/js/pages/tables/jquery-datatable.js') }}"></script>
 
     <!-- Demo Js -->
     <script src="{{ asset('/js/demo.js') }}"></script>
@@ -209,6 +221,8 @@
 
     <!-- Sparkline Chart Plugin Js -->
     <script src="{{ asset('/vendor/jquery-sparkline/jquery.sparkline.js') }}"></script>
+    <script src="{{ asset('/vendor/jquery-datatable/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('/vendor/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
 
 </body>
 

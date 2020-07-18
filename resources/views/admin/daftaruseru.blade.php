@@ -27,8 +27,11 @@
                                     <td>{{$u->npm}}</td>
                                     <td>
                                         <?php if ($u->role_id == 1) { ?>
-                                            <a href="../admin/users/hapus/{{$u->id}}" type="button" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="../admin/users/setA/{{$u->id}}" type="button" class="btn btn-primary btn-sm">Set Admin</a>
+                                        <?php } else { ?>
+                                            <a href="../admin/users/setU/{{$u->id}}" type="button" class="btn btn-primary btn-sm">Set User</a>
                                         <?php } ?>
+                                        <a href="../admin/users/hapus/{{$u->id}}" type="button" class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

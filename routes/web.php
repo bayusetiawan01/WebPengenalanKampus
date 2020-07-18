@@ -24,6 +24,10 @@ Route::get('/admin/users', 'AdminController@users');
 Route::get('/admin/users/hapus/{id}', 'AdminController@deleteUser');
 Route::get('/admin/users/setA/{id}', 'AdminController@setAdmin');
 Route::get('/admin/users/setU/{id}', 'AdminController@setUser');
+//Rute Himpunan
+Route::get('/himpunan', 'HimpunanController@index');
+Route::get('/himpunan/wawancara', 'HimpunanController@wawancara');
+Route::get('/himpunan/wawancarau/{id}', 'HimpunanController@isiwawancara');
 //Rute Materi
 Route::get('/admin/materi', 'AdminController@materi');
 Route::get('/admin/materi/tambah', 'AdminController@tambahMateri');

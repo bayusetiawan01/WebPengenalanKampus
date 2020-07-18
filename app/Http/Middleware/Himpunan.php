@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\User;
 
-class Admin
+class Himpunan
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,10 @@ class Admin
     public function handle($request, Closure $next)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
-        if ($user->role_id == 2 || $user->role_id == 4) {
+        if ($user->role_id == 5) {
             return $next($request);
-        } else if ($user->role_id == 5) {
-            return redirect('/himpunan');
+        } else if ($user->role_id == 2 || $user->role_id == 4) {
+            return redirect('/admin');
         } else {
             return redirect('/user');
         }
