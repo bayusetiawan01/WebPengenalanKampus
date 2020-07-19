@@ -46,6 +46,13 @@ Route::get('/admin/tugas/hapus/{id}', 'AdminController@deleteTugas');
 Route::get('/admin/tugas/lihat/{id}', 'AdminController@lihatTugas');
 //Rute Kuis
 Route::get('/admin/kuis', 'AdminController@kuis');
+Route::post('/admin/kuis/store', 'AdminController@kuisStore');
+Route::get('/admin/kuis/edit/{id}', 'AdminController@editKuis');
+Route::post('/admin/soal/store', 'AdminController@soalStore');
+Route::get('/admin/soal/hapus/{id}', 'AdminController@deleteSoal');
+Route::post('/admin/kuis/update/{id}', 'AdminController@kuisUpdate');
+Route::get('/admin/kuis/hapus/{id}', 'AdminController@deleteKuis');
+Route::get('/admin/kuis/lihat/{id}', 'AdminController@lihatKuis');
 //Rute AdminWawancara
 Route::get('/admin/wawancara', 'AdminController@wawancara');
 Route::get('/admin/wawancara/{id}', 'AdminController@hasilwawancara');
@@ -56,6 +63,9 @@ Route::post('/admin/wawancara/update', 'AdminController@wawancaraUpdate');
 //Rute User
 Route::get('/user', 'UserController@index');
 Route::get('/user/materi', 'UserController@materi');
+Route::get('/user/kuis', 'UserController@kuis');
+Route::get('/user/kuis/lihat/{id}', 'UserController@lihatKuis');
+Route::post('/user/kuis/store/{id}', 'UserController@kuisStore');
 Route::get('/user/materi/lihat/{id}', 'UserController@lihatMateri');
 Route::get('/user/tugas', 'UserController@tugas');
 Route::get('/user/tugas/lihat/{id}', 'UserController@lihatTugas');

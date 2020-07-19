@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 @section('isi')
 <section class="content" style="margin-top: 80px;">
-    <br>
-    <span class="h3">Dashboard</span>
-    <br><br>
     <!-- Widgets -->
     <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
         <div class=" row clearfix">

@@ -11,6 +11,7 @@ use App\Filetugas;
 use App\Kuis;
 use App\Wawancara;
 use App\NilaiWawancara;
+use App\Soal;
 use App\Wawancara2;
 use App\Wawancara3Islam;
 use App\Wawancara3Buddha;
@@ -252,6 +253,90 @@ class AdminController extends Controller
         $data['email']  = $user->email;
         $data['kuis']   = Kuis::all();
         return view('/admin/kuis', $data);
+    }
+    public function kuisStore(Request $request)
+    {
+        $this->validate($request, [
+            'judul'     => 'required',
+            'deskripsi' => 'required',
+            'deadline'  => 'required'
+        ]);
+
+        Kuis::create([
+            'judul'     => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'deadline'  => $request->deadline
+        ]);
+
+        return redirect('/admin/kuis');
+    }
+    public function editKuis($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
+        $data['nama']  = $user->nama;
+        $data['id']    = $id;
+        $data['email'] = $user->email;
+        $data['soal'] = Soal::where('kuis_id', $id)->get();
+        $data['kuis'] = Kuis::find($id);
+        return view('/admin/soal', $data);
+    }
+    public function soalStore(Request $request)
+    {
+        $this->validate($request, [
+            'soal'      => 'required',
+            'tipe_soal' => 'required'
+        ]);
+
+        Soal::create([
+            'soal'      => $request->soal,
+            'kuis_id'   => $request->kuis_id,
+            'jawaban'   => $request->jawaban,
+            'tipe_soal' => $request->tipe_soal,
+            'pilihan'   => $request->pilihan
+        ]);
+
+        return redirect('/admin/kuis/edit/' . $request->kuis_id);
+    }
+    public function deleteSoal($id, Request $request)
+    {
+        $soal = Soal::find($id);
+        $kuis_id = $soal->kuis_id;
+        $soal->delete();
+        return redirect('/admin/kuis/edit/' . $kuis_id);
+    }
+    public function kuisUpdate($id, Request $request)
+    {
+        $this->validate($request, [
+            'judul'     => 'required',
+            'deskripsi' => 'required',
+            'deadline'  => 'required'
+        ]);
+        $kuis = Kuis::find($id);
+        $kuis->judul     = $request->judul;
+        $kuis->deskripsi = $request->deskripsi;
+        $kuis->deadline  = $request->deadline;
+        $kuis->save();
+        return redirect('/admin/kuis');
+    }
+    public function deleteKuis($id, Request $request)
+    {
+        $kuis = Kuis::find($id);
+        $kuis_id = $kuis->kuis_id;
+        $kuis->delete();
+        return redirect('/admin/kuis');
+    }
+    public function lihatKuis($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
+        $data['nama']   = $user->nama;
+        $data['email']  = $user->email;
+        $data['npm']    = $user->npm;
+        $data['id']     = $id;
+        $data['kuis']   = Kuis::find($id);
+        $data['soal']   = Soal::where('kuis_id', $id)->get();
+        return view('/admin/lihatkuis', $data);
     }
     //////////////////////////////////////////
     // Method Manajemen User -----------------

@@ -6,14 +6,14 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        Daftar Tugas
+                        Daftar Kuis
                     </h2>
                 </div>
                 <div class="body clearfix">
-                    @foreach($tugas as $t)
+                    @foreach($kuis as $k)
                     <?php $count = 0;
-                    foreach ($tugas_user as $tu) :
-                        if ($tu->tugas_id == $t->id) {
+                    foreach ($jawaban as $j) :
+                        if ($j->kuis_id == $k->id) {
                             $count = 1;
                         }
                     endforeach;
@@ -22,16 +22,15 @@
                         <div class="card">
                             <div class="header bg-red">
                                 <h2>
-                                    {{$t->judul}}
-                                    <small>{{ \Illuminate\Support\Str::limit($t->deskripsi, 30, $end='...') }}</small>
-                                    <small>{{ $t->deadline . $t->id}}</small>
+                                    {{$k->judul}}
+                                    <small>{{ \Illuminate\Support\Str::limit($k->deskripsi, 20, $end='...') }}</small>
                                 </h2>
                             </div>
                             <div class="body">
                                 <?php if ($count == 0) { ?>
-                                    <a href="../user/tugas/lihat/{{$t->id}}" class="btn btn-success">Lihat</a>
+                                    <a href="../user/kuis/lihat/{{$k->id}}" class="btn btn-success">Lihat</a>
                                 <?php } else { ?>
-                                    <a href="../user/tugas/hapus/{{$t->id}}" class="wave btn btn-danger">Batal Submit</a>
+                                    <button class="wave btn btn-grey">Sudah Dikerjakan</button>
                                 <?php } ?>
                             </div>
                         </div>

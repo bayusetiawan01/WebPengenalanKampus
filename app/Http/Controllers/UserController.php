@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Materi;
 use App\Tugas;
+use App\Kuis;
+use App\Jawaban;
+use App\Soal;
 use App\Filetugas;
 use App\Wawancara;
 use App\Wawancara2;
@@ -117,6 +120,42 @@ class UserController extends Controller
         $materi->delete();
 
         return redirect('/user/tugas');
+    }
+    //////////////////////////////////////////
+    // Method Kuis   -------------------------
+    //////////////////////////////////////////
+    public function kuis(Request $request)
+    {
+        $user            = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']    = $user->image;
+        $data['nama']    = $user->nama;
+        $data['email']   = $user->email;
+        $data['kuis']    = Kuis::all();
+        $data['jawaban'] = Jawaban::where('user_npm', $user->npm)->get();
+        return view('/user/kuis', $data);
+    }
+    public function lihatKuis($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']   = $user->image;
+        $data['nama']   = $user->nama;
+        $data['email']  = $user->email;
+        $data['npm']    = $user->npm;
+        $data['id']     = $id;
+        $data['kuis']   = Kuis::find($id);
+        $data['soal']   = Soal::where('kuis_id', $id)->get();
+        return view('/user/lihatkuis', $data);
+    }
+    public function kuisStore($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $string = implode(';', array_slice($request->post(), 1,));
+        Jawaban::create([
+            'kuis_id'    => $id,
+            'user_npm'   => $user->npm,
+            'jawaban'    => $string
+        ]);
+        return redirect('/user/kuis');
     }
     //////////////////////////////////////////
     // Method Wawancara -------------------------
