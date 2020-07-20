@@ -19,6 +19,8 @@ use App\Wawancara3Hindu;
 use App\Wawancara3Katholik;
 use App\Wawancara3Protestan;
 use App\Wawancara4;
+use App\Pengumuman;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -42,7 +44,114 @@ class AdminController extends Controller
         $data['c_materi'] = count($materi_list);
         $data['c_tugas']  = count($tugas_list);
         $data['c_tugas2'] = count($tugas2_list);
+        $data['p1']          = Pengumuman::find(1);
+        $data['p2']          = Pengumuman::find(2);
+        $data['p3']          = Pengumuman::find(3);
         return view('/admin/dashboard', $data);
+    }
+    public function profile(Request $request)
+    {
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']      = $user->image;
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['npm']       = $user->npm;
+        $data['created']   = $user->created_at;
+        return view('/admin/editprofile', $data);
+    }
+    public function profileUpdate(Request $request)
+    {
+        $this->validate($request, [
+            'nama'           => 'required',
+            'npm'            => 'required',
+            'email'          => 'required',
+        ]);
+
+        $p                 = User::where('email', $request->session()->get('email'))->first();
+        $nama_file         = $p->image;
+        if ($request->hasFile('foto')) {
+            $file          = $request->file('foto');
+            $nama_file     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'images/profile';
+            $file->move($tujuan_upload, $nama_file);
+        }
+        $u          = User::find($p->id);
+        $u->image   = $nama_file;
+        $u->nama    = $request->nama;
+        $u->npm     = $request->npm;
+        $u->email   = $request->email;
+        $u->save();
+
+        return redirect('/admin');
+    }
+    public function pengumumanUpdate(Request $request)
+    {
+        $p1          = Pengumuman::find(1);
+        $p2          = Pengumuman::find(2);
+        $p3          = Pengumuman::find(3);
+        $nama_file1         = $p1->url;
+        $nama_file2         = $p2->url;
+        $nama_file3         = $p3->url;
+        if ($request->hasFile('foto1')) {
+            $file          = $request->file('foto1');
+            $nama_file1     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'images/desain';
+            $file->move($tujuan_upload, $nama_file1);
+        }
+        if ($request->hasFile('foto2')) {
+            $file          = $request->file('foto2');
+            $nama_file2     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'images/desain';
+            $file->move($tujuan_upload, $nama_file2);
+        }
+        if ($request->hasFile('foto3')) {
+            $file          = $request->file('foto3');
+            $nama_file3     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'images/desain';
+            $file->move($tujuan_upload, $nama_file3);
+        }
+        $q1          = Pengumuman::find(1);
+        $q2          = Pengumuman::find(2);
+        $q3          = Pengumuman::find(3);
+        $q1->url   = $nama_file1;
+        $q1->save();
+        $q2->url   = $nama_file2;
+        $q2->save();
+        $q3->url   = $nama_file3;
+        $q3->save();
+
+        return redirect('/admin');
+    }
+    public function password(Request $request)
+    {
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']      = $user->image;
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['npm']       = $user->npm;
+        return view('/admin/editpassword', $data);
+    }
+    public function passwordUpdate(Request $request)
+    {
+        $p                 = User::where('email', $request->session()->get('email'))->first();
+        $this->validate($request, [
+            'pl'           => 'required',
+            'pb'           => 'required',
+            'pb2'          => 'required',
+        ]);
+        if (Hash::check($request->pl, $p->password)) {
+            if ($request->pb == $request->pb2) {
+                $u              = User::find($p->id);
+                $u->password    = Hash::make($request->pb);
+                $u->save();
+                $request->session()->flash('sukses', 'Password Berhasil Diperbaharui');
+            } else {
+                $request->session()->flash('gagal', 'Password Gagal Diperbaharui');
+            }
+        } else {
+            $request->session()->flash('gagal', 'Password Gagal Diperbaharui');
+        }
+        return redirect('admin/password');
     }
     //////////////////////////////////////////
     // Method Materi -------------------------
@@ -329,13 +438,18 @@ class AdminController extends Controller
     public function lihatKuis($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
-        $data['foto']   = $user->image;
-        $data['nama']   = $user->nama;
-        $data['email']  = $user->email;
-        $data['npm']    = $user->npm;
-        $data['id']     = $id;
-        $data['kuis']   = Kuis::find($id);
-        $data['soal']   = Soal::where('kuis_id', $id)->get();
+        $data['foto']    = $user->image;
+        $data['nama']    = $user->nama;
+        $data['email']   = $user->email;
+        $data['npm']     = $user->npm;
+        $data['id']      = $id;
+        $data['kuis']    = Kuis::find($id);
+        $data['soal']    = Soal::where('kuis_id', $id)->get();
+        $data['jawaban'] = DB::select("
+                    SELECT * FROM jawaban AS j
+                    JOIN user AS u ON j.user_npm = u.npm
+                    WHERE j.kuis_id = $id
+                ");
         return view('/admin/lihatkuis', $data);
     }
     //////////////////////////////////////////

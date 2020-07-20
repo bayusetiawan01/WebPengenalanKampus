@@ -18,13 +18,13 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="{{ asset('/images/desain/gambar1.jpg') }}" />
+                        <img src="<?php echo asset('/images/desain/' . $p1->url) ?>" />
                     </div>
                     <div class="item">
-                        <img src="{{ asset('/images/desain/gambar1.jpg') }}" />
+                        <img src="<?php echo asset('/images/desain/' . $p2->url) ?>" />
                     </div>
                     <div class="item">
-                        <img src="{{ asset('/images/desain/gambar1.jpg') }}" />
+                        <img src="<?php echo asset('/images/desain/' . $p3->url) ?>" />
                     </div>
                 </div>
 

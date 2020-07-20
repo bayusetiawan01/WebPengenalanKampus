@@ -18,6 +18,8 @@ use App\Wawancara3Katholik;
 use App\Wawancara3Protestan;
 use App\Wawancara3Islam;
 use App\Wawancara4;
+use App\Pengumuman;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -42,7 +44,76 @@ class UserController extends Controller
         $data['wawancara3b'] = Wawancara3Buddha::where('npm', $user->npm)->get();
         $data['wawancara3h'] = Wawancara3Hindu::where('npm', $user->npm)->get();
         $data['wawancara4']  = Wawancara4::where('npm', $user->npm)->get();
+        $data['p1']          = Pengumuman::find(1);
+        $data['p2']          = Pengumuman::find(2);
+        $data['p3']          = Pengumuman::find(3);
         return view('/user/home', $data);
+    }
+    public function profile(Request $request)
+    {
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']      = $user->image;
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['npm']       = $user->npm;
+        $data['created']   = $user->created_at;
+        return view('/user/editprofile', $data);
+    }
+    public function profileUpdate(Request $request)
+    {
+        $this->validate($request, [
+            'nama'           => 'required',
+            'npm'            => 'required',
+            'email'          => 'required',
+        ]);
+
+        $p                 = User::where('email', $request->session()->get('email'))->first();
+        $nama_file         = $p->image;
+        if ($request->hasFile('foto')) {
+            $file          = $request->file('foto');
+            $nama_file     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'images/profile';
+            $file->move($tujuan_upload, $nama_file);
+        }
+        $u          = User::find($p->id);
+        $u->image   = $nama_file;
+        $u->nama    = $request->nama;
+        $u->npm     = $request->npm;
+        $u->email   = $request->email;
+        $u->save();
+
+        return redirect('/user');
+    }
+    public function password(Request $request)
+    {
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']      = $user->image;
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['npm']       = $user->npm;
+        return view('/user/editpassword', $data);
+    }
+    public function passwordUpdate(Request $request)
+    {
+        $p                 = User::where('email', $request->session()->get('email'))->first();
+        $this->validate($request, [
+            'pl'           => 'required',
+            'pb'           => 'required',
+            'pb2'          => 'required',
+        ]);
+        if (Hash::check($request->pl, $p->password)) {
+            if ($request->pb == $request->pb2) {
+                $u              = User::find($p->id);
+                $u->password    = Hash::make($request->pb);
+                $u->save();
+                $request->session()->flash('sukses', 'Password Berhasil Diperbaharui');
+            } else {
+                $request->session()->flash('gagal', 'Password Gagal Diperbaharui');
+            }
+        } else {
+            $request->session()->flash('gagal', 'Password Gagal Diperbaharui');
+        }
+        return redirect('user/password');
     }
     //////////////////////////////////////////
     // Method Materi -------------------------

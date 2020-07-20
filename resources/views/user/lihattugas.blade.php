@@ -13,7 +13,7 @@
                         </h2>
                     </div>
                     <div class="body">
-                        {{$tugas->deskripsi}}
+                        <?php echo nl2br(htmlspecialchars($tugas->deskripsi)); ?>
                     </div>
                 </div>
             </div>

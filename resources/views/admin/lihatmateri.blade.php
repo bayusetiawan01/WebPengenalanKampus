@@ -24,7 +24,7 @@
                     </div>
                     @endif
                     <div class="body">
-                        {{$materi->deskripsi}}
+                        <?php echo nl2br(htmlspecialchars($materi->deskripsi)); ?>
                     </div>
                 </div>
             </div>

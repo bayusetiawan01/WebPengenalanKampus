@@ -62,7 +62,7 @@
                             <i class="material-icons">more_vert</i>
                         </a>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);">Edit Gambar</a></li>
+                            <li><a data-toggle="modal" data-target="#pengumumanModal">Edit Gambar</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -79,13 +79,13 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img src="{{ asset('/images/desain/gambar1.jpg') }}" />
+                            <img src="<?php echo asset('/images/desain/' . $p1->url) ?>" />
                         </div>
                         <div class="item">
-                            <img src="{{ asset('/images/desain/gambar1.jpg') }}" />
+                            <img src="<?php echo asset('/images/desain/' . $p2->url) ?>" />
                         </div>
                         <div class="item">
-                            <img src="{{ asset('/images/desain/gambar1.jpg') }}" />
+                            <img src="<?php echo asset('/images/desain/' . $p3->url) ?>" />
                         </div>
                     </div>
 
@@ -102,6 +102,54 @@
             </div>
         </div>
     </div>
-    <!-- #END# Basic Example -->
+    <!-- Pengumuman Modal -->
+    <div class="modal fade" id="pengumumanModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <form action="/admin/pengumuman/update" method="post" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Ubah Slide</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ csrf_field() }}
+                        <div class="row clearfix">
+                            <div class="col-md-6">
+                                <label>Slide 1</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="file" id="foto" name="foto1" class="form-control" value="{{ old('foto1') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-md-6">
+                                <label>Slide 2</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="file" id="foto" name="foto2" class="form-control" value="{{ old('foto2') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-md-6">
+                                <label>Slide 3</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="file" id="foto" name="foto3" class="form-control" value="{{ old('foto3') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-link waves-effect">Simpan</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </section>
 @endsection

@@ -3,7 +3,7 @@
 <section class="content" style="margin-top: 80px;">
     <!-- Basic Examples -->
     <div class="row clearfix">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
                     <h2>
@@ -939,6 +939,179 @@
                                     @endif
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="position: fixed; right:0" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        Formulir Penilaian
+                    </h2>
+                </div>
+                <div class="body">
+                    <div class="row clearfix" style="text-align: center;">
+                        <button class="btn btn-danger waves-effect" type="button" data-toggle="collapse" data-target="#collapseKetentuan" aria-expanded="false" aria-controls="collapseExample">
+                            Buka Ketentuan
+                        </button>
+                        <button class="btn btn-danger waves-effect" type="button" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseExample">
+                            Buka Form
+                        </button>
+                    </div>
+                    <div class="collapse" id="collapseForm">
+                        <div class="well" style="background-color: white; overflow:scroll; height:400px">
+                            @if($nilai == NULL)
+                            <form action="/admin/wawancara/store" method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="npm" class="form-control" value="{{ $isi->npm }}" readonly>
+                                        <label class="form-label">NPM</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="organisasi" class="form-control" value="{{ old('organisasi') }}" required>
+                                        <label class="form-label">Organisasi</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="jawaban_wawancara" class="form-control" value="{{ old('jawaban_wawancara') }}" required>
+                                        <label class="form-label">Jawaban Wawancara dan Studi Kasus</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="sikap_wawancara" class="form-control" value="{{ old('sikap_wawancara') }}" required>
+                                        <label class="form-label">Sikap Selama Wawancara</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="koordinator" class="form-control" value="{{ old('koordinator') }}" required>
+                                        <label class="form-label">Ketersediaan Koordinator Angkatan</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="sbmptn" class="form-control" value="{{ old('sbmptn') }}" required>
+                                        <label class="form-label">SBMPTN Lagi</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="prodi_mipa" class="form-control" value="{{ old('prodi_mipa') }}" required>
+                                        <label class="form-label">Menyebutkan Prodi di Mipa</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="lk_kkm" class="form-control" value="{{ old('lk_kkm') }}" required>
+                                        <label class="form-label">LK/KKM di Mipa</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="sikap_prodi" class="form-control" value="{{ old('sikap_prodi') }}" required>
+                                        <label class="form-label">Sikap Terhadap Prodi Lain</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary m-t-15 waves-effect">Simpan</button>
+                            </form>
+                            @else
+                            <form action="/admin/wawancara/update" method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="npm" class="form-control" value="{{ $nilai->npm }}" readonly>
+                                        <label class="form-label">NPM</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="organisasi" class="form-control" value="{{ $nilai->organisasi }}" required>
+                                        <label class="form-label">Organisasi</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="jawaban_wawancara" class="form-control" value="{{ $nilai->jawaban_wawancara }}" required>
+                                        <label class="form-label">Jawaban Wawancara dan Studi Kasus</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="sikap_wawancara" class="form-control" value="{{ $nilai->sikap_wawancara }}" required>
+                                        <label class="form-label">Sikap Selama Wawancara</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="koordinator" class="form-control" value="{{ $nilai->koordinator }}" required>
+                                        <label class="form-label">Ketersediaan Koordinator Angkatan</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="sbmptn" class="form-control" value="{{ $nilai->sbmptn }}" required>
+                                        <label class="form-label">SBMPTN Lagi</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="prodi_mipa" class="form-control" value="{{ $nilai->prodi_mipa }}" required>
+                                        <label class="form-label">Menyebutkan Prodi di Mipa</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="lk_kkm" class="form-control" value="{{ $nilai->lk_kkm }}" required>
+                                        <label class="form-label">LK/KKM di Mipa</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="sikap_prodi" class="form-control" value="{{ $nilai->sikap_prodi }}" required>
+                                        <label class="form-label">Sikap Terhadap Prodi Lain</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary m-t-15 waves-effect">Simpan</button>
+                            </form>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="collapse" id="collapseKetentuan">
+                        <div class="well" style="overflow:scroll; height:400px">
+                            Organisasi: <br>
+                            0 = tidak mengikuti <br>
+                            1 = staff <br>
+                            2 = kepala departemen/divisi <br>
+                            3 = ketua/wakil/kepala bidang/sekben <br><br>
+                            Jawaban Wawancara dan Studi Kasus: <br>
+                            1 = lama dan penuh pertimbangan <br>
+                            2 = terbata-bata/cepat tapi plinplan <br>
+                            3 = percaya diri dan tegas menyampaikan alasan <br><br>
+                            Sikap Selama Wawancara: <br>
+                            1 = duduk dan bicara seenaknya <br>
+                            2 = santai seperti ke teman <br>
+                            3 = sopan dan menghargai pewawancara <br><br>
+                            Ketersediaan mencadi koordinator: <br>
+                            1 = tidak. 2 = ragu. 3 = ya <br><br>
+                            SBMPTN Lagi: <br>
+                            1 = ya. 2 = ragu. 3 = tidak <br><br>
+                            Sebutkan Prodi: <br>
+                            1 = (0-3). 2 = (4-6). 3 = (7-9) <br><br>
+                            LK/KKM di FMIPA: <br>
+                            1 = tidak tahu dan tidak mau<br>
+                            2 = tahu tapi tidak mau atau sebaliknya<br>
+                            3 = tahu dan mau <br><br>
+                            Sikap terhadap prodi lain: <br>
+                            1 = tidak peduli<br>
+                            2 = biasa saja<br>
+                            3 = peduli dan ingin saling berkoordinasi
                         </div>
                     </div>
                 </div>
