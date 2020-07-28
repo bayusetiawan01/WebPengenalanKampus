@@ -90,6 +90,7 @@ Route::get('/user/wawancara2', 'UserController@wawancara2');
 Route::get('/user/wawancara2/edit', 'UserController@wawancara2Edit');
 Route::get('/user/wawancara3/{agama}', 'UserController@wawancara3');
 Route::get('/user/wawancara4', 'UserController@wawancara4');
+Route::get('/user/wawancara5', 'UserController@wawancara5');
 Route::post('/user/wawancara/store', 'UserController@wawancaraStore');
 Route::post('/user/wawancara/update', 'UserController@wawancaraUpdate');
 Route::post('/user/wawancara2/store', 'UserController@wawancara2Store');
@@ -100,3 +101,4 @@ Route::post('/user/wawancara3store/katholik', 'UserController@wawancara3StoreKat
 Route::post('/user/wawancara3store/protestan', 'UserController@wawancara3StoreProtestan');
 Route::post('/user/wawancara3store/islam', 'UserController@wawancara3StoreProtestan');
 Route::post('/user/wawancara4/store', 'UserController@wawancara4Store');
+Route::post('/user/wawancara5/store', 'UserController@wawancara5Store');

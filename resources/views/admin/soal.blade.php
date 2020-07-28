@@ -69,6 +69,7 @@
                             <select id="tipe_soal" name="tipe_soal">
                                 <option value="pilihan ganda">Pilihan Ganda</option>
                                 <option value="essai">Essai</option>
+                                <option value="bergambar">Bergambar</option>
                             </select>
                         </div>
                         <div class="form-group form-float">
@@ -81,6 +82,14 @@
                             <div class="form-line">
                                 <input type="text" name="pilihan" value="{{ old('pilihan') }}" class="form-control">
                                 <label class="form-label">Pilihan (jika pg) pisahkan dengan koma</label>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <label>Upload Gambar untuk soal aneh</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="file" id="foto" name="foto" class="form-control" value="{{ old('foto') }}">
+                                </div>
                             </div>
                         </div>
                     </div>

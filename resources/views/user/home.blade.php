@@ -148,6 +148,25 @@
                     </div>
                 </div>
             </div>
+            <div class="row clearfix">
+                <div class="col-lg-3">
+                    <div class="thumbnail">
+                        <div class="icon" style="margin: 10px;">
+                            <i class="material-icons" style="display:block; color: firebrick; font-size:130px; margin:auto; text-align:center;">description</i>
+                        </div>
+                        <div class="caption">
+                            <h3>Formulir Fasilitas Internet</h3><br>
+                            <p>
+                                @if($wawancara5->isEmpty())
+                                <a href="/user/wawancara5" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
+                                @else
+                                <button class="btn bg-grey waves-effects" role="button">Form Sudah Diisi</button>
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- #END# Wawancara -->

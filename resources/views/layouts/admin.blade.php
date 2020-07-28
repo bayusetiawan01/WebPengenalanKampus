@@ -26,9 +26,6 @@
     <!-- Morris Chart Css-->
     <link href="{{ asset('/vendor/morrisjs/morris.css') }}" rel="stylesheet" />
 
-    <!-- Dropzone Css -->
-    <link href="{{ asset('/vendor/dropzone/dropzone.css') }}" rel="stylesheet">
-
     <!-- Custom Css -->
     <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
 

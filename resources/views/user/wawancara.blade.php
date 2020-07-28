@@ -49,12 +49,6 @@
                                 <label class="form-label">NPM</label>
                             </div>
                         </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="text" name="jurusan" class="form-control" value="{{ old('jurusan') }}">
-                                <label class="form-label">Jurusan</label>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <label for="jurusan">Pilih Jurusan</label>
                             <select id="jurusan" name="jurusan">

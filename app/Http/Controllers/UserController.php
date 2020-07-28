@@ -18,6 +18,7 @@ use App\Wawancara3Katholik;
 use App\Wawancara3Protestan;
 use App\Wawancara3Islam;
 use App\Wawancara4;
+use App\Wawancara5;
 use App\Pengumuman;
 use Illuminate\Support\Facades\Hash;
 
@@ -44,6 +45,7 @@ class UserController extends Controller
         $data['wawancara3b'] = Wawancara3Buddha::where('npm', $user->npm)->get();
         $data['wawancara3h'] = Wawancara3Hindu::where('npm', $user->npm)->get();
         $data['wawancara4']  = Wawancara4::where('npm', $user->npm)->get();
+        $data['wawancara5']  = Wawancara5::where('npm', $user->npm)->get();
         $data['p1']          = Pengumuman::find(1);
         $data['p2']          = Pengumuman::find(2);
         $data['p3']          = Pengumuman::find(3);
@@ -65,6 +67,7 @@ class UserController extends Controller
             'nama'           => 'required',
             'npm'            => 'required',
             'email'          => 'required',
+            'foto'           => 'image',
         ]);
 
         $p                 = User::where('email', $request->session()->get('email'))->first();
@@ -269,7 +272,7 @@ class UserController extends Controller
             'tanggal_lahir'  => 'required',
             'anak_ke'        => 'required',
             'bersaudara'     => 'required',
-            'foto'           => 'required',
+            'foto'           => 'required|image',
             'nama_ayah'      => 'required',
             'pekerjaan_ayah' => 'required',
             'telp_ayah'      => 'required',
@@ -942,6 +945,55 @@ class UserController extends Controller
             'rumah_sakit'          => $request->rumah_sakit,
             'operasi'              => $request->operasi,
             'pantangan_operasi'    => $request->pantangan_operasi,
+        ]);
+
+        return redirect('/user');
+    }
+    public function wawancara5(Request $request)
+    {
+        $user              = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']      = $user->image;
+        $data['nama']      = $user->nama;
+        $data['email']     = $user->email;
+        $data['npm']       = $user->npm;
+        return view('/user/wawancara5', $data);
+    }
+    public function wawancara5Store(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $this->validate($request, [
+            'akses_internet'     => 'required',
+            'unlimited'          => 'required',
+            'sebulan'            => 'required',
+            'kendala'            => 'required',
+            'streaming'          => 'required',
+            'kamera'             => 'required',
+            'kendala_penggunaan' => 'required',
+            'waktu'              => 'required',
+            'kegiatan'           => 'required',
+        ]);
+
+        Wawancara5::create([
+            'npm'                => $user->npm,
+            'akses_internet'     => $request->akses_internet,
+            'lainnya'            => $request->lainnya,
+            'unlimited'          => $request->unlimited,
+            'sebulan'            => $request->sebulan,
+            'kendala'            => $request->kendala,
+            'streaming'          => $request->streaming,
+            'pc'                 => $request->pc,
+            'laptop'             => $request->laptop,
+            'smartphone'         => $request->smartphone,
+            'tablet'             => $request->tablet,
+            'lainnya2'           => $request->lainnya2,
+            'kamera'             => $request->kamera,
+            'discord'            => $request->discord,
+            'meet'               => $request->meet,
+            'zoom'               => $request->zoom,
+            'tidak_satupun'      => $request->tidak_satupun,
+            'kendala_penggunaan' => $request->kendala_penggunaan,
+            'waktu'              => $request->waktu,
+            'kegiatan'           => $request->kegiatan,
         ]);
 
         return redirect('/user');

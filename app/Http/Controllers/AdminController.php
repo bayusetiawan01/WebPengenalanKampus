@@ -65,6 +65,7 @@ class AdminController extends Controller
             'nama'           => 'required',
             'npm'            => 'required',
             'email'          => 'required',
+            'foto'           => 'image',
         ]);
 
         $p                 = User::where('email', $request->session()->get('email'))->first();
@@ -86,6 +87,11 @@ class AdminController extends Controller
     }
     public function pengumumanUpdate(Request $request)
     {
+        $this->validate($request, [
+            'foto1'          => 'image',
+            'foto2'          => 'image',
+            'foto3'          => 'image',
+        ]);
         $p1          = Pengumuman::find(1);
         $p2          = Pengumuman::find(2);
         $p3          = Pengumuman::find(3);
@@ -394,15 +400,25 @@ class AdminController extends Controller
     {
         $this->validate($request, [
             'soal'      => 'required',
-            'tipe_soal' => 'required'
+            'tipe_soal' => 'required',
+            'foto'      => 'image',
         ]);
+
+        $nama_file         = NULL;
+        if ($request->hasFile('foto')) {
+            $file          = $request->file('foto');
+            $nama_file     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'images/soal';
+            $file->move($tujuan_upload, $nama_file);
+        }
 
         Soal::create([
             'soal'      => $request->soal,
             'kuis_id'   => $request->kuis_id,
             'jawaban'   => $request->jawaban,
             'tipe_soal' => $request->tipe_soal,
-            'pilihan'   => $request->pilihan
+            'pilihan'   => $request->pilihan,
+            'image'     => $nama_file,
         ]);
 
         return redirect('/admin/kuis/edit/' . $request->kuis_id);

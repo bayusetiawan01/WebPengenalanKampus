@@ -13,12 +13,6 @@
                 <div class="body">
                     <form action="/user/kuis/store/{{$id}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="text" name="npm" class="form-control" value="{{ $npm }}" readonly>
-                                <label class="form-label">NPM</label>
-                            </div>
-                        </div>
                         <?php $i = 0; ?>
                         <?php foreach ($soal as $s) :
                             $i = $i + 1; ?>
@@ -40,6 +34,9 @@
                                         <label class="form-label">{{$i}}. {{$s->soal}}</label>
                                     </div>
                                 </div>
+                            <?php elseif ($s->tipe_soal == 'bergambar') : ?>
+                                <p>{{$i}}. {{$s->soal}}</p>
+                                <img width="90%" src="{{ url('/images/soal/' . $s->image) }}">
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </form>

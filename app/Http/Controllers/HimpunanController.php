@@ -89,6 +89,7 @@ class HimpunanController extends Controller
             'nama'           => 'required',
             'npm'            => 'required',
             'email'          => 'required',
+            'foto'           => 'image',
         ]);
 
         $p                 = User::where('email', $request->session()->get('email'))->first();
