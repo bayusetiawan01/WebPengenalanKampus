@@ -48,6 +48,17 @@
                                         </div>
                                         @endif
                                     </div>
+                                    <div class="form-group form-group-lg">
+                                        <h2 class="card-inside-title">Upload Petunjuk (Opsional)</h2>
+                                        <div class="custom-file">
+                                            <input type="file" name="file">
+                                        </div>
+                                        @if($errors->has('file'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('file')}}
+                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="form-group form-group-lg">
                                     <input type="submit" class="btn btn-primary m-t-15 waves-effect ml-5 btn-lg" value="Post">

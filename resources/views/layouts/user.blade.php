@@ -141,6 +141,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/user/pemetaan">
+                            <i class="material-icons">assignment</i>
+                            <span>Pemetaan</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/logout">
                             <i class="material-icons">input</i>
                             <span>Sign Out</span>

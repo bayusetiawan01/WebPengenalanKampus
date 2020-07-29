@@ -48,6 +48,17 @@
                                         </div>
                                         @endif
                                     </div>
+                                    <div class="form-group form-group-lg">
+                                        <h2 class="card-inside-title">Link Kuis (opsional)</h2>
+                                        <div class="form-line">
+                                            <input type="text" name="kuis" class="form-control" placeholder="ex:kuis/lihat/3" value="{{$materi->kuis}}" />
+                                        </div>
+                                        @if($errors->has('kuis'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('kuis')}}
+                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class=" form-group form-group-lg">
                                     <input type="submit" class="btn btn-primary m-t-15 waves-effect ml-5 btn-lg" value="Save">

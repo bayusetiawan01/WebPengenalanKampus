@@ -17,6 +17,7 @@ use App\Wawancara3Katholik;
 use App\Wawancara3Protestan;
 use App\NilaiWawancara;
 use App\Pengumuman;
+use App\Wawancara5;
 use Illuminate\Support\Facades\Hash;
 
 class HimpunanController extends Controller
@@ -44,6 +45,9 @@ class HimpunanController extends Controller
         $data['p1']          = Pengumuman::find(1);
         $data['p2']          = Pengumuman::find(2);
         $data['p3']          = Pengumuman::find(3);
+        $data['p4']          = Pengumuman::find(4);
+        $data['p5']          = Pengumuman::find(5);
+        $data['p6']          = Pengumuman::find(6);
         return view('/himpunan/dashboard', $data);
     }
     public function wawancara(Request $request)
@@ -71,6 +75,7 @@ class HimpunanController extends Controller
         $data['isi4h']  = Wawancara3Hindu::where('npm', $id)->first();
         $data['isi4b']  = Wawancara3Buddha::where('npm', $id)->first();
         $data['nilai']  = NilaiWawancara::where('npm', $id)->first();
+        $data['isi5']   = Wawancara5::where('npm', $id)->first();
         return view('/himpunan/wawancarau', $data);
     }
     public function profile(Request $request)

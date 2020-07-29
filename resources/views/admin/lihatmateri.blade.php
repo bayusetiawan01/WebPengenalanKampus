@@ -25,6 +25,9 @@
                     @endif
                     <div class="body">
                         <?php echo nl2br(htmlspecialchars($materi->deskripsi)); ?>
+
+                        <br><br>
+                        <a href="/user/{{$materi->kuis}}" class="btn btn-danger waves-effect" role="button">Lanjut Mengerjakan Kuis</a>
                     </div>
                 </div>
             </div>

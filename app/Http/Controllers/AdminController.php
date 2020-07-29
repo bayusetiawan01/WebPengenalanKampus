@@ -19,7 +19,10 @@ use App\Wawancara3Hindu;
 use App\Wawancara3Katholik;
 use App\Wawancara3Protestan;
 use App\Wawancara4;
+use App\Wawancara5;
 use App\Pengumuman;
+use App\Pemetaan;
+use App\Soalp;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -47,6 +50,9 @@ class AdminController extends Controller
         $data['p1']          = Pengumuman::find(1);
         $data['p2']          = Pengumuman::find(2);
         $data['p3']          = Pengumuman::find(3);
+        $data['p4']          = Pengumuman::find(4);
+        $data['p5']          = Pengumuman::find(5);
+        $data['p6']          = Pengumuman::find(6);
         return view('/admin/dashboard', $data);
     }
     public function profile(Request $request)
@@ -91,13 +97,22 @@ class AdminController extends Controller
             'foto1'          => 'image',
             'foto2'          => 'image',
             'foto3'          => 'image',
+            'foto4'          => 'image',
+            'foto5'          => 'image',
+            'foto6'          => 'image',
         ]);
         $p1          = Pengumuman::find(1);
         $p2          = Pengumuman::find(2);
         $p3          = Pengumuman::find(3);
+        $p4          = Pengumuman::find(4);
+        $p5          = Pengumuman::find(5);
+        $p6          = Pengumuman::find(6);
         $nama_file1         = $p1->url;
         $nama_file2         = $p2->url;
         $nama_file3         = $p3->url;
+        $nama_file4         = $p4->url;
+        $nama_file5         = $p5->url;
+        $nama_file6         = $p6->url;
         if ($request->hasFile('foto1')) {
             $file          = $request->file('foto1');
             $nama_file1     = time() . "_" . $file->getClientOriginalName();
@@ -116,15 +131,42 @@ class AdminController extends Controller
             $tujuan_upload = 'images/desain';
             $file->move($tujuan_upload, $nama_file3);
         }
+        if ($request->hasFile('foto4')) {
+            $file          = $request->file('foto4');
+            $nama_file4     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'images/desain';
+            $file->move($tujuan_upload, $nama_file4);
+        }
+        if ($request->hasFile('foto5')) {
+            $file          = $request->file('foto5');
+            $nama_file5     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'images/desain';
+            $file->move($tujuan_upload, $nama_file5);
+        }
+        if ($request->hasFile('foto6')) {
+            $file          = $request->file('foto6');
+            $nama_file6     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'images/desain';
+            $file->move($tujuan_upload, $nama_file6);
+        }
         $q1          = Pengumuman::find(1);
         $q2          = Pengumuman::find(2);
         $q3          = Pengumuman::find(3);
+        $q4          = Pengumuman::find(4);
+        $q5          = Pengumuman::find(5);
+        $q6          = Pengumuman::find(6);
         $q1->url   = $nama_file1;
         $q1->save();
         $q2->url   = $nama_file2;
         $q2->save();
         $q3->url   = $nama_file3;
         $q3->save();
+        $q4->url   = $nama_file4;
+        $q4->save();
+        $q5->url   = $nama_file5;
+        $q5->save();
+        $q6->url   = $nama_file6;
+        $q6->save();
 
         return redirect('/admin');
     }
@@ -181,11 +223,6 @@ class AdminController extends Controller
     }
     public function materiStore(Request $request)
     {
-        $user          = User::where('email', $request->session()->get('email'))->first();
-        $data['foto']  = $user->image;
-        $data['nama']  = $user->nama;
-        $data['email'] = $user->email;
-
         $this->validate($request, [
             'judul'     => 'required',
             'deskripsi' => 'required',
@@ -204,7 +241,8 @@ class AdminController extends Controller
             'judul'     => $request->judul,
             'deskripsi' => $request->deskripsi,
             'video'     => $nama_file,
-            'youtube'   => $request->youtube
+            'youtube'   => $request->youtube,
+            'kuis'      => $request->kuis,
         ]);
 
         return redirect('/admin/materi');
@@ -220,11 +258,6 @@ class AdminController extends Controller
     }
     public function materiUpdate($id, Request $request)
     {
-        $user          = User::where('email', $request->session()->get('email'))->first();
-        $data['foto']  = $user->image;
-        $data['nama']  = $user->nama;
-        $data['email'] = $user->email;
-
         $this->validate($request, [
             'judul'     => 'required',
             'deskripsi' => 'required'
@@ -234,6 +267,7 @@ class AdminController extends Controller
         $materi->judul     = $request->judul;
         $materi->deskripsi = $request->deskripsi;
         $materi->youtube   = $request->youtube;
+        $materi->kuis      = $request->kuis;
         $materi->save();
 
         return redirect('/admin/materi');
@@ -282,20 +316,25 @@ class AdminController extends Controller
     public function tugasStore(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
-        $data['foto']  = $user->image;
-        $data['nama']  = $user->nama;
-        $data['email'] = $user->email;
-
         $this->validate($request, [
             'judul'     => 'required',
             'deskripsi' => 'required',
             'deadline'  => 'required'
         ]);
 
+        $nama_file = NULL;
+        if ($request->hasFile('file')) {
+            $file          = $request->file('file');
+            $nama_file     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'tugas';
+            $file->move($tujuan_upload, $nama_file);
+        }
+
         Tugas::create([
             'judul'     => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'deadline'  => $request->deadline
+            'deadline'  => $request->deadline,
+            'petunjuk'  => $nama_file,
         ]);
 
         return redirect('/admin/tugas');
@@ -311,21 +350,25 @@ class AdminController extends Controller
     }
     public function tugasUpdate($id, Request $request)
     {
-        $user          = User::where('email', $request->session()->get('email'))->first();
-        $data['foto']  = $user->image;
-        $data['nama']  = $user->nama;
-        $data['email'] = $user->email;
-
+        $tugas          = Tugas::where('id', $id)->first();
         $this->validate($request, [
             'judul'     => 'required',
             'deskripsi' => 'required',
             'deadline'  => 'required'
         ]);
+        $nama_file = $tugas->petunjuk;
+        if ($request->hasFile('file')) {
+            $file          = $request->file('file');
+            $nama_file     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'tugas';
+            $file->move($tujuan_upload, $nama_file);
+        }
 
         $tugas = Tugas::find($id);
         $tugas->judul     = $request->judul;
         $tugas->deskripsi = $request->deskripsi;
         $tugas->deadline  = $request->deadline;
+        $tugas->petunjuk  = $nama_file;
         $tugas->save();
 
         return redirect('/admin/tugas');
@@ -376,11 +419,19 @@ class AdminController extends Controller
             'deskripsi' => 'required',
             'deadline'  => 'required'
         ]);
+        $nama_file = NULL;
+        if ($request->hasFile('file')) {
+            $file          = $request->file('file');
+            $nama_file     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'tugas';
+            $file->move($tujuan_upload, $nama_file);
+        }
 
         Kuis::create([
             'judul'     => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'deadline'  => $request->deadline
+            'deadline'  => $request->deadline,
+            'petunjuk'  => $nama_file,
         ]);
 
         return redirect('/admin/kuis');
@@ -432,22 +483,32 @@ class AdminController extends Controller
     }
     public function kuisUpdate($id, Request $request)
     {
+        $k = Kuis::where('id', $id)->first();
         $this->validate($request, [
             'judul'     => 'required',
             'deskripsi' => 'required',
             'deadline'  => 'required'
         ]);
+
+        $nama_file = $k->petunjuk;
+        if ($request->hasFile('file')) {
+            $file          = $request->file('file');
+            $nama_file     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'tugas';
+            $file->move($tujuan_upload, $nama_file);
+        }
+
         $kuis = Kuis::find($id);
         $kuis->judul     = $request->judul;
         $kuis->deskripsi = $request->deskripsi;
         $kuis->deadline  = $request->deadline;
+        $kuis->petunjuk  = $nama_file;
         $kuis->save();
         return redirect('/admin/kuis');
     }
     public function deleteKuis($id, Request $request)
     {
         $kuis = Kuis::find($id);
-        $kuis_id = $kuis->kuis_id;
         $kuis->delete();
         return redirect('/admin/kuis');
     }
@@ -462,11 +523,106 @@ class AdminController extends Controller
         $data['kuis']    = Kuis::find($id);
         $data['soal']    = Soal::where('kuis_id', $id)->get();
         $data['jawaban'] = DB::select("
-                    SELECT * FROM jawaban AS j
+                    SELECT u.nama, u.npm, j.user_npm, j.kuis_id, j.jawaban, j.image FROM jawaban AS j
                     JOIN user AS u ON j.user_npm = u.npm
                     WHERE j.kuis_id = $id
                 ");
         return view('/admin/lihatkuis', $data);
+    }
+    //////////////////////////////////////////
+    // Method Pemetaan -----------------------
+    //////////////////////////////////////////
+    public function pemetaan(Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']     = $user->image;
+        $data['nama']     = $user->nama;
+        $data['email']    = $user->email;
+        $data['pemetaan'] = Pemetaan::all();
+        return view('/admin/pemetaan', $data);
+    }
+    public function pemetaanStore(Request $request)
+    {
+        $this->validate($request, [
+            'judul'     => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        Pemetaan::create([
+            'judul'     => $request->judul,
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        return redirect('/admin/pemetaan');
+    }
+    public function editPemetaan($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
+        $data['nama']  = $user->nama;
+        $data['id']    = $id;
+        $data['email'] = $user->email;
+        $data['soal'] = Soalp::where('pemetaan_id', $id)->get();
+        $data['pemetaan'] = Pemetaan::find($id);
+        return view('/admin/soalp', $data);
+    }
+    public function soalpStore(Request $request)
+    {
+        $this->validate($request, [
+            'soal'      => 'required',
+            'tipe_soal' => 'required',
+        ]);
+
+        Soalp::create([
+            'soal'        => $request->soal,
+            'pemetaan_id' => $request->pemetaan_id,
+            'tipe_soal'   => $request->tipe_soal,
+            'pilihan'     => $request->pilihan,
+        ]);
+
+        return redirect('/admin/pemetaan/edit/' . $request->pemetaan_id);
+    }
+    public function deleteSoalp($id, Request $request)
+    {
+        $soal = Soalp::find($id);
+        $pemetaan_id = $soal->pemetaan_id;
+        $soal->delete();
+        return redirect('/admin/pemetaan/edit/' . $pemetaan_id);
+    }
+    public function pemetaanUpdate($id, Request $request)
+    {
+        $this->validate($request, [
+            'judul'     => 'required',
+            'deskripsi' => 'required',
+        ]);
+        $pemetaan = Pemetaan::find($id);
+        $pemetaan->judul     = $request->judul;
+        $pemetaan->deskripsi = $request->deskripsi;
+        $pemetaan->save();
+        return redirect('/admin/pemetaan');
+    }
+    public function deletePemetaan($id, Request $request)
+    {
+        $pemetaan = Pemetaan::find($id);
+        $pemetaan->delete();
+        return redirect('/admin/pemetaan');
+    }
+    public function lihatPemetaan($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']    = $user->image;
+        $data['nama']    = $user->nama;
+        $data['email']   = $user->email;
+        $data['npm']     = $user->npm;
+        $data['id']      = $id;
+        $data['pemetaan']    = Pemetaan::find($id);
+        $data['soal']    = Soalp::where('pemetaan_id', $id)->get();
+        $data['jawaban'] = DB::select("
+                    SELECT * FROM jawabanp AS j
+                    JOIN user AS u ON j.user_npm = u.npm
+                    WHERE j.pemetaan_id = $id
+                ");
+        return view('/admin/lihatpemetaan', $data);
     }
     //////////////////////////////////////////
     // Method Manajemen User -----------------
@@ -559,6 +715,7 @@ class AdminController extends Controller
         $data['isi4k']  = Wawancara3Katholik::where('npm', $id)->first();
         $data['isi4h']  = Wawancara3Hindu::where('npm', $id)->first();
         $data['isi4b']  = Wawancara3Buddha::where('npm', $id)->first();
+        $data['isi5']   = Wawancara5::where('npm', $id)->first();
         $data['nilai']  = NilaiWawancara::where('npm', $id)->first();
         return view('/admin/wawancarau', $data);
     }

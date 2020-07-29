@@ -49,6 +49,17 @@
                                         @endif
                                     </div>
                                     <div class="form-group form-group-lg">
+                                        <h2 class="card-inside-title">Link Kuis (opsional)</h2>
+                                        <div class="form-line">
+                                            <input type="text" name="kuis" class="form-control" placeholder="ex:kuis/lihat/3" />
+                                        </div>
+                                        @if($errors->has('kuis'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('kuis')}}
+                                        </div>
+                                        @endif
+                                    </div>
+                                    <div class="form-group form-group-lg">
                                         <h2 class="card-inside-title">Upload Pematerian</h2>
                                         <div class="custom-file">
                                             <input type="file" name="video">

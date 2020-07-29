@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 //Rute Auth
 Route::get('/', 'AuthController@index');
-Route::get('/register', 'AuthController@register');
+Route::get('/register12345678', 'AuthController@register');
 Route::get('/logout', 'AuthController@logout');
 Route::post('/register/proc', 'AuthController@register_proc');
 Route::post('/proc', 'AuthController@login_proc');
@@ -62,6 +62,15 @@ Route::get('/admin/soal/hapus/{id}', 'AdminController@deleteSoal');
 Route::post('/admin/kuis/update/{id}', 'AdminController@kuisUpdate');
 Route::get('/admin/kuis/hapus/{id}', 'AdminController@deleteKuis');
 Route::get('/admin/kuis/lihat/{id}', 'AdminController@lihatKuis');
+//Rute Pemetaan
+Route::get('/admin/pemetaan', 'AdminController@pemetaan');
+Route::post('/admin/pemetaan/store', 'AdminController@pemetaanStore');
+Route::get('/admin/pemetaan/edit/{id}', 'AdminController@editPemetaan');
+Route::post('/admin/soalp/store', 'AdminController@soalpStore');
+Route::get('/admin/soalp/hapus/{id}', 'AdminController@deleteSoalp');
+Route::post('/admin/pemetaan/update/{id}', 'AdminController@pemetaanUpdate');
+Route::get('/admin/pemetaan/hapus/{id}', 'AdminController@deletePemetaan');
+Route::get('/admin/pemetaan/lihat/{id}', 'AdminController@lihatPemetaan');
 //Rute AdminWawancara
 Route::get('/admin/wawancara', 'AdminController@wawancara');
 Route::get('/admin/wawancara/{id}', 'AdminController@hasilwawancara');
@@ -79,6 +88,9 @@ Route::post('/user/password/update', 'UserController@passwordUpdate');
 Route::get('/user/kuis', 'UserController@kuis');
 Route::get('/user/kuis/lihat/{id}', 'UserController@lihatKuis');
 Route::post('/user/kuis/store/{id}', 'UserController@kuisStore');
+Route::get('/user/pemetaan', 'UserController@pemetaan');
+Route::get('/user/pemetaan/lihat/{id}', 'UserController@lihatPemetaan');
+Route::post('/user/pemetaan/store/{id}', 'UserController@pemetaanStore');
 Route::get('/user/materi/lihat/{id}', 'UserController@lihatMateri');
 Route::get('/user/tugas', 'UserController@tugas');
 Route::get('/user/tugas/lihat/{id}', 'UserController@lihatTugas');
@@ -91,6 +103,8 @@ Route::get('/user/wawancara2/edit', 'UserController@wawancara2Edit');
 Route::get('/user/wawancara3/{agama}', 'UserController@wawancara3');
 Route::get('/user/wawancara4', 'UserController@wawancara4');
 Route::get('/user/wawancara5', 'UserController@wawancara5');
+Route::get('/user/suratizin', 'UserController@izin');
+Route::get('/user/suratpernyataan', 'UserController@pernyataan');
 Route::post('/user/wawancara/store', 'UserController@wawancaraStore');
 Route::post('/user/wawancara/update', 'UserController@wawancaraUpdate');
 Route::post('/user/wawancara2/store', 'UserController@wawancara2Store');
@@ -102,3 +116,5 @@ Route::post('/user/wawancara3store/protestan', 'UserController@wawancara3StorePr
 Route::post('/user/wawancara3store/islam', 'UserController@wawancara3StoreProtestan');
 Route::post('/user/wawancara4/store', 'UserController@wawancara4Store');
 Route::post('/user/wawancara5/store', 'UserController@wawancara5Store');
+Route::post('/user/izin/store', 'UserController@izinStore');
+Route::post('/user/pernyataan/store', 'UserController@pernyataanStore');

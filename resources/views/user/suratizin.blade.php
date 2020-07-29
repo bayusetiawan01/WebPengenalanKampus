@@ -8,15 +8,12 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            {{$tugas->judul}}
-                            <small>{{ $tugas->deadline }}</small>
+                            Surat Izin
                         </h2>
                     </div>
                     <div class="body">
-                        <?php echo nl2br(htmlspecialchars($tugas->deskripsi)); ?>
-
-                        <br><br>
-                        <a href="<?php echo asset('tugas/' . $tugas->petunjuk) ?>" class="btn btn-danger waves-effect" role="button">Download Petunjuk</a>
+                        Download terlebih dahulu surat izin kemudian upload surat izin yang sudah diisi. <br><br><br>
+                        <a href="{{ asset('tugas/suratizin.docx') }}" class="btn btn-danger waves-effect" role="button">Download</a>
                     </div>
                 </div>
             </div>
@@ -24,11 +21,11 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            Upload Tugas
+                            Upload Surat Izin
                         </h2>
                     </div>
                     <div class="body">
-                        <form action="/user/tugas/store/{{ $id }}" method="post" enctype="multipart/form-data">
+                        <form action="/user/izin/store/" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row clearfix">
                                 <div class="col-sm-12">

@@ -9,7 +9,10 @@ use App\Tugas;
 use App\Kuis;
 use App\Jawaban;
 use App\Soal;
+use App\Soalp;
+use App\Jawabanp;
 use App\Filetugas;
+use App\Pemetaan;
 use App\Wawancara;
 use App\Wawancara2;
 use App\Wawancara3Buddha;
@@ -21,6 +24,7 @@ use App\Wawancara4;
 use App\Wawancara5;
 use App\Pengumuman;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -49,6 +53,11 @@ class UserController extends Controller
         $data['p1']          = Pengumuman::find(1);
         $data['p2']          = Pengumuman::find(2);
         $data['p3']          = Pengumuman::find(3);
+        $data['p4']          = Pengumuman::find(4);
+        $data['p5']          = Pengumuman::find(5);
+        $data['p6']          = Pengumuman::find(6);
+        $data['suratizin']   = $data['wawancarad']->suratizin;
+        $data['suratpernyataan']   = $data['wawancarad']->suratpernyataan;
         return view('/user/home', $data);
     }
     public function profile(Request $request)
@@ -223,13 +232,60 @@ class UserController extends Controller
     public function kuisStore($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $nama_file         = NULL;
+        if ($request->hasFile('file')) {
+            $file          = $request->file('file');
+            $nama_file     = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'images/soal';
+            $file->move($tujuan_upload, $nama_file);
+        }
         $string = implode(';', array_slice($request->post(), 1,));
+        if ($string == NULL) {
+            $string = $nama_file;
+        }
         Jawaban::create([
             'kuis_id'    => $id,
             'user_npm'   => $user->npm,
-            'jawaban'    => $string
+            'jawaban'    => $string,
+            'image'      => $nama_file,
         ]);
         return redirect('/user/kuis');
+    }
+    //////////////////////////////////////////
+    // Method Pemetaan   ---------------------
+    //////////////////////////////////////////
+    public function pemetaan(Request $request)
+    {
+        $user             = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']     = $user->image;
+        $data['nama']     = $user->nama;
+        $data['email']    = $user->email;
+        $data['pemetaan'] = Pemetaan::all();
+        $data['jawaban']  = Jawabanp::where('user_npm', $user->npm)->get();
+        return view('/user/pemetaan', $data);
+    }
+    public function lihatPemetaan($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']     = $user->image;
+        $data['nama']     = $user->nama;
+        $data['email']    = $user->email;
+        $data['npm']      = $user->npm;
+        $data['id']       = $id;
+        $data['pemetaan'] = Pemetaan::find($id);
+        $data['soal']     = Soalp::where('pemetaan_id', $id)->get();
+        return view('/user/lihatpemetaan', $data);
+    }
+    public function pemetaanStore($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $string = implode(';', array_slice($request->post(), 1,));
+        Jawabanp::create([
+            'pemetaan_id' => $id,
+            'user_npm'    => $user->npm,
+            'jawaban'     => $string
+        ]);
+        return redirect('/user/pemetaan');
     }
     //////////////////////////////////////////
     // Method Wawancara -------------------------
@@ -995,6 +1051,60 @@ class UserController extends Controller
             'waktu'              => $request->waktu,
             'kegiatan'           => $request->kegiatan,
         ]);
+
+        return redirect('/user');
+    }
+    public function izin(Request $request)
+    {
+        $user             = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']     = $user->image;
+        $data['nama']     = $user->nama;
+        $data['email']    = $user->email;
+        return view('/user/suratizin', $data);
+    }
+    public function pernyataan(Request $request)
+    {
+        $user             = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']     = $user->image;
+        $data['nama']     = $user->nama;
+        $data['email']    = $user->email;
+        return view('/user/suratpernyataan', $data);
+    }
+    public function izinStore(Request $request)
+    {
+        $user             = User::where('email', $request->session()->get('email'))->first();
+        $this->validate($request, [
+            'file'        => 'required',
+        ]);
+
+        $p             = Wawancara::where('npm', $user->npm)->first();
+        $file          = $request->file('file');
+        $nama_file     = time() . "_" . $file->getClientOriginalName();
+        $tujuan_upload = 'tugas/suratizin';
+        $file->move($tujuan_upload, $nama_file);
+
+        $u              = Wawancara::find($p->id);
+        $u->suratizin   = $nama_file;
+        $u->save();
+
+        return redirect('/user');
+    }
+    public function pernyataanStore(Request $request)
+    {
+        $user             = User::where('email', $request->session()->get('email'))->first();
+        $this->validate($request, [
+            'file'        => 'required',
+        ]);
+
+        $p             = Wawancara::where('npm', $user->npm)->first();
+        $file          = $request->file('file');
+        $nama_file     = time() . "_" . $file->getClientOriginalName();
+        $tujuan_upload = 'tugas/suratpernyataan';
+        $file->move($tujuan_upload, $nama_file);
+
+        $u                  = Wawancara::find($p->id);
+        $u->suratpernyataan = $nama_file;
+        $u->save();
 
         return redirect('/user');
     }

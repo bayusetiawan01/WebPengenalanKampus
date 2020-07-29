@@ -11,6 +11,7 @@
                     </h2>
                 </div>
                 <div class="body">
+                    <br><br><br>
                     <div class="panel-group" id="accordion_4" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-danger">
                             <div class="panel-heading" role="tab" id="headingOne_4">
@@ -937,6 +938,122 @@
                                         </tbody>
                                     </table>
                                     @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-danger">
+                            <div class="panel-heading" role="tab" id="headingfive_5">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_5" href="#collapsefive_5" aria-expanded="false" aria-controls="collapsefive_5">
+                                        Fasilitas Internet
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapsefive_5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfive_5">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pertanyaan</th>
+                                                    <th>Jawaban</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1. Apakah akses internet utama yang anda gunakan?</td>
+                                                    <td>{{$isi5->akses_internet}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Akses Internet Lainnya</td>
+                                                    <td>{{$isi5->lainnya}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2. Apakah akses tersebut unlimited?</td>
+                                                    <td>{{$isi5->unlimited}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3. Jika tidak, berapa pemakaian anda internet Anda dalam sebulan?</td>
+                                                    <td>{{$isi5->sebulan}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4. Kendala apa saja yang sering dialami selama anda menggunakan akses internet tersebut?</td>
+                                                    <td>{{$isi5->kendala}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5. Apakah akses internet tersebut lancar untuk video call dan streaming?</td>
+                                                    <td>{{$isi5->streaming}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>PC</td>
+                                                    <td>{{$isi5->pc}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Laptop</td>
+                                                    <td>{{$isi5->laptop}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Smartphone</td>
+                                                    <td>{{$isi5->smartphone}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tablet</td>
+                                                    <td>{{$isi5->tablet}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Lainnya</td>
+                                                    <td>{{$isi5->lainnya2}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7. Apakah device tersebut memiliki kamera dan bisa digunakan untuk video call?</td>
+                                                    <td>{{$isi5->kamera}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Discord</td>
+                                                    <td>{{$isi5->discord}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Google Meet</td>
+                                                    <td>{{$isi5->meet}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Zoom</td>
+                                                    <td>{{$isi5->zoom}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tidak Satupun</td>
+                                                    <td>{{$isi5->tidak_satupun}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9. Dari platform tersebut apakah ada kendala saat penggunaan?</td>
+                                                    <td>{{$isi5->kendala_penggunaan}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10. Zona waktu Indonesia bagian manakah kalian tinggal?</td>
+                                                    <td>{{$isi5->waktu}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>11. Kegiatan rutin di rumah apa yang dapat mempengaruhi forum online yang diadakan?</td>
+                                                    <td>{{$isi5->kegiatan}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-danger">
+                            <div class="panel-heading" role="tab" id="headingsix_5">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_6" href="#collapsesix_5" aria-expanded="false" aria-controls="collapsesix_5">
+                                        Surat-surat
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapsesix_5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingsix_5">
+                                <div class="panel-body">
+                                    <a href="<?php echo asset('tugas/suratizin/' . $isi->suratizin) ?>" class="btn btn-danger waves-effect" role="button">Surat Izin</a>
+                                    <a href="<?php echo asset('tugas/suratpernyataan/' . $isi->suratpernyataan) ?>" class="btn btn-danger waves-effect" role="button">Surat Pernyataan</a>
                                 </div>
                             </div>
                         </div>

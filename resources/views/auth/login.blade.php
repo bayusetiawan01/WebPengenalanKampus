@@ -2,7 +2,7 @@
 @section('isi')
 <div class="limiter">
     <div class="container-login100">
-        <div class="wrap-login100" style="padding-top: 70px;">
+        <div class="wrap-login100" style="padding-top: 70px; padding-bottom:120px">
             <div class="login100-pic js-tilt" data-tilt style="text-align: center;">
                 <img src="{{ asset('/images/desain/auth.png') }}" alt="IMG" height="300">
             </div>
@@ -44,22 +44,6 @@
                     <button class="login100-form-btn">
                         Login
                     </button>
-                </div>
-
-                <div class="text-center p-t-12">
-                    <span class="txt1">
-                        Forgot
-                    </span>
-                    <a class="txt2" href="#">
-                        Username / Password?
-                    </a>
-                </div>
-
-                <div class="text-center p-t-136">
-                    <a class="txt2" href="\register\">
-                        Create your Account
-                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                    </a>
                 </div>
             </form>
         </div>

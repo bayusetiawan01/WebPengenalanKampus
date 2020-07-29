@@ -5,21 +5,18 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    <h3>{{$kuis->judul}}</h3>
+                    <h3>{{$pemetaan->judul}}</h3>
                     <h2>
-                        {{$kuis->deskripsi}}
+                        {{$pemetaan->deskripsi}}
                     </h2>
                 </div>
                 <div class="body">
-                    <form action="/user/kuis/store/{{$id}}" method="post" enctype="multipart/form-data">
+                    <form action="/user/pemetaan/store/{{$id}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <?php $i = 0; ?>
                         <?php foreach ($soal as $s) :
                             $i = $i + 1; ?>
                             <?php if ($s->tipe_soal == 'pilihan ganda') : ?>
-                                <?php if ($s->image != NULL) : ?>
-                                    <img width="90%" src="{{ url('/images/soal/' . $s->image) }}">
-                                <?php endif ?>
                                 <p>{{$i}}. {{$s->soal}}</p>
                                 <?php $pilihan = explode(',', $s->pilihan) ?>
                                 <div class="form-group">
@@ -31,28 +28,11 @@
                                     </div>
                                 </div>
                             <?php elseif ($s->tipe_soal == 'essai') : ?>
-                                <?php if ($s->image != NULL) : ?>
-                                    <img width="90%" src="{{ url('/images/soal/' . $s->image) }}">
-                                <?php endif ?>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="{{$s->id}}" class="form-control" value="{{ old($s->id) }}" required>
                                         <label class="form-label">{{$i}}. {{$s->soal}}</label>
                                     </div>
-                                </div>
-                            <?php elseif ($s->tipe_soal == 'bergambar') : ?>
-                                <p>{{$i}}. {{$s->soal}}</p>
-                                <img width="90%" src="{{ url('/images/soal/' . $s->image) }}">
-                                <div class="form-group form-group-lg">
-                                    <p>Edit Gambar di atas kemudian upload</p>
-                                    <div class="custom-file">
-                                        <input type="file" name="file">
-                                    </div>
-                                    @if($errors->has('file'))
-                                    <div class="text-danger">
-                                        {{ $errors->first('file')}}
-                                    </div>
-                                    @endif
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>

@@ -6,25 +6,37 @@
         <div class="header">
             <h2>Pengumuman</h2>
         </div>
-        <div class="body">
+        <div class="body" style="padding-left: 0px; padding-right:0px">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="5"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="<?php echo asset('/images/desain/' . $p1->url) ?>" />
+                        <a href="{{$p1->link}}"><img src="<?php echo asset('/images/desain/' . $p1->url) ?>" /></a>
                     </div>
                     <div class="item">
-                        <img src="<?php echo asset('/images/desain/' . $p2->url) ?>" />
+                        <a href="{{$p1->link}}"><img src="<?php echo asset('/images/desain/' . $p2->url) ?>" /></a>
                     </div>
                     <div class="item">
-                        <img src="<?php echo asset('/images/desain/' . $p3->url) ?>" />
+                        <a href="{{$p1->link}}"><img src="<?php echo asset('/images/desain/' . $p3->url) ?>" /></a>
+                    </div>
+                    <div class="item">
+                        <a href="{{$p1->link}}"><img src="<?php echo asset('/images/desain/' . $p4->url) ?>" /></a>
+                    </div>
+                    <div class="item">
+                        <a href="{{$p1->link}}"><img src="<?php echo asset('/images/desain/' . $p5->url) ?>" /></a>
+                    </div>
+                    <div class="item">
+                        <a href="{{$p1->link}}"><img src="<?php echo asset('/images/desain/' . $p6->url) ?>" /></a>
                     </div>
                 </div>
 
@@ -159,6 +171,40 @@
                             <p>
                                 @if($wawancara5->isEmpty())
                                 <a href="/user/wawancara5" class="btn btn-danger waves-effect" role="button">Isi Formulir</a>
+                                @else
+                                <button class="btn bg-grey waves-effects" role="button">Form Sudah Diisi</button>
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="thumbnail">
+                        <div class="icon" style="margin: 10px;">
+                            <i class="material-icons" style="display:block; color: firebrick; font-size:130px; margin:auto; text-align:center;">description</i>
+                        </div>
+                        <div class="caption">
+                            <h3>Surat Izin</h3><br><br>
+                            <p>
+                                @if($suratizin == NULL)
+                                <a href="/user/izin" class="btn btn-danger waves-effect" role="button">Lihat</a>
+                                @else
+                                <button class="btn bg-grey waves-effects" role="button">Form Sudah Diisi</button>
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="thumbnail">
+                        <div class="icon" style="margin: 10px;">
+                            <i class="material-icons" style="display:block; color: firebrick; font-size:130px; margin:auto; text-align:center;">description</i>
+                        </div>
+                        <div class="caption">
+                            <h3>Surat Pernyataan</h3><br><br>
+                            <p>
+                                @if($suratpernyataan == NULL)
+                                <a href="/user/suratpernyataan" class="btn btn-danger waves-effect" role="button">Lihat</a>
                                 @else
                                 <button class="btn bg-grey waves-effects" role="button">Form Sudah Diisi</button>
                                 @endif

@@ -6,9 +6,9 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        Daftar Soal
-                        <button type="button" class="btn btn-danger btn-lg waves-effect m-r-20 m-l-20" data-toggle="modal" data-target="#soalModal">+ Tambah Soal</button>
-                        <button type="button" class="btn btn-danger btn-lg waves-effect" data-toggle="modal" data-target="#kuisModal">Detail Kuis</button>
+                        Form Pemetaan
+                        <button type="button" class="btn btn-danger btn-lg waves-effect m-r-20 m-l-20" data-toggle="modal" data-target="#soalModal">+ Tambah Pertanyaan</button>
+                        <button type="button" class="btn btn-danger btn-lg waves-effect" data-toggle="modal" data-target="#pemetaanModal">Detail Pemetaan</button>
                     </h2>
                 </div>
                 <div class="body">
@@ -17,7 +17,6 @@
                             <thead>
                                 <tr>
                                     <th>Soal</th>
-                                    <th>Jawaban</th>
                                     <th>Pilihan</th>
                                     <th>Tipe Soal</th>
                                     <th>Action</th>
@@ -27,11 +26,10 @@
                                 @foreach($soal as $s)
                                 <tr>
                                     <td>{{$s->soal}}</td>
-                                    <td>{{$s->jawaban}}</td>
                                     <td>{{$s->pilihan}}</td>
                                     <td>{{$s->tipe_soal}}</td>
                                     <td>
-                                        <a href="../../soal/hapus/{{$s->id}}" type="button" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="../../soalp/hapus/{{$s->id}}" type="button" class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -46,16 +44,16 @@
     <div class="modal fade" id="soalModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="/admin/soal/store" method="post" enctype="multipart/form-data">
+                <form action="/admin/soalp/store" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="modal-header">
-                        <h4 class="modal-title" id="defaultModalLabel">Tambah Soal Baru</h4>
+                        <h4 class="modal-title" id="defaultModalLabel">Tambah Pertanyaan Baru</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" name="kuis_id" class="form-control" value="{{$id}}" readonly>
-                                <label class="form-label">Kuis id</label>
+                                <input type="text" name="pemetaan_id" class="form-control" value="{{$id}}" readonly>
+                                <label class="form-label">Pemetaan id</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
@@ -69,27 +67,13 @@
                             <select id="tipe_soal" name="tipe_soal">
                                 <option value="pilihan ganda">Pilihan Ganda</option>
                                 <option value="essai">Essai</option>
-                                <option value="bergambar">Upload(hanya bisa satu)</option>
+                                <option value="bergambar">Bergambar</option>
                             </select>
-                        </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="text" name="jawaban" value="{{ old('jawaban') }}" class="form-control">
-                                <label class="form-label">Jawaban (opsional)</label>
-                            </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
                                 <input type="text" name="pilihan" value="{{ old('pilihan') }}" class="form-control">
                                 <label class="form-label">Pilihan (jika pg) pisahkan dengan koma</label>
-                            </div>
-                        </div>
-                        <div class="row clearfix">
-                            <label>Upload Gambar</label>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="file" id="foto" name="foto" class="form-control" value="{{ old('foto') }}">
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -101,44 +85,27 @@
             </div>
         </div>
     </div>
-    <!-- Kuis Modal -->
-    <div class="modal fade" id="kuisModal" tabindex="-1" role="dialog">
+    <!-- Pemetaan Modal -->
+    <div class="modal fade" id="pemetaanModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="/admin/kuis/update/{{$kuis->id}}" method="post" enctype="multipart/form-data">
+                <form action="/admin/pemetaan/update/{{$pemetaan->id}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="modal-header">
-                        <h4 class="modal-title" id="defaultModalLabel">Ubah Detai Kuis</h4>
+                        <h4 class="modal-title" id="defaultModalLabel">Edit Pemetaan</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" name="judul" class="form-control" value="{{ $kuis->judul }}" required>
+                                <input type="text" name="judul" class="form-control" value="{{ $pemetaan->judul }}" required>
                                 <label class="form-label">Judul</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" name="deskripsi" value="{{ $kuis->deskripsi }}" class="form-control">
+                                <input type="text" name="deskripsi" value="{{ $pemetaan->deskripsi }}" class="form-control">
                                 <label class="form-label">Deskripsi</label>
                             </div>
-                        </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="number" name="deadline" value="{{ $kuis->deadline }}" class="form-control">
-                                <label class="form-label">Waktu Pengerjaan(menit)</label>
-                            </div>
-                        </div>
-                        <div class="form-group form-group-lg">
-                            <p>Upload Petunjuk (Opsional)</p>
-                            <div class="custom-file">
-                                <input type="file" name="file">
-                            </div>
-                            @if($errors->has('file'))
-                            <div class="text-danger">
-                                {{ $errors->first('file')}}
-                            </div>
-                            @endif
                         </div>
                     </div>
                     <div class="modal-footer">

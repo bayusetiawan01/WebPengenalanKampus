@@ -67,25 +67,37 @@
                     </li>
                 </ul>
             </div>
-            <div class="body">
+            <div class="body" style="padding-left: 0px; padding-right:0px">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
                         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="5"></li>
                     </ol>
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img src="<?php echo asset('/images/desain/' . $p1->url) ?>" />
+                            <a href="{{$p1->link}}"><img src="<?php echo asset('/images/desain/' . $p1->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <img src="<?php echo asset('/images/desain/' . $p2->url) ?>" />
+                            <a href="{{$p2->link}}"><img src="<?php echo asset('/images/desain/' . $p2->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <img src="<?php echo asset('/images/desain/' . $p3->url) ?>" />
+                            <a href="{{$p3->link}}"><img src="<?php echo asset('/images/desain/' . $p3->url) ?>" /></a>
+                        </div>
+                        <div class="item">
+                            <a href="{{$p4->link}}"><img src="<?php echo asset('/images/desain/' . $p4->url) ?>" /></a>
+                        </div>
+                        <div class="item">
+                            <a href="{{$p5->link}}"><img src="<?php echo asset('/images/desain/' . $p5->url) ?>" /></a>
+                        </div>
+                        <div class="item">
+                            <a href="{{$p6->link}}"><img src="<?php echo asset('/images/desain/' . $p6->url) ?>" /></a>
                         </div>
                     </div>
 
@@ -138,6 +150,36 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="file" id="foto" name="foto3" class="form-control" value="{{ old('foto3') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-md-6">
+                                <label>Slide 4</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="file" id="foto" name="foto4" class="form-control" value="{{ old('foto4') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-md-6">
+                                <label>Slide 5</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="file" id="foto" name="foto5" class="form-control" value="{{ old('foto5') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-md-6">
+                                <label>Slide 6</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="file" id="foto" name="foto6" class="form-control" value="{{ old('foto6') }}">
                                     </div>
                                 </div>
                             </div>
