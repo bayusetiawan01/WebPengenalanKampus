@@ -1,5 +1,6 @@
 @extends('layouts.user')
 @section('isi')
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <section class="content" style="margin-top: 80px;">
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -11,7 +12,7 @@
                     </h2>
                 </div>
                 <div class="body">
-                    <form action="/user/kuis/store/{{$id}}" method="post" enctype="multipart/form-data">
+                    <form id="myForm" action="/user/kuis/store/{{$id}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <?php $i = 0; ?>
                         <?php foreach ($soal as $s) :
@@ -36,7 +37,7 @@
                                 <?php endif ?>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" name="{{$s->id}}" class="form-control" value="{{ old($s->id) }}" required>
+                                        <input type="text" name="{{$s->id}}" class="form-control" value="{{ old($s->id) }}">
                                         <label class="form-label">{{$i}}. {{$s->soal}}</label>
                                     </div>
                                 </div>
@@ -61,6 +62,41 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12" style="position: fixed; bottom:0; right:0">
+            <div class="card">
+                <div class="header">
+                    Sisa Waktu<h3 id="time"></h3>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+<script>
+    $(function() {
+        setInterval(time, 1000);
+    });
+
+    function time() {
+        $.ajax({
+            url: '<?= url('user/time/' . $jawaban->timer) ?>',
+            success: function(data) {
+                $('#time').html(data);
+                if (data == "00:00:00") {
+                    document.getElementById("myForm").submit();
+                }
+            },
+        });
+    }
+</script>
+<script>
+    $(window).on('beforeunload', function() {
+        return "Any changes will be lost";
+    });
+
+    // Form Submit
+    $(document).on("submit", "form", function(event) {
+        // disable unload warning
+        $(window).off('beforeunload');
+    });
+</script>
 @endsection

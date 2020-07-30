@@ -7,6 +7,12 @@
                 <div class="header">
                     <h2>
                         Daftar Kuis
+                        @if ($message = Session::get('gagal'))
+                        <div class="alert alert-danger alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                        @endif
                     </h2>
                 </div>
                 <div class="body clearfix">
@@ -27,11 +33,7 @@
                                 </h2>
                             </div>
                             <div class="body">
-                                <?php if ($count == 0) { ?>
-                                    <a href="../user/kuis/lihat/{{$k->id}}" class="btn btn-success">Lihat</a>
-                                <?php } else { ?>
-                                    <button class="wave btn btn-grey">Sudah Dikerjakan</button>
-                                <?php } ?>
+                                <a href="../user/kuis/lihat/{{$k->id}}" class="btn btn-success">Lihat</a>
                             </div>
                         </div>
                     </div>

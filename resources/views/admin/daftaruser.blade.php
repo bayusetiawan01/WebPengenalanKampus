@@ -27,7 +27,7 @@
                                     <td>{{$u->npm}}</td>
                                     <td>
                                         <?php if ($u->role_id == 1) { ?>
-                                            <a href="../admin/users/hapus/{{$u->id}}" type="button" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="../admin/users/hapus/{{$u->id}}" onclick="return confirm('Are you sure?');" type="button" class="btn btn-danger btn-sm">Delete</a>
                                         <?php } ?>
                                     </td>
                                 </tr>

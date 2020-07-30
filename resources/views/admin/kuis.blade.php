@@ -24,7 +24,7 @@
                                 <br>
                                 <a href="kuis/edit/{{$k->id}}" class="btn btn-default">Edit</a>
                                 <a href="kuis/lihat/{{$k->id}}" class="btn btn-default">Lihat</a>
-                                <a href="kuis/hapus/{{$k->id}}" class="btn btn-danger">Hapus</a>
+                                <a href="kuis/hapus/{{$k->id}}" onclick="return confirm('Are you sure?');" class="btn btn-danger">Hapus</a>
                             </div>
                         </div>
                     </div>

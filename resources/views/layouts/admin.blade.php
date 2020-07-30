@@ -247,6 +247,7 @@
     <script src="{{ asset('/vendor/jquery-datatable/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('/vendor/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js') }}"></script>
 
+
 </body>
 
 </html>

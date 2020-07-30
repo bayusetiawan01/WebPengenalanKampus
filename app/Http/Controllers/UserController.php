@@ -31,7 +31,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('revalidate');
+        $this->middleware('revalidate')->except('lihatKuis');
         $this->middleware('user');
     }
     public function index(Request $request)
@@ -220,6 +220,19 @@ class UserController extends Controller
     public function lihatKuis($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $check = Jawaban::where([['kuis_id', $id], ['user_npm', $user->npm]])->get();
+        $kuis = Kuis::where('id', $id)->first();
+
+        if ($check->isEmpty()) {
+            Jawaban::create([
+                'kuis_id'    => $id,
+                'user_npm'   => $user->npm,
+                'timer'      => time() + (60 * $kuis->deadline),
+            ]);
+        }
+        $check2 = Jawaban::where([['kuis_id', $id], ['user_npm', $user->npm]])->first();
+
+        $data['jawaban'] = $check2;
         $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
@@ -227,7 +240,12 @@ class UserController extends Controller
         $data['id']     = $id;
         $data['kuis']   = Kuis::find($id);
         $data['soal']   = Soal::where('kuis_id', $id)->get();
-        return view('/user/lihatkuis', $data);
+        if ($check2->timer - time() <= 0) {
+            $request->session()->flash('gagal', 'Kuis sudah tidak tersedia');
+            return redirect('user/kuis');
+        } else {
+            return view('/user/lihatkuis', $data);
+        }
     }
     public function kuisStore($id, Request $request)
     {
@@ -243,12 +261,12 @@ class UserController extends Controller
         if ($string == NULL) {
             $string = $nama_file;
         }
-        Jawaban::create([
-            'kuis_id'    => $id,
-            'user_npm'   => $user->npm,
-            'jawaban'    => $string,
-            'image'      => $nama_file,
-        ]);
+
+        $check2       = Jawaban::where([['kuis_id', $id], ['user_npm', $user->npm]])->first();
+        $u            = Jawaban::find($check2->id);
+        $u->jawaban   = $string;
+        $u->image     = $nama_file;
+        $u->save();
         return redirect('/user/kuis');
     }
     //////////////////////////////////////////
@@ -1107,5 +1125,9 @@ class UserController extends Controller
         $u->save();
 
         return redirect('/user');
+    }
+    public function waktu($id)
+    {
+        return gmdate("H:i:s", $id - time());
     }
 }

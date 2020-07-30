@@ -24,7 +24,7 @@
                                 <br>
                                 <a href="tugas/edit/{{$t->id}}" class="btn btn-default">Edit</a>
                                 <a href="../admin/tugas/lihat/{{$t->id}}" class="btn btn-default">Lihat</a>
-                                <a href="../admin/tugas/hapus/{{$t->id}}" class="btn btn-danger">Hapus</a>
+                                <a href="../admin/tugas/hapus/{{$t->id}}" onclick="return confirm('Are you sure?');" class="btn btn-danger">Hapus</a>
                             </div>
                         </div>
                     </div>

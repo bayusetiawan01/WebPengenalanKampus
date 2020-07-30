@@ -118,3 +118,4 @@ Route::post('/user/wawancara4/store', 'UserController@wawancara4Store');
 Route::post('/user/wawancara5/store', 'UserController@wawancara5Store');
 Route::post('/user/izin/store', 'UserController@izinStore');
 Route::post('/user/pernyataan/store', 'UserController@pernyataanStore');
+Route::get('/user/time/{id}', 'UserController@waktu');

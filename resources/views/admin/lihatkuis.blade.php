@@ -95,16 +95,20 @@
                                                                 <tr>
                                                                     <td>{{$i+1}}</td>
                                                                     <td>{{$so->soal}}</td>
-                                                                    <td><?php echo $jawab[$i] ?></td>
+                                                                    <td><?php if (isset($jawab[$i])) {
+                                                                            echo $jawab[$i];
+                                                                        }  ?></td>
                                                                     <td>
                                                                         <?php
-                                                                        if ($so->jawaban == NULL) :
-                                                                            echo "perlu diperiksa";
-                                                                        elseif (strtolower($so->jawaban) == strtolower($jawab[$i])) :
-                                                                            echo "jawaban benar";
-                                                                        else :
-                                                                            echo "jawaban salah";
-                                                                        endif;
+                                                                        if (isset($jawab[$i])) {
+                                                                            if ($so->jawaban == NULL) :
+                                                                                echo "perlu diperiksa";
+                                                                            elseif (strtolower($so->jawaban) == strtolower(isset($jawab[$i]))) :
+                                                                                echo "jawaban benar";
+                                                                            else :
+                                                                                echo "jawaban salah";
+                                                                            endif;
+                                                                        }
                                                                         ?>
                                                                     </td>
                                                                 </tr>
@@ -113,7 +117,9 @@
                                                         endforeach; ?>
                                                     </tbody>
                                                 </table>
-                                                <img width="90%" src="{{ url('/images/soal/' . $j->image) }}">
+                                                <?php if ($j->image != NULL) : ?>
+                                                    <img width="90%" src="{{ url('/images/soal/' . $j->image) }}">
+                                                <?php endif ?>
                                             </div>
                                         </div>
                                     </div>

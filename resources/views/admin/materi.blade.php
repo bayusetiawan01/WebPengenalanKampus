@@ -24,7 +24,7 @@
                                 <br>
                                 <a href="materi/edit/{{$m->id}}" class="btn btn-default">Edit</a>
                                 <a href="../admin/materi/lihat/{{$m->id}}" class="btn btn-default">Lihat</a>
-                                <a href="../admin/materi/hapus/{{$m->id}}" class="btn btn-danger">Hapus</a>
+                                <a href="../admin/materi/hapus/{{$m->id}}" onclick="return confirm('Are you sure?');" class="btn btn-danger">Hapus</a>
                             </div>
                         </div>
                     </div>

@@ -706,6 +706,25 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="well" style="overflow:scroll; height:200px">
+                            1. Peserta adalah mahasiswa FMIPA Unpad angkatan 2020 yang mengikuti rangkaian acara Mipa Bersatu
+                            2020 <br>
+                            2. Peserta wajib mengikuti seluruh rangkaian acara Mipa Bersatu 2020 dengan tepat waktu. <br>
+                            3. Peserta wajib menggunakan identitas lengkap sesuai ketentuan panitia selama rangkaian acara Mipa
+                            Bersatu 2020. <br>
+                            4. Peserta wajib mengikuti rangkaian dan teknis acara Mipa Bersatu 2020 dengan tertib dan kondusif
+                            sesuai dengan arahan panitia <br>
+                            5. Peserta wajib mengonfirmasi ke panitia jika terjadi kendala selama rangkaian acara Mipa Bersatu
+                            2020. <br>
+                            6. Peserta dilarang meninggalkan rangkaian acara Mipa Bersatu 2020 tanpa seizin panitia. <br>
+                            7. Peserta dilarang melakukan tindakan provokatif atau yang dapat menganggu jalannya acara Mipa
+                            Bersatu 2020. <br>
+                            8. Setiap pelanggaran terhadap tata tertib akan dikenakan sanksi sesuai ketentuan panitia Mipa Bersatu
+                            2020. <br>
+                            9. Tata tertib ini berupa kontrak yang harus diikuti peserta Mipa Bersatu 2020. <br>
+                        </div>
+                        <input type="checkbox" id="setuju" required>
+                        <label for="vehicle1"> Saya bersedia!</label><br>
                     </div>
                 </div>
             </div>

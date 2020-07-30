@@ -31,7 +31,7 @@
                                 <?php if ($count == 0) { ?>
                                     <a href="../user/tugas/lihat/{{$t->id}}" class="btn btn-success">Lihat</a>
                                 <?php } else { ?>
-                                    <a href="../user/tugas/hapus/{{$t->id}}" class="wave btn btn-danger">Batal Submit</a>
+                                    <a href="../user/tugas/hapus/{{$t->id}}" onclick="return confirm('Are you sure?');" class="wave btn btn-danger">Batal Submit</a>
                                 <?php } ?>
                             </div>
                         </div>
