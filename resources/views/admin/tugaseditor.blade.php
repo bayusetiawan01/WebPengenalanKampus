@@ -38,7 +38,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group form-group-lg">
-                                        <h2 class="card-inside-title">Isi Materi</h2>
+                                        <h2 class="card-inside-title">Keterangan Tugas</h2>
                                         <div class="form-line">
                                             <textarea name="deskripsi" rows="4" class="form-control no-resize" placeholder="Deskripsi..."></textarea>
                                         </div>

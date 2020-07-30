@@ -59,16 +59,6 @@
         <div class="card">
             <div class="header">
                 <h2>Pengumuman</h2>
-                <ul class="header-dropdown m-r--5">
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a data-toggle="modal" data-target="#pengumumanModal">Edit Gambar</a></li>
-                        </ul>
-                    </li>
-                </ul>
             </div>
             <div class="body" style="padding-left: 0px; padding-right:0px">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -81,7 +71,6 @@
                         <li data-target="#carousel-example-generic" data-slide-to="4"></li>
                         <li data-target="#carousel-example-generic" data-slide-to="5"></li>
                     </ol>
-
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">

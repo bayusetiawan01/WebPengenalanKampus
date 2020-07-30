@@ -156,16 +156,22 @@ class AdminController extends Controller
         $q5          = Pengumuman::find(5);
         $q6          = Pengumuman::find(6);
         $q1->url   = $nama_file1;
+        $q1->link  = $request->link1;
         $q1->save();
         $q2->url   = $nama_file2;
+        $q2->link  = $request->link2;
         $q2->save();
         $q3->url   = $nama_file3;
+        $q3->link  = $request->link3;
         $q3->save();
         $q4->url   = $nama_file4;
+        $q4->link  = $request->link4;
         $q4->save();
         $q5->url   = $nama_file5;
+        $q5->link  = $request->link5;
         $q5->save();
         $q6->url   = $nama_file6;
+        $q6->link  = $request->link6;
         $q6->save();
 
         return redirect('/admin');
@@ -333,7 +339,7 @@ class AdminController extends Controller
         Tugas::create([
             'judul'     => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'deadline'  => $request->deadline,
+            'deadline'  => $request->deadline . " 11:59:59",
             'petunjuk'  => $nama_file,
         ]);
 
@@ -367,7 +373,7 @@ class AdminController extends Controller
         $tugas = Tugas::find($id);
         $tugas->judul     = $request->judul;
         $tugas->deskripsi = $request->deskripsi;
-        $tugas->deadline  = $request->deadline;
+        $tugas->deadline  = $request->deadline . " 23:59:59";
         $tugas->petunjuk  = $nama_file;
         $tugas->save();
 
@@ -707,6 +713,7 @@ class AdminController extends Controller
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['jur']    = $id;
+        $data['user']   = User::where('npm', $id)->first();
         $data['isi']    = Wawancara::where('npm', $id)->first();
         $data['isi2']   = Wawancara2::where('npm', $id)->first();
         $data['isi3']   = Wawancara4::where('npm', $id)->first();

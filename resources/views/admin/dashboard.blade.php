@@ -133,6 +133,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="link1" class="form-control" value="{{ old('link1') }}">
+                                        <label class="form-label">Link</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row clearfix">
                             <div class="col-md-6">
@@ -140,6 +148,14 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="file" id="foto" name="foto2" class="form-control" value="{{ old('foto2') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="link2" class="form-control" value="{{ old('link2') }}">
+                                        <label class="form-label">Link</label>
                                     </div>
                                 </div>
                             </div>
@@ -153,6 +169,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="link3" class="form-control" value="{{ old('link3') }}">
+                                        <label class="form-label">Link</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row clearfix">
                             <div class="col-md-6">
@@ -160,6 +184,14 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="file" id="foto" name="foto4" class="form-control" value="{{ old('foto4') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="link4" class="form-control" value="{{ old('link4') }}">
+                                        <label class="form-label">Link</label>
                                     </div>
                                 </div>
                             </div>
@@ -173,6 +205,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="link5" class="form-control" value="{{ old('link5') }}">
+                                        <label class="form-label">Link</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row clearfix">
                             <div class="col-md-6">
@@ -180,6 +220,14 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="file" id="foto" name="foto6" class="form-control" value="{{ old('foto6') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="link6" class="form-control" value="{{ old('link6') }}">
+                                        <label class="form-label">Link</label>
                                     </div>
                                 </div>
                             </div>

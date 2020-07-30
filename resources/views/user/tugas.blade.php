@@ -24,7 +24,7 @@
                                 <h2>
                                     {{$t->judul}}
                                     <small>{{ \Illuminate\Support\Str::limit($t->deskripsi, 30, $end='...') }}</small>
-                                    <small>{{ $t->deadline . $t->id}}</small>
+                                    <small>{{ $t->deadline}}</small>
                                 </h2>
                             </div>
                             <div class="body">

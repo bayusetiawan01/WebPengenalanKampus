@@ -204,7 +204,7 @@
                             <h3>Surat Pernyataan</h3><br><br>
                             <p>
                                 @if($suratpernyataan == NULL)
-                                <a href="/user/suratpernyataan" class="btn btn-danger waves-effect" role="button">Lihat</a>
+                                <a href="/user/pernyataan" class="btn btn-danger waves-effect" role="button">Lihat</a>
                                 @else
                                 <button class="btn bg-grey waves-effects" role="button">Form Sudah Diisi</button>
                                 @endif

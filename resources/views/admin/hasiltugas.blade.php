@@ -30,6 +30,7 @@
                                     <th>Nama</th>
                                     <th>NPM</th>
                                     <th>Waktu</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 @foreach($tabel as $t)
@@ -37,6 +38,11 @@
                                     <td>{{$t->nama}}</td>
                                     <td>{{$t->npm}}</td>
                                     <td>{{$t->created_at}}</td>
+                                    <td><?php if (strtotime($tugas->deadline) < strtotime($t->created_at)) :
+                                            echo "Terlambat";
+                                        else :
+                                            echo "Belum Terlambat";
+                                        endif; ?></td>
                                     <td><a target="_blank" href="{{ url('/tugas/' . $t->file_tugas) }}" type="button" class="btn btn-primary btn-sm">Lihat</a></td>
                                 </tr>
                                 @endforeach

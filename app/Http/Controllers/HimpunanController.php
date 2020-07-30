@@ -66,6 +66,7 @@ class HimpunanController extends Controller
         $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
+        $data['user']   = User::where('npm', $id)->first();
         $data['isi']    = Wawancara::where('npm', $id)->first();
         $data['isi2']   = Wawancara2::where('npm', $id)->first();
         $data['isi3']   = Wawancara4::where('npm', $id)->first();

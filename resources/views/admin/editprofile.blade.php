@@ -38,7 +38,7 @@
                         <div class="form-group form-float">
                             <div class="form-line">
                                 <input type="text" name="email" class="form-control" value="{{ $email }}" readonly>
-                                <label class="form-label">Email</label>
+                                <label class="form-label">Username</label>
                             </div>
                         </div>
                         <br><br><br><br><br><br>

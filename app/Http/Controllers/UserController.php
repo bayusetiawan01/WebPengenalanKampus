@@ -56,8 +56,8 @@ class UserController extends Controller
         $data['p4']          = Pengumuman::find(4);
         $data['p5']          = Pengumuman::find(5);
         $data['p6']          = Pengumuman::find(6);
-        $data['suratizin']   = $data['wawancarad']->suratizin;
-        $data['suratpernyataan']   = $data['wawancarad']->suratpernyataan;
+        $data['suratizin']   = $user->suratizin;
+        $data['suratpernyataan']   = $user->suratpernyataan;
         return view('/user/home', $data);
     }
     public function profile(Request $request)
@@ -1077,13 +1077,13 @@ class UserController extends Controller
             'file'        => 'required',
         ]);
 
-        $p             = Wawancara::where('npm', $user->npm)->first();
+        $p             = User::where('npm', $user->npm)->first();
         $file          = $request->file('file');
         $nama_file     = time() . "_" . $file->getClientOriginalName();
         $tujuan_upload = 'tugas/suratizin';
         $file->move($tujuan_upload, $nama_file);
 
-        $u              = Wawancara::find($p->id);
+        $u              = User::find($p->id);
         $u->suratizin   = $nama_file;
         $u->save();
 
@@ -1096,13 +1096,13 @@ class UserController extends Controller
             'file'        => 'required',
         ]);
 
-        $p             = Wawancara::where('npm', $user->npm)->first();
+        $p             = User::where('npm', $user->npm)->first();
         $file          = $request->file('file');
         $nama_file     = time() . "_" . $file->getClientOriginalName();
         $tujuan_upload = 'tugas/suratpernyataan';
         $file->move($tujuan_upload, $nama_file);
 
-        $u                  = Wawancara::find($p->id);
+        $u                  = User::find($p->id);
         $u->suratpernyataan = $nama_file;
         $u->save();
 
