@@ -12,7 +12,7 @@
                     <div class="thumbnail">
                         <img style="height: 120px !important; padding:10px" src="{{ url('/images/desain/lg_01.png') }}">
                         <div class="caption">
-                            <h3 style="margin-top: 0;">Matematika</h3>
+                            <h3>Matematika</h3>
                             <p>
                                 <a href="/admin/wawancara/Matematika" class="btn btn-danger waves-effect" role="button">Lihat Hasil</a>
                             </p>

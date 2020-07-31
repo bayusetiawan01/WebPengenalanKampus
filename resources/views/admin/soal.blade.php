@@ -74,12 +74,6 @@
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" name="jawaban" value="{{ old('jawaban') }}" class="form-control">
-                                <label class="form-label">Jawaban (opsional)</label>
-                            </div>
-                        </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
                                 <input type="text" name="pilihan" value="{{ old('pilihan') }}" class="form-control">
                                 <label class="form-label">Pilihan (jika pg) pisahkan dengan koma</label>
                             </div>

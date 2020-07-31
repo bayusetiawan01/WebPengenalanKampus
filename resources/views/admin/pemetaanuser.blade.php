@@ -24,20 +24,28 @@
                                     <th>#</th>
                                     <th>Nama</th>
                                     <th>NPM</th>
-                                    <th>Action</th>
+                                    <th>Pilihan 1</th>
+                                    <th>Pilihan 1.1</th>
+                                    <th>Pilihan 1.2</th>
+                                    <th>Pilihan 2</th>
+                                    <th>Pilihan 2.1</th>
+                                    <th>Pilihan 2.2</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 0; ?>
-                                @foreach($list as $l)
+                                @foreach($tabel as $l)
                                 <tr>
                                     <?php $i = $i + 1; ?>
                                     <td>{{ $i }}</td>
                                     <td>{{$l->nama}}</td>
                                     <td>{{$l->npm}}</td>
-                                    <td>
-                                        <a href="../wawancarau/{{$l->npm}}" type="button" class="btn btn-danger btn-sm">Lihat</a>
-                                    </td>
+                                    <td>{{$l->pilihan1}}</td>
+                                    <td>{{$l->pilihan11}}</td>
+                                    <td>{{$l->pilihan12}}</td>
+                                    <td>{{$l->pilihan2}}</td>
+                                    <td>{{$l->pilihan21}}</td>
+                                    <td>{{$l->pilihan22}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

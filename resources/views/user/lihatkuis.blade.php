@@ -12,7 +12,7 @@
                     </h2>
                 </div>
                 <div class="body">
-                    <form id="myForm" action="/user/kuis/store/{{$id}}" method="post" enctype="multipart/form-data">
+                    <form id="form" action="/user/kuis/store/{{$id}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <?php $i = 0; ?>
                         <?php foreach ($soal as $s) :
@@ -28,6 +28,7 @@
                                         <?php foreach ($pilihan as $p) : ?>
                                             <input type="radio" id="{{$p}}" name="{{$s->id}}" value="{{$p}}" @if(old($s->id)==$p ) checked @endif>
                                             <label for="{{$p}}" style="padding-left: 0px; min-width: 100px;">{{$p}}</label><br>
+                                            <input type="hidden" name="{{$s->id}}" value="-" />
                                         <?php endforeach ?>
                                     </div>
                                 </div>
@@ -57,7 +58,8 @@
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
-                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect submit-btn">Submit</button>
+                        <br><br><br><br><br><br><br><br>
                     </form>
                 </div>
             </div>
@@ -82,21 +84,21 @@
             success: function(data) {
                 $('#time').html(data);
                 if (data == "00:00:00") {
-                    document.getElementById("myForm").submit();
+                    window.btn_clicked = true;
+                    document.getElementById("form").submit();
                 }
             },
         });
     }
-</script>
-<script>
-    $(window).on('beforeunload', function() {
-        return "Any changes will be lost";
+
+    document.querySelector('.submit-btn').addEventListener("click", function() {
+        window.btn_clicked = true;
     });
 
-    // Form Submit
-    $(document).on("submit", "form", function(event) {
-        // disable unload warning
-        $(window).off('beforeunload');
-    });
+    window.onbeforeunload = function() {
+        if (!window.btn_clicked) {
+            return 'Jawaban Tidak tersimpan jika meninggalkan halaman';
+        }
+    };
 </script>
 @endsection

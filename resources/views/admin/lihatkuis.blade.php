@@ -82,7 +82,6 @@
                                                             <th>No</th>
                                                             <th>Soal</th>
                                                             <th>Jawaban</th>
-                                                            <th>Hasil</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -98,19 +97,6 @@
                                                                     <td><?php if (isset($jawab[$i])) {
                                                                             echo $jawab[$i];
                                                                         }  ?></td>
-                                                                    <td>
-                                                                        <?php
-                                                                        if (isset($jawab[$i])) {
-                                                                            if ($so->jawaban == NULL) :
-                                                                                echo "perlu diperiksa";
-                                                                            elseif (strtolower($so->jawaban) == strtolower(isset($jawab[$i]))) :
-                                                                                echo "jawaban benar";
-                                                                            else :
-                                                                                echo "jawaban salah";
-                                                                            endif;
-                                                                        }
-                                                                        ?>
-                                                                    </td>
                                                                 </tr>
                                                             <?php endif; ?>
                                                         <?php $i = $i + 1;

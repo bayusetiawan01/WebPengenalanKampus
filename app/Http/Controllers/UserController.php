@@ -250,6 +250,12 @@ class UserController extends Controller
     public function kuisStore($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $array = array_slice($request->post(), 1,);
+        foreach ($array as $key => $value) {
+            if (is_null($value)) {
+                $array[$key] = "-";
+            }
+        }
         $nama_file         = NULL;
         if ($request->hasFile('file')) {
             $file          = $request->file('file');
@@ -257,7 +263,7 @@ class UserController extends Controller
             $tujuan_upload = 'images/soal';
             $file->move($tujuan_upload, $nama_file);
         }
-        $string = implode(';', array_slice($request->post(), 1,));
+        $string = implode(';', $array);
         if ($string == NULL) {
             $string = $nama_file;
         }
@@ -274,39 +280,151 @@ class UserController extends Controller
     //////////////////////////////////////////
     public function pemetaan(Request $request)
     {
-        $user             = User::where('email', $request->session()->get('email'))->first();
+        $user  = User::where('email', $request->session()->get('email'))->first();
+        $check = Pemetaan::where('user_npm', $user->npm)->get();
+        $check2 = Pemetaan::where('user_npm', $user->npm)->first();
+
+        if ($check2->pilihan22 != NULL) {
+            return redirect('/user/pemetaan/5');
+        }
+        if ($check->isEmpty()) {
+            Pemetaan::create([
+                'user_npm'   => $user->npm,
+            ]);
+        }
         $data['foto']     = $user->image;
         $data['nama']     = $user->nama;
         $data['email']    = $user->email;
-        $data['pemetaan'] = Pemetaan::all();
-        $data['jawaban']  = Jawabanp::where('user_npm', $user->npm)->get();
         return view('/user/pemetaan', $data);
     }
-    public function lihatPemetaan($id, Request $request)
+    public function pemetaan1(Request $request)
     {
-        $user = User::where('email', $request->session()->get('email'))->first();
+        $user             = User::where('email', $request->session()->get('email'))->first();
+        $data['pemetaan'] = Pemetaan::where('user_npm', $user->npm)->first();
         $data['foto']     = $user->image;
         $data['nama']     = $user->nama;
         $data['email']    = $user->email;
-        $data['npm']      = $user->npm;
-        $data['id']       = $id;
-        $data['pemetaan'] = Pemetaan::find($id);
-        $data['soal']     = Soalp::where('pemetaan_id', $id)->get();
-        return view('/user/lihatpemetaan', $data);
+        return view('/user/pemetaan1', $data);
     }
-    public function pemetaanStore($id, Request $request)
+    public function pemetaanStore1(Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
-        $string = implode(';', array_slice($request->post(), 1,));
-        Jawabanp::create([
-            'pemetaan_id' => $id,
-            'user_npm'    => $user->npm,
-            'jawaban'     => $string
-        ]);
-        return redirect('/user/pemetaan');
+        $p    = Pemetaan::where('user_npm', $user->npm)->first();
+
+        $u            = Pemetaan::find($p->id);
+        $u->pilihan1  = $request->pilihan1;
+        $u->save();
+
+        return redirect('/user/pemetaan/2');
+    }
+    public function pemetaan2(Request $request)
+    {
+        $user             = User::where('email', $request->session()->get('email'))->first();
+        $data['pemetaan'] = Pemetaan::where('user_npm', $user->npm)->first();
+        $pemetaan         = Pemetaan::where('user_npm', $user->npm)->first();
+        $data['foto']     = $user->image;
+        $data['nama']     = $user->nama;
+        $data['email']    = $user->email;
+        if ($pemetaan->pilihan1 == 'bem') {
+            return view('/user/pemetaanbem', $data);
+        } elseif ($pemetaan->pilihan1 == 'bpm') {
+            return view('/user/pemetaanbpm', $data);
+        } elseif ($pemetaan->pilihan1 == 'kka') {
+            return view('/user/pemetaankka', $data);
+        } elseif ($pemetaan->pilihan1 == 'miba') {
+            return view('/user/pemetaanmiba', $data);
+        } elseif ($pemetaan->pilihan1 == 'kti') {
+            return view('/user/pemetaankti', $data);
+        }
+    }
+    public function pemetaanStore2(Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $p    = Pemetaan::where('user_npm', $user->npm)->first();
+
+        if ($request->pilihan11 == $request->pilihan12) {
+            $request->session()->flash('gagal', 'Pilihan 1 dan 2 tidak boleh sama');
+            return redirect('/user/pemetaan/2');
+        }
+        $u            = Pemetaan::find($p->id);
+        $u->pilihan11  = $request->pilihan11;
+        $u->pilihan12  = $request->pilihan12;
+        $u->save();
+
+        return redirect('/user/pemetaan/3');
+    }
+    public function pemetaan3(Request $request)
+    {
+        $user             = User::where('email', $request->session()->get('email'))->first();
+        $data['pemetaan'] = Pemetaan::where('user_npm', $user->npm)->first();
+        $data['foto']     = $user->image;
+        $data['nama']     = $user->nama;
+        $data['email']    = $user->email;
+        return view('/user/pemetaan2', $data);
+    }
+    public function pemetaanStore3(Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $p    = Pemetaan::where('user_npm', $user->npm)->first();
+
+        if ($request->pilihan2 == $p->pilihan1) {
+            $request->session()->flash('gagal', 'Pilihan 1 dan 2 tidak boleh sama');
+            return redirect('/user/pemetaan/3');
+        }
+
+        $u            = Pemetaan::find($p->id);
+        $u->pilihan2  = $request->pilihan2;
+        $u->save();
+
+        return redirect('/user/pemetaan/4');
+    }
+    public function pemetaan4(Request $request)
+    {
+        $user             = User::where('email', $request->session()->get('email'))->first();
+        $data['pemetaan'] = Pemetaan::where('user_npm', $user->npm)->first();
+        $pemetaan         = Pemetaan::where('user_npm', $user->npm)->first();
+        $data['foto']     = $user->image;
+        $data['nama']     = $user->nama;
+        $data['email']    = $user->email;
+        if ($pemetaan->pilihan2 == 'bem') {
+            return view('/user/pemetaanbem2', $data);
+        } elseif ($pemetaan->pilihan2 == 'bpm') {
+            return view('/user/pemetaanbpm2', $data);
+        } elseif ($pemetaan->pilihan2 == 'kka') {
+            return view('/user/pemetaankka2', $data);
+        } elseif ($pemetaan->pilihan2 == 'miba') {
+            return view('/user/pemetaanmiba2', $data);
+        } elseif ($pemetaan->pilihan2 == 'kti') {
+            return view('/user/pemetaankti2', $data);
+        }
+    }
+    public function pemetaanStore4(Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $p    = Pemetaan::where('user_npm', $user->npm)->first();
+
+        if ($request->pilihan21 == $request->pilihan22) {
+            $request->session()->flash('gagal', 'Pilihan 1 dan 2 tidak boleh sama');
+            return redirect('/user/pemetaan/4');
+        }
+        $u            = Pemetaan::find($p->id);
+        $u->pilihan21  = $request->pilihan21;
+        $u->pilihan22  = $request->pilihan22;
+        $u->save();
+
+        return redirect('/user/pemetaan/5');
+    }
+    public function pemetaan5(Request $request)
+    {
+        $user             = User::where('email', $request->session()->get('email'))->first();
+        $data['pemetaan'] = Pemetaan::where('user_npm', $user->npm)->first();
+        $data['foto']     = $user->image;
+        $data['nama']     = $user->nama;
+        $data['email']    = $user->email;
+        return view('/user/pemetaan5', $data);
     }
     //////////////////////////////////////////
-    // Method Wawancara -------------------------
+    // Method Wawancara ----------------------
     //////////////////////////////////////////
     public function wawancara(Request $request)
     {
@@ -464,6 +582,11 @@ class UserController extends Controller
             'tahunp5'          => $request->tahunp5,
         ]);
 
+        $u           = User::find($user->id);
+        $u->himpunan = $request->jurusan;
+        $u->nama     = $request->nama;
+        $u->save();
+
         return redirect('/user');
     }
     public function wawancaraUpdate(Request $request)
@@ -603,6 +726,10 @@ class UserController extends Controller
         $wawancara->lembaga5         = $request->lembaga5;
         $wawancara->tahunp5          = $request->tahunp5;
         $wawancara->save();
+
+        $u           = User::find($user->id);
+        $u->himpunan  = $request->jurusan;
+        $u->save();
 
         return redirect('/user');
     }

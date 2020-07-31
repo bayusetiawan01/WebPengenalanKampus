@@ -544,91 +544,22 @@ class AdminController extends Controller
         $data['foto']     = $user->image;
         $data['nama']     = $user->nama;
         $data['email']    = $user->email;
-        $data['pemetaan'] = Pemetaan::all();
         return view('/admin/pemetaan', $data);
     }
-    public function pemetaanStore(Request $request)
-    {
-        $this->validate($request, [
-            'judul'     => 'required',
-            'deskripsi' => 'required',
-        ]);
-
-        Pemetaan::create([
-            'judul'     => $request->judul,
-            'deskripsi' => $request->deskripsi,
-        ]);
-
-        return redirect('/admin/pemetaan');
-    }
-    public function editPemetaan($id, Request $request)
+    public function hasilpemetaan($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
-        $data['foto']  = $user->image;
-        $data['nama']  = $user->nama;
-        $data['id']    = $id;
-        $data['email'] = $user->email;
-        $data['soal'] = Soalp::where('pemetaan_id', $id)->get();
-        $data['pemetaan'] = Pemetaan::find($id);
-        return view('/admin/soalp', $data);
-    }
-    public function soalpStore(Request $request)
-    {
-        $this->validate($request, [
-            'soal'      => 'required',
-            'tipe_soal' => 'required',
-        ]);
-
-        Soalp::create([
-            'soal'        => $request->soal,
-            'pemetaan_id' => $request->pemetaan_id,
-            'tipe_soal'   => $request->tipe_soal,
-            'pilihan'     => $request->pilihan,
-        ]);
-
-        return redirect('/admin/pemetaan/edit/' . $request->pemetaan_id);
-    }
-    public function deleteSoalp($id, Request $request)
-    {
-        $soal = Soalp::find($id);
-        $pemetaan_id = $soal->pemetaan_id;
-        $soal->delete();
-        return redirect('/admin/pemetaan/edit/' . $pemetaan_id);
-    }
-    public function pemetaanUpdate($id, Request $request)
-    {
-        $this->validate($request, [
-            'judul'     => 'required',
-            'deskripsi' => 'required',
-        ]);
-        $pemetaan = Pemetaan::find($id);
-        $pemetaan->judul     = $request->judul;
-        $pemetaan->deskripsi = $request->deskripsi;
-        $pemetaan->save();
-        return redirect('/admin/pemetaan');
-    }
-    public function deletePemetaan($id, Request $request)
-    {
-        $pemetaan = Pemetaan::find($id);
-        $pemetaan->delete();
-        return redirect('/admin/pemetaan');
-    }
-    public function lihatPemetaan($id, Request $request)
-    {
-        $user = User::where('email', $request->session()->get('email'))->first();
-        $data['foto']    = $user->image;
-        $data['nama']    = $user->nama;
-        $data['email']   = $user->email;
-        $data['npm']     = $user->npm;
-        $data['id']      = $id;
-        $data['pemetaan']    = Pemetaan::find($id);
-        $data['soal']    = Soalp::where('pemetaan_id', $id)->get();
-        $data['jawaban'] = DB::select("
-                    SELECT * FROM jawabanp AS j
-                    JOIN user AS u ON j.user_npm = u.npm
-                    WHERE j.pemetaan_id = $id
+        $data['foto']   = $user->image;
+        $data['nama']   = $user->nama;
+        $data['email']  = $user->email;
+        $data['jur']    = $id;
+        $data['list']   = User::where([['himpunan', $id], ['role_id', 1]])->get();
+        $data['tabel']  = DB::select("
+                    SELECT * FROM user AS u
+                    LEFT JOIN pemetaan AS p ON p.user_npm = u.npm
+                    WHERE u.himpunan = '$id' AND u.role_id = 1 
                 ");
-        return view('/admin/lihatpemetaan', $data);
+        return view('/admin/pemetaanuser', $data);
     }
     //////////////////////////////////////////
     // Method Manajemen User -----------------
@@ -703,12 +634,18 @@ class AdminController extends Controller
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['jur']    = $id;
-        $data['list']   = Wawancara::where('jurusan', $id)->get();
+        $data['list']   = User::where([['himpunan', $id], ['role_id', 1]])->get();
         return view('/admin/wawancarauser', $data);
     }
     public function isiwawancara($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $user2 = User::where('npm', $id)->first();
+        $check = Wawancara::where('npm', $id)->get();
+        if ($check->isEmpty()) {
+            $request->session()->flash('gagal', 'Mahasiswa belum mengisi form wawancara');
+            return redirect('/admin/wawancara/' . $user2->himpunan);
+        }
         $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
