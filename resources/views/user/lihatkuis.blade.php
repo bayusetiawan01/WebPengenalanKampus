@@ -25,10 +25,10 @@
                                 <?php $pilihan = explode(',', $s->pilihan) ?>
                                 <div class="form-group">
                                     <div class="demo-radio-button">
+                                        <input type="hidden" name="{{$s->id}}" value="-" />
                                         <?php foreach ($pilihan as $p) : ?>
                                             <input type="radio" id="{{$p}}" name="{{$s->id}}" value="{{$p}}" @if(old($s->id)==$p ) checked @endif>
                                             <label for="{{$p}}" style="padding-left: 0px; min-width: 100px;">{{$p}}</label><br>
-                                            <input type="hidden" name="{{$s->id}}" value="-" />
                                         <?php endforeach ?>
                                     </div>
                                 </div>

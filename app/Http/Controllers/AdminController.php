@@ -24,6 +24,7 @@ use App\Pengumuman;
 use App\Pemetaan;
 use App\Soalp;
 use Illuminate\Support\Facades\Hash;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -654,6 +655,26 @@ class AdminController extends Controller
         $data['isi5']   = Wawancara5::where('npm', $id)->first();
         $data['nilai']  = NilaiWawancara::where('npm', $id)->first();
         return view('/admin/wawancarau', $data);
+    }
+    public function isiwawancarapdf($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $user2 = User::where('npm', $id)->first();
+        $data['jur']    = $id;
+        $data['user']   = User::where('npm', $id)->first();
+        $data['isi']    = Wawancara::where('npm', $id)->first();
+        $data['isi2']   = Wawancara2::where('npm', $id)->first();
+        $data['isi3']   = Wawancara4::where('npm', $id)->first();
+        $data['isi4i']  = Wawancara3Islam::where('npm', $id)->first();
+        $data['isi4p']  = Wawancara3Protestan::where('npm', $id)->first();
+        $data['isi4k']  = Wawancara3Katholik::where('npm', $id)->first();
+        $data['isi4h']  = Wawancara3Hindu::where('npm', $id)->first();
+        $data['isi4b']  = Wawancara3Buddha::where('npm', $id)->first();
+        $data['isi5']   = Wawancara5::where('npm', $id)->first();
+        $data['nilai']  = NilaiWawancara::where('npm', $id)->first();
+
+        $pdf = PDF::loadView('/admin/wawancaraupdf', $data);
+        return $pdf->download('wawancara_' . $id);
     }
     public function wawancaraStore(Request $request)
     {

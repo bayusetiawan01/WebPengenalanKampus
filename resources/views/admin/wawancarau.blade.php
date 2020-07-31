@@ -1070,6 +1070,7 @@
                 </div>
                 <div class="body">
                     <div class="row clearfix" style="text-align: center;">
+                        <a class="btn btn-danger waves-effect" href="<?= url('/admin/wawancaraupdf/' . $isi->npm) ?>">Download PDF</a>
                         <button class="btn btn-danger waves-effect" type="button" data-toggle="collapse" data-target="#collapseKetentuan" aria-expanded="false" aria-controls="collapseExample">
                             Buka Ketentuan
                         </button>

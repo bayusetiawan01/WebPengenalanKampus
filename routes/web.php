@@ -71,6 +71,7 @@ Route::get('/admin/wawancara/{id}', 'AdminController@hasilwawancara');
 Route::get('/admin/wawancarau/{id}', 'AdminController@isiwawancara');
 Route::post('/admin/wawancara/store', 'AdminController@wawancaraStore');
 Route::post('/admin/wawancara/update', 'AdminController@wawancaraUpdate');
+Route::get('/admin/wawancaraupdf/{id}', 'AdminController@isiwawancarapdf');
 
 //Rute User
 Route::get('/user', 'UserController@index');
