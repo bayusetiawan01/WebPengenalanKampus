@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="theme-color" content="firebrick" />
+    <meta name="theme-color" content="#b22222">
+    <meta name="msapplication-TileColor" content="#b22222">
+    <meta name="msapplication-navbutton-color" content="##b22222">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#b22222">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Mipa Bersatu | Admin</title>
     <!-- Favicon-->

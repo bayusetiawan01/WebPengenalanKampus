@@ -164,12 +164,17 @@ class UserController extends Controller
     public function lihatTugas($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
-        $data['foto']   = $user->image;
-        $data['nama']   = $user->nama;
-        $data['email']  = $user->email;
-        $data['id']     = $id;
-        $data['tugas']  = Tugas::find($id);
-        return view('/user/lihattugas', $data);
+        $tugas_user = Filetugas::where([['user_npm', $user->npm], ['tugas_id', $id]])->get();
+        if ($tugas_user->isEmpty()) {
+            $data['foto']   = $user->image;
+            $data['nama']   = $user->nama;
+            $data['email']  = $user->email;
+            $data['id']     = $id;
+            $data['tugas']  = Tugas::find($id);
+            return view('/user/lihattugas', $data);
+        } else {
+            return redirect('user/tugas');
+        }
     }
     public function tugasStore($id, Request $request)
     {

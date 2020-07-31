@@ -1052,8 +1052,16 @@
                             </div>
                             <div id="collapsesix_5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingsix_5">
                                 <div class="panel-body">
-                                    <a href="<?php echo asset('tugas/suratizin/' . $isi->suratizin) ?>" class="btn btn-danger waves-effect" role="button">Surat Izin</a>
-                                    <a href="<?php echo asset('tugas/suratpernyataan/' . $isi->suratpernyataan) ?>" class="btn btn-danger waves-effect" role="button">Surat Pernyataan</a>
+                                    <?php if ($user->suratizin == NULL) : ?>
+                                        <button class="btn btn-default waves-effect" role="button">Surat Belum Dikumpulkan</button>
+                                    <?php else : ?>
+                                        <a href="<?php echo asset('tugas/suratizin/' . $user->suratizin) ?>" class="btn btn-danger waves-effect" role="button">Surat Izin</a>
+                                    <?php endif ?>
+                                    <?php if ($user->suratpernyataan == NULL) : ?>
+                                        <button class="btn btn-default waves-effect" role="button">Surat Belum Dikumpulkan</button>
+                                    <?php else : ?>
+                                        <a href="<?php echo asset('tugas/suratpernyataan/' . $user->suratpernyataan) ?>" class="btn btn-danger waves-effect" role="button">Surat Pernyataan</a>
+                                    <?php endif ?>
                                 </div>
                             </div>
                         </div>

@@ -16,7 +16,9 @@
                         <?php echo nl2br(htmlspecialchars($tugas->deskripsi)); ?>
 
                         <br><br>
-                        <a href="<?php echo asset('tugas/' . $tugas->petunjuk) ?>" class="btn btn-danger waves-effect" role="button">Download Petunjuk</a>
+                        <?php if ($tugas->petunjuk != NULL) : ?>
+                            <a href="<?php echo asset('tugas/' . $tugas->petunjuk) ?>" class="btn btn-danger waves-effect" role="button">Download Petunjuk</a>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>

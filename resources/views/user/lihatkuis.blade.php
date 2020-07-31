@@ -9,6 +9,9 @@
                     <h3>{{$kuis->judul}}</h3>
                     <h2>
                         {{$kuis->deskripsi}}
+                        <?php if ($kuis->petunjuk != NULL) : ?>
+                            <a href="<?php echo asset('tugas/' . $tugas->petunjuk) ?>" class="btn btn-danger waves-effect" role="button">Download Petunjuk</a>
+                        <?php endif ?>
                     </h2>
                 </div>
                 <div class="body">
