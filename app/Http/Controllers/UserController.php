@@ -282,15 +282,16 @@ class UserController extends Controller
     {
         $user  = User::where('email', $request->session()->get('email'))->first();
         $check = Pemetaan::where('user_npm', $user->npm)->get();
-        $check2 = Pemetaan::where('user_npm', $user->npm)->first();
 
-        if ($check2->pilihan22 != NULL) {
-            return redirect('/user/pemetaan/5');
-        }
         if ($check->isEmpty()) {
             Pemetaan::create([
                 'user_npm'   => $user->npm,
             ]);
+        }
+
+        $check2 = Pemetaan::where('user_npm', $user->npm)->first();
+        if ($check2->pilihan22 != NULL) {
+            return redirect('/user/pemetaan/5');
         }
         $data['foto']     = $user->image;
         $data['nama']     = $user->nama;
