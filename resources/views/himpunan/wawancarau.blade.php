@@ -1070,6 +1070,7 @@
                 </div>
                 <div class="body">
                     <div class="row clearfix" style="text-align: center;">
+                        <a class="btn btn-danger waves-effect" href="<?= url('/himpunan/wawancaraupdf/' . $isi->npm) ?>">Download PDF</a>
                         <button class="btn btn-danger waves-effect" type="button" data-toggle="collapse" data-target="#collapseKetentuan" aria-expanded="false" aria-controls="collapseExample">
                             Buka Ketentuan
                         </button>
@@ -1080,7 +1081,7 @@
                     <div class="collapse" id="collapseForm">
                         <div class="well" style="background-color: white; overflow:scroll; height:400px">
                             @if($nilai == NULL)
-                            <form action="/admin/wawancara/store" method="post" enctype="multipart/form-data">
+                            <form action="/himpunan/wawancara/store" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -1139,7 +1140,7 @@
                                 <button type="submit" class="btn btn-primary m-t-15 waves-effect">Simpan</button>
                             </form>
                             @else
-                            <form action="/admin/wawancara/update" method="post" enctype="multipart/form-data">
+                            <form action="/himpunan/wawancara/update" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="form-group form-float">
                                     <div class="form-line">

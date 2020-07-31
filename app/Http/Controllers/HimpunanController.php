@@ -18,6 +18,7 @@ use App\Wawancara3Protestan;
 use App\NilaiWawancara;
 use App\Pengumuman;
 use App\Wawancara5;
+use PDF;
 use Illuminate\Support\Facades\Hash;
 
 class HimpunanController extends Controller
@@ -57,12 +58,18 @@ class HimpunanController extends Controller
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['jur']    = $user->himpunan;
-        $data['list']   = Wawancara::where('jurusan', $user->himpunan)->get();
+        $data['list']   = User::where([['himpunan', $user->himpunan], ['role_id', 1]])->get();
         return view('/himpunan/wawancarauser', $data);
     }
     public function isiwawancara($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
+        $user2 = User::where('npm', $id)->first();
+        $check = Wawancara::where('npm', $id)->get();
+        if ($check->isEmpty()) {
+            $request->session()->flash('gagal', 'Mahasiswa belum mengisi form wawancara');
+            return redirect('/himpunan/wawancara/');
+        }
         $data['foto']   = $user->image;
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
@@ -78,6 +85,26 @@ class HimpunanController extends Controller
         $data['nilai']  = NilaiWawancara::where('npm', $id)->first();
         $data['isi5']   = Wawancara5::where('npm', $id)->first();
         return view('/himpunan/wawancarau', $data);
+    }
+    public function isiwawancarapdf($id, Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        $user2 = User::where('npm', $id)->first();
+        $data['jur']    = $id;
+        $data['user']   = User::where('npm', $id)->first();
+        $data['isi']    = Wawancara::where('npm', $id)->first();
+        $data['isi2']   = Wawancara2::where('npm', $id)->first();
+        $data['isi3']   = Wawancara4::where('npm', $id)->first();
+        $data['isi4i']  = Wawancara3Islam::where('npm', $id)->first();
+        $data['isi4p']  = Wawancara3Protestan::where('npm', $id)->first();
+        $data['isi4k']  = Wawancara3Katholik::where('npm', $id)->first();
+        $data['isi4h']  = Wawancara3Hindu::where('npm', $id)->first();
+        $data['isi4b']  = Wawancara3Buddha::where('npm', $id)->first();
+        $data['isi5']   = Wawancara5::where('npm', $id)->first();
+        $data['nilai']  = NilaiWawancara::where('npm', $id)->first();
+
+        $pdf = PDF::loadView('/admin/wawancaraupdf', $data);
+        return $pdf->download('wawancara_' . $id);
     }
     public function profile(Request $request)
     {
@@ -145,5 +172,71 @@ class HimpunanController extends Controller
             $request->session()->flash('gagal', 'Password Gagal Diperbaharui');
         }
         return redirect('himpunan/password');
+    }
+    public function wawancaraStore(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+
+        $this->validate($request, [
+            'npm'               => 'required',
+            'organisasi'        => 'required',
+            'jawaban_wawancara' => 'required',
+            'sikap_wawancara'   => 'required',
+            'koordinator'       => 'required',
+            'sbmptn'            => 'required',
+            'prodi_mipa'        => 'required',
+            'lk_kkm'            => 'required',
+            'sikap_prodi'       => 'required',
+        ]);
+
+        NilaiWawancara::create([
+            'npm'               => $request->npm,
+            'organisasi'        => $request->organisasi,
+            'jawaban_wawancara' => $request->jawaban_wawancara,
+            'sikap_wawancara'   => $request->sikap_wawancara,
+            'koordinator'       => $request->koordinator,
+            'sbmptn'            => $request->sbmptn,
+            'prodi_mipa'        => $request->prodi_mipa,
+            'lk_kkm'            => $request->lk_kkm,
+            'sikap_prodi'       => $request->sikap_prodi,
+        ]);
+
+        return redirect('/himpunan/wawancarau/' . $request->npm);
+    }
+    public function wawancaraUpdate(Request $request)
+    {
+        $user          = User::where('email', $request->session()->get('email'))->first();
+        $data['foto']  = $user->image;
+        $data['nama']  = $user->nama;
+        $data['email'] = $user->email;
+
+        $this->validate($request, [
+            'npm'               => 'required',
+            'organisasi'        => 'required',
+            'jawaban_wawancara' => 'required',
+            'sikap_wawancara'   => 'required',
+            'koordinator'       => 'required',
+            'sbmptn'            => 'required',
+            'prodi_mipa'        => 'required',
+            'lk_kkm'            => 'required',
+            'sikap_prodi'       => 'required',
+        ]);
+        $p     = NilaiWawancara::where('npm', $request->npm)->first();
+        $nilai = NilaiWawancara::find($p->id);
+        $nilai->npm               = $request->npm;
+        $nilai->organisasi        = $request->organisasi;
+        $nilai->jawaban_wawancara = $request->jawaban_wawancara;
+        $nilai->sikap_wawancara   = $request->sikap_wawancara;
+        $nilai->koordinator       = $request->koordinator;
+        $nilai->sbmptn            = $request->sbmptn;
+        $nilai->prodi_mipa        = $request->prodi_mipa;
+        $nilai->lk_kkm            = $request->lk_kkm;
+        $nilai->sikap_prodi       = $request->sikap_prodi;
+        $nilai->save();
+
+        return redirect('/himpunan/wawancarau/' . $request->npm);
     }
 }
