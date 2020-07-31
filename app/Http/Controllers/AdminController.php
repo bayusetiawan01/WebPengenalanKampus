@@ -398,12 +398,10 @@ class AdminController extends Controller
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
         $data['tugas'] = Tugas::find($id);
-        $data['tabel'] = DB::select("
-                    SELECT f.created_at, u.nama, u.npm, f.file_tugas FROM file_tugas AS f
-                    JOIN tugas AS t ON t.id = f.tugas_id
-                    JOIN user AS u ON u.npm = f.user_npm
-                    WHERE f.tugas_id = $id
-                ");
+        $data['tabel'] = DB::table('file_tugas')->join('tugas', 'tugas.id', '=', 'file_tugas.tugas_id')
+            ->join('user', 'user.npm', '=', 'file_tugas.user_npm')
+            ->select('file_tugas.created_at', 'user.nama', 'user.npm', 'file_tugas.file_tugas')
+            ->where('file_tugas.tugas_id', $id)->get();
         return view('/admin/hasiltugas', $data);
     }
     //////////////////////////////////////////
@@ -528,11 +526,8 @@ class AdminController extends Controller
         $data['id']      = $id;
         $data['kuis']    = Kuis::find($id);
         $data['soal']    = Soal::where('kuis_id', $id)->get();
-        $data['jawaban'] = DB::select("
-                    SELECT u.nama, u.npm, j.user_npm, j.kuis_id, j.jawaban, j.image FROM jawaban AS j
-                    JOIN user AS u ON j.user_npm = u.npm
-                    WHERE j.kuis_id = $id
-                ");
+        $data['jawaban'] = DB::table('jawaban')->join('user', 'jawaban.user_npm', '=', 'user.npm')
+            ->select('user.nama', 'jawaban.*', 'user.npm')->where('jawaban.kuis_id', $id)->get();
         return view('/admin/lihatkuis', $data);
     }
     //////////////////////////////////////////
@@ -554,11 +549,8 @@ class AdminController extends Controller
         $data['email']  = $user->email;
         $data['jur']    = $id;
         $data['list']   = User::where([['himpunan', $id], ['role_id', 1]])->get();
-        $data['tabel']  = DB::select("
-                    SELECT * FROM user AS u
-                    LEFT JOIN pemetaan AS p ON p.user_npm = u.npm
-                    WHERE u.himpunan = '$id' AND u.role_id = 1 
-                ");
+        $data['tabel'] = DB::table('user')->leftJoin('pemetaan', 'pemetaan.user_npm', '=', 'user.npm')
+            ->where([['user.himpunan', $id], ['user.role_id', 1]])->get();
         return view('/admin/pemetaanuser', $data);
     }
     //////////////////////////////////////////
