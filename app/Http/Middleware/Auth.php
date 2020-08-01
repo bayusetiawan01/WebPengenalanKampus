@@ -18,7 +18,7 @@ class Auth
         if ($request->session()->has('email')) {
             return $next($request);
         } else {
-            return redirect('/');
+            return redirect('/login');
         }
     }
 }

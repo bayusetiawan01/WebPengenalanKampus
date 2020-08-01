@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //Rute Auth
-Route::get('/', 'AuthController@index');
+Route::view('/', 'landing');
+Route::get('/login', 'AuthController@index');
 Route::get('/register12345678', 'AuthController@register');
 Route::get('/logout', 'AuthController@logout');
 Route::post('/register/proc', 'AuthController@register_proc');
