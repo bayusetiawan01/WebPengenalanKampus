@@ -22,6 +22,11 @@
                             </div>
                             <div class="body" style="padding: 10px;">
                                 <br>
+                                @if($k->is_active == 1)
+                                <a href="kuis/nonaktif/{{$k->id}}" class="btn btn-default btn-block">Cancel</a><br>
+                                @else
+                                <a href="kuis/aktif/{{$k->id}}" class="btn btn-danger btn-block">Publish</a><br>
+                                @endif
                                 <a href="kuis/edit/{{$k->id}}" class="btn btn-default">Edit</a>
                                 <a href="kuis/lihat/{{$k->id}}" class="btn btn-default">Lihat</a>
                                 <a href="kuis/hapus/{{$k->id}}" onclick="return confirm('Are you sure?');" class="btn btn-danger">Hapus</a>

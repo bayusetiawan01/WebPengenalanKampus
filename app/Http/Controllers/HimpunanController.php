@@ -18,8 +18,8 @@ use App\Wawancara3Protestan;
 use App\NilaiWawancara;
 use App\Pengumuman;
 use App\Wawancara5;
-use PDF;
 use Illuminate\Support\Facades\Hash;
+use PDF;
 
 class HimpunanController extends Controller
 {
@@ -122,7 +122,7 @@ class HimpunanController extends Controller
             'nama'           => 'required',
             'npm'            => 'required',
             'email'          => 'required',
-            'foto'           => 'image',
+            'foto'           => 'image|max:2048',
         ]);
 
         $p                 = User::where('email', $request->session()->get('email'))->first();

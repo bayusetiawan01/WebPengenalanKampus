@@ -123,7 +123,7 @@
                         <div class="thumbnail" style="padding-top: 6px;">
                             <img id="preview" src="http://placehold.it/300x400">
                             <div class="caption">
-                                <p>Foto 3x4 Berwarna</p>
+                                <p>Foto 3x4 Berwarna, Ukuran Maksimal 2 MB</p>
                             </div>
                         </div>
                         <div class="form-group">

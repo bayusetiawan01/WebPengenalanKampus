@@ -23,6 +23,7 @@ Route::post('/proc', 'AuthController@login_proc');
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/users', 'AdminController@users');
 Route::get('/admin/users/hapus/{id}', 'AdminController@deleteUser');
+Route::get('/admin/users/restore/{id}', 'AdminController@restoreUser');
 Route::get('/admin/users/setA/{id}', 'AdminController@setAdmin');
 Route::get('/admin/users/setU/{id}', 'AdminController@setUser');
 Route::get('/admin/profile', 'AdminController@profile');
@@ -56,6 +57,8 @@ Route::get('/admin/tugas/hapus/{id}', 'AdminController@deleteTugas');
 Route::get('/admin/tugas/lihat/{id}', 'AdminController@lihatTugas');
 //Rute Kuis
 Route::get('/admin/kuis', 'AdminController@kuis');
+Route::get('/admin/kuis/aktif/{id}', 'AdminController@aktivKuis');
+Route::get('/admin/kuis/nonaktif/{id}', 'AdminController@nonaktivKuis');
 Route::post('/admin/kuis/store', 'AdminController@kuisStore');
 Route::get('/admin/kuis/edit/{id}', 'AdminController@editKuis');
 Route::post('/admin/soal/store', 'AdminController@soalStore');
@@ -66,6 +69,8 @@ Route::get('/admin/kuis/lihat/{id}', 'AdminController@lihatKuis');
 //Rute Pemetaan
 Route::get('/admin/pemetaan', 'AdminController@pemetaan');
 Route::get('/admin/pemetaan/{id}', 'AdminController@hasilpemetaan');
+Route::get('/admin/pemetaans/aktif', 'AdminController@aktifkanPemetaan');
+Route::get('/admin/pemetaans/nonaktif', 'AdminController@nonaktifkanPemetaan');
 //Rute AdminWawancara
 Route::get('/admin/wawancara', 'AdminController@wawancara');
 Route::get('/admin/wawancara/{id}', 'AdminController@hasilwawancara');

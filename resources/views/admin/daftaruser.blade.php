@@ -27,7 +27,11 @@
                                     <td>{{$u->npm}}</td>
                                     <td>
                                         <?php if ($u->role_id == 1) { ?>
-                                            <a href="../admin/users/hapus/{{$u->id}}" onclick="return confirm('Are you sure?');" type="button" class="btn btn-danger btn-sm">Delete</a>
+                                        <?php if ($u->is_active == 1) { ?>
+                                            <a href="../admin/users/hapus/{{$u->id}}" onclick="return confirm('Are you sure?');" type="button" class="btn btn-danger btn-sm">Nonaktifkan</a>
+                                            <?php }else{ ?>
+                                            <a href="../admin/users/restore/{{$u->id}}" onclick="return confirm('Are you sure?');" type="button" class="btn btn-danger btn-sm">Aktifkan</a>
+                                            <?php } ?>
                                         <?php } ?>
                                     </td>
                                 </tr>

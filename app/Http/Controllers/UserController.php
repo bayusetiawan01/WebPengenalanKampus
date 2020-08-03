@@ -22,6 +22,7 @@ use App\Wawancara3Protestan;
 use App\Wawancara3Islam;
 use App\Wawancara4;
 use App\Wawancara5;
+use App\Fitur;
 use App\Pengumuman;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -76,7 +77,7 @@ class UserController extends Controller
             'nama'           => 'required',
             'npm'            => 'required',
             'email'          => 'required',
-            'foto'           => 'image',
+            'foto'           => 'image|max:2048',
         ]);
 
         $p                 = User::where('email', $request->session()->get('email'))->first();
@@ -218,7 +219,7 @@ class UserController extends Controller
         $data['foto']    = $user->image;
         $data['nama']    = $user->nama;
         $data['email']   = $user->email;
-        $data['kuis']    = Kuis::all();
+        $data['kuis']    = Kuis::where('is_active', 1)->get();
         $data['jawaban'] = Jawaban::where('user_npm', $user->npm)->get();
         return view('/user/kuis', $data);
     }
@@ -245,7 +246,7 @@ class UserController extends Controller
         $data['id']     = $id;
         $data['kuis']   = Kuis::find($id);
         $data['soal']   = Soal::where('kuis_id', $id)->get();
-        if ($check2->timer - time() <= 0) {
+        if ($check2->timer - time() <= 0 || $check2->jawaban != NULL) {
             $request->session()->flash('gagal', 'Kuis sudah tidak tersedia');
             return redirect('user/kuis');
         } else {
@@ -285,6 +286,11 @@ class UserController extends Controller
     //////////////////////////////////////////
     public function pemetaan(Request $request)
     {
+        $p = Fitur::where('fitur', 'pemetaan')->first();
+        if ($p->is_active == 0){
+            $request->session()->flash('gagal', 'Belum waktunya mengisi pemetaan');
+            return redirect('/user');
+        } else{
         $user  = User::where('email', $request->session()->get('email'))->first();
         $check = Pemetaan::where('user_npm', $user->npm)->get();
 
@@ -302,6 +308,7 @@ class UserController extends Controller
         $data['nama']     = $user->nama;
         $data['email']    = $user->email;
         return view('/user/pemetaan', $data);
+        }
     }
     public function pemetaan1(Request $request)
     {
@@ -470,7 +477,7 @@ class UserController extends Controller
             'tanggal_lahir'  => 'required',
             'anak_ke'        => 'required',
             'bersaudara'     => 'required',
-            'foto'           => 'required|image',
+            'foto'           => 'required|image|max:2048',
             'nama_ayah'      => 'required',
             'pekerjaan_ayah' => 'required',
             'telp_ayah'      => 'required',

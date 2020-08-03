@@ -16,6 +16,7 @@
         {{$isi->nama}} ( {{$isi->npm}} )
     </h5>
     <h3>Data Diri</h3>
+    @if($isi!=NULL)
     <table class='table table-bordered'>
         <thead>
             <tr>
@@ -318,7 +319,9 @@
             </tr>
         </tbody>
     </table>
+    @endif
     <h3>Informasi Diri</h3>
+    @if($isi2!=NULL)
     <table class='table table-bordered'>
         <thead>
             <tr>
@@ -373,7 +376,9 @@
             </tr>
         </tbody>
     </table>
+    @endif
     <h3>Kesehatan</h3>
+    @if($isi3!=NULL)
     <table class='table table-bordered'>
         <thead>
             <tr>
@@ -572,8 +577,9 @@
             </tr>
         </tbody>
     </table>
+    @endif
     <h3>Agama</h3>
-    @if($isi->agama = 'islam')
+    @if($isi->agama = 'islam' && $isi4i != NULL)
     <table class='table table-bordered'>
         <thead>
             <tr>
@@ -716,7 +722,7 @@
             </tr>
         </tbody>
     </table>
-    @elseif($isi->agama = 'protestan')
+    @elseif($isi->agama = 'protestan' && $isi4p != NULL)
     <table class='table table-bordered'>
         <thead>
             <tr>
@@ -775,7 +781,7 @@
             </tr>
         </tbody>
     </table>
-    @elseif($isi->agama = 'katholik')
+    @elseif($isi->agama = 'katholik' && $isi4k != NULL)
     <table class='table table-bordered'>
         <thead>
             <tr>
@@ -822,7 +828,7 @@
             </tr>
         </tbody>
     </table>
-    @elseif($isi->agama = 'hindu')
+    @elseif($isi->agama = 'hindu' && $isi4h != NULL)
     <table class='table table-bordered'>
         <thead>
             <tr>
@@ -833,31 +839,31 @@
         <tbody>
             <tr>
                 <td>Menurut pemahaman anda, apa hal yg paling esensi dari agama Hindu?</td>
-                <td>{{$isi4k->pemahaman_agama_hindu}}</td>
+                <td>{{$isi4h->pemahaman_agama_hindu}}</td>
             </tr>
             <tr>
                 <td>Apa dasar agama Hindu yg anda ketahui?</td>
-                <td>{{$isi4k->dasar_agama_hindu}}</td>
+                <td>{{$isi4h->dasar_agama_hindu}}</td>
             </tr>
             <tr>
                 <td>Apa tujuan anda melakukan Yadnya selama ini?</td>
-                <td>{{$isi4k->tujuan_yadnya}}</td>
+                <td>{{$isi4h->tujuan_yadnya}}</td>
             </tr>
             <tr>
                 <td>Pernahkah ada perasaan mengeluh dengan hal itu?</td>
-                <td>{{$isi4k->pernahkah_mengeluh}}</td>
+                <td>{{$isi4h->pernahkah_mengeluh}}</td>
             </tr>
             <tr>
                 <td>Apakah anda berminat bergabung dengan KMH</td>
-                <td>{{$isi4k->berminat_kmh}}</td>
+                <td>{{$isi4h->berminat_kmh}}</td>
             </tr>
             <tr>
                 <td>Menurut anda apa program yg bagus untuk organisasi Hindu kedepannya?</td>
-                <td>{{$isi4k->saran_program}}</td>
+                <td>{{$isi4h->saran_program}}</td>
             </tr>
         </tbody>
     </table>
-    @elseif($isi->agama = 'buddha')
+    @elseif($isi->agama = 'buddha' && $isi4b != NULL)
     <table class='table table-bordered'>
         <thead>
             <tr>
@@ -868,28 +874,29 @@
         <tbody>
             <tr>
                 <td>Apa yang anda ketahui tentang Agama Buddha?</td>
-                <td>{{$isi4k->tentang_agama_budha}}</td>
+                <td>{{$isi4b->tentang_agama_budha}}</td>
             </tr>
             <tr>
                 <td>Mengapa anda memilih Agama Buddha?</td>
-                <td>{{$isi4k->memilih_agama_budha}}</td>
+                <td>{{$isi4b->memilih_agama_budha}}</td>
             </tr>
             <tr>
                 <td>Apakah anda pernah mengikuti kelas Agama Buddha sebelumnya?</td>
-                <td>{{$isi4k->kelas_agama_budha}}</td>
+                <td>{{$isi4b->kelas_agama_budha}}</td>
             </tr>
             <tr>
                 <td>Apa yang anda ketahui tentang 4 hari besar Agama Buddha?</td>
-                <td>{{$isi4k->hari_besar_budha}}</td>
+                <td>{{$isi4b->hari_besar_budha}}</td>
             </tr>
             <tr>
                 <td>Sebutkan dan jelaskan mengenai pancasila Buddhist!</td>
-                <td>{{$isi4k->pancasila_buddhist}}</td>
+                <td>{{$isi4b->pancasila_buddhist}}</td>
             </tr>
         </tbody>
     </table>
     @endif
     <h3>Fasilitas Internet</h3>
+    @if($isi5 != NULL)
     <table class='table table-bordered'>
         <thead>
             <tr>
@@ -976,6 +983,7 @@
             </tr>
         </tbody>
     </table>
+    @endif
 </body>
 
 </html>

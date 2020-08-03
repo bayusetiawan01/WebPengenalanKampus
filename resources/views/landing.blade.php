@@ -16,6 +16,20 @@
     <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/landing/css/style.css') }}">
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <style>
+        .email-folower {
+            background: url(https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-simple-atmospheric-orange-gradient-flat-geometric-background-image_198437.jpg) no-repeat center bottom;
+            background-attachment: scroll;
+            background-size: auto;
+            background-attachment: fixed;
+            background-size: cover;
+            color: #fff;
+            overflow: hidden;
+            padding: 60px 0;
+            position: relative;
+            opacity: 0.75;
+        }
+    </style>
 </head>
 
 <body class="is-boxed has-animations">
@@ -116,6 +130,15 @@
             </section>
 
             <section class="cta section">
+                <div class="email-folower" style="padding-top: 10px;">
+                    <div class="row email-folower-wrap">
+                        <div class="cta-header text-center">
+                            <h2 style="color: #000"><u>Ikuti Juga</u></h2>
+                            <h3 style="margin-top: 10px; color: #000">Instagram:&nbsp;&nbsp;@mipabersatu<br>
+                            Line:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ena9977y</h3>
+                        </div>
+                    </div>
+                </div>
                 <div class="container-sm">
                     <div class="cta-inner section-inner">
                         <div class="cta-header text-center">
@@ -136,5 +159,4 @@
 
     <script src="{{ asset('/landing/js/main.min.js') }}"></script>
 </body>
-
 </html>

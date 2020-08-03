@@ -65,11 +65,11 @@ class AuthController extends Controller
                     }
                 } else {
                     $request->session()->flash('gagal', 'Username atau Password Salah!');
-                    return redirect('/');
+                    return redirect('/login');
                 }
             } else {
-                $request->session()->flash('gagal', 'Akun Belum Diverifikasi');
-                return redirect('/');
+                $request->session()->flash('gagal', 'Akun Dinonaktifkan');
+                return redirect('/login');
             }
         } else {
             $request->session()->flash('gagal', 'Akun Belum Terdaftar');

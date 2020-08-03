@@ -31,7 +31,11 @@
                                         <?php } else { ?>
                                             <a href="../admin/users/setU/{{$u->id}}" type="button" class="btn btn-primary btn-sm">Set User</a>
                                         <?php } ?>
-                                        <a href="../admin/users/hapus/{{$u->id}}" type="button" class="btn btn-danger btn-sm">Delete</a>
+                                        <?php if ($u->is_active == 1) { ?>
+                                            <a href="../admin/users/hapus/{{$u->id}}" onclick="return confirm('Are you sure?');" type="button" class="btn btn-danger btn-sm">Nonaktifkan</a>
+                                            <?php }else{ ?>
+                                            <a href="../admin/users/restore/{{$u->id}}" onclick="return confirm('Are you sure?');" type="button" class="btn btn-danger btn-sm">Aktifkan</a>
+                                            <?php } ?>
                                     </td>
                                 </tr>
                                 @endforeach

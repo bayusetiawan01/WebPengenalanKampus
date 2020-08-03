@@ -13,7 +13,7 @@
                     </div>
                     <div class="body">
                         Download terlebih dahulu surat pernyataan kemudian upload surat izin yang sudah diisi. <br><br><br>
-                        <a href="{{ asset('tugas/suratpernyataan.docx') }}" class="btn btn-danger waves-effect" role="button">Download</a>
+                        <a href="{{ asset('tugas/suratpernyataan.pdf') }}" class="btn btn-danger waves-effect" role="button">Download</a>
                     </div>
                 </div>
             </div>

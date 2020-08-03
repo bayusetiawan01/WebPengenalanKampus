@@ -58,6 +58,7 @@
                         <div class="thumbnail" style="padding-top: 6px;">
                             <img id="preview" src="{{ url('/images/profile/' . $foto) }}">
                             <div class="caption">
+                                Ukuran Maksimal 2 MB
                             </div>
                         </div>
                         <div class="form-group">

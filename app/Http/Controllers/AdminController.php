@@ -22,6 +22,7 @@ use App\Wawancara4;
 use App\Wawancara5;
 use App\Pengumuman;
 use App\Pemetaan;
+use App\Fitur;
 use App\Soalp;
 use Illuminate\Support\Facades\Hash;
 use PDF;
@@ -54,7 +55,22 @@ class AdminController extends Controller
         $data['p4']          = Pengumuman::find(4);
         $data['p5']          = Pengumuman::find(5);
         $data['p6']          = Pengumuman::find(6);
+        $data['fitur']  = Fitur::where('fitur', 'pemetaan')->first();
         return view('/admin/dashboard', $data);
+    }
+    public function nonaktifkanPemetaan()
+    {
+        $u              = Fitur::find(1);
+        $u->is_active   = 0;
+        $u->save();
+        return redirect('/admin');
+    }
+    public function aktifkanPemetaan()
+    {
+        $u              = Fitur::find(1);
+        $u->is_active   = 1;
+        $u->save();
+        return redirect('/admin');
     }
     public function profile(Request $request)
     {
@@ -72,7 +88,7 @@ class AdminController extends Controller
             'nama'           => 'required',
             'npm'            => 'required',
             'email'          => 'required',
-            'foto'           => 'image',
+            'foto'           => 'image|max:2048',
         ]);
 
         $p                 = User::where('email', $request->session()->get('email'))->first();
@@ -437,7 +453,24 @@ class AdminController extends Controller
             'deskripsi' => $request->deskripsi,
             'deadline'  => $request->deadline,
             'petunjuk'  => $nama_file,
+            'is_active' => 0,
         ]);
+
+        return redirect('/admin/kuis');
+    }
+    public function aktivKuis($id, Request $request)
+    {
+        $kuis = Kuis::find($id);
+        $kuis->is_active = 1;
+        $kuis->save();
+
+        return redirect('/admin/kuis');
+    }
+    public function nonaktivKuis($id, Request $request)
+    {
+        $kuis = Kuis::find($id);
+        $kuis->is_active = 0;
+        $kuis->save();
 
         return redirect('/admin/kuis');
     }
@@ -573,13 +606,19 @@ class AdminController extends Controller
     }
     public function deleteUser($id, Request $request)
     {
-        $user          = User::where('email', $request->session()->get('email'))->first();
-        $data['foto']  = $user->image;
-        $data['nama']  = $user->nama;
-        $data['email'] = $user->email;
 
         $phapus = User::find($id);
-        $phapus->delete();
+        $phapus->is_active = 0;
+        $phapus->save();
+
+        return redirect('/admin/users');
+    }
+    public function restoreUser($id, Request $request)
+    {
+
+        $phapus = User::find($id);
+        $phapus->is_active = 1;
+        $phapus->save();
 
         return redirect('/admin/users');
     }

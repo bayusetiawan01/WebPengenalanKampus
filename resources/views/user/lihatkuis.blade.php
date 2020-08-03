@@ -10,7 +10,7 @@
                     <h2>
                         {{$kuis->deskripsi}}
                         <?php if ($kuis->petunjuk != NULL) : ?>
-                            <a href="<?php echo asset('tugas/' . $tugas->petunjuk) ?>" class="btn btn-danger waves-effect" role="button">Download Petunjuk</a>
+                            <a href="<?php echo asset('tugas/' . $kuis->petunjuk) ?>" class="btn btn-danger waves-effect" role="button">Download Petunjuk</a>
                         <?php endif ?>
                     </h2>
                 </div>

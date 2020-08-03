@@ -2,6 +2,12 @@
 @section('isi')
 <section class="content" style="margin-top: 80px;">
     <!-- Pengumuman -->
+    @if($message = Session::get('gagal'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
     <div class="card">
         <div class="header">
             <h2>Pengumuman</h2>
