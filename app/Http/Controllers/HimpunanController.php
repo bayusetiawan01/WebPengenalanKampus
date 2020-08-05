@@ -184,6 +184,7 @@ class HimpunanController extends Controller
             'npm'               => 'required',
             'organisasi'        => 'required',
             'jawaban_wawancara' => 'required',
+            'jawaban_studi_kasus' => 'required',
             'sikap_wawancara'   => 'required',
             'koordinator'       => 'required',
             'sbmptn'            => 'required',
@@ -196,6 +197,7 @@ class HimpunanController extends Controller
             'npm'               => $request->npm,
             'organisasi'        => $request->organisasi,
             'jawaban_wawancara' => $request->jawaban_wawancara,
+            'jawaban_studi_kasus' => $request->jawaban_studi_kasus,
             'sikap_wawancara'   => $request->sikap_wawancara,
             'koordinator'       => $request->koordinator,
             'sbmptn'            => $request->sbmptn,
@@ -217,6 +219,7 @@ class HimpunanController extends Controller
             'npm'               => 'required',
             'organisasi'        => 'required',
             'jawaban_wawancara' => 'required',
+            'jawaban_studi_kasus' => 'required',
             'sikap_wawancara'   => 'required',
             'koordinator'       => 'required',
             'sbmptn'            => 'required',
@@ -229,6 +232,7 @@ class HimpunanController extends Controller
         $nilai->npm               = $request->npm;
         $nilai->organisasi        = $request->organisasi;
         $nilai->jawaban_wawancara = $request->jawaban_wawancara;
+        $nilai->jawaban_studi_kasus = $request->jawaban_studi_kasus;
         $nilai->sikap_wawancara   = $request->sikap_wawancara;
         $nilai->koordinator       = $request->koordinator;
         $nilai->sbmptn            = $request->sbmptn;

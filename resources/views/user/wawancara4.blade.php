@@ -29,192 +29,157 @@
                                 <label class="form-label" style="color: #333;">NPM</label>
                             </div>
                         </div>
-                        <h4 class="card-inside-title">Penyakit yang pernah dialami:</h4>
+                        <h4 class="card-inside-title">1. Penyakit yang pernah dialami:</h4>
                         <div class="row clearfix">
                             <div class="col-lg-4">
                                 <input type="checkbox" class="filled-in chk-col-red" name="asma" />
                                 <label for="md_checkbox_21">Asma</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="sakit_mata" />
-                                <label for="md_checkbox_21">Sakit Mata</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="dbd" />
-                                <label for="md_checkbox_21">DBD</label><br>
                                 <input type="checkbox" class="filled-in chk-col-red" name="tbc" />
                                 <label for="md_checkbox_21">TBC</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="patah_tulang" />
-                                <label for="md_checkbox_21">Patah Tulang</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="malaria" />
-                                <label for="md_checkbox_21">Malaria</label><br>
                                 <input type="checkbox" class="filled-in chk-col-red" name="pneumonia" />
                                 <label for="md_checkbox_21">Pneumonia</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="kanker" />
-                                <label for="md_checkbox_21">Kanker</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="liver" />
-                                <label for="md_checkbox_21">Liver</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="sinusitis" />
-                                <label for="md_checkbox_21">Sinusitis</label><br>
-                            </div>
-                            <div class="col-lg-4">
-                                <input type="checkbox" class="filled-in chk-col-red" name="hepatitis" />
-                                <label for="md_checkbox_21">Hepatitis</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="penyakit_jantung" />
-                                <label for="md_checkbox_21">Penyakit Jantung</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="cacar" />
-                                <label for="md_checkbox_21">Cacar</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="hipertensi" />
-                                <label for="md_checkbox_21">Hipertensi</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="kolera" />
-                                <label for="md_checkbox_21">Kolera</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="campak" />
-                                <label for="md_checkbox_21">Campak</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="hipotensi" />
-                                <label for="md_checkbox_21">Hipotensi</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="tifus" />
-                                <label for="md_checkbox_21">Tifus</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="hipotermia" />
-                                <label for="md_checkbox_21">Hipotermia</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="hipertermia" />
-                                <label for="md_checkbox_21">Hipertermia</label><br>
-                            </div>
-                            <div class="col-lg-4">
-                                <input type="checkbox" class="filled-in chk-col-red" name="anemia" />
-                                <label for="md_checkbox_21">Anemia</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="usus_buntu" />
-                                <label for="md_checkbox_21">Usus Buntu</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="migrain" />
-                                <label for="md_checkbox_21">Migrain</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="diabetes" />
-                                <label for="md_checkbox_21">Diabetes</label><br>
                                 <input type="checkbox" class="filled-in chk-col-red" name="epilepsi" />
                                 <label for="md_checkbox_21">Epilepsi</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="sakit_gigi" />
-                                <label for="md_checkbox_21">Sakit gigi</label><br>
+                            </div>
+                            <div class="col-lg-4">
+                                <input type="checkbox" class="filled-in chk-col-red" name="jantung" />
+                                <label for="md_checkbox_21">Penyakit Jantung</label><br>
+                                <input type="checkbox" class="filled-in chk-col-red" name="patah_tulang" />
+                                <label for="md_checkbox_21">Patah Tulang</label><br>
+                                <input type="checkbox" class="filled-in chk-col-red" name="hipertensi" />
+                                <label for="md_checkbox_21">Hipertensi</label><br>
+                                <input type="checkbox" class="filled-in chk-col-red" name="diabetes" />
+                                <label for="md_checkbox_21">Diabetes</label><br>
+                            </div>
+                            <div class="col-lg-4">
+                                <input type="checkbox" class="filled-in chk-col-red" name="hipotensi" />
+                                <label for="md_checkbox_21">Hipotensi</label><br>
+                                <input type="checkbox" class="filled-in chk-col-red" name="anemia" />
+                                <label for="md_checkbox_21">Anemia</label><br>
+                                <input type="checkbox" class="filled-in chk-col-red" name="kolera" />
+                                <label for="md_checkbox_21">Kolera</label><br>
                                 <input type="checkbox" class="filled-in chk-col-red" name="maag" />
                                 <label for="md_checkbox_21">Maag</label><br>
-                                <input type="checkbox" class="filled-in chk-col-red" name="hiv" />
-                                <label for="md_checkbox_21">HIV</label><br>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" name="penyakit_lain" class="form-control" value="{{ old('penyakit_lain') }}">
-                                        <label class="form-label">Penyakit Lain</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="card-inside-title">Apakah anda sedang menderita penyakit tertentu?</h4>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <textarea rows="3" class="form-control no-resize" name="sedang_menderita">{{ old('sedang_menderita') }}</textarea>
-                                <label class="form-label" style="color: #333;">Jika ya, jelaskan keluhan dari penyakit yang diderita serta cara penanganannya.</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <textarea rows="3" class="form-control no-resize" name="enam_bulan">{{ old('enam_bulan') }}</textarea>
-                                <label class="form-label" style="color: #333;">Selama 6 Bulan Terakhir</label>
+                                <input type="text" name="penyakit_lain" class="form-control" value="{{ old('penyakit_lain') }}">
+                                <label class="form-label">Penyakit Lain</label>
+                            </div>
+                        </div>
+                        <p>a. Kapan terakhir mengalami?</p>
+                        <div class="form-group">
+                            <div class="demo-radio-button">
+                                <input type="radio" id="Rentang 0-14 Hari" name="terakhir_mengalami" value="Rentang 0-14 Hari">
+                                <label for="Rentang 0-14 Hari" style="padding-left: 0px; min-width: 100px;">Rentang 0-14 Hari</label><br>
+                                <input type="radio" id="Rentang 2-8 minggu" name="terakhir_mengalami" value="Rentang 2-8 minggu">
+                                <label for="Rentang 2-8 minggu" style="padding-left: 0px; min-width: 100px;">Rentang 2-8 minggu</label><br>
+                                <input type="radio" id="Rentang 2-6 bulan" name="terakhir_mengalami" value="Rentang 2-6 bulan">
+                                <label for="Rentang 2-6 bulan" style="padding-left: 0px; min-width: 100px;">Rentang 2-6 bulan</label><br>
+                                <input type="radio" id="Rentang ½-sekian tahun" name="terakhir_mengalami" value="Rentang ½-sekian tahun">
+                                <label for="Rentang ½-sekian tahun" style="padding-left: 0px; min-width: 100px;">Rentang ½-sekian tahun</label><br>
+                            </div>
+                        </div>
+                        <p>b. Untuk rentang 0-8 minggu, Seberapa sering terjadi?</p>
+                        <div class="form-group">
+                            <div class="demo-radio-button">
+                                <input type="radio" id="Sekali dan tuntas" name="seberapa_sering_terjadi" value="Sekali dan tuntas">
+                                <label for="Sekali dan tuntas" style="padding-left: 0px; min-width: 100px;">Sekali dan tuntas</label><br>
+                                <input type="radio" id="Setiap minggu" name="seberapa_sering_terjadi" value="Setiap minggu">
+                                <label for="Setiap minggu" style="padding-left: 0px; min-width: 100px;">Setiap minggu</label><br>
+                                <input type="radio" id="Setiap 3 hari" name="seberapa_sering_terjadi" value="Setiap 3 hari">
+                                <label for="Setiap 3 hari" style="padding-left: 0px; min-width: 100px;">Setiap 3 hari</label><br>
+                                <input type="radio" id="Lebih sering dari 3 hari sekali" name="seberapa_sering_terjadi" value="Lebih sering dari 3 hari sekali">
+                                <label for="Lebih sering dari 3 hari sekali" style="padding-left: 0px; min-width: 100px;">Lebih sering dari 3 hari sekali</label><br>
+                            </div>
+                        </div>
+                        <h4 class="card-inside-title">2. Mampu berjalan 200 meter tercepat seberapa lama? </h4>
+                        <div class="form-group">
+                            <div class="demo-radio-button">
+                                <input type="radio" id="Tidak bisa" name="mampu_berjalan" value="Tidak bisa">
+                                <label for="Tidak bisa" style="padding-left: 0px; min-width: 100px;">Tidak bisa</label><br>
+                                <input type="radio" id="Bisa rentang 0-5 menit" name="mampu_berjalan" value="Bisa rentang 0-5 menit">
+                                <label for="Bisa rentang 0-5 menit" style="padding-left: 0px; min-width: 100px;">Bisa rentang 0-5 menit</label><br>
+                                <input type="radio" id="Bisa rentang 5-15 menit" name="mampu_berjalan" value="Bisa rentang 5-15 menit">
+                                <label for="Bisa rentang 5-15 menit" style="padding-left: 0px; min-width: 100px;">Bisa rentang 5-15 menit</label><br>
+                                <input type="radio" id="Bisa rentang ¼-2 jam" name="mampu_berjalan" value="Bisa rentang ¼-2 jam">
+                                <label for="Bisa rentang ¼-2 jam" style="padding-left: 0px; min-width: 100px;">Bisa rentang ¼-2 jam</label><br>
+                            </div>
+                        </div>
+                        <h4 class="card-inside-title">3. Apakah Anda mempunyai alergi? </h4>
+                        <div class="form-group" style="margin-bottom: 0px;">
+                            <div class="demo-radio-button">
+                                <input type="radio" id="Ya" name="mempunyai_alergi" value="Ya">
+                                <label for="Ya" style="padding-left: 0px; min-width: 100px;">Ya</label><br>
+                                <input type="radio" id="Tidak" name="mempunyai_alergi" value="Tidak">
+                                <label for="Tidak" style="padding-left: 0px; min-width: 100px;">Tidak</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <textarea rows="3" class="form-control no-resize" name="tiga_bulan">{{ old('tiga_bulan') }}</textarea>
-                                <label class="form-label" style="color: #333;">Selama 3 Bulan Terakhir</label>
+                                <input type="text" name="jenis_alergi" class="form-control" value="{{ old('jenis_alergi') }}">
+                                <label class="form-label">Jenis alergi apa yang anda miliki? Apa saja pemicu alergi tersebut?</label>
                             </div>
                         </div>
-                        <h4 class="card-inside-title">Berdasarkan riwayat kesehatan keluarga anda, apakah orang tua anda sedang atau pernah menderita penyakit tertentu?</h4>
+                        <h4 class="card-inside-title">4. Untuk yang memiliki penyakit diatas, apakah ada pantangan dari dokter? Sebutkan jika ada</h4>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <textarea rows="3" class="form-control no-resize" name="penyakit_keluarga">{{ old('penyakit_keluarga') }}</textarea>
-                                <label class="form-label" style="color: #333;">Jika ya, sebutkan jenis penyakit yang diderita</label>
+                                <input type="text" name="pantangan" class="form-control" value="{{ old('pantangan') }}">
                             </div>
                         </div>
-                        <h4 class="card-inside-title">Apakah Anda mempunyai alergi? Jika ya:</h4>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <textarea rows="3" class="form-control no-resize" name="jenis_alergi">{{ old('jenis_alergi') }}</textarea>
-                                <label class="form-label" style="color: #333;">Jenis alergi apa yang anda miliki? Apa saja yang dapat memicu alergi tersebut?</label>
+                        <h4 class="card-inside-title">5. Kelainan mental yang pernah dialami</h4>
+                        <div class="row clearfix">
+                            <div class="col-lg-4">
+                                <input type="checkbox" class="filled-in chk-col-red" name="fobia" />
+                                <label for="md_checkbox_21">Fobia</label><br>
+                                <input type="checkbox" class="filled-in chk-col-red" name="stress" />
+                                <label for="md_checkbox_21">Stress</label><br>
+                                <input type="checkbox" class="filled-in chk-col-red" name="adhd" />
+                                <label for="md_checkbox_21">ADHD</label><br>
                             </div>
-                        </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <textarea rows="3" class="form-control no-resize" name="keluhan_alergi">{{ old('keluhan_alergi') }}</textarea>
-                                <label class="form-label" style="color: #333;">Keluhan apa saja yang biasa terjadi ketika anda mengalami alergi?</label>
+                            <div class="col-lg-4">
+                                <input type="checkbox" class="filled-in chk-col-red" name="disosiatif" />
+                                <label for="md_checkbox_21">Gangguan Disosiatif</label><br>
+                                <input type="checkbox" class="filled-in chk-col-red" name="kecemasan" />
+                                <label for="md_checkbox_21">Gangguan Kecemasan</label><br>
+                                <input type="checkbox" class="filled-in chk-col-red" name="self_harm" />
+                                <label for="md_checkbox_21">Self Harm</label><br>
                             </div>
-                        </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <textarea rows="3" class="form-control no-resize" name="cara_menangani">{{ old('cara_menangani') }}</textarea>
-                                <label class="form-label" style="color: #333;">Bagaimana cara anda menangani alergi tersebut?</label>
-                            </div>
-                        </div>
-                        <h4 class="card-inside-title">Apakah Anda pernah dirawat di rumah sakit?</h4>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <textarea rows="3" class="form-control no-resize" name="rumah_sakit">{{ old('rumah_sakit') }}</textarea>
-                                <label class="form-label" style="color: #333;">Jika ya, apa penyebabnya?</label>
-                            </div>
-                        </div>
-                        <h4 class="card-inside-title">Apakah Anda pernah menjalani operasi?</h4>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <textarea rows="3" class="form-control no-resize" name="operasi">{{ old('operasi') }}</textarea>
-                                <label class="form-label" style="color: #333;">Jika ya, apa penyebabnya?</label>
+                            <div class="col-lg-4">
+                                <input type="checkbox" class="filled-in chk-col-red" name="bipolar" />
+                                <label for="md_checkbox_21">Bipolar</label><br>
+                                <input type="checkbox" class="filled-in chk-col-red" name="depresi" />
+                                <label for="md_checkbox_21">Depresi</label><br>
+                                <input type="checkbox" class="filled-in chk-col-red" name="trauma" />
+                                <label for="md_checkbox_21">Trauma</label><br>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <textarea rows="3" class="form-control no-resize" name="pantangan_operasi">{{ old('pantangan_operasi') }}</textarea>
-                                <label class="form-label" style="color: #333;">Apa pantangan setelah operasi?</label>
-                            </div>
-                        </div>
-                        <h4 class="card-inside-title">Keluarga yang dapat dihubungi dalam keadaan darurat</h4>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="text" name="nama_darurat" value="{{ old('nama_darurat') }}" class="form-control">
-                                <label class="form-label">Nama</label>
+                                <input type="text" name="mental_lainnya" class="form-control" value="{{ old('mental_lainnya') }}">
+                                <label class="form-label">Lainnya</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" name="alamat_darurat" value="{{ old('alamat_darurat') }}" class="form-control">
-                                <label class="form-label">Alamat</label>
+                                <input type="text" name="dikonsultasikan" class="form-control" value="{{ old('dikonsultasikan') }}">
+                                <label class="form-label">a. Apakah pernah dikonsultasikan?</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" name="hp_darurat" value="{{ old('hp_darurat') }}" class="form-control">
-                                <label class="form-label">Nomor HP</label>
+                                <input type="text" name="obat" class="form-control" value="{{ old('obat') }}">
+                                <label class="form-label">b. Ada medikasi (pemberian obat)? Obat apa?</label>
                             </div>
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" name="hubungan_darurat" value="{{ old('hubungan_darurat') }}" class="form-control">
-                                <label class="form-label">Hubungan Kekerabatan</label>
+                                <input type="text" name="pemicu" class="form-control" value="{{ old('pemicu') }}">
+                                <label class="form-label">c. Untuk bipolar,trauma,kecemasan,fobia,stress, apakah pemicunya?</label>
                             </div>
                         </div>
-                        <h4 class="card-inside-title">Keluarga yang dapat dihubungi dalam keadaan darurat (Alternatif)</h4>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="text" name="nama_darurat2" value="{{ old('nama_darurat2') }}" class="form-control">
-                                <label class="form-label">Nama</label>
-                            </div>
-                        </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="text" name="alamat_darurat2" value="{{ old('alamat_darurat2') }}" class="form-control">
-                                <label class="form-label">Alamat</label>
-                            </div>
-                        </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="text" name="hp_darurat2" value="{{ old('hp_darurat2') }}" class="form-control">
-                                <label class="form-label">Nomor HP</label>
-                            </div>
-                        </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="text" name="hubungan_darurat2" value="{{ old('hubungan_darurat2') }}" class="form-control">
-                                <label class="form-label">Hubungan Kekerabatan</label>
-                            </div>
-                        </div>
+
                         <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
                     </div>
                 </div>

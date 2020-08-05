@@ -379,7 +379,7 @@
     @endif
     <h3>Kesehatan</h3>
     @if($isi3!=NULL)
-    <table class='table table-bordered'>
+    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
         <thead>
             <tr>
                 <th>Pertanyaan</th>
@@ -388,192 +388,48 @@
         </thead>
         <tbody>
             <tr>
-                <td>Asma</td>
-                <td>{{$isi3->asma}}</td>
+                <td>1.	Penyakit yang pernah dialami</td>
+                <td><?php if($isi3->asma == 'on'){echo "Asma, ";} ?><?php if($isi3->jantung == 'on'){echo "Penyakit Jantung, ";} ?><?php if($isi3->hipotensi == 'on'){echo "Hipotensi, ";} ?><?php if($isi3->tbc == 'on'){echo "TBC, ";} ?><?php if($isi3->patah_tulang == 'on'){echo "Patah Tulang, ";} ?><?php if($isi3->anemia == 'on'){echo "Anemia, ";} ?><?php if($isi3->pneumonia == 'on'){echo "Pneumonia, ";} ?><?php if($isi3->hipertensi == 'on'){echo "Hipertensi, ";} ?><?php if($isi3->kolera == 'on'){echo "Kolera, ";} ?><?php if($isi3->epilepsi == 'on'){echo "Epilepsi, ";} ?><?php if($isi3->diabetes == 'on'){echo "Diabetes, ";} ?><?php if($isi3->maag == 'on'){echo "Maag, ";} ?><?php if($isi3->penyakit_lain != NULL){echo $isi3->penyakit_lain;} ?></td>
             </tr>
             <tr>
-                <td>Sakit Mata</td>
-                <td>{{$isi3->sakit_mata}}</td>
+                <td>&nbsp;&nbsp;&nbsp;a. Kapan terakhir mengalami?</td>
+                <td>{{$isi3->terakhir_mengalami}}</td>
             </tr>
             <tr>
-                <td>DBD</td>
-                <td>{{$isi3->dbd}}</td>
+                <td>&nbsp;&nbsp;&nbsp;b. Untuk rentang 0-8 minggu, Seberapa sering terjadi?</td>
+                <td>{{$isi3->seberapa_sering_terjadi}}</td>
             </tr>
             <tr>
-                <td>TBC</td>
-                <td>{{$isi3->tbc}}</td>
+                <td>2. Mampu berjalan 200 meter tercepat seberapa lama?</td>
+                <td>{{$isi3->mampu_berjalan}}</td>
             </tr>
             <tr>
-                <td>Patah Tulang</td>
-                <td>{{$isi3->patah_tulang}}</td>
+                <td>3. Apakah Anda mempunyai alergi?</td>
+                <td>{{$isi3->mempunyai_alergi}}</td>
             </tr>
             <tr>
-                <td>Malaria</td>
-                <td>{{$isi3->malaria}}</td>
-            </tr>
-            <tr>
-                <td>Pneumonia</td>
-                <td>{{$isi3->pneumonia}}</td>
-            </tr>
-            <tr>
-                <td>Kanker</td>
-                <td>{{$isi3->kanker}}</td>
-            </tr>
-            <tr>
-                <td>Liver</td>
-                <td>{{$isi3->liver}}</td>
-            </tr>
-            <tr>
-                <td>Sinusitis</td>
-                <td>{{$isi3->sinusitis}}</td>
-            </tr>
-            <tr>
-                <td>Hepatitis</td>
-                <td>{{$isi3->hepatitis}}</td>
-            </tr>
-            <tr>
-                <td>Penyakit Jantung</td>
-                <td>{{$isi3->penyakit_jantung}}</td>
-            </tr>
-            <tr>
-                <td>Cacar</td>
-                <td>{{$isi3->cacar}}</td>
-            </tr>
-            <tr>
-                <td>Hipertensi</td>
-                <td>{{$isi3->hipertensi}}</td>
-            </tr>
-            <tr>
-                <td>Kolera</td>
-                <td>{{$isi3->kolera}}</td>
-            </tr>
-            <tr>
-                <td>Campak</td>
-                <td>{{$isi3->campak}}</td>
-            </tr>
-            <tr>
-                <td>Hipotensi</td>
-                <td>{{$isi3->hipotensi}}</td>
-            </tr>
-            <tr>
-                <td>Tifus</td>
-                <td>{{$isi3->tifus}}</td>
-            </tr>
-            <tr>
-                <td>Hipotermia</td>
-                <td>{{$isi3->hipotermia}}</td>
-            </tr>
-            <tr>
-                <td>Hipertermia</td>
-                <td>{{$isi3->hipertermia}}</td>
-            </tr>
-            <tr>
-                <td>Anemia</td>
-                <td>{{$isi3->anemia}}</td>
-            </tr>
-            <tr>
-                <td>Usus Buntu</td>
-                <td>{{$isi3->usus_buntu}}</td>
-            </tr>
-            <tr>
-                <td>Migrain</td>
-                <td>{{$isi3->migrain}}</td>
-            </tr>
-            <tr>
-                <td>Diabetes</td>
-                <td>{{$isi3->diabetes}}</td>
-            </tr>
-            <tr>
-                <td>Epilepsi</td>
-                <td>{{$isi3->epilepsi}}</td>
-            </tr>
-            <tr>
-                <td>Sakit Gigi</td>
-                <td>{{$isi3->sakit_gigi}}</td>
-            </tr>
-            <tr>
-                <td>Maag</td>
-                <td>{{$isi3->maag}}</td>
-            </tr>
-            <tr>
-                <td>Hiv</td>
-                <td>{{$isi3->hiv}}</td>
-            </tr>
-            <tr>
-                <td>Penyakit Lain</td>
-                <td>{{$isi3->penyakit_lain}}</td>
-            </tr>
-            <tr>
-                <td>Sedang Menderita Penyakit Tertentu</td>
-                <td>{{$isi3->sedang_menderita}}</td>
-            </tr>
-            <tr>
-                <td>3 Bulan Terakhir</td>
-                <td>{{$isi3->tiga_bulan}}</td>
-            </tr>
-            <tr>
-                <td>6 Bulan Terakhir</td>
-                <td>{{$isi3->enam_bulan}}</td>
-            </tr>
-            <tr>
-                <td>Riwayat Kesehatan Keluarga</td>
-                <td>{{$isi3->penyakit_keluarga}}</td>
-            </tr>
-            <tr>
-                <td>Jenis Alergi</td>
+                <td>&nbsp;&nbsp;&nbsp;Jenis alergi apa yang anda miliki? </td>
                 <td>{{$isi3->jenis_alergi}}</td>
             </tr>
             <tr>
-                <td>Keluhan Alergi</td>
-                <td>{{$isi3->keluhan_alergi}}</td>
+                <td>4. Untuk yang memiliki penyakit diatas, apakah ada pantangan dari dokter?</td>
+                <td>{{$isi3->pantangan}}</td>
             </tr>
             <tr>
-                <td>Cara Menangani Alergi</td>
-                <td>{{$isi3->cara_menangani}}</td>
+                <td>5.	Kelainan mental yang pernah dialami</td>
+                <td><?php if($isi3->fobia == 'on'){echo "Fobia, ";} ?><?php if($isi3->disosiatif == 'on'){echo "Gangguan Disosiatif, ";} ?><?php if($isi3->bipolar == 'on'){echo "Bipolar, ";} ?><?php if($isi3->stress == 'on'){echo "Stress, ";} ?><?php if($isi3->kecemasan == 'on'){echo "Kecemasan, ";} ?><?php if($isi3->depresi == 'on'){echo "Depresi, ";} ?><?php if($isi3->adhd == 'on'){echo "ADHD, ";} ?><?php if($isi3->self_harm == 'on'){echo "Self Harm, ";} ?><?php if($isi3->trauma == 'on'){echo "Trauma, ";} ?><?php if($isi3->mental_lainnya != NULL){echo $isi3->mental_lainnya;} ?></td>
             </tr>
             <tr>
-                <td>Pernah Dirawat di Rumah Sakit</td>
-                <td>{{$isi3->rumah_sakit}}</td>
+                <td>&nbsp;&nbsp;&nbsp;a. Apakah pernah dikonsultasikan?</td>
+                <td>{{$isi3->dikonsultasikan}}</td>
             </tr>
             <tr>
-                <td>Pernah Operasi</td>
-                <td>{{$isi3->operasi}}</td>
+                <td>&nbsp;&nbsp;&nbsp;b. Ada medikasi (pemberian obat)? Obat apa?</td>
+                <td>{{$isi3->obat}}</td>
             </tr>
             <tr>
-                <td>Pantangan Operasi</td>
-                <td>{{$isi3->pantangan_operasi}}</td>
-            </tr>
-            <tr>
-                <td>Nama Keluarga yang Dapat Dihubungi</td>
-                <td>{{$isi3->nama_darurat}}</td>
-            </tr>
-            <tr>
-                <td>No HP</td>
-                <td>{{$isi3->hp_darurat}}</td>
-            </tr>
-            <tr>
-                <td>Alamat</td>
-                <td>{{$isi3->alamat_darurat}}</td>
-            </tr>
-            <tr>
-                <td>Hubungan Kekerabatan</td>
-                <td>{{$isi3->hubungan_darurat}}</td>
-            </tr>
-            <tr>
-                <td>Nama Keluarga yang Dapat Dihubungi</td>
-                <td>{{$isi3->nama_darurat2}}</td>
-            </tr>
-            <tr>
-                <td>No HP</td>
-                <td>{{$isi3->hp_darurat2}}</td>
-            </tr>
-            <tr>
-                <td>Alamat</td>
-                <td>{{$isi3->alamat_darurat2}}</td>
-            </tr>
-            <tr>
-                <td>Hubungan Kekerabatan</td>
-                <td>{{$isi3->hubungan_darurat2}}</td>
+                <td>&nbsp;&nbsp;&nbsp;c. Untuk bipolar,trauma,kecemasan,fobia,stress, apakah pemicunya?</td>
+                <td>{{$isi3->pemicu}}</td>
             </tr>
         </tbody>
     </table>
@@ -930,44 +786,16 @@
                 <td>{{$isi5->streaming}}</td>
             </tr>
             <tr>
-                <td>PC</td>
-                <td>{{$isi5->pc}}</td>
-            </tr>
-            <tr>
-                <td>Laptop</td>
-                <td>{{$isi5->laptop}}</td>
-            </tr>
-            <tr>
-                <td>Smartphone</td>
-                <td>{{$isi5->smartphone}}</td>
-            </tr>
-            <tr>
-                <td>Tablet</td>
-                <td>{{$isi5->tablet}}</td>
-            </tr>
-            <tr>
-                <td>Lainnya</td>
-                <td>{{$isi5->lainnya2}}</td>
+                <td>6. Device pendukung keadaan kegiatan online yang dimiliki</td>
+                <td><?php if($isi5->pc == 'on'){echo "PC, ";}?><?php if($isi5->laptop == 'on'){echo "Laptop, ";}?><?php if($isi5->smartphone == 'on'){echo "Smartphone, ";}?><?php if($isi5->tablet == 'on'){echo "Tablet, ";}?><?php if($isi5->lainnya2 == 'on'){echo "Lainnya";}?></td>
             </tr>
             <tr>
                 <td>7. Apakah device tersebut memiliki kamera dan bisa digunakan untuk video call?</td>
                 <td>{{$isi5->kamera}}</td>
             </tr>
             <tr>
-                <td>Discord</td>
-                <td>{{$isi5->discord}}</td>
-            </tr>
-            <tr>
-                <td>Google Meet</td>
-                <td>{{$isi5->meet}}</td>
-            </tr>
-            <tr>
-                <td>Zoom</td>
-                <td>{{$isi5->zoom}}</td>
-            </tr>
-            <tr>
-                <td>Tidak Satupun</td>
-                <td>{{$isi5->tidak_satupun}}</td>
+                <td>8. Platform apa yang pernah kalian gunakan</td>
+                <td><?php if($isi5->discord == 'on'){echo "Discord, ";}?><?php if($isi5->meet == 'on'){echo "Google Meet, ";}?><?php if($isi5->zoom == 'on'){echo "Zoom, ";}?><?php if($isi5->tidak_satupun == 'Tidak Satupun'){echo "PC,";}?></td>
             </tr>
             <tr>
                 <td>9. Dari platform tersebut apakah ada kendala saat penggunaan?</td>

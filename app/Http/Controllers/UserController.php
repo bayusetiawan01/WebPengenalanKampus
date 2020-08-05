@@ -165,7 +165,8 @@ class UserController extends Controller
     public function lihatTugas($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
-        $tugas_user = Filetugas::where([['user_npm', $user->npm], ['tugas_id', $id]])->get();
+        $tugas_user = Filetugas::where
+        ([['user_npm', $user->npm], ['tugas_id', $id]])->get();
         if ($tugas_user->isEmpty()) {
             $data['foto']   = $user->image;
             $data['nama']   = $user->nama;
@@ -183,7 +184,7 @@ class UserController extends Controller
         $data['foto']  = $user->image;
         $data['nama']  = $user->nama;
         $data['email'] = $user->email;
-        $this->validate($request, ['file' => 'required']);
+        $this->validate($request, ['file' => 'required|file']);
 
         $file = $request->file('file');
         $nama_file = time() . "_" . $file->getClientOriginalName();
@@ -246,8 +247,11 @@ class UserController extends Controller
         $data['id']     = $id;
         $data['kuis']   = Kuis::find($id);
         $data['soal']   = Soal::where('kuis_id', $id)->get();
-        if ($check2->timer - time() <= 0 || $check2->jawaban != NULL) {
+        if ($check2->timer - time() <= 0) {
             $request->session()->flash('gagal', 'Kuis sudah tidak tersedia');
+            return redirect('user/kuis');
+        } elseif($check2->jawaban != NULL){
+            $request->session()->flash('success', 'Kuis sudah dikerjakan');
             return redirect('user/kuis');
         } else {
             return view('/user/lihatkuis', $data);
@@ -256,12 +260,13 @@ class UserController extends Controller
     public function kuisStore($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
-        $array = array_slice($request->post(), 1,);
+        $array = array_slice($request->post(), 1);
         foreach ($array as $key => $value) {
             if (is_null($value)) {
                 $array[$key] = "-";
             }
         }
+        $this->validate($request, ['file' => 'file']);
         $nama_file         = NULL;
         if ($request->hasFile('file')) {
             $file          = $request->file('file');
@@ -957,7 +962,7 @@ class UserController extends Controller
 
         return redirect('/user');
     }
-    public function wawancara3StoreProtestan(Request $request)
+    public function wawancara3StoreIslam(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
         $data['foto']  = $user->image;
@@ -1038,7 +1043,7 @@ class UserController extends Controller
 
         return redirect('/user');
     }
-    public function wawancara3StoreIslam(Request $request)
+    public function wawancara3StoreProtestan(Request $request)
     {
         $user          = User::where('email', $request->session()->get('email'))->first();
         $data['foto']  = $user->image;
@@ -1100,65 +1105,44 @@ class UserController extends Controller
 
         $this->validate($request, [
             'npm'                  => 'required',
-            'nama_darurat'         => 'required',
-            'alamat_darurat'       => 'required',
-            'hubungan_darurat'     => 'required',
-            'hp_darurat'           => 'required',
-            'nama_darurat2'        => 'required',
-            'alamat_darurat2'      => 'required',
-            'hubungan_darurat2'    => 'required',
-            'hp_darurat2'          => 'required',
+            'mampu_berjalan'       => 'required',
+            'mempunyai_alergi'     => 'required',
         ]);
 
         Wawancara4::create([
-            'npm'                  => $request->npm,
-            'nama_darurat'         => $request->nama_darurat,
-            'alamat_darurat'       => $request->alamat_darurat,
-            'hubungan_darurat'     => $request->hubungan_darurat,
-            'hp_darurat'           => $request->hp_darurat,
-            'nama_darurat2'        => $request->nama_darurat2,
-            'alamat_darurat2'      => $request->alamat_darurat2,
-            'hubungan_darurat2'    => $request->hubungan_darurat2,
-            'hp_darurat2'          => $request->hp_darurat2,
-            'asma'                 => $request->asma,
-            'sakit_mata'           => $request->sakit_mata,
-            'dbd'                  => $request->dbd,
-            'tbc'                  => $request->tbc,
-            'patah_tulang'         => $request->patah_tulang,
-            'malaria'              => $request->malaria,
-            'pneumonia'            => $request->pneumonia,
-            'kanker'               => $request->kanker,
-            'liver'                => $request->liver,
-            'sinusitis'            => $request->sinusitis,
-            'hepatitis'            => $request->hepatitis,
-            'penyakit_jantung'     => $request->penyakit_jantung,
-            'cacar'                => $request->cacar,
-            'hipertensi'           => $request->hipertensi,
-            'kolera'               => $request->kolera,
-            'campak'               => $request->campak,
-            'hipotensi'            => $request->hipotensi,
-            'tifus'                => $request->tifus,
-            'hipotermia'           => $request->hipotermia,
-            'hipertermia'          => $request->hipertermia,
-            'anemia'               => $request->anemia,
-            'usus_buntu'           => $request->usus_buntu,
-            'migrain'              => $request->migrain,
-            'diabetes'             => $request->diabetes,
-            'epilepsi'             => $request->epilepsi,
-            'sakit_gigi'           => $request->sakit_gigi,
-            'maag'                 => $request->maag,
-            'hiv'                  => $request->hiv,
-            'penyakit_lain'        => $request->penyakit_lain,
-            'sedang_menderita'     => $request->sedang_menderita,
-            'enam_bulan'           => $request->enam_bulan,
-            'tiga_bulan'           => $request->tiga_bulan,
-            'penyakit_keluarga'    => $request->penyakit_keluarga,
-            'jenis_alergi'         => $request->jenis_alergi,
-            'keluhan_alergi'       => $request->keluhan_alergi,
-            'cara_menangani'       => $request->cara_menangani,
-            'rumah_sakit'          => $request->rumah_sakit,
-            'operasi'              => $request->operasi,
-            'pantangan_operasi'    => $request->pantangan_operasi,
+            'npm'                     => $request->npm,
+            'asma'                    => $request->asma,
+            'jantung'                 => $request->jantung,
+            'hipotensi'               => $request->hipotensi,
+            'tbc'                     => $request->tbc,
+            'patah_tulang'            => $request->patah_tulang,
+            'anemia'                  => $request->anemia,
+            'pneumonia'               => $request->pneumonia,
+            'hipertensi'              => $request->hipertensi,
+            'kolera'                  => $request->kolera,
+            'epilepsi'                => $request->epilepsi,
+            'diabetes'                => $request->diabetes,
+            'maag'                    => $request->maag,
+            'penyakit_lain'           => $request->penyakit_lain,
+            'terakhir_mengalami'      => $request->terakhir_mengalami,
+            'seberapa_sering_terjadi' => $request->seberapa_sering_terjadi,
+            'mampu_berjalan'          => $request->mampu_berjalan,
+            'mempunyai_alergi'        => $request->mempunyai_alergi,
+            'jenis_alergi'            => $request->jenis_alergi,
+            'pantangan'               => $request->pantangan,
+            'fobia'                   => $request->fobia,
+            'disosiatif'              => $request->disosiatif,
+            'bipolar'                 => $request->bipolar,
+            'stress'                  => $request->stress,
+            'kecemasan'               => $request->kecemasan,
+            'depresi'                 => $request->depresi,
+            'adhd'                    => $request->adhd,
+            'self_harm'               => $request->self_harm,
+            'trauma'                  => $request->trauma,
+            'mental_lainnya'          => $request->mental_lainnya,
+            'dikonsultasikan'         => $request->dikonsultasikan,
+            'obat'                    => $request->obat,
+            'pemicu'                  => $request->pemicu,
         ]);
 
         return redirect('/user');
@@ -1218,6 +1202,7 @@ class UserController extends Controller
         $data['foto']     = $user->image;
         $data['nama']     = $user->nama;
         $data['email']    = $user->email;
+        $data['npm']      = $user->npm;
         return view('/user/suratizin', $data);
     }
     public function pernyataan(Request $request)
@@ -1226,17 +1211,18 @@ class UserController extends Controller
         $data['foto']     = $user->image;
         $data['nama']     = $user->nama;
         $data['email']    = $user->email;
+        $data['npm']      = $user->npm;
         return view('/user/suratpernyataan', $data);
     }
     public function izinStore(Request $request)
     {
         $user             = User::where('email', $request->session()->get('email'))->first();
         $this->validate($request, [
-            'file'        => 'required',
+            'document'        => 'required|file',
         ]);
 
         $p             = User::where('npm', $user->npm)->first();
-        $file          = $request->file('file');
+        $file          = $request->file('document');
         $nama_file     = time() . "_" . $file->getClientOriginalName();
         $tujuan_upload = 'tugas/suratizin';
         $file->move($tujuan_upload, $nama_file);
@@ -1244,6 +1230,7 @@ class UserController extends Controller
         $u              = User::find($p->id);
         $u->suratizin   = $nama_file;
         $u->save();
+        $request->session()->flash('suksesupload', 'File berhasil diupload');
 
         return redirect('/user');
     }
@@ -1251,11 +1238,11 @@ class UserController extends Controller
     {
         $user             = User::where('email', $request->session()->get('email'))->first();
         $this->validate($request, [
-            'file'        => 'required',
+            'document'        => 'required|file',
         ]);
 
         $p             = User::where('npm', $user->npm)->first();
-        $file          = $request->file('file');
+        $file          = $request->file('document');
         $nama_file     = time() . "_" . $file->getClientOriginalName();
         $tujuan_upload = 'tugas/suratpernyataan';
         $file->move($tujuan_upload, $nama_file);
@@ -1263,6 +1250,7 @@ class UserController extends Controller
         $u                  = User::find($p->id);
         $u->suratpernyataan = $nama_file;
         $u->save();
+        $request->session()->flash('suksesupload', 'File berhasil diupload');
 
         return redirect('/user');
     }

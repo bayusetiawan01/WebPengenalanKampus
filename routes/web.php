@@ -50,7 +50,7 @@ Route::get('/admin/materi/lihat/{id}', 'AdminController@lihatMateri');
 //Rute Tugas
 Route::get('/admin/tugas', 'AdminController@tugas');
 Route::get('/admin/tugas/tambah', 'AdminController@tambahTugas');
-Route::post('/admin/tugas/store', 'AdminController@tugasStore');
+Route::post('/admin/tugas/store', 'AdminController@tugasStore')->name('tugasstore');
 Route::get('/admin/tugas/edit/{id}', 'AdminController@editTugas');
 Route::post('/admin/tugas/update/{id}', 'AdminController@tugasUpdate');
 Route::get('/admin/tugas/hapus/{id}', 'AdminController@deleteTugas');
@@ -124,9 +124,9 @@ Route::post('/user/wawancara3store/buddha', 'UserController@wawancara3StoreBuddh
 Route::post('/user/wawancara3store/hindu', 'UserController@wawancara3StoreHindu');
 Route::post('/user/wawancara3store/katholik', 'UserController@wawancara3StoreKatholik');
 Route::post('/user/wawancara3store/protestan', 'UserController@wawancara3StoreProtestan');
-Route::post('/user/wawancara3store/islam', 'UserController@wawancara3StoreProtestan');
+Route::post('/user/wawancara3store/islam', 'UserController@wawancara3StoreIslam');
 Route::post('/user/wawancara4/store', 'UserController@wawancara4Store');
 Route::post('/user/wawancara5/store', 'UserController@wawancara5Store');
-Route::post('/user/izin/store', 'UserController@izinStore');
-Route::post('/user/pernyataan/store', 'UserController@pernyataanStore');
+Route::post('/user/izinstore', 'UserController@izinStore')->name('izinstore');
+Route::post('/user/pernyataanstore', 'UserController@pernyataanStore')->name('pernyataanstore');
 Route::get('/user/time/{id}', 'UserController@waktu');

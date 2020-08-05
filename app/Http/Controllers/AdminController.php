@@ -342,7 +342,8 @@ class AdminController extends Controller
         $this->validate($request, [
             'judul'     => 'required',
             'deskripsi' => 'required',
-            'deadline'  => 'required'
+            'deadline'  => 'required',
+            'file'      => 'file',
         ]);
 
         $nama_file = NULL;
@@ -377,7 +378,8 @@ class AdminController extends Controller
         $this->validate($request, [
             'judul'     => 'required',
             'deskripsi' => 'required',
-            'deadline'  => 'required'
+            'deadline'  => 'required',
+            'file'      => 'file',
         ]);
         $nama_file = $tugas->petunjuk;
         if ($request->hasFile('file')) {
@@ -438,7 +440,8 @@ class AdminController extends Controller
         $this->validate($request, [
             'judul'     => 'required',
             'deskripsi' => 'required',
-            'deadline'  => 'required'
+            'deadline'  => 'required',
+            'file'      => 'file',
         ]);
         $nama_file = NULL;
         if ($request->hasFile('file')) {
@@ -458,20 +461,18 @@ class AdminController extends Controller
 
         return redirect('/admin/kuis');
     }
-    public function aktivKuis($id, Request $request)
-    {
+    public function aktivKuis($id, Request $request){
         $kuis = Kuis::find($id);
         $kuis->is_active = 1;
         $kuis->save();
-
+        
         return redirect('/admin/kuis');
     }
-    public function nonaktivKuis($id, Request $request)
-    {
+    public function nonaktivKuis($id, Request $request){
         $kuis = Kuis::find($id);
         $kuis->is_active = 0;
         $kuis->save();
-
+        
         return redirect('/admin/kuis');
     }
     public function editKuis($id, Request $request)
@@ -525,7 +526,8 @@ class AdminController extends Controller
         $this->validate($request, [
             'judul'     => 'required',
             'deskripsi' => 'required',
-            'deadline'  => 'required'
+            'deadline'  => 'required',
+            'file'      => 'file',
         ]);
 
         $nama_file = $k->petunjuk;
@@ -606,20 +608,20 @@ class AdminController extends Controller
     }
     public function deleteUser($id, Request $request)
     {
-
+        
         $phapus = User::find($id);
         $phapus->is_active = 0;
         $phapus->save();
-
+        
         return redirect('/admin/users');
     }
     public function restoreUser($id, Request $request)
     {
-
+        
         $phapus = User::find($id);
         $phapus->is_active = 1;
         $phapus->save();
-
+        
         return redirect('/admin/users');
     }
     public function setAdmin($id, Request $request)
@@ -727,6 +729,7 @@ class AdminController extends Controller
             'organisasi'        => 'required',
             'jawaban_wawancara' => 'required',
             'sikap_wawancara'   => 'required',
+            'jawaban_studi_kasus'=> 'required',
             'koordinator'       => 'required',
             'sbmptn'            => 'required',
             'prodi_mipa'        => 'required',
@@ -738,6 +741,7 @@ class AdminController extends Controller
             'npm'               => $request->npm,
             'organisasi'        => $request->organisasi,
             'jawaban_wawancara' => $request->jawaban_wawancara,
+            'jawaban_studi_kasus' => $request->jawaban_studi_kasus,
             'sikap_wawancara'   => $request->sikap_wawancara,
             'koordinator'       => $request->koordinator,
             'sbmptn'            => $request->sbmptn,
@@ -760,6 +764,7 @@ class AdminController extends Controller
             'organisasi'        => 'required',
             'jawaban_wawancara' => 'required',
             'sikap_wawancara'   => 'required',
+            'jawaban_studi_kasus'=> 'required',
             'koordinator'       => 'required',
             'sbmptn'            => 'required',
             'prodi_mipa'        => 'required',
@@ -777,6 +782,7 @@ class AdminController extends Controller
         $nilai->prodi_mipa        = $request->prodi_mipa;
         $nilai->lk_kkm            = $request->lk_kkm;
         $nilai->sikap_prodi       = $request->sikap_prodi;
+        $nilai->jawaban_studi_kasus = $request->jawaban_studi_kasus;
         $nilai->save();
 
         return redirect('/admin/wawancarau/' . $request->npm);

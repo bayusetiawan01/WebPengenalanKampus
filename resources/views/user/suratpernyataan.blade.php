@@ -25,17 +25,17 @@
                         </h2>
                     </div>
                     <div class="body">
-                        <form action="/user/pernyataan/store/" method="post" enctype="multipart/form-data">
+                        <form action="{{route('pernyataanstore')}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-lg">
                                         <div class="custom-file">
-                                            <input type="file" name="file">
+                                            <input type="file" name="document">
                                         </div>
-                                        @if($errors->has('file'))
+                                        @if($errors->has('document'))
                                         <div class="text-danger">
-                                            {{ $errors->first('file')}}
+                                            {{ $errors->first('document')}}
                                         </div>
                                         @endif
                                     </div>

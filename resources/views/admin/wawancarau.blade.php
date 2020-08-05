@@ -207,7 +207,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Nama Organisasi</td>
-                                                    <td>{{$isi->organisasi1}}</td>
+                                                    <td>{{$isi->nama_organisasi1}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Jabatan</td>
@@ -219,7 +219,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Nama Organisasi</td>
-                                                    <td>{{$isi->organisasi2}}</td>
+                                                    <td>{{$isi->nama_organisasi2}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Jabatan</td>
@@ -231,7 +231,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Nama Organisasi</td>
-                                                    <td>{{$isi->organisasi3}}</td>
+                                                    <td>{{$isi->nama_organisasi3}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Jabatan</td>
@@ -423,192 +423,48 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Asma</td>
-                                                <td>{{$isi3->asma}}</td>
+                                                <td>1.	Penyakit yang pernah dialami</td>
+                                                <td><?php if($isi3->asma == 'on'){echo "Asma, ";} ?><?php if($isi3->jantung == 'on'){echo "Penyakit Jantung, ";} ?><?php if($isi3->hipotensi == 'on'){echo "Hipotensi, ";} ?><?php if($isi3->tbc == 'on'){echo "TBC, ";} ?><?php if($isi3->patah_tulang == 'on'){echo "Patah Tulang, ";} ?><?php if($isi3->anemia == 'on'){echo "Anemia, ";} ?><?php if($isi3->pneumonia == 'on'){echo "Pneumonia, ";} ?><?php if($isi3->hipertensi == 'on'){echo "Hipertensi, ";} ?><?php if($isi3->kolera == 'on'){echo "Kolera, ";} ?><?php if($isi3->epilepsi == 'on'){echo "Epilepsi, ";} ?><?php if($isi3->diabetes == 'on'){echo "Diabetes, ";} ?><?php if($isi3->maag == 'on'){echo "Maag, ";} ?><?php if($isi3->penyakit_lain != NULL){echo $isi3->penyakit_lain;} ?></td>
                                             </tr>
                                             <tr>
-                                                <td>Sakit Mata</td>
-                                                <td>{{$isi3->sakit_mata}}</td>
+                                                <td>&nbsp;&nbsp;&nbsp;a. Kapan terakhir mengalami?</td>
+                                                <td>{{$isi3->terakhir_mengalami}}</td>
                                             </tr>
                                             <tr>
-                                                <td>DBD</td>
-                                                <td>{{$isi3->dbd}}</td>
+                                                <td>&nbsp;&nbsp;&nbsp;b. Untuk rentang 0-8 minggu, Seberapa sering terjadi?</td>
+                                                <td>{{$isi3->seberapa_sering_terjadi}}</td>
                                             </tr>
                                             <tr>
-                                                <td>TBC</td>
-                                                <td>{{$isi3->tbc}}</td>
+                                                <td>2. Mampu berjalan 200 meter tercepat seberapa lama?</td>
+                                                <td>{{$isi3->mampu_berjalan}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Patah Tulang</td>
-                                                <td>{{$isi3->patah_tulang}}</td>
+                                                <td>3. Apakah Anda mempunyai alergi?</td>
+                                                <td>{{$isi3->mempunyai_alergi}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Malaria</td>
-                                                <td>{{$isi3->malaria}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Pneumonia</td>
-                                                <td>{{$isi3->pneumonia}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Kanker</td>
-                                                <td>{{$isi3->kanker}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Liver</td>
-                                                <td>{{$isi3->liver}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Sinusitis</td>
-                                                <td>{{$isi3->sinusitis}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hepatitis</td>
-                                                <td>{{$isi3->hepatitis}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Penyakit Jantung</td>
-                                                <td>{{$isi3->penyakit_jantung}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cacar</td>
-                                                <td>{{$isi3->cacar}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hipertensi</td>
-                                                <td>{{$isi3->hipertensi}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Kolera</td>
-                                                <td>{{$isi3->kolera}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Campak</td>
-                                                <td>{{$isi3->campak}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hipotensi</td>
-                                                <td>{{$isi3->hipotensi}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tifus</td>
-                                                <td>{{$isi3->tifus}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hipotermia</td>
-                                                <td>{{$isi3->hipotermia}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hipertermia</td>
-                                                <td>{{$isi3->hipertermia}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Anemia</td>
-                                                <td>{{$isi3->anemia}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Usus Buntu</td>
-                                                <td>{{$isi3->usus_buntu}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Migrain</td>
-                                                <td>{{$isi3->migrain}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Diabetes</td>
-                                                <td>{{$isi3->diabetes}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Epilepsi</td>
-                                                <td>{{$isi3->epilepsi}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Sakit Gigi</td>
-                                                <td>{{$isi3->sakit_gigi}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Maag</td>
-                                                <td>{{$isi3->maag}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hiv</td>
-                                                <td>{{$isi3->hiv}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Penyakit Lain</td>
-                                                <td>{{$isi3->penyakit_lain}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Sedang Menderita Penyakit Tertentu</td>
-                                                <td>{{$isi3->sedang_menderita}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3 Bulan Terakhir</td>
-                                                <td>{{$isi3->tiga_bulan}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6 Bulan Terakhir</td>
-                                                <td>{{$isi3->enam_bulan}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Riwayat Kesehatan Keluarga</td>
-                                                <td>{{$isi3->penyakit_keluarga}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jenis Alergi</td>
+                                                <td>&nbsp;&nbsp;&nbsp;Jenis alergi apa yang anda miliki? </td>
                                                 <td>{{$isi3->jenis_alergi}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Keluhan Alergi</td>
-                                                <td>{{$isi3->keluhan_alergi}}</td>
+                                                <td>4. Untuk yang memiliki penyakit diatas, apakah ada pantangan dari dokter?</td>
+                                                <td>{{$isi3->pantangan}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Cara Menangani Alergi</td>
-                                                <td>{{$isi3->cara_menangani}}</td>
+                                                <td>5.	Kelainan mental yang pernah dialami</td>
+                                                <td><?php if($isi3->fobia == 'on'){echo "Fobia, ";} ?><?php if($isi3->disosiatif == 'on'){echo "Gangguan Disosiatif, ";} ?><?php if($isi3->bipolar == 'on'){echo "Bipolar, ";} ?><?php if($isi3->stress == 'on'){echo "Stress, ";} ?><?php if($isi3->kecemasan == 'on'){echo "Kecemasan, ";} ?><?php if($isi3->depresi == 'on'){echo "Depresi, ";} ?><?php if($isi3->adhd == 'on'){echo "ADHD, ";} ?><?php if($isi3->self_harm == 'on'){echo "Self Harm, ";} ?><?php if($isi3->trauma == 'on'){echo "Trauma, ";} ?><?php if($isi3->mental_lainnya != NULL){echo $isi3->mental_lainnya;} ?></td>
                                             </tr>
                                             <tr>
-                                                <td>Pernah Dirawat di Rumah Sakit</td>
-                                                <td>{{$isi3->rumah_sakit}}</td>
+                                                <td>&nbsp;&nbsp;&nbsp;a. Apakah pernah dikonsultasikan?</td>
+                                                <td>{{$isi3->dikonsultasikan}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Pernah Operasi</td>
-                                                <td>{{$isi3->operasi}}</td>
+                                                <td>&nbsp;&nbsp;&nbsp;b. Ada medikasi (pemberian obat)? Obat apa?</td>
+                                                <td>{{$isi3->obat}}</td>
                                             </tr>
                                             <tr>
-                                                <td>Pantangan Operasi</td>
-                                                <td>{{$isi3->pantangan_operasi}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nama Keluarga yang Dapat Dihubungi</td>
-                                                <td>{{$isi3->nama_darurat}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>No HP</td>
-                                                <td>{{$isi3->hp_darurat}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Alamat</td>
-                                                <td>{{$isi3->alamat_darurat}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hubungan Kekerabatan</td>
-                                                <td>{{$isi3->hubungan_darurat}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nama Keluarga yang Dapat Dihubungi</td>
-                                                <td>{{$isi3->nama_darurat2}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>No HP</td>
-                                                <td>{{$isi3->hp_darurat2}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Alamat</td>
-                                                <td>{{$isi3->alamat_darurat2}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hubungan Kekerabatan</td>
-                                                <td>{{$isi3->hubungan_darurat2}}</td>
+                                                <td>&nbsp;&nbsp;&nbsp;c. Untuk bipolar,trauma,kecemasan,fobia,stress, apakah pemicunya?</td>
+                                                <td>{{$isi3->pemicu}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -992,44 +848,16 @@
                                                     <td>{{$isi5->streaming}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>PC</td>
-                                                    <td>{{$isi5->pc}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Laptop</td>
-                                                    <td>{{$isi5->laptop}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Smartphone</td>
-                                                    <td>{{$isi5->smartphone}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tablet</td>
-                                                    <td>{{$isi5->tablet}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Lainnya</td>
-                                                    <td>{{$isi5->lainnya2}}</td>
+                                                    <td>6. Device pendukung keadaan kegiatan online yang dimiliki</td>
+                                                    <td><?php if($isi5->pc == 'on'){echo "PC, ";}?><?php if($isi5->laptop == 'on'){echo "Laptop, ";}?><?php if($isi5->smartphone == 'on'){echo "Smartphone, ";}?><?php if($isi5->tablet == 'on'){echo "Tablet, ";}?><?php if($isi5->lainnya2 == 'on'){echo "Lainnya";}?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>7. Apakah device tersebut memiliki kamera dan bisa digunakan untuk video call?</td>
                                                     <td>{{$isi5->kamera}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Discord</td>
-                                                    <td>{{$isi5->discord}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Google Meet</td>
-                                                    <td>{{$isi5->meet}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Zoom</td>
-                                                    <td>{{$isi5->zoom}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tidak Satupun</td>
-                                                    <td>{{$isi5->tidak_satupun}}</td>
+                                                    <td>8. Platform apa yang pernah kalian gunakan</td>
+                                                    <td><?php if($isi5->discord == 'on'){echo "Discord, ";}?><?php if($isi5->meet == 'on'){echo "Google Meet, ";}?><?php if($isi5->zoom == 'on'){echo "Zoom, ";}?><?php if($isi5->tidak_satupun == 'Tidak Satupun'){echo "PC,";}?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>9. Dari platform tersebut apakah ada kendala saat penggunaan?</td>
@@ -1108,25 +936,31 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" name="organisasi" class="form-control" value="{{ old('organisasi') }}" required>
-                                        <label class="form-label">Organisasi</label>
+                                        <label class="form-label">Pengalaman Organisasi</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="jawaban_studi_kasus" class="form-control" value="{{ old('jawaban_studi_kasus') }}" required>
+                                        <label class="form-label">Jawaban studi kasus</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" name="jawaban_wawancara" class="form-control" value="{{ old('jawaban_wawancara') }}" required>
-                                        <label class="form-label">Jawaban Wawancara dan Studi Kasus</label>
+                                        <label class="form-label">Jawaban selama wawancara</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" name="sikap_wawancara" class="form-control" value="{{ old('sikap_wawancara') }}" required>
-                                        <label class="form-label">Sikap Selama Wawancara</label>
+                                        <label class="form-label">Sikap selama wawancara</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" name="koordinator" class="form-control" value="{{ old('koordinator') }}" required>
-                                        <label class="form-label">Ketersediaan Koordinator Angkatan</label>
+                                        <label class="form-label">Ketersediaan menjadi koordinator angkatan</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
@@ -1144,7 +978,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" name="lk_kkm" class="form-control" value="{{ old('lk_kkm') }}" required>
-                                        <label class="form-label">LK/KKM di Mipa</label>
+                                        <label class="form-label">Tahu LK/KKM di Mipa</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
@@ -1167,13 +1001,19 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" name="organisasi" class="form-control" value="{{ $nilai->organisasi }}" required>
-                                        <label class="form-label">Organisasi</label>
+                                        <label class="form-label">Pengalaman Organisasi</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" name="jawaban_studi_kasus" class="form-control" value="{{ $nilai->jawaban_studi_kasus }}" required>
+                                        <label class="form-label">Jawaban studi kasus</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" name="jawaban_wawancara" class="form-control" value="{{ $nilai->jawaban_wawancara }}" required>
-                                        <label class="form-label">Jawaban Wawancara dan Studi Kasus</label>
+                                        <label class="form-label">Jawaban selama wawancara</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
@@ -1185,7 +1025,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" name="koordinator" class="form-control" value="{{ $nilai->koordinator }}" required>
-                                        <label class="form-label">Ketersediaan Koordinator Angkatan</label>
+                                        <label class="form-label">Ketersediaan menjadi Koordinator Angkatan</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
@@ -1203,7 +1043,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" name="lk_kkm" class="form-control" value="{{ $nilai->lk_kkm }}" required>
-                                        <label class="form-label">LK/KKM di Mipa</label>
+                                        <label class="form-label">Tahu LK/KKM di Mipa</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
@@ -1219,17 +1059,45 @@
                     </div>
                     <div class="collapse" id="collapseKetentuan">
                         <div class="well" style="overflow:scroll; height:400px">
+                            Studi Kasus:<br>
+Di Eropa pada jaman dahulu kala, seorang wanita hampir meninggal karena kanker jenis khusus. Ada satu obat yang menurut dokter bisa menyelamatkannya. Obat itu dimiliki dalam bentuk resep yang dimiliki oleh seorang apoteker di kota yang sama. Karena obat itu masih langka, apoteker tersebut menyanggupi untuk meramu bahan menjadi obat siap konsumsi dengan menagih sepuluh kali lipat dari biaya bahannya. Harganya adalah $200 untuk bahan mentah obat dan $2.000 untuk dosis kecil obat. Suami wanita yang sakit, Heinz, pergi ke semua orang yang dia tahu untuk meminjam uang, tetapi dia hanya bisa mengumpulkan sekitar $1.000, yang mana merupakan setengah dari biaya obat jadi. Dia mengatakan kepada apoteker bahwa istrinya sedang sekarat dan memintanya untuk menjualnya lebih murah atau membiarkannya membayar nanti. Tetapi apoteker itu berkata, "Tidak, saya menemukan obat itu dan saya akan mendapat uang dari sini." Jadi Heinz putus asa dan membobol masuk ke toko pria itu untuk mencuri obat-obatan untuk istrinya. Menurut kamu, apakah keputusan Heinz sudah tepat? Jika iya, apa alasannya? Jika tidak, apa alasannya? Jelaskan!<br><br>
+
+Referensi Studi Kasus :<br>
+(Kohlberg’s Moral Stages)<br><br><br>
+
+Jika jawaban menyerupai contoh-contoh berikut, berikan nilai studi kasus sesuai angka berikut:<br>
+<strong>1</strong><br>
+Heinz harus mencuri obat itu karena sebenarnya hanya seharga $200 dan tidak semahal yang diinginkan oleh apoteker itu; Heinz bahkan menawarkan untuk membayarnya di awal.<br><br>
+Heinz harus mencuri obatnya karena dia akan jauh lebih bahagia jika dia menyelamatkan istrinya, bahkan jika dia harus menjalani hukuman penjara.<br><br>
+<strong>Atau</strong><br>
+Heinz tidak boleh mencuri obat karena ia akan dipenjara yang berarti ia adalah orang jahat.<br><br>
+Heinz tidak boleh mencuri obat karena penjara adalah tempat yang mengerikan dan ia mungkin akan lebih merana di sel penjara daripada karena kematian istrinya.<br><br>
+<strong>2</strong><br>
+Heinz harus mencuri obatnya karena istrinya mengharapkannya; dia ingin menjadi suami yang baik.<br><br>
+Heinz harus mencuri obat untuk istrinya tetapi juga mengambil hukuman yang ditentukan untuk kejahatannya, serta membayar kepada apoteker apa yang menjadi kewajibannya. Penjahat tidak bisa hanya berkeliaran tanpa memperhatikan hukum; setiap tindakan memiliki konsekuensi.<br><br>
+<strong>Atau</strong><br>
+Heinz tidak boleh mencuri obat karena mencuri itu buruk dan dia bukan penjahat; dia telah mencoba melakukan segala yang dia bisa tanpa melanggar hukum, kamu tidak bisa menyalahkannya.<br><br>
+Heinz tidak boleh mencuri obat karena hukum melarang seseorang untuk mencuri, sehingga tindakannya ilegal.<br><br>
+<strong>3</strong><br>
+Heinz harus mencuri obatnya karena setiap orang memiliki hak untuk memilih kehidupan, terlepas dari hukum.<br><br>
+Heinz harus mencuri obat, karena menyelamatkan nyawa manusia adalah nilai yang lebih mendasar daripada hak properti orang lain.<br><br>
+<strong>Atau</strong><br>
+Heinz tidak boleh mencuri obat karena ilmuwan memiliki hak atas kompensasi yang adil. Bahkan jika istrinya sakit, itu tidak membuat tindakannya benar.<br><br>
+Heinz tidak boleh mencuri obat, karena ada orang lain yang mungkin sangat membutuhkan obat tersebut dan kehidupan mereka sama pentingnya.<br><br>
+
+
+
                             Organisasi: <br>
                             0 = tidak mengikuti <br>
                             1 = staff <br>
                             2 = kepala departemen/divisi <br>
                             3 = ketua/wakil/kepala bidang/sekben <br><br>
-                            Jawaban Wawancara dan Studi Kasus: <br>
+                            Jawaban selama wawancara: <br>
                             1 = lama dan penuh pertimbangan <br>
                             2 = terbata-bata/cepat tapi plinplan <br>
                             3 = percaya diri dan tegas menyampaikan alasan <br><br>
                             Sikap Selama Wawancara: <br>
-                            1 = duduk dan bicara seenaknya <br>
+                            1 = bicara seenaknya saat freecall<br>
                             2 = santai seperti ke teman <br>
                             3 = sopan dan menghargai pewawancara <br><br>
                             Ketersediaan mencadi koordinator: <br>
