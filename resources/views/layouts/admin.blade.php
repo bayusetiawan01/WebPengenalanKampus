@@ -72,21 +72,34 @@
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                             <i class="material-icons">notifications</i>
-                            <span class="label-count">1</span>
+                            <span class="label-count">2</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="header">NOTIFICATIONS</li>
                             <li class="body">
                                 <ul class="menu" style="list-style-type: none;">
                                     <li>
-                                        <a href="javascript:void(0);">
+                                        <a href="https://bit.ly/FormTambahanAgamaIslam" target="_blank">
                                             <div class="icon-circle bg-purple">
                                                 <i class="material-icons">assignment</i>
                                             </div>
                                             <div class="menu-info">
-                                                <h4>Tes Notifikasi Tugas</h4>
+                                                <h4>Form Tambahan Untuk Islam</h4>
                                                 <p>
-                                                    <i class="material-icons">access_time</i> Yesterday
+                                                    <i class="material-icons">assignment</i> Jangan lupa diisi ya
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://bit.ly/FaqMB2020" target="_blank">
+                                            <div class="icon-circle bg-green">
+                                                <i class="material-icons">assignment</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>FAQ Mipa Bersatu 2020</h4>
+                                                <p>
+                                                    <i class="material-icons">assignment</i> Dibaca juga ya
                                                 </p>
                                             </div>
                                         </a>
@@ -94,7 +107,7 @@
                                 </ul>
                             </li>
                             <li class="footer">
-                                <a href="javascript:void(0);">View All Notifications</a>
+                                <a href="javascript:void(0);"></a>
                             </li>
                         </ul>
                     </li>

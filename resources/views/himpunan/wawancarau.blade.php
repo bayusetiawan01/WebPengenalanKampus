@@ -412,7 +412,7 @@
                                 </h4>
                             </div>
                             <div id="collapseThree_4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_4">
-                                <div class="panel-body">
+                                <div class="panel-body table-responsive">
                                     @if($isi3!=NULL)
                                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                         <thead>
@@ -482,8 +482,8 @@
                             </div>
                             <div id="collapseFour_4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour_4">
                                 <div class="panel-body">
-                                    @if($isi->agama = 'islam' && $isi4i!=NULL)
                                     <div class="table-responsive">
+                                    @if($isi->agama = 'islam' && $isi4i!=NULL)
                                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                             <thead>
                                                 <tr>
@@ -626,7 +626,6 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>
                                     @elseif($isi->agama = 'protestan' && $isi4p!=NULL)
                                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                         <thead>
@@ -800,6 +799,7 @@
                                         </tbody>
                                     </table>
                                     @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -925,7 +925,7 @@
                     <div class="collapse" id="collapseForm">
                         <div class="well" style="background-color: white; overflow:scroll; height:400px">
                             @if($nilai == NULL)
-                            <form action="/admin/wawancara/store" method="post" enctype="multipart/form-data">
+                            <form action="/himpunan/wawancara/store" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -990,7 +990,7 @@
                                 <button type="submit" class="btn btn-primary m-t-15 waves-effect">Simpan</button>
                             </form>
                             @else
-                            <form action="/admin/wawancara/update" method="post" enctype="multipart/form-data">
+                            <form action="/himpunan/wawancara/update" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="form-group form-float">
                                     <div class="form-line">

@@ -5,7 +5,7 @@
     <span class="h3">Dashboard</span>
     <br><br>
     <!-- Widgets -->
-    <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+    <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" style="padding: 0px">
         <div class=" row clearfix">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-pink hover-expand-effect">
@@ -55,7 +55,7 @@
     </div>
     <!-- #END# Widgets -->
     <!-- Basic Example -->
-    <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+    <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" style="padding: 0px">
         <div class="card">
             <div class="header">
                 <h2>Pengumuman</h2>
@@ -74,22 +74,22 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <a href="{{$p1->link}}"><img src="<?php echo asset('/images/desain/' . $p1->url) ?>" /></a>
+                            <a href="{{$p1->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p1->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <a href="{{$p2->link}}"><img src="<?php echo asset('/images/desain/' . $p2->url) ?>" /></a>
+                            <a href="{{$p2->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p2->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <a href="{{$p3->link}}"><img src="<?php echo asset('/images/desain/' . $p3->url) ?>" /></a>
+                            <a href="{{$p3->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p3->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <a href="{{$p4->link}}"><img src="<?php echo asset('/images/desain/' . $p4->url) ?>" /></a>
+                            <a href="{{$p4->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p4->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <a href="{{$p5->link}}"><img src="<?php echo asset('/images/desain/' . $p5->url) ?>" /></a>
+                            <a href="{{$p5->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p5->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <a href="{{$p6->link}}"><img src="<?php echo asset('/images/desain/' . $p6->url) ?>" /></a>
+                            <a href="{{$p6->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p6->url) ?>" /></a>
                         </div>
                     </div>
 

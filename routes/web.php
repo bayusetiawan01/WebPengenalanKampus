@@ -39,6 +39,8 @@ Route::get('/himpunan/profile', 'HimpunanController@profile');
 Route::get('/himpunan/password', 'HimpunanController@password');
 Route::post('/himpunan/password/update', 'HimpunanController@passwordUpdate');
 Route::post('/himpunan/profile/update', 'HimpunanController@profileUpdate');
+Route::post('/himpunan/wawancara/store', 'HimpunanController@wawancaraStore');
+Route::post('/himpunan/wawancara/update', 'HimpunanController@wawancaraUpdate');
 //Rute Materi
 Route::get('/admin/materi', 'AdminController@materi');
 Route::get('/admin/materi/tambah', 'AdminController@tambahMateri');

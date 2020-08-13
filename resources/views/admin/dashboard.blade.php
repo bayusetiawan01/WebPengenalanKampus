@@ -2,7 +2,7 @@
 @section('isi')
 <section class="content" style="margin-top: 80px;">
     <!-- Widgets -->
-    <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+    <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" style="padding: 0px">
         <div class=" row clearfix">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box bg-pink hover-expand-effect">
@@ -52,7 +52,7 @@
     </div>
     <!-- #END# Widgets -->
     <!-- Basic Example -->
-    <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+    <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" style="padding: 0px">
         <div class="card">
             <div class="header">
                 <h2>Pengumuman</h2>
@@ -82,22 +82,22 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <a href="{{$p1->link}}"><img src="<?php echo asset('/images/desain/' . $p1->url) ?>" /></a>
+                            <a href="{{$p1->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p1->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <a href="{{$p2->link}}"><img src="<?php echo asset('/images/desain/' . $p2->url) ?>" /></a>
+                            <a href="{{$p2->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p2->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <a href="{{$p3->link}}"><img src="<?php echo asset('/images/desain/' . $p3->url) ?>" /></a>
+                            <a href="{{$p3->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p3->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <a href="{{$p4->link}}"><img src="<?php echo asset('/images/desain/' . $p4->url) ?>" /></a>
+                            <a href="{{$p4->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p4->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <a href="{{$p5->link}}"><img src="<?php echo asset('/images/desain/' . $p5->url) ?>" /></a>
+                            <a href="{{$p5->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p5->url) ?>" /></a>
                         </div>
                         <div class="item">
-                            <a href="{{$p6->link}}"><img src="<?php echo asset('/images/desain/' . $p6->url) ?>" /></a>
+                            <a href="{{$p6->link}}" target="_blank"><img src="<?php echo asset('/images/desain/' . $p6->url) ?>" /></a>
                         </div>
                     </div>
 
@@ -150,7 +150,7 @@
                             <div class="col-md-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" name="link1" class="form-control" value="{{ old('link1') }}">
+                                        <input type="text" name="link1" class="form-control" value="{{$p1->link}}">
                                         <label class="form-label">Link</label>
                                     </div>
                                 </div>
@@ -168,7 +168,7 @@
                             <div class="col-md-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" name="link2" class="form-control" value="{{ old('link2') }}">
+                                        <input type="text" name="link2" class="form-control" value="{{$p2->link}}">
                                         <label class="form-label">Link</label>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                             <div class="col-md-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" name="link3" class="form-control" value="{{ old('link3') }}">
+                                        <input type="text" name="link3" class="form-control" value="{{$p3->link}}">
                                         <label class="form-label">Link</label>
                                     </div>
                                 </div>
@@ -204,7 +204,7 @@
                             <div class="col-md-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" name="link4" class="form-control" value="{{ old('link4') }}">
+                                        <input type="text" name="link4" class="form-control" value="{{$p4->link}}">
                                         <label class="form-label">Link</label>
                                     </div>
                                 </div>
@@ -222,7 +222,7 @@
                             <div class="col-md-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" name="link5" class="form-control" value="{{ old('link5') }}">
+                                        <input type="text" name="link5" class="form-control" value="{{$p5->link}}">
                                         <label class="form-label">Link</label>
                                     </div>
                                 </div>
@@ -240,7 +240,7 @@
                             <div class="col-md-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" name="link6" class="form-control" value="{{ old('link6') }}">
+                                        <input type="text" name="link6" class="form-control" value="{{$p6->link}}">
                                         <label class="form-label">Link</label>
                                     </div>
                                 </div>
