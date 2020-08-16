@@ -60,7 +60,7 @@
                             <select id="agama" name="agama">
                                 <option value="islam" @if($isi->agama =='islam' ) selected @endif>Islam</option>
                                 <option value="protestan" @if($isi->agama =='protestan' ) selected @endif>Kristen Protestan</option>
-                                <option value="katholik" @if($isi->agama =='katholik' ) selected @endif>Kristen Katholik</option>
+                                <option value="katholik" @if($isi->agama =='katholik' ) selected @endif>Kristen Katolik</option>
                                 <option value="hindu" @if($isi->agama =='hindu' ) selected @endif>Hindu</option>
                                 <option value="buddha" @if($isi->agama =='buddha' ) selected @endif>Buddha</option>
                             </select>

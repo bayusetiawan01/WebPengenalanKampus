@@ -21,11 +21,11 @@ use App\Wawancara3Protestan;
 use App\Wawancara4;
 use App\Wawancara5;
 use App\Pengumuman;
-use App\Pemetaan;
 use App\Fitur;
-use App\Soalp;
 use Illuminate\Support\Facades\Hash;
 use PDF;
+use App\Exports\MultipleSheet;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -33,7 +33,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('admin');
-        $this->middleware('revalidate');
+        $this->middleware('revalidate')->except('export_excel');
     }
     public function index(Request $request)
     {
@@ -461,18 +461,20 @@ class AdminController extends Controller
 
         return redirect('/admin/kuis');
     }
-    public function aktivKuis($id, Request $request){
+    public function aktivKuis($id, Request $request)
+    {
         $kuis = Kuis::find($id);
         $kuis->is_active = 1;
         $kuis->save();
-        
+
         return redirect('/admin/kuis');
     }
-    public function nonaktivKuis($id, Request $request){
+    public function nonaktivKuis($id, Request $request)
+    {
         $kuis = Kuis::find($id);
         $kuis->is_active = 0;
         $kuis->save();
-        
+
         return redirect('/admin/kuis');
     }
     public function editKuis($id, Request $request)
@@ -608,20 +610,20 @@ class AdminController extends Controller
     }
     public function deleteUser($id, Request $request)
     {
-        
+
         $phapus = User::find($id);
         $phapus->is_active = 0;
         $phapus->save();
-        
+
         return redirect('/admin/users');
     }
     public function restoreUser($id, Request $request)
     {
-        
+
         $phapus = User::find($id);
         $phapus->is_active = 1;
         $phapus->save();
-        
+
         return redirect('/admin/users');
     }
     public function setAdmin($id, Request $request)
@@ -725,29 +727,29 @@ class AdminController extends Controller
         $data['email'] = $user->email;
 
         $this->validate($request, [
-            'npm'               => 'required',
-            'organisasi'        => 'required',
-            'jawaban_wawancara' => 'required',
-            'sikap_wawancara'   => 'required',
-            'jawaban_studi_kasus'=> 'required',
-            'koordinator'       => 'required',
-            'sbmptn'            => 'required',
-            'prodi_mipa'        => 'required',
-            'lk_kkm'            => 'required',
-            'sikap_prodi'       => 'required',
+            'npm'                 => 'required',
+            'organisasi'          => 'required',
+            'jawaban_wawancara'   => 'required',
+            'sikap_wawancara'     => 'required',
+            'jawaban_studi_kasus' => 'required',
+            'koordinator'         => 'required',
+            'sbmptn'              => 'required',
+            'prodi_mipa'          => 'required',
+            'lk_kkm'              => 'required',
+            'sikap_prodi'         => 'required',
         ]);
 
         NilaiWawancara::create([
-            'npm'               => $request->npm,
-            'organisasi'        => $request->organisasi,
-            'jawaban_wawancara' => $request->jawaban_wawancara,
+            'npm'                 => $request->npm,
+            'organisasi'          => $request->organisasi,
+            'jawaban_wawancara'   => $request->jawaban_wawancara,
             'jawaban_studi_kasus' => $request->jawaban_studi_kasus,
-            'sikap_wawancara'   => $request->sikap_wawancara,
-            'koordinator'       => $request->koordinator,
-            'sbmptn'            => $request->sbmptn,
-            'prodi_mipa'        => $request->prodi_mipa,
-            'lk_kkm'            => $request->lk_kkm,
-            'sikap_prodi'       => $request->sikap_prodi,
+            'sikap_wawancara'     => $request->sikap_wawancara,
+            'koordinator'         => $request->koordinator,
+            'sbmptn'              => $request->sbmptn,
+            'prodi_mipa'          => $request->prodi_mipa,
+            'lk_kkm'              => $request->lk_kkm,
+            'sikap_prodi'         => $request->sikap_prodi,
         ]);
 
         return redirect('/admin/wawancarau/' . $request->npm);
@@ -764,7 +766,7 @@ class AdminController extends Controller
             'organisasi'        => 'required',
             'jawaban_wawancara' => 'required',
             'sikap_wawancara'   => 'required',
-            'jawaban_studi_kasus'=> 'required',
+            'jawaban_studi_kasus' => 'required',
             'koordinator'       => 'required',
             'sbmptn'            => 'required',
             'prodi_mipa'        => 'required',
@@ -786,5 +788,153 @@ class AdminController extends Controller
         $nilai->save();
 
         return redirect('/admin/wawancarau/' . $request->npm);
+    }
+    public function export_excel()
+    {
+        return Excel::download(new MultipleSheet, 'Wawancara.xlsx');
+    }
+    public function tambah_sbmptn_matematika()
+    {
+        for ($i = 22; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1401102000" . $i,
+                'email'     => "1401102000" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1401102000" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1401102000" . $i,
+                'himpunan'  => "Matematika",
+            ]);
+        }
+        return redirect('/admin');
+    }
+    public function tambah_sbmptn_kimia()
+    {
+        for ($i = 23; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1402102000" . $i,
+                'email'     => "1402102000" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1402102000" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1402102000" . $i,
+                'himpunan'  => "Kimia",
+            ]);
+        }
+        return redirect('/admin');
+    }
+    public function tambah_sbmptn_fisika()
+    {
+        for ($i = 21; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1403102000" . $i,
+                'email'     => "1403102000" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1403102000" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1403102000" . $i,
+                'himpunan'  => "Fisika",
+            ]);
+        }
+        return redirect('/admin');
+    }
+    public function tambah_sbmptn_biologi()
+    {
+        for ($i = 26; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1404102000" . $i,
+                'email'     => "1404102000" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1404102000" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1404102000" . $i,
+                'himpunan'  => "Biologi",
+            ]);
+        }
+        return redirect('/admin');
+    }
+    public function tambah_sbmptn_statis()
+    {
+        for ($i = 21; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1406102000" . $i,
+                'email'     => "1406102000" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1406102000" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1406102000" . $i,
+                'himpunan'  => "Statistika",
+            ]);
+        }
+        return redirect('/admin');
+    }
+    public function tambah_sbmptn_geofis()
+    {
+        for ($i = 21; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1407102000" . $i,
+                'email'     => "1407102000" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1407102000" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1407102000" . $i,
+                'himpunan'  => "Geofisika",
+            ]);
+        }
+        return redirect('/admin');
+    }
+    public function tambah_sbmptn_ti()
+    {
+        for ($i = 21; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1408102000" . $i,
+                'email'     => "1408102000" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1408102000" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1408102000" . $i,
+                'himpunan'  => "TeknikInformatika",
+            ]);
+        }
+        return redirect('/admin');
+    }
+    public function tambah_sbmptn_te()
+    {
+        for ($i = 21; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1409102000" . $i,
+                'email'     => "1409102000" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1409102000" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1409102000" . $i,
+                'himpunan'  => "TeknikElektro",
+            ]);
+        }
+        return redirect('/admin');
+    }
+    public function tambah_sbmptn_aktu()
+    {
+        for ($i = 21; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1410102000" . $i,
+                'email'     => "1410102000" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1410102000" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1410102000" . $i,
+                'himpunan'  => "Aktuaria",
+            ]);
+        }
+        return redirect('/admin');
     }
 }

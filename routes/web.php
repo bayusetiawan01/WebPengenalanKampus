@@ -83,6 +83,16 @@ Route::get('/admin/wawancaraupdf/{id}', 'AdminController@isiwawancarapdf');
 Route::get('/himpunan/wawancaraupdf/{id}', 'HimpunanController@isiwawancarapdf');
 Route::post('/himpunan/wawancara/store', 'HimpunanController@wawancaraStore');
 Route::post('/himpunan/wawancara/update', 'HimpunanController@wawancaraUpdate');
+Route::get('/admin/export_wawancara', 'AdminController@export_excel');
+Route::get('/admin/tambah_sbmptn_matematika', 'AdminController@tambah_sbmptn_matematika');
+Route::get('/admin/tambah_sbmptn_kimia', 'AdminController@tambah_sbmptn_kimia');
+Route::get('/admin/tambah_sbmptn_fisika', 'AdminController@tambah_sbmptn_fisika');
+Route::get('/admin/tambah_sbmptn_biologi', 'AdminController@tambah_sbmptn_biologi');
+Route::get('/admin/tambah_sbmptn_statis', 'AdminController@tambah_sbmptn_statis');
+Route::get('/admin/tambah_sbmptn_geofis', 'AdminController@tambah_sbmptn_geofis');
+Route::get('/admin/tambah_sbmptn_ti', 'AdminController@tambah_sbmptn_ti');
+Route::get('/admin/tambah_sbmptn_te', 'AdminController@tambah_sbmptn_te');
+Route::get('/admin/tambah_sbmptn_aktu', 'AdminController@tambah_sbmptn_aktu');
 
 //Rute User
 Route::get('/user', 'UserController@index');
