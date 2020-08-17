@@ -15,6 +15,7 @@
                             <h3>Matematika</h3>
                             <p>
                                 <a href="/admin/wawancara/Matematika" class="btn btn-danger waves-effect" role="button">Lihat Hasil</a>
+                                <a href="/admin/export_wawancara/Matematika" class="btn btn-default waves-effect" role="button">Export Excel</a>
                             </p>
                         </div>
                     </div>
@@ -26,6 +27,7 @@
                             <h3>Kimia</h3>
                             <p>
                                 <a href="/admin/wawancara/Kimia" class="btn btn-danger waves-effect" role="button">Lihat Hasil</a>
+                                <a href="/admin/export_wawancara/Kimia" class="btn btn-default waves-effect" role="button">Export Excel</a>
                             </p>
                         </div>
                     </div>
@@ -37,6 +39,7 @@
                             <h3>Fisika</h3>
                             <p>
                                 <a href="/admin/wawancara/Fisika" class="btn btn-danger waves-effect" role="button">Lihat Hasil</a>
+                                <a href="/admin/export_wawancara/Fisika" class="btn btn-default waves-effect" role="button">Export Excel</a>
                             </p>
                         </div>
                     </div>
@@ -48,6 +51,7 @@
                             <h3>Biologi</h3>
                             <p>
                                 <a href="/admin/wawancara/Biologi" class="btn btn-danger waves-effect" role="button">Lihat Hasil</a>
+                                <a href="/admin/export_wawancara/Biologi" class="btn btn-default waves-effect" role="button">Export Excel</a>
                             </p>
                         </div>
                     </div>
@@ -59,6 +63,7 @@
                             <h3>Statistika</h3>
                             <p>
                                 <a href="/admin/wawancara/Statistika" class="btn btn-danger waves-effect" role="button">Lihat Hasil</a>
+                                <a href="/admin/export_wawancara/Statistika" class="btn btn-default waves-effect" role="button">Export Excel</a>
                             </p>
                         </div>
                     </div>
@@ -70,6 +75,7 @@
                             <h3>Geofisika</h3>
                             <p>
                                 <a href="/admin/wawancara/Geofisika" class="btn btn-danger waves-effect" role="button">Lihat Hasil</a>
+                                <a href="/admin/export_wawancara/Geofisika" class="btn btn-default waves-effect" role="button">Export Excel</a>
                             </p>
                         </div>
                     </div>
@@ -81,6 +87,7 @@
                             <h3>Teknik Informatika</h3>
                             <p>
                                 <a href="/admin/wawancara/TeknikInformatika" class="btn btn-danger waves-effect" role="button">Lihat Hasil</a>
+                                <a href="/admin/export_wawancara/TeknikInformatika" class="btn btn-default waves-effect" role="button">Export Excel</a>
                             </p>
                         </div>
                     </div>
@@ -92,6 +99,7 @@
                             <h3>Teknik Elektro</h3>
                             <p>
                                 <a href="/admin/wawancara/TeknikElektro" class="btn btn-danger waves-effect" role="button">Lihat Hasil</a>
+                                <a href="/admin/export_wawancara/TeknikElektro" class="btn btn-default waves-effect" role="button">Export Excel</a>
                             </p>
                         </div>
                     </div>
@@ -103,6 +111,7 @@
                             <h3>Aktuaria</h3>
                             <p>
                                 <a href="/admin/wawancara/Aktuaria" class="btn btn-danger waves-effect" role="button">Lihat Hasil</a>
+                                <a href="/admin/export_wawancara/Aktuaria" class="btn btn-default waves-effect" role="button">Export Excel</a>
                             </p>
                         </div>
                     </div>

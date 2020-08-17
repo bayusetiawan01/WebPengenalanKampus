@@ -14,10 +14,20 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 
 class Wawancara3Islam implements FromView, WithStyles, WithColumnWidths, WithColumnFormatting, WithTitle
 {
+    private $jurusan;
+
+    public function __construct(string $jurusan)
+    {
+        $this->jurusan = $jurusan;
+    }
+
     public function view(): View
     {
         return view('export.wawancara3islam', [
-            'wawancara' => DB::table('wawancara3islam')->join('wawancara', 'wawancara.npm', '=', 'wawancara3islam.npm')->get()
+            'wawancara' => DB::table('wawancara3islam')
+                ->join('wawancara', 'wawancara.npm', '=', 'wawancara3islam.npm')
+                ->where('wawancara.jurusan', $this->jurusan)
+                ->get()
         ]);
     }
     public function styles(Worksheet $sheet)

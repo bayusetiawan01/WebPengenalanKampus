@@ -2,7 +2,6 @@
 
 namespace App\Exports;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithStyles;
@@ -11,8 +10,9 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithTitle;
+use Illuminate\Support\Facades\DB;
 
-class Wawancara3Katolik implements FromView, WithStyles, WithColumnWidths, WithColumnFormatting, WithTitle
+class WawancaraKesehatan implements FromView, WithStyles, WithColumnWidths, WithColumnFormatting, WithTitle
 {
     private $jurusan;
 
@@ -23,9 +23,9 @@ class Wawancara3Katolik implements FromView, WithStyles, WithColumnWidths, WithC
 
     public function view(): View
     {
-        return view('export.wawancara3katolik', [
-            'wawancara' => DB::table('wawancara3katholik')
-                ->join('wawancara', 'wawancara.npm', '=', 'wawancara3katholik.npm')
+        return view('export.wawancara_kesehatan', [
+            'wawancara' => DB::table('wawancara4')
+                ->join('wawancara', 'wawancara.npm', '=', 'wawancara4.npm')
                 ->where('wawancara.jurusan', $this->jurusan)
                 ->get()
         ]);
@@ -46,7 +46,7 @@ class Wawancara3Katolik implements FromView, WithStyles, WithColumnWidths, WithC
     }
     public function title(): string
     {
-        return 'Agama Kristen Katolik';
+        return 'Kesehatan';
     }
     public function columnWidths(): array
     {

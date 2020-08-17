@@ -83,7 +83,7 @@ Route::get('/admin/wawancaraupdf/{id}', 'AdminController@isiwawancarapdf');
 Route::get('/himpunan/wawancaraupdf/{id}', 'HimpunanController@isiwawancarapdf');
 Route::post('/himpunan/wawancara/store', 'HimpunanController@wawancaraStore');
 Route::post('/himpunan/wawancara/update', 'HimpunanController@wawancaraUpdate');
-Route::get('/admin/export_wawancara', 'AdminController@export_excel');
+Route::get('/admin/export_wawancara/{id}', 'AdminController@export_excel');
 Route::get('/admin/tambah_sbmptn_matematika', 'AdminController@tambah_sbmptn_matematika');
 Route::get('/admin/tambah_sbmptn_kimia', 'AdminController@tambah_sbmptn_kimia');
 Route::get('/admin/tambah_sbmptn_fisika', 'AdminController@tambah_sbmptn_fisika');

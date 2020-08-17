@@ -789,9 +789,9 @@ class AdminController extends Controller
 
         return redirect('/admin/wawancarau/' . $request->npm);
     }
-    public function export_excel()
+    public function export_excel($id)
     {
-        return Excel::download(new MultipleSheet, 'Wawancara.xlsx');
+        return Excel::download(new MultipleSheet($id), 'Wawancara.xlsx');
     }
     public function tambah_sbmptn_matematika()
     {

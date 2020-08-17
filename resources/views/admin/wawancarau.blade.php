@@ -423,8 +423,47 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>1.	Penyakit yang pernah dialami</td>
-                                                <td><?php if($isi3->asma == 'on'){echo "Asma, ";} ?><?php if($isi3->jantung == 'on'){echo "Penyakit Jantung, ";} ?><?php if($isi3->hipotensi == 'on'){echo "Hipotensi, ";} ?><?php if($isi3->tbc == 'on'){echo "TBC, ";} ?><?php if($isi3->patah_tulang == 'on'){echo "Patah Tulang, ";} ?><?php if($isi3->anemia == 'on'){echo "Anemia, ";} ?><?php if($isi3->pneumonia == 'on'){echo "Pneumonia, ";} ?><?php if($isi3->hipertensi == 'on'){echo "Hipertensi, ";} ?><?php if($isi3->kolera == 'on'){echo "Kolera, ";} ?><?php if($isi3->epilepsi == 'on'){echo "Epilepsi, ";} ?><?php if($isi3->diabetes == 'on'){echo "Diabetes, ";} ?><?php if($isi3->maag == 'on'){echo "Maag, ";} ?><?php if($isi3->penyakit_lain != NULL){echo $isi3->penyakit_lain;} ?></td>
+                                                <td>1. Penyakit yang pernah dialami</td>
+                                                <td><?php if ($isi3->asma == 'on') {
+                                                        echo "Asma, ";
+                                                    } ?>
+                                                    <?php if ($isi3->jantung == 'on') {
+                                                        echo "Penyakit Jantung, ";
+                                                    } ?>
+                                                    <?php if ($isi3->hipotensi == 'on') {
+                                                        echo "Hipotensi, ";
+                                                    } ?>
+                                                    <?php if ($isi3->tbc == 'on') {
+                                                        echo "TBC, ";
+                                                    } ?>
+                                                    <?php if ($isi3->patah_tulang == 'on') {
+                                                        echo "Patah Tulang, ";
+                                                    } ?>
+                                                    <?php if ($isi3->anemia == 'on') {
+                                                        echo "Anemia, ";
+                                                    } ?>
+                                                    <?php if ($isi3->pneumonia == 'on') {
+                                                        echo "Pneumonia, ";
+                                                    } ?>
+                                                    <?php if ($isi3->hipertensi == 'on') {
+                                                        echo "Hipertensi, ";
+                                                    } ?>
+                                                    <?php if ($isi3->kolera == 'on') {
+                                                        echo "Kolera, ";
+                                                    } ?>
+                                                    <?php if ($isi3->epilepsi == 'on') {
+                                                        echo "Epilepsi, ";
+                                                    } ?>
+                                                    <?php if ($isi3->diabetes == 'on') {
+                                                        echo "Diabetes, ";
+                                                    } ?>
+                                                    <?php if ($isi3->maag == 'on') {
+                                                        echo "Maag, ";
+                                                    } ?>
+                                                    <?php if ($isi3->penyakit_lain != NULL) {
+                                                        echo $isi3->penyakit_lain;
+                                                    } ?>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>&nbsp;&nbsp;&nbsp;a. Kapan terakhir mengalami?</td>
@@ -451,8 +490,39 @@
                                                 <td>{{$isi3->pantangan}}</td>
                                             </tr>
                                             <tr>
-                                                <td>5.	Kelainan mental yang pernah dialami</td>
-                                                <td><?php if($isi3->fobia == 'on'){echo "Fobia, ";} ?><?php if($isi3->disosiatif == 'on'){echo "Gangguan Disosiatif, ";} ?><?php if($isi3->bipolar == 'on'){echo "Bipolar, ";} ?><?php if($isi3->stress == 'on'){echo "Stress, ";} ?><?php if($isi3->kecemasan == 'on'){echo "Kecemasan, ";} ?><?php if($isi3->depresi == 'on'){echo "Depresi, ";} ?><?php if($isi3->adhd == 'on'){echo "ADHD, ";} ?><?php if($isi3->self_harm == 'on'){echo "Self Harm, ";} ?><?php if($isi3->trauma == 'on'){echo "Trauma, ";} ?><?php if($isi3->mental_lainnya != NULL){echo $isi3->mental_lainnya;} ?></td>
+                                                <td>5. Kelainan mental yang pernah dialami</td>
+                                                <td>
+                                                    <?php if ($isi3->fobia == 'on') {
+                                                        echo "Fobia, ";
+                                                    } ?>
+                                                    <?php if ($isi3->disosiatif == 'on') {
+                                                        echo "Gangguan Disosiatif, ";
+                                                    } ?>
+                                                    <?php if ($isi3->bipolar == 'on') {
+                                                        echo "Bipolar, ";
+                                                    } ?>
+                                                    <?php if ($isi3->stress == 'on') {
+                                                        echo "Stress, ";
+                                                    } ?>
+                                                    <?php if ($isi3->kecemasan == 'on') {
+                                                        echo "Kecemasan, ";
+                                                    } ?>
+                                                    <?php if ($isi3->depresi == 'on') {
+                                                        echo "Depresi, ";
+                                                    } ?>
+                                                    <?php if ($isi3->adhd == 'on') {
+                                                        echo "ADHD, ";
+                                                    } ?>
+                                                    <?php if ($isi3->self_harm == 'on') {
+                                                        echo "Self Harm, ";
+                                                    } ?>
+                                                    <?php if ($isi3->trauma == 'on') {
+                                                        echo "Trauma, ";
+                                                    } ?>
+                                                    <?php if ($isi3->mental_lainnya != NULL) {
+                                                        echo $isi3->mental_lainnya;
+                                                    } ?>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>&nbsp;&nbsp;&nbsp;a. Apakah pernah dikonsultasikan?</td>
@@ -483,7 +553,7 @@
                             <div id="collapseFour_4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour_4">
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                    @if($isi->agama = 'islam' && $isi4i != NULL)
+                                        @if($isi->agama = 'islam' && $isi4i != NULL)
                                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                             <thead>
                                                 <tr>
@@ -626,179 +696,179 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    @elseif($isi->agama = 'protestan' && $isi4p != NULL)
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>Pertanyaan</th>
-                                                <th>Jawaban</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Asala Gereja</td>
-                                                <td>{{$isi4p->asal_gereja}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Percaya atau tidak kalo masuk fmipa unpad itu jalan dari Tuhan? Ceritakan!</td>
-                                                <td>{{$isi4p->masuk_fmipa}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apa Kesaksian perbuatan / pertolongan yang pernah dialami oleh anda?</td>
-                                                <td>{{$isi4p->kesaksian_pertolongan}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apa arti Natal menurut anda?</td>
-                                                <td>{{$isi4p->arti_natal}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Siapa Yesus menurut anda?</td>
-                                                <td>{{$isi4p->siapa_yesus}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Pernahkah anda melakukan pelayanan gereja?</td>
-                                                <td>{{$isi4p->pelayanan_gereja}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Seberapa sering anda membaca alkitab</td>
-                                                <td>{{$isi4p->membaca_alkitab}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Berminat PMK</td>
-                                                <td>{{$isi4p->berminat_pmk}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ayat Disukai</td>
-                                                <td>{{$isi4p->ayat_disukai}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Persekutuan FMIPA</td>
-                                                <td>{{$isi4p->persekutuan_fmipa}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Maukah kamu mengikutinya?</td>
-                                                <td>{{$isi4p->maukah_ikut_persekutuan_fmipa}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apa arti pelayanan bagi anda?</td>
-                                                <td>{{$isi4p->arti_pelayanan}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    @elseif($isi->agama = 'katholik' && $isi4k != NULL)
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>Pertanyaan</th>
-                                                <th>Jawaban</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Asala Gereja</td>
-                                                <td>{{$isi4k->asal_gereja}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Percaya atau tidak kalo masuk fmipa unpad itu jalan dari Tuhan? Ceritakan!</td>
-                                                <td>{{$isi4k->masuk_fmipa}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jelaskan mengenai trinitas?</td>
-                                                <td>{{$isi4k->jelaskan_trinitas}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apa arti Natal menurut anda?</td>
-                                                <td>{{$isi4k->arti_natal}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Siapa Yesus menurut anda?</td>
-                                                <td>{{$isi4k->siapa_yesus}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Pernahkah anda melakukan pelayanan gereja?</td>
-                                                <td>{{$isi4k->pelayanan_gereja}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Seberapa sering anda membaca alkitab</td>
-                                                <td>{{$isi4k->membaca_alkitab}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Berminat KMK</td>
-                                                <td>{{$isi4k->berminat_kmk}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Adakah ayat pegangan?</td>
-                                                <td>{{$isi4k->ayat_pegangan}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    @elseif($isi->agama = 'hindu' && $isi4h != NULL)
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>Pertanyaan</th>
-                                                <th>Jawaban</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Menurut pemahaman anda, apa hal yg paling esensi dari agama Hindu?</td>
-                                                <td>{{$isi4h->pemahaman_agama_hindu}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apa dasar agama Hindu yg anda ketahui?</td>
-                                                <td>{{$isi4h->dasar_agama_hindu}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apa tujuan anda melakukan Yadnya selama ini?</td>
-                                                <td>{{$isi4h->tujuan_yadnya}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Pernahkah ada perasaan mengeluh dengan hal itu?</td>
-                                                <td>{{$isi4h->pernahkah_mengeluh}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apakah anda berminat bergabung dengan KMH</td>
-                                                <td>{{$isi4h->berminat_kmh}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Menurut anda apa program yg bagus untuk organisasi Hindu kedepannya?</td>
-                                                <td>{{$isi4h->saran_program}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    @elseif($isi->agama = 'buddha' && $isi4b != NULL)
-                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>Pertanyaan</th>
-                                                <th>Jawaban</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Apa yang anda ketahui tentang Agama Buddha?</td>
-                                                <td>{{$isi4b->tentang_agama_budha}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mengapa anda memilih Agama Buddha?</td>
-                                                <td>{{$isi4b->memilih_agama_budha}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apakah anda pernah mengikuti kelas Agama Buddha sebelumnya?</td>
-                                                <td>{{$isi4b->kelas_agama_budha}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apa yang anda ketahui tentang 4 hari besar Agama Buddha?</td>
-                                                <td>{{$isi4b->hari_besar_budha}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Sebutkan dan jelaskan mengenai pancasila Buddhist!</td>
-                                                <td>{{$isi4b->pancasila_buddhist}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    @endif
+                                        @elseif($isi->agama = 'protestan' && $isi4p != NULL)
+                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pertanyaan</th>
+                                                    <th>Jawaban</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Asala Gereja</td>
+                                                    <td>{{$isi4p->asal_gereja}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Percaya atau tidak kalo masuk fmipa unpad itu jalan dari Tuhan? Ceritakan!</td>
+                                                    <td>{{$isi4p->masuk_fmipa}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apa Kesaksian perbuatan / pertolongan yang pernah dialami oleh anda?</td>
+                                                    <td>{{$isi4p->kesaksian_pertolongan}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apa arti Natal menurut anda?</td>
+                                                    <td>{{$isi4p->arti_natal}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Siapa Yesus menurut anda?</td>
+                                                    <td>{{$isi4p->siapa_yesus}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pernahkah anda melakukan pelayanan gereja?</td>
+                                                    <td>{{$isi4p->pelayanan_gereja}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Seberapa sering anda membaca alkitab</td>
+                                                    <td>{{$isi4p->membaca_alkitab}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Berminat PMK</td>
+                                                    <td>{{$isi4p->berminat_pmk}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ayat Disukai</td>
+                                                    <td>{{$isi4p->ayat_disukai}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Persekutuan FMIPA</td>
+                                                    <td>{{$isi4p->persekutuan_fmipa}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Maukah kamu mengikutinya?</td>
+                                                    <td>{{$isi4p->maukah_ikut_persekutuan_fmipa}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apa arti pelayanan bagi anda?</td>
+                                                    <td>{{$isi4p->arti_pelayanan}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        @elseif($isi->agama = 'katholik' && $isi4k != NULL)
+                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pertanyaan</th>
+                                                    <th>Jawaban</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Asala Gereja</td>
+                                                    <td>{{$isi4k->asal_gereja}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Percaya atau tidak kalo masuk fmipa unpad itu jalan dari Tuhan? Ceritakan!</td>
+                                                    <td>{{$isi4k->masuk_fmipa}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jelaskan mengenai trinitas?</td>
+                                                    <td>{{$isi4k->jelaskan_trinitas}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apa arti Natal menurut anda?</td>
+                                                    <td>{{$isi4k->arti_natal}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Siapa Yesus menurut anda?</td>
+                                                    <td>{{$isi4k->siapa_yesus}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pernahkah anda melakukan pelayanan gereja?</td>
+                                                    <td>{{$isi4k->pelayanan_gereja}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Seberapa sering anda membaca alkitab</td>
+                                                    <td>{{$isi4k->membaca_alkitab}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Berminat KMK</td>
+                                                    <td>{{$isi4k->berminat_kmk}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Adakah ayat pegangan?</td>
+                                                    <td>{{$isi4k->ayat_pegangan}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        @elseif($isi->agama = 'hindu' && $isi4h != NULL)
+                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pertanyaan</th>
+                                                    <th>Jawaban</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Menurut pemahaman anda, apa hal yg paling esensi dari agama Hindu?</td>
+                                                    <td>{{$isi4h->pemahaman_agama_hindu}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apa dasar agama Hindu yg anda ketahui?</td>
+                                                    <td>{{$isi4h->dasar_agama_hindu}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apa tujuan anda melakukan Yadnya selama ini?</td>
+                                                    <td>{{$isi4h->tujuan_yadnya}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pernahkah ada perasaan mengeluh dengan hal itu?</td>
+                                                    <td>{{$isi4h->pernahkah_mengeluh}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apakah anda berminat bergabung dengan KMH</td>
+                                                    <td>{{$isi4h->berminat_kmh}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Menurut anda apa program yg bagus untuk organisasi Hindu kedepannya?</td>
+                                                    <td>{{$isi4h->saran_program}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        @elseif($isi->agama = 'buddha' && $isi4b != NULL)
+                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Pertanyaan</th>
+                                                    <th>Jawaban</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Apa yang anda ketahui tentang Agama Buddha?</td>
+                                                    <td>{{$isi4b->tentang_agama_budha}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mengapa anda memilih Agama Buddha?</td>
+                                                    <td>{{$isi4b->memilih_agama_budha}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apakah anda pernah mengikuti kelas Agama Buddha sebelumnya?</td>
+                                                    <td>{{$isi4b->kelas_agama_budha}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apa yang anda ketahui tentang 4 hari besar Agama Buddha?</td>
+                                                    <td>{{$isi4b->hari_besar_budha}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sebutkan dan jelaskan mengenai pancasila Buddhist!</td>
+                                                    <td>{{$isi4b->pancasila_buddhist}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -849,7 +919,23 @@
                                                 </tr>
                                                 <tr>
                                                     <td>6. Device pendukung keadaan kegiatan online yang dimiliki</td>
-                                                    <td><?php if($isi5->pc == 'on'){echo "PC, ";}?><?php if($isi5->laptop == 'on'){echo "Laptop, ";}?><?php if($isi5->smartphone == 'on'){echo "Smartphone, ";}?><?php if($isi5->tablet == 'on'){echo "Tablet, ";}?><?php if($isi5->lainnya2 == 'on'){echo "Lainnya";}?></td>
+                                                    <td>
+                                                        <?php if ($isi5->pc == 'on') {
+                                                            echo "PC, ";
+                                                        } ?>
+                                                        <?php if ($isi5->laptop == 'on') {
+                                                            echo "Laptop, ";
+                                                        } ?>
+                                                        <?php if ($isi5->smartphone == 'on') {
+                                                            echo "Smartphone, ";
+                                                        } ?>
+                                                        <?php if ($isi5->tablet == 'on') {
+                                                            echo "Tablet, ";
+                                                        } ?>
+                                                        <?php if ($isi5->lainnya2 == 'on') {
+                                                            echo "Lainnya";
+                                                        } ?>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>7. Apakah device tersebut memiliki kamera dan bisa digunakan untuk video call?</td>
@@ -857,7 +943,19 @@
                                                 </tr>
                                                 <tr>
                                                     <td>8. Platform apa yang pernah kalian gunakan</td>
-                                                    <td><?php if($isi5->discord == 'on'){echo "Discord, ";}?><?php if($isi5->meet == 'on'){echo "Google Meet, ";}?><?php if($isi5->zoom == 'on'){echo "Zoom, ";}?><?php if($isi5->tidak_satupun == 'Tidak Satupun'){echo "PC,";}?></td>
+                                                    <td><?php if ($isi5->discord == 'on') {
+                                                            echo "Discord, ";
+                                                        } ?>
+                                                        <?php if ($isi5->meet == 'on') {
+                                                            echo "Google Meet, ";
+                                                        } ?>
+                                                        <?php if ($isi5->zoom == 'on') {
+                                                            echo "Zoom, ";
+                                                        } ?>
+                                                        <?php if ($isi5->tidak_satupun == 'Tidak Satupun') {
+                                                            echo "PC,";
+                                                        } ?>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>9. Dari platform tersebut apakah ada kendala saat penggunaan?</td>
@@ -1060,30 +1158,30 @@
                     <div class="collapse" id="collapseKetentuan">
                         <div class="well" style="overflow:scroll; height:400px">
                             Studi Kasus:<br>
-Di Eropa pada jaman dahulu kala, seorang wanita hampir meninggal karena kanker jenis khusus. Ada satu obat yang menurut dokter bisa menyelamatkannya. Obat itu dimiliki dalam bentuk resep yang dimiliki oleh seorang apoteker di kota yang sama. Karena obat itu masih langka, apoteker tersebut menyanggupi untuk meramu bahan menjadi obat siap konsumsi dengan menagih sepuluh kali lipat dari biaya bahannya. Harganya adalah $200 untuk bahan mentah obat dan $2.000 untuk dosis kecil obat. Suami wanita yang sakit, Heinz, pergi ke semua orang yang dia tahu untuk meminjam uang, tetapi dia hanya bisa mengumpulkan sekitar $1.000, yang mana merupakan setengah dari biaya obat jadi. Dia mengatakan kepada apoteker bahwa istrinya sedang sekarat dan memintanya untuk menjualnya lebih murah atau membiarkannya membayar nanti. Tetapi apoteker itu berkata, "Tidak, saya menemukan obat itu dan saya akan mendapat uang dari sini." Jadi Heinz putus asa dan membobol masuk ke toko pria itu untuk mencuri obat-obatan untuk istrinya. Menurut kamu, apakah keputusan Heinz sudah tepat? Jika iya, apa alasannya? Jika tidak, apa alasannya? Jelaskan!<br><br>
+                            Di Eropa pada jaman dahulu kala, seorang wanita hampir meninggal karena kanker jenis khusus. Ada satu obat yang menurut dokter bisa menyelamatkannya. Obat itu dimiliki dalam bentuk resep yang dimiliki oleh seorang apoteker di kota yang sama. Karena obat itu masih langka, apoteker tersebut menyanggupi untuk meramu bahan menjadi obat siap konsumsi dengan menagih sepuluh kali lipat dari biaya bahannya. Harganya adalah $200 untuk bahan mentah obat dan $2.000 untuk dosis kecil obat. Suami wanita yang sakit, Heinz, pergi ke semua orang yang dia tahu untuk meminjam uang, tetapi dia hanya bisa mengumpulkan sekitar $1.000, yang mana merupakan setengah dari biaya obat jadi. Dia mengatakan kepada apoteker bahwa istrinya sedang sekarat dan memintanya untuk menjualnya lebih murah atau membiarkannya membayar nanti. Tetapi apoteker itu berkata, "Tidak, saya menemukan obat itu dan saya akan mendapat uang dari sini." Jadi Heinz putus asa dan membobol masuk ke toko pria itu untuk mencuri obat-obatan untuk istrinya. Menurut kamu, apakah keputusan Heinz sudah tepat? Jika iya, apa alasannya? Jika tidak, apa alasannya? Jelaskan!<br><br>
 
-Referensi Studi Kasus :<br>
-(Kohlberg’s Moral Stages)<br><br><br>
+                            Referensi Studi Kasus :<br>
+                            (Kohlberg’s Moral Stages)<br><br><br>
 
-Jika jawaban menyerupai contoh-contoh berikut, berikan nilai studi kasus sesuai angka berikut:<br>
-<strong>1</strong><br>
-Heinz harus mencuri obat itu karena sebenarnya hanya seharga $200 dan tidak semahal yang diinginkan oleh apoteker itu; Heinz bahkan menawarkan untuk membayarnya di awal.<br><br>
-Heinz harus mencuri obatnya karena dia akan jauh lebih bahagia jika dia menyelamatkan istrinya, bahkan jika dia harus menjalani hukuman penjara.<br><br>
-<strong>Atau</strong><br>
-Heinz tidak boleh mencuri obat karena ia akan dipenjara yang berarti ia adalah orang jahat.<br><br>
-Heinz tidak boleh mencuri obat karena penjara adalah tempat yang mengerikan dan ia mungkin akan lebih merana di sel penjara daripada karena kematian istrinya.<br><br>
-<strong>2</strong><br>
-Heinz harus mencuri obatnya karena istrinya mengharapkannya; dia ingin menjadi suami yang baik.<br><br>
-Heinz harus mencuri obat untuk istrinya tetapi juga mengambil hukuman yang ditentukan untuk kejahatannya, serta membayar kepada apoteker apa yang menjadi kewajibannya. Penjahat tidak bisa hanya berkeliaran tanpa memperhatikan hukum; setiap tindakan memiliki konsekuensi.<br><br>
-<strong>Atau</strong><br>
-Heinz tidak boleh mencuri obat karena mencuri itu buruk dan dia bukan penjahat; dia telah mencoba melakukan segala yang dia bisa tanpa melanggar hukum, kamu tidak bisa menyalahkannya.<br><br>
-Heinz tidak boleh mencuri obat karena hukum melarang seseorang untuk mencuri, sehingga tindakannya ilegal.<br><br>
-<strong>3</strong><br>
-Heinz harus mencuri obatnya karena setiap orang memiliki hak untuk memilih kehidupan, terlepas dari hukum.<br><br>
-Heinz harus mencuri obat, karena menyelamatkan nyawa manusia adalah nilai yang lebih mendasar daripada hak properti orang lain.<br><br>
-<strong>Atau</strong><br>
-Heinz tidak boleh mencuri obat karena ilmuwan memiliki hak atas kompensasi yang adil. Bahkan jika istrinya sakit, itu tidak membuat tindakannya benar.<br><br>
-Heinz tidak boleh mencuri obat, karena ada orang lain yang mungkin sangat membutuhkan obat tersebut dan kehidupan mereka sama pentingnya.<br><br>
+                            Jika jawaban menyerupai contoh-contoh berikut, berikan nilai studi kasus sesuai angka berikut:<br>
+                            <strong>1</strong><br>
+                            Heinz harus mencuri obat itu karena sebenarnya hanya seharga $200 dan tidak semahal yang diinginkan oleh apoteker itu; Heinz bahkan menawarkan untuk membayarnya di awal.<br><br>
+                            Heinz harus mencuri obatnya karena dia akan jauh lebih bahagia jika dia menyelamatkan istrinya, bahkan jika dia harus menjalani hukuman penjara.<br><br>
+                            <strong>Atau</strong><br>
+                            Heinz tidak boleh mencuri obat karena ia akan dipenjara yang berarti ia adalah orang jahat.<br><br>
+                            Heinz tidak boleh mencuri obat karena penjara adalah tempat yang mengerikan dan ia mungkin akan lebih merana di sel penjara daripada karena kematian istrinya.<br><br>
+                            <strong>2</strong><br>
+                            Heinz harus mencuri obatnya karena istrinya mengharapkannya; dia ingin menjadi suami yang baik.<br><br>
+                            Heinz harus mencuri obat untuk istrinya tetapi juga mengambil hukuman yang ditentukan untuk kejahatannya, serta membayar kepada apoteker apa yang menjadi kewajibannya. Penjahat tidak bisa hanya berkeliaran tanpa memperhatikan hukum; setiap tindakan memiliki konsekuensi.<br><br>
+                            <strong>Atau</strong><br>
+                            Heinz tidak boleh mencuri obat karena mencuri itu buruk dan dia bukan penjahat; dia telah mencoba melakukan segala yang dia bisa tanpa melanggar hukum, kamu tidak bisa menyalahkannya.<br><br>
+                            Heinz tidak boleh mencuri obat karena hukum melarang seseorang untuk mencuri, sehingga tindakannya ilegal.<br><br>
+                            <strong>3</strong><br>
+                            Heinz harus mencuri obatnya karena setiap orang memiliki hak untuk memilih kehidupan, terlepas dari hukum.<br><br>
+                            Heinz harus mencuri obat, karena menyelamatkan nyawa manusia adalah nilai yang lebih mendasar daripada hak properti orang lain.<br><br>
+                            <strong>Atau</strong><br>
+                            Heinz tidak boleh mencuri obat karena ilmuwan memiliki hak atas kompensasi yang adil. Bahkan jika istrinya sakit, itu tidak membuat tindakannya benar.<br><br>
+                            Heinz tidak boleh mencuri obat, karena ada orang lain yang mungkin sangat membutuhkan obat tersebut dan kehidupan mereka sama pentingnya.<br><br>
 
 
 

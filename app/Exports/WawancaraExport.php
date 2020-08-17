@@ -14,10 +14,17 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 
 class WawancaraExport implements FromView, WithStyles, WithColumnWidths, WithColumnFormatting, WithTitle
 {
+    private $jurusan;
+
+    public function __construct(string $jurusan)
+    {
+        $this->jurusan = $jurusan;
+    }
+
     public function view(): View
     {
         return view('export.wawancara', [
-            'wawancara' => Wawancara::all()
+            'wawancara' => Wawancara::where('jurusan', $this->jurusan)->get()
         ]);
     }
     public function styles(Worksheet $sheet)

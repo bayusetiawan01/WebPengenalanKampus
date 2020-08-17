@@ -14,10 +14,20 @@ use Illuminate\Support\Facades\DB;
 
 class Wawancara3Protestan implements FromView, WithStyles, WithColumnWidths, WithColumnFormatting, WithTitle
 {
+    private $jurusan;
+
+    public function __construct(string $jurusan)
+    {
+        $this->jurusan = $jurusan;
+    }
+
     public function view(): View
     {
         return view('export.wawancara3protestan', [
-            'wawancara' => DB::table('wawancara3protestan')->join('wawancara', 'wawancara.npm', '=', 'wawancara3protestan.npm')->get()
+            'wawancara' => DB::table('wawancara3protestan')
+                ->join('wawancara', 'wawancara.npm', '=', 'wawancara3protestan.npm')
+                ->where('wawancara.jurusan', $this->jurusan)
+                ->get()
         ]);
     }
     public function styles(Worksheet $sheet)
