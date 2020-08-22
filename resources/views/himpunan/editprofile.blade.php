@@ -12,7 +12,7 @@
         </ul>
     </div>
     @endif
-    <form action="/himpunan/profile/update" method="post" enctype="multipart/form-data">
+    <form action="{{route('hprofilestore')}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row clearfix">
             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">

@@ -27,7 +27,7 @@ Route::get('/admin/users/restore/{id}', 'AdminController@restoreUser');
 Route::get('/admin/users/setA/{id}', 'AdminController@setAdmin');
 Route::get('/admin/users/setU/{id}', 'AdminController@setUser');
 Route::get('/admin/profile', 'AdminController@profile');
-Route::post('/admin/profile/update', 'AdminController@profileUpdate');
+Route::post('/admin/profile/update', 'AdminController@profileUpdate')->name('aprofilestore');
 Route::get('/admin/password', 'AdminController@password');
 Route::post('/admin/password/update', 'AdminController@passwordUpdate');
 Route::post('/admin/pengumuman/update', 'AdminController@pengumumanUpdate');
@@ -38,7 +38,7 @@ Route::get('/himpunan/wawancarau/{id}', 'HimpunanController@isiwawancara');
 Route::get('/himpunan/profile', 'HimpunanController@profile');
 Route::get('/himpunan/password', 'HimpunanController@password');
 Route::post('/himpunan/password/update', 'HimpunanController@passwordUpdate');
-Route::post('/himpunan/profile/update', 'HimpunanController@profileUpdate');
+Route::post('/himpunan/profile/update', 'HimpunanController@profileUpdate')->name('hprofilestore');
 Route::post('/himpunan/wawancara/store', 'HimpunanController@wawancaraStore');
 Route::post('/himpunan/wawancara/update', 'HimpunanController@wawancaraUpdate');
 //Rute Materi
@@ -84,6 +84,7 @@ Route::get('/himpunan/wawancaraupdf/{id}', 'HimpunanController@isiwawancarapdf')
 Route::post('/himpunan/wawancara/store', 'HimpunanController@wawancaraStore');
 Route::post('/himpunan/wawancara/update', 'HimpunanController@wawancaraUpdate');
 Route::get('/admin/export_wawancara/{id}', 'AdminController@export_excel');
+Route::get('/admin/export_borang/{id}', 'AdminController@export_excel_hima');
 Route::get('/admin/tambah_sbmptn_matematika', 'AdminController@tambah_sbmptn_matematika');
 Route::get('/admin/tambah_sbmptn_kimia', 'AdminController@tambah_sbmptn_kimia');
 Route::get('/admin/tambah_sbmptn_fisika', 'AdminController@tambah_sbmptn_fisika');
@@ -93,12 +94,14 @@ Route::get('/admin/tambah_sbmptn_geofis', 'AdminController@tambah_sbmptn_geofis'
 Route::get('/admin/tambah_sbmptn_ti', 'AdminController@tambah_sbmptn_ti');
 Route::get('/admin/tambah_sbmptn_te', 'AdminController@tambah_sbmptn_te');
 Route::get('/admin/tambah_sbmptn_aktu', 'AdminController@tambah_sbmptn_aktu');
+Route::get('/admin/hapusizin/{id}', 'AdminController@izinUpdate');
+Route::get('/admin/hapuspernyataan/{id}', 'AdminController@pernyataanUpdate');
 
 //Rute User
 Route::get('/user', 'UserController@index');
 Route::get('/user/materi', 'UserController@materi');
 Route::get('/user/profile', 'UserController@profile');
-Route::post('/user/profile/update', 'UserController@profileUpdate');
+Route::post('/user/profile/update', 'UserController@profileUpdate')->name('uprofilestore');
 Route::get('/user/password', 'UserController@password');
 Route::post('/user/password/update', 'UserController@passwordUpdate');
 Route::get('/user/kuis', 'UserController@kuis');

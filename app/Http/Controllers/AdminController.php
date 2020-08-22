@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
@@ -25,6 +26,7 @@ use App\Fitur;
 use Illuminate\Support\Facades\Hash;
 use PDF;
 use App\Exports\MultipleSheet;
+use App\Exports\BorangSheet;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
@@ -33,7 +35,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('admin');
-        $this->middleware('revalidate')->except('export_excel');
+        $this->middleware('revalidate')->except('export_excel', 'export_excel_hima');
     }
     public function index(Request $request)
     {
@@ -793,6 +795,10 @@ class AdminController extends Controller
     {
         return Excel::download(new MultipleSheet($id), 'Wawancara.xlsx');
     }
+    public function export_excel_hima($id)
+    {
+        return Excel::download(new BorangSheet($id), 'Borang_Cakorang.xlsx');
+    }
     public function tambah_sbmptn_matematika()
     {
         for ($i = 22; $i < 100; $i++) {
@@ -936,5 +942,23 @@ class AdminController extends Controller
             ]);
         }
         return redirect('/admin');
+    }
+    public function izinUpdate($id)
+    {
+        $p            = User::where('npm', $id)->first();
+        $u            = User::find($p->id);
+        File::delete('tugas/suratizin/' . $u->suratizin);
+        $u->suratizin = NULL;
+        $u->save();
+        return redirect('/admin/wawancarau/' . $id);
+    }
+    public function pernyataanUpdate($id)
+    {
+        $p                  = User::where('npm', $id)->first();
+        $u                  = User::find($p->id);
+        File::delete('tugas/suratpernyataan/' . $u->suratpernyataan);
+        $u->suratpernyataan = NULL;
+        $u->save();
+        return redirect('/admin/wawancarau/' . $id);
     }
 }

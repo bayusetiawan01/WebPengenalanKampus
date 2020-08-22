@@ -165,8 +165,7 @@ class UserController extends Controller
     public function lihatTugas($id, Request $request)
     {
         $user = User::where('email', $request->session()->get('email'))->first();
-        $tugas_user = Filetugas::where
-        ([['user_npm', $user->npm], ['tugas_id', $id]])->get();
+        $tugas_user = Filetugas::where([['user_npm', $user->npm], ['tugas_id', $id]])->get();
         if ($tugas_user->isEmpty()) {
             $data['foto']   = $user->image;
             $data['nama']   = $user->nama;
@@ -250,7 +249,7 @@ class UserController extends Controller
         if ($check2->timer - time() <= 0) {
             $request->session()->flash('gagal', 'Kuis sudah tidak tersedia');
             return redirect('user/kuis');
-        } elseif($check2->jawaban != NULL){
+        } elseif ($check2->jawaban != NULL) {
             $request->session()->flash('success', 'Kuis sudah dikerjakan');
             return redirect('user/kuis');
         } else {
@@ -292,27 +291,27 @@ class UserController extends Controller
     public function pemetaan(Request $request)
     {
         $p = Fitur::where('fitur', 'pemetaan')->first();
-        if ($p->is_active == 0){
+        if ($p->is_active == 0) {
             $request->session()->flash('gagal', 'Belum waktunya mengisi pemetaan');
             return redirect('/user');
-        } else{
-        $user  = User::where('email', $request->session()->get('email'))->first();
-        $check = Pemetaan::where('user_npm', $user->npm)->get();
+        } else {
+            $user  = User::where('email', $request->session()->get('email'))->first();
+            $check = Pemetaan::where('user_npm', $user->npm)->get();
 
-        if ($check->isEmpty()) {
-            Pemetaan::create([
-                'user_npm'   => $user->npm,
-            ]);
-        }
+            if ($check->isEmpty()) {
+                Pemetaan::create([
+                    'user_npm'   => $user->npm,
+                ]);
+            }
 
-        $check2 = Pemetaan::where('user_npm', $user->npm)->first();
-        if ($check2->pilihan22 != NULL) {
-            return redirect('/user/pemetaan/5');
-        }
-        $data['foto']     = $user->image;
-        $data['nama']     = $user->nama;
-        $data['email']    = $user->email;
-        return view('/user/pemetaan', $data);
+            $check2 = Pemetaan::where('user_npm', $user->npm)->first();
+            if ($check2->pilihan22 != NULL) {
+                return redirect('/user/pemetaan/5');
+            }
+            $data['foto']     = $user->image;
+            $data['nama']     = $user->nama;
+            $data['email']    = $user->email;
+            return view('/user/pemetaan', $data);
         }
     }
     public function pemetaan1(Request $request)
@@ -516,7 +515,7 @@ class UserController extends Controller
         ]);
 
         $file          = $request->file('foto');
-        $nama_file     = time() . "_" . $file->getClientOriginalName();
+        $nama_file     = time() . "_" . $user->npm . "_foto";
         $tujuan_upload = 'images/profile';
         $file->move($tujuan_upload, $nama_file);
 
@@ -1223,7 +1222,7 @@ class UserController extends Controller
 
         $p             = User::where('npm', $user->npm)->first();
         $file          = $request->file('document');
-        $nama_file     = time() . "_" . $file->getClientOriginalName();
+        $nama_file     = time() . "_" . $user->npm . "_izin";
         $tujuan_upload = 'tugas/suratizin';
         $file->move($tujuan_upload, $nama_file);
 
@@ -1243,7 +1242,7 @@ class UserController extends Controller
 
         $p             = User::where('npm', $user->npm)->first();
         $file          = $request->file('document');
-        $nama_file     = time() . "_" . $file->getClientOriginalName();
+        $nama_file     = time() . "_" . $user->npm . "_pernyataan";
         $tujuan_upload = 'tugas/suratpernyataan';
         $file->move($tujuan_upload, $nama_file);
 

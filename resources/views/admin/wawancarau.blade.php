@@ -990,11 +990,13 @@
                                         <button class="btn btn-default waves-effect" role="button">Surat Belum Dikumpulkan</button>
                                     <?php else : ?>
                                         <a href="<?php echo asset('tugas/suratizin/' . $user->suratizin) ?>" class="btn btn-danger waves-effect" role="button">Surat Izin</a>
-                                    <?php endif ?>
+                                        <a href="/admin/hapusizin/{{ $user->npm }}" onclick="return confirm('Are you sure?');" class="btn btn-default waves-effect" role="button">Hapus</a>
+                                    <?php endif ?><br><br>
                                     <?php if ($user->suratpernyataan == NULL) : ?>
                                         <button class="btn btn-default waves-effect" role="button">Surat Belum Dikumpulkan</button>
                                     <?php else : ?>
                                         <a href="<?php echo asset('tugas/suratpernyataan/' . $user->suratpernyataan) ?>" class="btn btn-danger waves-effect" role="button">Surat Pernyataan</a>
+                                        <a href="/admin/hapuspernyataan/{{ $user->npm }}" onclick="return confirm('Are you sure?');" class="btn btn-default waves-effect" role="button">Hapus</a>
                                     <?php endif ?>
                                 </div>
                             </div>
