@@ -22,6 +22,7 @@ use App\Wawancara3Protestan;
 use App\Wawancara3Islam;
 use App\Wawancara4;
 use App\Wawancara5;
+use App\NilaiWawancara;
 use App\Fitur;
 use App\Pengumuman;
 use Illuminate\Support\Facades\Hash;
@@ -1256,5 +1257,135 @@ class UserController extends Controller
     public function waktu($id)
     {
         return gmdate("H:i:s", $id - time());
+    }
+    //////////////////////////////////////////
+    // Method Ganti NPM  ---------------------
+    //////////////////////////////////////////
+    public function gantiNPM(Request $request)
+    {
+        $p = Fitur::where('fitur', 'ganti_npm')->first();
+        if ($p->is_active == 0) {
+            $request->session()->flash('gagal', 'Tunggu Semua Dapat NPM Resmi Ya');
+            return redirect('/user');
+        } else {
+            $user  = User::where('email', $request->session()->get('email'))->first();
+            $data['foto']     = $user->image;
+            $data['nama']     = $user->nama;
+            $data['email']    = $user->email;
+            return view('/user/editnpm', $data);
+        }
+    }
+    public function npmUpdate(Request $request)
+    {
+        $p                 = User::where('email', $request->session()->get('email'))->first();
+        $this->validate($request, [
+            'pl'           => 'required',
+            'npm'          => 'required|unique:user', //NPM Tidak boleh sama dengan yang sudah ada
+            'pb2'          => 'required',
+        ]);
+        if ($request->pl == $p->npm) {  //NPM Lama tidak sama
+            if ($request->npm == $request->pb2) { //Validasi NPM Gagal
+
+                //Tabel User
+                $u         = User::find($p->id);
+                $u->npm    = $request->npm;
+                $u->email  = $request->npm;
+
+                $u->save();
+
+
+                //Tabel yang kemungkinan mengandung NPM
+                $wawancara1  = Wawancara::where('npm', $p->npm)->first();
+                $wawancara2  = Wawancara2::where('npm', $p->npm)->first();
+                $wawancara3i = Wawancara3Islam::where('npm', $p->npm)->first();
+                $wawancara3b = Wawancara3Buddha::where('npm', $p->npm)->first();
+                $wawancara3h = Wawancara3Hindu::where('npm', $p->npm)->first();
+                $wawancara3k = Wawancara3Katholik::where('npm', $p->npm)->first();
+                $wawancara3p = Wawancara3Protestan::where('npm', $p->npm)->first();
+                $wawancara4  = Wawancara4::where('npm', $p->npm)->first();
+                $wawancara5  = Wawancara5::where('npm', $p->npm)->first();
+                $wawancara6  = NilaiWawancara::where('npm', $p->npm)->first();
+                $kuis        = Jawaban::where('user_npm', $p->npm)->get();
+                $tugas       = Filetugas::where('user_npm', $p->npm)->get();
+
+                //Cek Kondisi Tiap Baris
+                if ($wawancara1 != NULL) {
+                    $w1         = Wawancara::find($wawancara1->id);
+                    $w1->npm    = $request->npm;
+                    $w1->save();
+                }
+                if ($wawancara2 != NULL) {
+                    $w2         = Wawancara2::find($wawancara2->id);
+                    $w2->npm    = $request->npm;
+                    $w2->save();
+                }
+                if ($wawancara3i != NULL) {
+                    $w3i         = Wawancara3Islam::find($wawancara3i->id);
+                    $w3i->npm    = $request->npm;
+                    $w3i->save();
+                }
+                if ($wawancara3b != NULL) {
+                    $w3b         = Wawancara3Buddha::find($wawancara3b->id);
+                    $w3b->npm    = $request->npm;
+                    $w3b->save();
+                }
+                if ($wawancara3h != NULL) {
+                    $w3h         = Wawancara3Hindu::find($wawancara3h->id);
+                    $w3h->npm    = $request->npm;
+                    $w3h->save();
+                }
+                if ($wawancara3k != NULL) {
+                    $w3k         = Wawancara3Katholik::find($wawancara3k->id);
+                    $w3k->npm    = $request->npm;
+                    $w3k->save();
+                }
+                if ($wawancara3p != NULL) {
+                    $w3p         = Wawancara3Protestan::find($wawancara3p->id);
+                    $w3p->npm    = $request->npm;
+                    $w3p->save();
+                }
+                if ($wawancara4 != NULL) {
+                    $w4         = Wawancara4::find($wawancara4->id);
+                    $w4->npm    = $request->npm;
+                    $w4->save();
+                }
+                if ($wawancara5 != NULL) {
+                    $w5         = Wawancara5::find($wawancara5->id);
+                    $w5->npm    = $request->npm;
+                    $w5->save();
+                }
+                if ($wawancara6 != NULL) {
+                    $w6         = NilaiWawancara::find($wawancara6->id);
+                    $w6->npm    = $request->npm;
+                    $w6->save();
+                }
+                if (!$kuis->isEmpty()) {
+                    foreach ($kuis as $k) :
+                        $ke = Jawaban::find($k->id);
+                        $ke->user_npm = $request->npm;
+                        $ke->save();
+                    endforeach;
+                }
+                if (!$tugas->isEmpty()) {
+                    foreach ($tugas as $t) :
+                        $te = Filetugas::find($t->id);
+                        $te->user_npm = $request->npm;
+                        $te->save();
+                    endforeach;
+                }
+
+
+                //Proses Logout
+                $request->session()->flush();
+                $request->session()->flash('sukses', 'NPM Berhasil Diganti Silakan Login dengan NPM Baru');
+                return redirect('/login');
+            } else {
+                $request->session()->flash('gagal', 'NPM validasi salah');
+                return redirect('user/ganti_npm');
+            }
+        } else {
+            $request->session()->flash('gagal', 'Npm Sementara yang dimasukkan salah');
+            return redirect('user/ganti_npm');
+        }
     }
 }

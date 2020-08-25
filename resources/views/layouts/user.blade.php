@@ -123,6 +123,7 @@
                             <li><a href="/user/profile/"><i class="material-icons">person</i>Profile</a></li>
                             <li><a href="/user/password/"><i class="material-icons">lock</i>Ubah Password</a></li>
                             <li role="separator" class="divider"></li>
+                            <li><a href="/user/ganti_npm/"><i class="material-icons">lock</i>Ubah NPM</a></li>
                         </ul>
                     </div>
                 </div>

@@ -58,6 +58,7 @@ class AdminController extends Controller
         $data['p5']          = Pengumuman::find(5);
         $data['p6']          = Pengumuman::find(6);
         $data['fitur']  = Fitur::where('fitur', 'pemetaan')->first();
+        $data['fitur2']  = Fitur::where('fitur', 'ganti_npm')->first();
         return view('/admin/dashboard', $data);
     }
     public function nonaktifkanPemetaan()
@@ -70,6 +71,20 @@ class AdminController extends Controller
     public function aktifkanPemetaan()
     {
         $u              = Fitur::find(1);
+        $u->is_active   = 1;
+        $u->save();
+        return redirect('/admin');
+    }
+    public function nonaktifkanGantiNPM()
+    {
+        $u              = Fitur::find(2);
+        $u->is_active   = 0;
+        $u->save();
+        return redirect('/admin');
+    }
+    public function aktifkanGantiNPM()
+    {
+        $u              = Fitur::find(2);
         $u->is_active   = 1;
         $u->save();
         return redirect('/admin');
@@ -801,31 +816,121 @@ class AdminController extends Controller
     }
     public function tambah_sbmptn_matematika()
     {
-        for ($i = 22; $i < 100; $i++) {
+        for ($i = 1; $i < 10; $i++) {
             User::create([
-                'nama'      => "1401102000" . $i,
-                'email'     => "1401102000" . $i,
+                'nama'      => "14011020020" . $i,
+                'email'     => "14011020020" . $i,
                 'image'     => "default.jpg",
-                'password'  => Hash::make("1401102000" . $i),
+                'password'  => Hash::make("14011020020" . $i),
                 'role_id'   => 1,
                 'is_active' => 1,
-                'npm'       => "1401102000" . $i,
+                'npm'       => "14011020020" . $i,
                 'himpunan'  => "Matematika",
             ]);
         }
+        for ($i = 10; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1401102002" . $i,
+                'email'     => "1401102002" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1401102002" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1401102002" . $i,
+                'himpunan'  => "Matematika",
+            ]);
+        }
+        User::create([
+            'nama'      => "140110200300",
+            'email'     => "140110200300",
+            'image'     => "default.jpg",
+            'password'  => Hash::make("140110200300"),
+            'role_id'   => 1,
+            'is_active' => 1,
+            'npm'       => "140110200300",
+            'himpunan'  => "Matematika",
+        ]);
+        for ($i = 1; $i < 10; $i++) {
+            User::create([
+                'nama'      => "14011020030" . $i,
+                'email'     => "14011020030" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("14011020030" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "14011020030" . $i,
+                'himpunan'  => "Matematika",
+            ]);
+        }
+        User::create([
+            'nama'      => "140110200310",
+            'email'     => "140110200310",
+            'image'     => "default.jpg",
+            'password'  => Hash::make("140110200310"),
+            'role_id'   => 1,
+            'is_active' => 1,
+            'npm'       => "140110200310",
+            'himpunan'  => "Matematika",
+        ]);
         return redirect('/admin');
     }
     public function tambah_sbmptn_kimia()
     {
-        for ($i = 23; $i < 100; $i++) {
+        for ($i = 1; $i < 10; $i++) {
             User::create([
-                'nama'      => "1402102000" . $i,
-                'email'     => "1402102000" . $i,
+                'nama'      => "14021020020" . $i,
+                'email'     => "14021020020" . $i,
                 'image'     => "default.jpg",
-                'password'  => Hash::make("1402102000" . $i),
+                'password'  => Hash::make("14021020020" . $i),
                 'role_id'   => 1,
                 'is_active' => 1,
-                'npm'       => "1402102000" . $i,
+                'npm'       => "14021020020" . $i,
+                'himpunan'  => "Kimia",
+            ]);
+        }
+        for ($i = 10; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1402102002" . $i,
+                'email'     => "1402102002" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1402102002" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1402102002" . $i,
+                'himpunan'  => "Kimia",
+            ]);
+        }
+        User::create([
+            'nama'      => "140210200300",
+            'email'     => "140210200300",
+            'image'     => "default.jpg",
+            'password'  => Hash::make("140210200300"),
+            'role_id'   => 1,
+            'is_active' => 1,
+            'npm'       => "140210200300",
+            'himpunan'  => "Kimia",
+        ]);
+        for ($i = 1; $i < 10; $i++) {
+            User::create([
+                'nama'      => "14021020030" . $i,
+                'email'     => "14021020030" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("14021020030" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "14021020030" . $i,
+                'himpunan'  => "Kimia",
+            ]);
+        }
+        for ($i = 10; $i < 31; $i++) {
+            User::create([
+                'nama'      => "1402102003" . $i,
+                'email'     => "1402102003" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1402102003" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1402102003" . $i,
                 'himpunan'  => "Kimia",
             ]);
         }
@@ -833,15 +938,27 @@ class AdminController extends Controller
     }
     public function tambah_sbmptn_fisika()
     {
-        for ($i = 21; $i < 100; $i++) {
+        for ($i = 1; $i < 10; $i++) {
             User::create([
-                'nama'      => "1403102000" . $i,
-                'email'     => "1403102000" . $i,
+                'nama'      => "14031020020" . $i,
+                'email'     => "14031020020" . $i,
                 'image'     => "default.jpg",
-                'password'  => Hash::make("1403102000" . $i),
+                'password'  => Hash::make("14031020020" . $i),
                 'role_id'   => 1,
                 'is_active' => 1,
-                'npm'       => "1403102000" . $i,
+                'npm'       => "14031020020" . $i,
+                'himpunan'  => "Fisika",
+            ]);
+        }
+        for ($i = 10; $i < 91; $i++) {
+            User::create([
+                'nama'      => "1403102002" . $i,
+                'email'     => "1403102002" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1403102002" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1403102002" . $i,
                 'himpunan'  => "Fisika",
             ]);
         }
@@ -849,15 +966,61 @@ class AdminController extends Controller
     }
     public function tambah_sbmptn_biologi()
     {
-        for ($i = 26; $i < 100; $i++) {
+        for ($i = 1; $i < 10; $i++) {
             User::create([
-                'nama'      => "1404102000" . $i,
-                'email'     => "1404102000" . $i,
+                'nama'      => "14041020020" . $i,
+                'email'     => "14041020020" . $i,
                 'image'     => "default.jpg",
-                'password'  => Hash::make("1404102000" . $i),
+                'password'  => Hash::make("14041020020" . $i),
                 'role_id'   => 1,
                 'is_active' => 1,
-                'npm'       => "1404102000" . $i,
+                'npm'       => "14041020020" . $i,
+                'himpunan'  => "Biologi",
+            ]);
+        }
+        for ($i = 10; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1404102002" . $i,
+                'email'     => "1404102002" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1404102002" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1404102002" . $i,
+                'himpunan'  => "Biologi",
+            ]);
+        }
+        User::create([
+            'nama'      => "140410200300",
+            'email'     => "140410200300",
+            'image'     => "default.jpg",
+            'password'  => Hash::make("140410200300"),
+            'role_id'   => 1,
+            'is_active' => 1,
+            'npm'       => "140410200300",
+            'himpunan'  => "Biologi",
+        ]);
+        for ($i = 1; $i < 10; $i++) {
+            User::create([
+                'nama'      => "14041020030" . $i,
+                'email'     => "14041020030" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("14041020030" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "14041020030" . $i,
+                'himpunan'  => "Biologi",
+            ]);
+        }
+        for ($i = 10; $i < 31; $i++) {
+            User::create([
+                'nama'      => "1404102003" . $i,
+                'email'     => "1404102003" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1404102003" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1404102003" . $i,
                 'himpunan'  => "Biologi",
             ]);
         }
@@ -865,31 +1028,87 @@ class AdminController extends Controller
     }
     public function tambah_sbmptn_statis()
     {
-        for ($i = 21; $i < 100; $i++) {
+        for ($i = 1; $i < 10; $i++) {
             User::create([
-                'nama'      => "1406102000" . $i,
-                'email'     => "1406102000" . $i,
+                'nama'      => "14061020020" . $i,
+                'email'     => "14061020020" . $i,
                 'image'     => "default.jpg",
-                'password'  => Hash::make("1406102000" . $i),
+                'password'  => Hash::make("14061020020" . $i),
                 'role_id'   => 1,
                 'is_active' => 1,
-                'npm'       => "1406102000" . $i,
+                'npm'       => "14061020020" . $i,
                 'himpunan'  => "Statistika",
             ]);
         }
+        for ($i = 10; $i < 100; $i++) {
+            User::create([
+                'nama'      => "1406102002" . $i,
+                'email'     => "1406102002" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1406102002" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1406102002" . $i,
+                'himpunan'  => "Statistika",
+            ]);
+        }
+        User::create([
+            'nama'      => "140610200300",
+            'email'     => "140610200300",
+            'image'     => "default.jpg",
+            'password'  => Hash::make("140610200300"),
+            'role_id'   => 1,
+            'is_active' => 1,
+            'npm'       => "140610200300",
+            'himpunan'  => "Statistika",
+        ]);
+        for ($i = 1; $i < 10; $i++) {
+            User::create([
+                'nama'      => "14061020030" . $i,
+                'email'     => "14061020030" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("14061020030" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "14061020030" . $i,
+                'himpunan'  => "Statistika",
+            ]);
+        }
+        User::create([
+            'nama'      => "140610200310",
+            'email'     => "140610200310",
+            'image'     => "default.jpg",
+            'password'  => Hash::make("140610200310"),
+            'role_id'   => 1,
+            'is_active' => 1,
+            'npm'       => "140610200310",
+            'himpunan'  => "Statistika",
+        ]);
         return redirect('/admin');
     }
     public function tambah_sbmptn_geofis()
     {
-        for ($i = 21; $i < 100; $i++) {
+        for ($i = 1; $i < 10; $i++) {
             User::create([
-                'nama'      => "1407102000" . $i,
-                'email'     => "1407102000" . $i,
+                'nama'      => "14071020020" . $i,
+                'email'     => "14071020020" . $i,
                 'image'     => "default.jpg",
-                'password'  => Hash::make("1407102000" . $i),
+                'password'  => Hash::make("14071020020" . $i),
                 'role_id'   => 1,
                 'is_active' => 1,
-                'npm'       => "1407102000" . $i,
+                'npm'       => "14071020020" . $i,
+                'himpunan'  => "Geofisika",
+            ]);
+        }
+        for ($i = 10; $i < 71; $i++) {
+            User::create([
+                'nama'      => "1407102002" . $i,
+                'email'     => "1407102002" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1407102002" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1407102002" . $i,
                 'himpunan'  => "Geofisika",
             ]);
         }
@@ -897,15 +1116,27 @@ class AdminController extends Controller
     }
     public function tambah_sbmptn_ti()
     {
-        for ($i = 21; $i < 100; $i++) {
+        for ($i = 1; $i < 10; $i++) {
             User::create([
-                'nama'      => "1408102000" . $i,
-                'email'     => "1408102000" . $i,
+                'nama'      => "14081020020" . $i,
+                'email'     => "14081020020" . $i,
                 'image'     => "default.jpg",
-                'password'  => Hash::make("1408102000" . $i),
+                'password'  => Hash::make("14081020020" . $i),
                 'role_id'   => 1,
                 'is_active' => 1,
-                'npm'       => "1408102000" . $i,
+                'npm'       => "14081020020" . $i,
+                'himpunan'  => "TeknikInformatika",
+            ]);
+        }
+        for ($i = 10; $i < 91; $i++) {
+            User::create([
+                'nama'      => "1408102002" . $i,
+                'email'     => "1408102002" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1408102002" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1408102002" . $i,
                 'himpunan'  => "TeknikInformatika",
             ]);
         }
@@ -913,15 +1144,27 @@ class AdminController extends Controller
     }
     public function tambah_sbmptn_te()
     {
-        for ($i = 21; $i < 100; $i++) {
+        for ($i = 1; $i < 10; $i++) {
             User::create([
-                'nama'      => "1409102000" . $i,
-                'email'     => "1409102000" . $i,
+                'nama'      => "14091020020" . $i,
+                'email'     => "14091020020" . $i,
                 'image'     => "default.jpg",
-                'password'  => Hash::make("1409102000" . $i),
+                'password'  => Hash::make("14091020020" . $i),
                 'role_id'   => 1,
                 'is_active' => 1,
-                'npm'       => "1409102000" . $i,
+                'npm'       => "14091020020" . $i,
+                'himpunan'  => "TeknikElektro",
+            ]);
+        }
+        for ($i = 10; $i < 71; $i++) {
+            User::create([
+                'nama'      => "1409102002" . $i,
+                'email'     => "1409102002" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1409102002" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1409102002" . $i,
                 'himpunan'  => "TeknikElektro",
             ]);
         }
@@ -929,15 +1172,27 @@ class AdminController extends Controller
     }
     public function tambah_sbmptn_aktu()
     {
-        for ($i = 21; $i < 100; $i++) {
+        for ($i = 1; $i < 10; $i++) {
             User::create([
-                'nama'      => "1410102000" . $i,
-                'email'     => "1410102000" . $i,
+                'nama'      => "14101020020" . $i,
+                'email'     => "14101020020" . $i,
                 'image'     => "default.jpg",
-                'password'  => Hash::make("1410102000" . $i),
+                'password'  => Hash::make("14101020020" . $i),
                 'role_id'   => 1,
                 'is_active' => 1,
-                'npm'       => "1410102000" . $i,
+                'npm'       => "14101020020" . $i,
+                'himpunan'  => "Aktuaria",
+            ]);
+        }
+        for ($i = 10; $i < 61; $i++) {
+            User::create([
+                'nama'      => "1410102002" . $i,
+                'email'     => "1410102002" . $i,
+                'image'     => "default.jpg",
+                'password'  => Hash::make("1410102002" . $i),
+                'role_id'   => 1,
+                'is_active' => 1,
+                'npm'       => "1410102002" . $i,
                 'himpunan'  => "Aktuaria",
             ]);
         }

@@ -73,6 +73,8 @@ Route::get('/admin/pemetaan', 'AdminController@pemetaan');
 Route::get('/admin/pemetaan/{id}', 'AdminController@hasilpemetaan');
 Route::get('/admin/pemetaans/aktif', 'AdminController@aktifkanPemetaan');
 Route::get('/admin/pemetaans/nonaktif', 'AdminController@nonaktifkanPemetaan');
+Route::get('/admin/ganti_npm/aktif', 'AdminController@aktifkanGantiNPM');
+Route::get('/admin/ganti_npm/nonaktif', 'AdminController@nonaktifkanGantiNPM');
 //Rute AdminWawancara
 Route::get('/admin/wawancara', 'AdminController@wawancara');
 Route::get('/admin/wawancara/{id}', 'AdminController@hasilwawancara');
@@ -145,3 +147,5 @@ Route::post('/user/wawancara5/store', 'UserController@wawancara5Store');
 Route::post('/user/izinstore', 'UserController@izinStore')->name('izinstore');
 Route::post('/user/pernyataanstore', 'UserController@pernyataanStore')->name('pernyataanstore');
 Route::get('/user/time/{id}', 'UserController@waktu');
+Route::get('/user/ganti_npm', 'UserController@gantiNPM');
+Route::post('/user/ganti_npm/update', 'UserController@npmUpdate');

@@ -342,7 +342,7 @@
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <textarea rows="4" class="form-control no-resize" name="pendapat_ikhtilat">{{ old('pendapat_ikhtilat') }}</textarea>
+                                <textarea rows="8" class="form-control no-resize" name="pendapat_ikhtilat">{{ old('pendapat_ikhtilat') }}</textarea>
                                 <label class="form-label" style="color: #333;">8. Bagaimana pendapat Anda mengenai ikhtilat (bercampur baur antara laki-laki dan perempuan) dan khalwat (berdua-duaan antara laki-laki dan perempuan yang bukan mahram)?</label>
                             </div>
                         </div>
@@ -366,7 +366,7 @@
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <textarea rows="4" class="form-control no-resize" name="pemimpin_non_muslim">{{ old('pemimpin_non_muslim') }}</textarea>
+                                <textarea rows="8" class="form-control no-resize" name="pemimpin_non_muslim">{{ old('pemimpin_non_muslim') }}</textarea>
                                 <label class="form-label" style="color: #333;">12. Bagaimana pendapat anda mengenai memilih pemimpin non muslim di suatu wilayah yang masyarakatnya mayoritas muslim? Berikan alasan.</label>
                             </div>
                         </div>

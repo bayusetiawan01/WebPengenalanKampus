@@ -128,6 +128,20 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header" style="background: firebrick;">
+                <h2 style="color: #fff">Fitur Ganti NPM</h2>
+            </div>
+            <div class="body" style="background: firebrick;">
+                @if($fitur2->is_active == 0)
+                <a href="admin\ganti_npm\aktif" class="btn btn-default btn-block">Aktifkan</a>
+                @else
+                <a href="admin\ganti_npm\nonaktif" class="btn btn-default btn-block">Nonaktifkan</a>
+                @endif
+            </div>
+        </div>
+    </div>
     <!-- Pengumuman Modal -->
     <div class="modal fade" id="pengumumanModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
