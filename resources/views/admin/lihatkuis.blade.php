@@ -20,6 +20,9 @@
                         <?php foreach ($soal as $s) :
                             $i = $i + 1; ?>
                             <?php if ($s->tipe_soal == 'pilihan ganda') : ?>
+                                <?php if ($s->image != NULL) : ?>
+                                    <img width="90%" src="{{ url('/images/soal/' . $s->image) }}">
+                                <?php endif ?>
                                 <p>{{$i}}. {{$s->soal}}</p>
                                 <?php $pilihan = explode(',', $s->pilihan) ?>
                                 <div class="form-group">
@@ -31,6 +34,9 @@
                                     </div>
                                 </div>
                             <?php elseif ($s->tipe_soal == 'essai') : ?>
+                                <?php if ($s->image != NULL) : ?>
+                                    <img width="90%" src="{{ url('/images/soal/' . $s->image) }}">
+                                <?php endif ?>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="{{$s->id}}" class="form-control" value="{{ old($s->id) }}" required>

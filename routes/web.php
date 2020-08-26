@@ -41,6 +41,8 @@ Route::post('/himpunan/password/update', 'HimpunanController@passwordUpdate');
 Route::post('/himpunan/profile/update', 'HimpunanController@profileUpdate')->name('hprofilestore');
 Route::post('/himpunan/wawancara/store', 'HimpunanController@wawancaraStore');
 Route::post('/himpunan/wawancara/update', 'HimpunanController@wawancaraUpdate');
+Route::get('/himpunan/export_wawancara/', 'HimpunanController@export_excel');
+Route::get('/himpunan/export_borang/', 'HimpunanController@export_excel_hima');
 //Rute Materi
 Route::get('/admin/materi', 'AdminController@materi');
 Route::get('/admin/materi/tambah', 'AdminController@tambahMateri');

@@ -19,6 +19,9 @@ use App\NilaiWawancara;
 use App\Pengumuman;
 use App\Wawancara5;
 use Illuminate\Support\Facades\Hash;
+use App\Exports\MultipleSheet;
+use App\Exports\BorangSheet;
+use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
 class HimpunanController extends Controller
@@ -27,7 +30,7 @@ class HimpunanController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('himpunan');
-        $this->middleware('revalidate');
+        $this->middleware('revalidate')->except('export_excel', 'export_excel_hima');
     }
     public function index(Request $request)
     {
@@ -50,6 +53,16 @@ class HimpunanController extends Controller
         $data['p5']          = Pengumuman::find(5);
         $data['p6']          = Pengumuman::find(6);
         return view('/himpunan/dashboard', $data);
+    }
+    public function export_excel(Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        return Excel::download(new MultipleSheet($user->himpunan), 'Wawancara.xlsx');
+    }
+    public function export_excel_hima(Request $request)
+    {
+        $user = User::where('email', $request->session()->get('email'))->first();
+        return Excel::download(new BorangSheet($user->himpunan), 'Borang_Cakorang.xlsx');
     }
     public function wawancara(Request $request)
     {

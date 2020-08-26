@@ -49,11 +49,19 @@
                                 <label class="form-label">NPM</label>
                             </div>
                         </div>
-                        <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="text" name="jurusan" class="form-control" value="{{ $isi->jurusan }}">
-                                <label class="form-label">Jurusan</label>
-                            </div>
+                        <div class="form-group">
+                            <label for="jurusan">Pilih Jurusan</label>
+                            <select id="jurusan" name="jurusan">
+                                <option value="Matematika" @if($isi->jurusan == 'Matematika' ) selected @endif>Matematika</option>
+                                <option value="Biologi" @if($isi->jurusan == 'Biologi' ) selected @endif>Biologi</option>
+                                <option value="Fisika" @if($isi->jurusan == 'Fisika' ) selected @endif>Fisika</option>
+                                <option value="Kimia" @if($isi->jurusan == 'Kimia' ) selected @endif>Kimia</option>
+                                <option value="Statistika" @if($isi->jurusan == 'Statistika' ) selected @endif>Statistika</option>
+                                <option value="Geofisika" @if($isi->jurusan == 'Geofisika' ) selected @endif>Geofisika</option>
+                                <option value="TeknikInformatika" @if($isi->jurusan == 'TeknikInformatika' ) selected @endif>TeknikInformatika</option>
+                                <option value="TeknikElektro" @if($isi->jurusan == 'TeknikElektro' ) selected @endif>TeknikElektro</option>
+                                <option value="Aktuaria" @if($isi->jurusan == 'Aktuaria' ) selected @endif>Aktuaria</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="agama">Pilih Agama</label>
