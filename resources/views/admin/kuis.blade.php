@@ -56,8 +56,8 @@
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input type="text" name="deskripsi" value="{{ old('deskripsi') }}" class="form-control">
-                                <label class="form-label">Deskripsi</label>
+                                <textarea rows="7" class="form-control no-resize" name="deskripsi">{{ old('deskripsi') }}</textarea>
+                                <label class="form-label" style="color: #333;">Deskripsi</label>
                             </div>
                         </div>
                         <div class="form-group form-float">

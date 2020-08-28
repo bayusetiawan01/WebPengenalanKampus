@@ -687,7 +687,7 @@ class AdminController extends Controller
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['jur']    = $id;
-        $data['list']   = User::where([['himpunan', $id], ['role_id', 1]])->get();
+        $data['list']   = User::where([['himpunan', $id], ['role_id', 1]])->orderBy('npm')->get();
         return view('/admin/wawancarauser', $data);
     }
     public function isiwawancara($id, Request $request)

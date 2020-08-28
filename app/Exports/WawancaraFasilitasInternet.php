@@ -27,6 +27,7 @@ class WawancaraFasilitasInternet implements FromView, WithStyles, WithColumnWidt
             'wawancara' => DB::table('wawancara5')
                 ->join('wawancara', 'wawancara.npm', '=', 'wawancara5.npm')
                 ->where('wawancara.jurusan', $this->jurusan)
+                ->orderBy('wawancara.npm')
                 ->get()
         ]);
     }

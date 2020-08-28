@@ -26,6 +26,7 @@ class WawancaraSurat implements FromView, WithStyles, WithColumnWidths, WithColu
         return view('export.wawancara_surat', [
             'wawancara' => DB::table('wawancara')
                 ->where('jurusan', $this->jurusan)
+                ->orderBy('wawancara.npm')
                 ->get()
         ]);
     }

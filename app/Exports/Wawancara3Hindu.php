@@ -27,6 +27,7 @@ class Wawancara3Hindu implements FromView, WithStyles, WithColumnWidths, WithCol
             'wawancara' => DB::table('wawancara3hindu')
                 ->join('wawancara', 'wawancara.npm', '=', 'wawancara3hindu.npm')
                 ->where('wawancara.jurusan', $this->jurusan)
+                ->orderBy('wawancara.npm')
                 ->get()
         ]);
     }

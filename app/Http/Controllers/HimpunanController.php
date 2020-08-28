@@ -71,7 +71,7 @@ class HimpunanController extends Controller
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['jur']    = $user->himpunan;
-        $data['list']   = User::where([['himpunan', $user->himpunan], ['role_id', 1]])->get();
+        $data['list']   = User::where([['himpunan', $user->himpunan], ['role_id', 1]])->orderBy('npm')->get();
         return view('/himpunan/wawancarauser', $data);
     }
     public function isiwawancara($id, Request $request)

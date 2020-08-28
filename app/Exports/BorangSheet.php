@@ -9,8 +9,10 @@ use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
-class BorangSheet implements FromView, WithStyles, WithColumnWidths
+class BorangSheet implements FromView, WithStyles, WithColumnWidths, WithColumnFormatting
 {
     use Exportable;
     protected $jurusan;
@@ -26,6 +28,7 @@ class BorangSheet implements FromView, WithStyles, WithColumnWidths
             'wawancara' => DB::table('nilaiwawancara')
                 ->join('wawancara', 'wawancara.npm', '=', 'nilaiwawancara.npm')
                 ->where('wawancara.jurusan', $this->jurusan)
+                ->orderBy('wawancara.npm')
                 ->get()
         ]);
     }
@@ -35,6 +38,12 @@ class BorangSheet implements FromView, WithStyles, WithColumnWidths
             1    => [
                 'font' => ['bold' => true],
             ],
+        ];
+    }
+    public function columnFormats(): array
+    {
+        return [
+            'A' => NumberFormat::FORMAT_NUMBER,
         ];
     }
     public function columnWidths(): array

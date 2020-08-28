@@ -8,7 +8,7 @@
                 <div class="header">
                     <h3>{{$kuis->judul}}</h3>
                     <h2>
-                        {{$kuis->deskripsi}}
+                        <?php echo nl2br(htmlspecialchars($kuis->deskripsi)); ?>
                         <?php if ($kuis->petunjuk != NULL) : ?>
                             <a href="<?php echo asset('tugas/' . $kuis->petunjuk) ?>" class="btn btn-danger waves-effect" role="button">Download Petunjuk</a>
                         <?php endif ?>

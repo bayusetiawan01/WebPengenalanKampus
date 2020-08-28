@@ -366,7 +366,7 @@
                         </div>
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <textarea rows="8" class="form-control no-resize" name="pemimpin_non_muslim">{{ old('pemimpin_non_muslim') }}</textarea>
+                                <textarea rows="7" class="form-control no-resize" name="pemimpin_non_muslim">{{ old('pemimpin_non_muslim') }}</textarea>
                                 <label class="form-label" style="color: #333;">12. Bagaimana pendapat anda mengenai memilih pemimpin non muslim di suatu wilayah yang masyarakatnya mayoritas muslim? Berikan alasan.</label>
                             </div>
                         </div>

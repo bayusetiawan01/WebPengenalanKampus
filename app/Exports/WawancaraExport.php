@@ -24,7 +24,7 @@ class WawancaraExport implements FromView, WithStyles, WithColumnWidths, WithCol
     public function view(): View
     {
         return view('export.wawancara', [
-            'wawancara' => Wawancara::where('jurusan', $this->jurusan)->get()
+            'wawancara' => Wawancara::where('jurusan', $this->jurusan)->orderBy('wawancara.npm')->get()
         ]);
     }
     public function styles(Worksheet $sheet)

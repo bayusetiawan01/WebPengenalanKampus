@@ -27,6 +27,7 @@ class Wawancara3Protestan implements FromView, WithStyles, WithColumnWidths, Wit
             'wawancara' => DB::table('wawancara3protestan')
                 ->join('wawancara', 'wawancara.npm', '=', 'wawancara3protestan.npm')
                 ->where('wawancara.jurusan', $this->jurusan)
+                ->orderBy('wawancara.npm')
                 ->get()
         ]);
     }

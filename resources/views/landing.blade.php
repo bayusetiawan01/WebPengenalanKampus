@@ -135,7 +135,7 @@
                         <div class="cta-header text-center">
                             <h2 style="color: #000"><u>Ikuti Juga</u></h2>
                             <h3 style="margin-top: 10px; color: #000">Instagram:&nbsp;&nbsp;@mipabersatu<br>
-                                Line:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ena9977y</h3>
+                            Line:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ena9977y</h3>
                         </div>
                     </div>
                 </div>
@@ -159,5 +159,4 @@
 
     <script src="{{ asset('/landing/js/main.min.js') }}"></script>
 </body>
-
 </html>

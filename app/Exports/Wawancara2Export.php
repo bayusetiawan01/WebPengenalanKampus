@@ -27,6 +27,7 @@ class Wawancara2Export implements FromView, WithStyles, WithColumnWidths, WithCo
             'wawancara' => DB::table('wawancara2')
                 ->join('wawancara', 'wawancara.npm', '=', 'wawancara2.npm')
                 ->where('wawancara.jurusan', $this->jurusan)
+                ->orderBy('wawancara.npm')
                 ->get()
         ]);
     }
