@@ -28,22 +28,16 @@
                     Project Officer bertugas untuk memimpin penyelenggaraan kegiatan angkatan 2020.<br><br>
                     - Acara<br>
                     Merupakan divisi yang bertugas untuk membuat konsep dan teknis detail kegiatan angkatan 2020.<br><br>
-                    - Liaison Officer<br>
-                    Merupakan divisi yang bertugas untuk mencari dan mendampingi pihak yang mengisi kegiatan angkatan 2020.<br><br>
                     - Hubungan Masyarakat<br>
                     Merupakan divisi yang bertugas untuk menyampaikan informasi kepada pihak pendukung kegiatan dan menjaga nama baik kegiatan angkatan 2020.<br><br>
-                    - Dana dan konsumsi<br>
-                    Merupakan divisi yang bertugas untuk mengusahakan ketersediaan dana kegiatan dan pengaturan konsumsi panitia dan peserta.<br><br>
+                    - Sponsorship and Funding<br>
+                    Merupakan divisi yang bertugas untuk mengusahakan ketersediaan dana kegiatan.<br><br>
                     - Logistik<br>
                     Merupakan divisi yang bertugas untuk memastikan ketersediaan alat dan bahan penunjang kegiatan angkatan 2020 berlangsung.<br><br>
-                    - Keamanan<br>
-                    Merupakan divisi yang bertugas untuk memastikan kegiatan angkatan 2020 berlangsung aman dan terkendali.<br><br>
                     - Dokumentasi dan Desain<br>
                     Merupaka divisi yang bertugas untuk membuat desain pesan digital sebagai bahan penunjang sosialisasi kegiatan angkatan 2020.<br><br>
                     - Publikasi<br>
                     Merupakan divisi yang bertugas untuk mengatur segala jenis penyampaian informasi dari berbagai media social.<br><br>
-                    - Dekorasi<br>
-                    Merupakan divisi yang bertugas untuk membuat tata ruang dan memperindah suasana kegiatan angkatan 2020 melalui berbagai bentuk dekorasi.<br><br>
 
                     Setelah kamu mengenal bagian pekerjaan yang tersedia untuk tempat kamu bekerja, silahkan pilih dua bagian pekerjaan dengan pilihan pertama sebagai prioritas dan kedua adalah alternatif.
                     <br><br>
@@ -55,14 +49,11 @@
                             <select id="pilihan11" name="pilihan11">
                                 <option value="Project Offier" <?php if ($pemetaan->pilihan11 == 'Project Offier') : ?> selected <?php endif ?>>Project Offier</option>
                                 <option value="Divisi Acara" <?php if ($pemetaan->pilihan11 == 'Divisi Acara') : ?> selected <?php endif ?>>Divisi Acara</option>
-                                <option value="Divisi Liaison Officer" <?php if ($pemetaan->pilihan11 == 'Divisi Liaison Officer') : ?> selected <?php endif ?>>Divisi Liaison Officer</option>
                                 <option value="Divisi Hubungan Masyarakat" <?php if ($pemetaan->pilihan11 == 'Divisi Hubungan Masyarakat') : ?> selected <?php endif ?>>Divisi Hubungan Masyarakat</option>
-                                <option value="Divisi Dana dan Konsumsi" <?php if ($pemetaan->pilihan11 == 'Divisi Dana dan Konsumsi') : ?> selected <?php endif ?>>Divisi Dana dan Konsumsi</option>
+                                <option value="Divisi Sponsorship and Funding" <?php if ($pemetaan->pilihan11 == 'Divisi Sponsorship and Funding') : ?> selected <?php endif ?>>Divisi Sponsorship and Funding</option>
                                 <option value="Divisi Logistik" <?php if ($pemetaan->pilihan11 == 'Divisi Logistik') : ?> selected <?php endif ?>>Divisi Logistik</option>
-                                <option value="Divisi Keamanan" <?php if ($pemetaan->pilihan11 == 'Divisi Keamanan') : ?> selected <?php endif ?>>Divisi Keamanan</option>
                                 <option value="Divisi Dokumentasi dan Desain" <?php if ($pemetaan->pilihan11 == 'Divisi Dokumentasi dan Desain') : ?> selected <?php endif ?>>Divisi Dokumentasi dan Desain</option>
                                 <option value="Divisi Publikasi" <?php if ($pemetaan->pilihan11 == 'Divisi Publikasi') : ?> selected <?php endif ?>>Divisi Publikasi</option>
-                                <option value="Divisi Dekorasi" <?php if ($pemetaan->pilihan11 == 'Divisi Dekorasi') : ?> selected <?php endif ?>>Divisi Dekorasi</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -70,14 +61,11 @@
                             <select id="pilihan12" name="pilihan12">
                                 <option value="Project Offier" <?php if ($pemetaan->pilihan12 == 'Project Offier') : ?> selected <?php endif ?>>Project Offier</option>
                                 <option value="Divisi Acara" <?php if ($pemetaan->pilihan12 == 'Divisi Acara') : ?> selected <?php endif ?>>Divisi Acara</option>
-                                <option value="Divisi Liaison Officer" <?php if ($pemetaan->pilihan12 == 'Divisi Liaison Officer') : ?> selected <?php endif ?>>Divisi Liaison Officer</option>
                                 <option value="Divisi Hubungan Masyarakat" <?php if ($pemetaan->pilihan12 == 'Divisi Hubungan Masyarakat') : ?> selected <?php endif ?>>Divisi Hubungan Masyarakat</option>
-                                <option value="Divisi Dana dan Konsumsi" <?php if ($pemetaan->pilihan12 == 'Divisi Dana dan Konsumsi') : ?> selected <?php endif ?>>Divisi Dana dan Konsumsi</option>
+                                <option value="Divisi Sponsorship and Funding" <?php if ($pemetaan->pilihan12 == 'Divisi Sponsorship and Funding') : ?> selected <?php endif ?>>Divisi Sponsorship and Funding</option>
                                 <option value="Divisi Logistik" <?php if ($pemetaan->pilihan12 == 'Divisi Logistik') : ?> selected <?php endif ?>>Divisi Logistik</option>
-                                <option value="Divisi Keamanan" <?php if ($pemetaan->pilihan12 == 'Divisi Keamanan') : ?> selected <?php endif ?>>Divisi Keamanan</option>
                                 <option value="Divisi Dokumentasi dan Desain" <?php if ($pemetaan->pilihan12 == 'Divisi Dokumentasi dan Desain') : ?> selected <?php endif ?>>Divisi Dokumentasi dan Desain</option>
                                 <option value="Divisi Publikasi" <?php if ($pemetaan->pilihan12 == 'Divisi Publikasi') : ?> selected <?php endif ?>>Divisi Publikasi</option>
-                                <option value="Divisi Dekorasi" <?php if ($pemetaan->pilihan12 == 'Divisi Dekorasi') : ?> selected <?php endif ?>>Divisi Dekorasi</option>
                             </select>
                         </div>
                         <a href="{{url('/user/pemetaan/1')}}" class="btn btn-default m-t-15 waves-effect">Kembali</a>
