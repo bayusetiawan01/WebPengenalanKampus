@@ -3,7 +3,10 @@
 <section class="content" style="margin-top: 80px;">
     <div class="card">
         <div class="header">
-            <h2>Hasil Pemetaan</h2>
+            <h2>
+                Hasil Pemetaan
+                <a href="/admin/export_pemetaan" class="btn btn-danger btn-lg waves-effect" style="margin-left: 20px;">+ Export Pemetaan</a>
+            </h2>
         </div>
         <div class="body">
             <div class="row clearfix">

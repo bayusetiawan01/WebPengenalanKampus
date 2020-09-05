@@ -77,6 +77,7 @@ Route::get('/admin/pemetaans/aktif', 'AdminController@aktifkanPemetaan');
 Route::get('/admin/pemetaans/nonaktif', 'AdminController@nonaktifkanPemetaan');
 Route::get('/admin/ganti_npm/aktif', 'AdminController@aktifkanGantiNPM');
 Route::get('/admin/ganti_npm/nonaktif', 'AdminController@nonaktifkanGantiNPM');
+Route::get('/admin/export_pemetaan/', 'AdminController@export_pemetaan');
 //Rute AdminWawancara
 Route::get('/admin/wawancara', 'AdminController@wawancara');
 Route::get('/admin/wawancara/{id}', 'AdminController@hasilwawancara');

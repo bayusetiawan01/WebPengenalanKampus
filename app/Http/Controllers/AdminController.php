@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Hash;
 use PDF;
 use App\Exports\MultipleSheet;
 use App\Exports\BorangSheet;
+use App\Exports\PemetaanSheet;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
@@ -35,7 +36,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('admin');
-        $this->middleware('revalidate')->except('export_excel', 'export_excel_hima');
+        $this->middleware('revalidate')->except('export_excel', 'export_excel_hima', 'export_pemetaan');
     }
     public function index(Request $request)
     {
@@ -603,10 +604,14 @@ class AdminController extends Controller
         $data['nama']   = $user->nama;
         $data['email']  = $user->email;
         $data['jur']    = $id;
-        $data['list']   = User::where([['himpunan', $id], ['role_id', 1]])->get();
+        $data['list']   = User::where([['himpunan', $id], ['role_id', 1]])->orderBy('npm')->get();
         $data['tabel'] = DB::table('user')->leftJoin('pemetaan', 'pemetaan.user_npm', '=', 'user.npm')
-            ->where([['user.himpunan', $id], ['user.role_id', 1]])->get();
+            ->where([['user.himpunan', $id], ['user.role_id', 1]])->orderBy('user.npm')->get();
         return view('/admin/pemetaanuser', $data);
+    }
+    public function export_pemetaan()
+    {
+        return Excel::download(new PemetaanSheet(), 'Pemetaan.xlsx');
     }
     //////////////////////////////////////////
     // Method Manajemen User -----------------
