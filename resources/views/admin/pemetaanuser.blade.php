@@ -30,6 +30,7 @@
                                     <th>Pilihan 2</th>
                                     <th>Pilihan 2.1</th>
                                     <th>Pilihan 2.2</th>
+                                    <th>Nomor HP</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,6 +47,7 @@
                                     <td>{{$l->pilihan2}}</td>
                                     <td>{{$l->pilihan21}}</td>
                                     <td>{{$l->pilihan22}}</td>
+                                    <td>{{$l->nohp}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

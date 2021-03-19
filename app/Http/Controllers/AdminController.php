@@ -605,8 +605,11 @@ class AdminController extends Controller
         $data['email']  = $user->email;
         $data['jur']    = $id;
         $data['list']   = User::where([['himpunan', $id], ['role_id', 1]])->orderBy('npm')->get();
-        $data['tabel'] = DB::table('user')->leftJoin('pemetaan', 'pemetaan.user_npm', '=', 'user.npm')
-            ->where([['user.himpunan', $id], ['user.role_id', 1]])->orderBy('user.npm')->get();
+        $data['tabel'] = DB::table('user')
+            ->leftJoin('pemetaan', 'pemetaan.user_npm', '=', 'user.npm')
+            ->leftJoin('wawancara', 'wawancara.npm', '=', 'user.npm')
+            ->where([['user.himpunan', $id], ['user.role_id', 1]])
+            ->orderBy('user.npm')->get();
         return view('/admin/pemetaanuser', $data);
     }
     public function export_pemetaan()
