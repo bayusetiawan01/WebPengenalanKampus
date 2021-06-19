@@ -9,7 +9,9 @@
 
             <form class="login100-form validate-form" method="post" action="/proc">
                 <span class="login100-form-title">
-                    Member Login <br>
+                    Member Login <br><br>
+                    <p>admin u/p : adminutama/adminutama</p>
+                    <p>user u/p : 140110200001/140110200001</p>
                 </span>
                 {{ csrf_field() }}
                 @if ($message = Session::get('sukses'))
